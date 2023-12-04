@@ -4,4 +4,19 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  white-space: pre-wrap;
+}
+
+a{
+  text-decoration: none;
+}
+
+li{
+  list-style: none;
+}
+
+.inner{
+  width: 1280px;
+  margin: 0 auto;
+  z-index: 1;
 }

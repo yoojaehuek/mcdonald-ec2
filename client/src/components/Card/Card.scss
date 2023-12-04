@@ -1,0 +1,17 @@
+.card{
+  // border: 1px solid #000;
+  border-radius: 10px;
+  overflow: hidden;
+  width: fit-content;
+  width: 366px;
+  box-shadow: 0 3px 4px rgba(0,0,0,.1);
+  
+  .cardImg{
+    height: 300px;
+  }
+  .cardName{
+    height: 138px;
+    padding: 25px;
+    color: black;
+  }
+}
