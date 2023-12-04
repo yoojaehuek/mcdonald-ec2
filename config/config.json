@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "root",
-    "password": "rlawlghks51",
-    "database": "wedingrumDB",
-    "host": "127.0.0.1",
+    "username": "i1004902",
+    "password": "rlawlghks51!",
+    "database": "i1004902",
+    "host": "kjh.cafe24app.com",
     "dialect": "mysql"
   },
   "test": {
