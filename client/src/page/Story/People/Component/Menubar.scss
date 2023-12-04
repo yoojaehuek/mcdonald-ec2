@@ -1,0 +1,133 @@
+.people-menu-bar {
+  height: 20vh;
+  width: 100vw;
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: url('../../../../../public/images/Story/people.jpg') center/cover;
+  padding-left: 7vw;
+
+  .people-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+
+  .people-subtitle {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .people-menu-list {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    width: 100%;
+    gap: 3vw;
+
+    li{
+      cursor: pointer;
+      color: white;
+    }
+    
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+  }
+}
+
+.bottom-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  height: 80px;
+
+  .menu-item {
+    cursor: pointer;
+    padding: 10px;
+    color: gray;
+    text-decoration: none;
+  
+    &:not(:last-child) {
+      margin-right: 20px;
+    }
+  
+    &:hover {
+      color: #ff0000;
+    }
+  
+    &.active {
+      border-bottom: 2px solid #ff0000;
+    }
+  }
+}
+
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  max-height: 80vh;
+  overflow-y: auto;
+
+  .modal-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+
+  .modal-details {
+    margin-top: 20px;
+    text-align: left;
+
+    h2 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin: 0 0 15px;
+    }
+
+    hr {
+      border: 0;
+      border-top: 1px solid #ccc;
+      margin: 15px 0;
+    }
+  }
+
+  button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+
+    &:hover {
+      background-color: #2980b9;
+    }
+  }
+}

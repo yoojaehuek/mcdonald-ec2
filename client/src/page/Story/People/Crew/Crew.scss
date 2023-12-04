@@ -1,0 +1,62 @@
+.crew-container {
+  width: 70vw;
+  margin: 0 auto;
+
+  h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  .crew-list {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    text-align: center;
+  }
+
+  .crew-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 15px;
+
+    .crew-image {
+      width: 15vw;
+      height: 15vw;
+      border-radius: 50%;
+      margin-bottom: 5px;
+      transition: filter 0.3s, background-color 0.3s;
+    }
+
+    .crew-details {
+      h2 {
+        font-size: 18px;
+        margin-bottom: 5px;
+      }
+
+      p {
+        font-size: 14px;
+        margin: 0;
+      }
+    }
+
+    &:hover {
+      .crew-image {
+        background-color: yellow;
+        filter: brightness(1.2);
+      }
+
+      &::after {
+        content: '+';
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 8rem;
+        color: black;
+      }
+    }
+  }
+}

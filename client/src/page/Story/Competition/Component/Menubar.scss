@@ -1,0 +1,67 @@
+.competition-menu-bar1 {
+  height: 20vh;
+  width: 100vw;
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: url('../../../../../public/images/Story/competition.jpg') center/cover;
+  padding-left: 7vw;
+
+  .competition-title1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+
+  .competition-subtitle1 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .competition-menu-list1 {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    width: 100%;
+    gap: 3vw;
+
+    li{
+      cursor: pointer;
+      color: white;
+    }
+    
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+  }
+}
+
+.competition-menu1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  height: 80px;
+
+  .competition-item1 {
+    cursor: pointer;
+    padding: 10px;
+    color: gray;
+    text-decoration: none;
+  
+    &:not(:last-child) {
+      margin-right: 20px;
+    }
+  
+    &:hover {
+      color: #ff0000;
+    }
+  
+    &.active {
+      border-bottom: 2px solid #ff0000;
+    }
+  }
+}

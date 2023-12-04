@@ -1,0 +1,45 @@
+.recruit-container {
+  display: flex;
+  flex-direction: column;
+  height: 25vh;
+  background-color: #ccc;
+}
+
+.recruit-section {
+  flex: 1;
+  max-width: 70vw;
+  display: flex;
+  margin: 0 auto;
+  img {
+    width: 20%;
+    height: 100%;
+    object-fit: cover/center;
+  }
+  h1 {
+    margin: auto;
+  }
+}
+
+.recruit-set {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  max-width: 70vw;
+  margin: auto;
+
+  .recruit-item {
+    flex: 0.48;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 5vw;
+    }
+
+    p {
+      font-size: 1rem;
+      margin-top: 10px;
+    }
+  }
+}
