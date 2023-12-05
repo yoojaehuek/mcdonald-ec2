@@ -7,7 +7,7 @@ const MenuBar = () => {
   const location = useLocation();
 
   const pageData = {
-    '/a': {
+    '/farmToRestaurant': {
       title: '맥도날드 품질 이야기',
       subtitle: '우리가 엄격해질수록 버거는 더 맛있어지니까! 모두의 노력으로 엄격하고 꼼꼼하게 키워진 신선한 식재료가 모여, 마침내 맛있는 맥도날드 버거가 됩니다.',
     },
