@@ -1,11 +1,14 @@
 const Sequelize = require('sequelize'); 
 const User = require('./user'); //user파일을 User로 불러옴 
-// const FAQ = require('./faq');
+const FAQ = require('./faq');
 // const Product = require('./product');
 // const Planner = require('./planner')//planner 파일을 Planner로 불러옴
 // const Point = require('./point')//point.js 파일을 Point로 불러옴
 // const Reservation = require('./reservation')//point.js 파일을 Point로 불러옴
 // const Hall = require('./hall')
+const Crew = require('./crew');
+const Material = require('./Material');
+const Effort = require('./Effort');
 
 const env = process.env.NODE_ENV || 'development'; //상수 env에 NODE_ENV없으면 'development' 넣음
 const config = require('../../config/config.json')[env]; //상수config에 ../config/config파일에서 env(development) 불러옴
@@ -19,7 +22,10 @@ db.sequelize = sequelize;
 
 //만든 모델들 추가
 db.User = User;
-// db.FAQ = FAQ;
+db.Crew = Crew;
+db.FAQ = FAQ;
+db.Material = Material;
+db.Effort = Material;
 // db.Product = Product;
 // db.Planner = Planner;
 // db.Point = Point;
@@ -28,7 +34,10 @@ db.User = User;
 
 
 User.initiate(sequelize);
-// FAQ.initiate(sequelize);
+Crew.initiate(sequelize);
+FAQ.initiate(sequelize);
+Material.initiate(sequelize);
+Effort.initiate(sequelize);
 // Product.initiate(sequelize);
 // Planner.initiate(sequelize);
 // Point.initiate(sequelize);

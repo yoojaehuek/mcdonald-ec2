@@ -3,7 +3,10 @@ const app = express();
 const path = require('path');
 const { sequelize } = require('./database/schemas');//DB테이블
 const port = 8003;
-
+const CrewRouter = require('./routers/crew');
+const FaqRouter = require('./routers/faq');
+const MaterialRouter = require('./routers/material');
+const EffortRouter = require('./routers/effort');
 
 //시퀄라이즈 연결 부분
 sequelize.sync({ force: false }) //force가 true면 킬때마다 DB 새로 만듬
@@ -19,6 +22,10 @@ sequelize.sync({ force: false }) //force가 true면 킬때마다 DB 새로 만�
 var cors = require('cors');
 app.use(cors());
 
+app.use('/crew', CrewRouter);
+app.use('/faq', FaqRouter);
+app.use('/material', MaterialRouter);
+app.use('/effort', EffortRouter);
 
 // '/upload'경로로 뭔가 요청이오면 여기서 걸리고 upload폴더의 정적 파일을 제공하겠다
 // 예: "/upload/image.jpg")에 액세스하면 Express.js는 "upload" 디렉터리에서 정적 파일을 찾아 제공

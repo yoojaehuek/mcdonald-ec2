@@ -1,0 +1,195 @@
+$black: black;
+$white: white;
+$red: red;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .youtube-video {
+    margin-bottom: 20px;
+  }
+
+  .button-group {
+    display: flex;
+
+    button {
+      padding: 10px;
+      margin: 5px;
+      cursor: pointer;
+      color: $white;
+      background-color: $black;
+
+      &.selected {
+        background-color: $red;
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+//////////////material
+
+.material-container {
+  text-align: center;
+
+  h1 {
+    margin-bottom: 20px;
+  }
+
+  .materials-list {
+    display: flex;
+    justify-content: center;
+
+    .material-item {
+      margin: 10px;
+      cursor: pointer;
+
+      img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: 2px solid #000;
+      }
+
+      &.selected {
+        border-color: #f00;
+      }
+    }
+  }
+
+  .material-details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+
+    .material-image {
+      margin-right: 20px;
+
+      img {
+        max-width: 200px;
+        max-height: 200px;
+      }
+    }
+
+    .material-info {
+      text-align: left;
+
+      h2 {
+        margin-bottom: 10px;
+      }
+
+      p {
+        margin-bottom: 8px;
+      }
+    }
+  }
+}
+
+////////safekeeping
+
+.safekeeping-container {
+  text-align: center;
+  padding: 20px;
+
+  h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  h3 {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 20px;
+  }
+
+  .images-section {
+    display: flex;
+    justify-content: space-around;
+
+    .image-set {
+      text-align: center;
+      margin: 0 10px;
+
+      img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin-bottom: 10px;
+      }
+
+      h1 {
+        font-size: 20px;
+        margin: 5px 0;
+      }
+
+      h3 {
+        font-size: 16px;
+        color: #777;
+      }
+    }
+  }
+}
+
+
+
+/////////// Effort
+
+.effort-container {
+  text-align: center;
+
+  h1 {
+    margin-bottom: 10px;
+  }
+
+  h3 {
+    margin-bottom: 20px;
+    color: #555;
+  }
+
+  .effort-category {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    border-bottom: solid 1px black;
+
+    h2 {
+      width: 100%;
+      text-align: left;
+      margin-bottom: 10px;
+      font-size: 1.5rem;
+    }
+
+    .effort-item {
+      width: 48%;
+      margin-bottom: 20px;
+      border: 1px solid #ddd;
+      padding: 15px;
+      box-sizing: border-box;
+      text-align: left;
+
+      img {
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+      }
+
+      h3 {
+        margin-bottom: 10px;
+        font-size: 1.2rem;
+      }
+
+      p {
+        color: #777;
+      }
+    }
+  }
+}
