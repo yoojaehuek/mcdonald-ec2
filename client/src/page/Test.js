@@ -1,13 +1,13 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom'
+import React, { useEffect } from 'react';
+import { Outlet, useParams } from 'react-router-dom'
+import VisualBackGround from '../components/VisualBackGround/VisualBackGround';
 
 
-const Test = () => {
-  
+const Test = () => {  
   return(
     <>
-      <h1>test</h1>
-      <NavLink to={'/'}>main</NavLink>
+      <VisualBackGround />
+      <Outlet />
     </>
   )
 }

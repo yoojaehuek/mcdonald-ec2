@@ -1,4 +1,18 @@
 .visualBackGround{
+  display: flex;
+  position: relative;
+  align-items: center;
+  color: white;
+  min-height: 220px;
+  // max-width: 1680px;
+  margin: 0 auto;
+
+  .visualBackGround_TextArea{
+    width: 1280px;
+    margin: 0 auto;
+    z-index: 1;
+  }
+  
   &::after{
     content :'';
     position : absolute;
@@ -11,13 +25,6 @@
     // header * {
     //   z-index : 1;} 
   } 
-  display: flex;
-  position: relative;
-  align-items: center;
-  color: white;
-  min-height: 220px;
-  // max-width: 1680px;
-  margin: 0 auto;
 
   h1{
     font-size: 50px;

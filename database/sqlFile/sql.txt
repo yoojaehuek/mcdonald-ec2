@@ -1,3 +1,11 @@
+
+-------------visualbackgrounds----------------
+INSERT INTO mcdonalddb.visualbackgrounds (id, title, backgroundImage, path) VALUES ('promotion', '맥도날드 프로모션', '/image/visualBackGround/bg_visual_whats02.jpg', '[{"url": "/", "name": "HOME"}, {"url": "/promotion", "name": "What\'s New"}, {"url": "/promotion", "name": "맥도날드 프로모션"}]');
+-----------------------------------------------
+
+
+
+------------crew-------------------------------
 INSERT INTO `mcdonalddb`.`crews` (`id`, `name`, `image`, `region`, `description`) 
 VALUES ('1', '변화는 나의 자부심', './images/Story/crew1.png', '목포 남악 DT점 김지웅 매니저', '처음엔 ‘그냥 아르바이트 하는 곳’이라는 생각으로 시작 하였던 것이 어느 것 16년을 함께 하고 있습니다. 맥도날드의 다양한 경험을 통해 항상 새로운 시도와 변화를 먼저 이끌어 나가는 기업이라는 것을 자연스럽게 느낄 수 있었습니다.
 맥드라이브, 맥딜리버리, 최근의 미래형 매장까지···
@@ -29,11 +37,13 @@ VALUES ('4', '맥도날드를 넘어, 나 자신의 변화까지', './images/Sto
 그런 것을 고객 분들도 알아주시고, 함께 웃는 얼굴로 마주해주시니 제 삶까지 행복해졌습니다.
 처음에는 작은 욕심으로 시작한 일이
 맥도날드의 변화를 넘어, 나 자신의 변화까지 가져왔습니다.');
+---------------------------------------------------------------
 
 
-///////////////////////
-faq
+
+------------------faq----------------------------------
 INSERT INTO `mcdonalddb`.`faq` (`id`, `category`, `name`, `description`) VALUES ('1', '전체', '1', '1');
 INSERT INTO `mcdonalddb`.`faq` (`id`, `category`, `name`, `description`) VALUES ('2', '원재료', '1', '1');
 INSERT INTO `mcdonalddb`.`faq` (`id`, `category`, `name`, `description`) VALUES ('3', '품질관리', '1', '1');
 INSERT INTO `mcdonalddb`.`faq` (`id`, `category`, `name`, `description`) VALUES ('4', '매장위생', '1', '1');
+----------------------------------------------------

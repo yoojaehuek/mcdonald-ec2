@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const { sequelize } = require('./database/schemas');//DB테이블
+const visualBackGroundRouter = require('./routers/visualBackGround')
 const port = 8003;
 const CrewRouter = require('./routers/crew');
 const FaqRouter = require('./routers/faq');
@@ -32,6 +33,8 @@ app.use('/effort', EffortRouter);
 app.use("/upload", express.static("upload"));  
 
 app.use(express.static(path.join(__dirname, 'client/build')));
+
+app.use("/visualbackground", visualBackGroundRouter);
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '/client/build/index.html'));
