@@ -1,0 +1,75 @@
+.customer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 7vw auto;
+  max-width: 80vw;
+}
+
+.center {
+  font-weight: 400;
+  font-size: 70px;
+  text-align: center;
+}
+
+.center2 {
+  font-weight: 10;
+  font-size: 50px;
+  text-align: center;
+}
+
+.search-container {
+  display: flex;
+  background-color: rgb(228, 228, 228);
+  border: 1px solid #ccc;
+  padding: 30px;
+  margin-top: 40px;
+  max-width: 1200px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+.custom-input,
+.dropdown select {
+  flex-grow: 1;
+  height: 50px;
+  border: none;
+  outline: none;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.dropmenu{
+  width: 500px;
+}
+
+// .category-buttons {
+//   display: flex;
+//   margin-top: 2vw;
+//   margin-bottom: 2vw;
+// }
+
+// .category-buttons button {
+//   margin-right: 1vw;
+//   padding: 15px 22px;
+//   cursor: pointer;
+//   border: 1px solid rgb(51, 51, 51);
+//   border-radius: 3vw;
+//   background-color: white;
+// }
+
+// .category-buttons button.active {
+//   background-color: rgb(54, 54, 54);
+//   color: #fff;
+// }
+
+.radio-button-container {
+  margin-right: 10px;
+  display: inline-block;
+}
+
+.radio-button-container input {
+  margin-right: 5px;
+}

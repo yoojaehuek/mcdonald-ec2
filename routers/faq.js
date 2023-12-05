@@ -13,5 +13,3 @@ router.get('/', async (req, res) => {
 });
 
 module.exports = router;
-
-//어려워요.

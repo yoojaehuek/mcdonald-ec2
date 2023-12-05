@@ -17,17 +17,17 @@ const DetailPromotion = () => {
       <div className='detail_Promotion_Top'>
         <h2 className='detail_Promotion_Title'>{tmp.title}</h2>
         <div>
-          <span>{tmp.date}</span>
-          <span>{tmp.read_count}</span>
+          <b>{tmp.date}</b>
+          <b>{tmp.read_count}</b>
         </div>
       </div>
       <div className='detail_Promotion_Content'>
         <img src={API_URL+tmp.content} alt="content 이미지" />
       </div>
       <div className='detail_Promotion_BtnArea'>
-        <button>{`<`}</button>
-        <button>목록으로</button>
-        <button>{`>`}</button>
+        <NavLink className='Arrow_Btn'>{`<`}</NavLink>
+        <NavLink className='List_Btn'>목록으로</NavLink>
+        <NavLink className='Arrow_Btn'>{`>`}</NavLink>
       </div>
     </div>
   )
