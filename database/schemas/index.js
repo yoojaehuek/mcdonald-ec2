@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize'); 
 const User = require('./user'); //user파일을 User로 불러옴 
+const VisualBackGround = require('./visualBackGround');
 // const FAQ = require('./faq');
 // const Product = require('./product');
 // const Planner = require('./planner')//planner 파일을 Planner로 불러옴
@@ -19,6 +20,7 @@ db.sequelize = sequelize;
 
 //만든 모델들 추가
 db.User = User;
+db.VisualBackGround = VisualBackGround;
 // db.FAQ = FAQ;
 // db.Product = Product;
 // db.Planner = Planner;
@@ -28,6 +30,7 @@ db.User = User;
 
 
 User.initiate(sequelize);
+VisualBackGround.initiate(sequelize);
 // FAQ.initiate(sequelize);
 // Product.initiate(sequelize);
 // Planner.initiate(sequelize);
@@ -37,6 +40,7 @@ User.initiate(sequelize);
 
 
 User.associate(db);
+VisualBackGround.associate(db);
 // FAQ.associate(db);
 // Planner.associate(db);
 // Point.associate(db);

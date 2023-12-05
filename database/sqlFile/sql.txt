@@ -1,0 +1,4 @@
+
+-------------visualbackgrounds----------------
+INSERT INTO mcdonalddb.visualbackgrounds (id, title, backgroundImage, path) VALUES ('promotion', '맥도날드 프로모션', '/image/visualBackGround/bg_visual_whats02.jpg', '[{"url": "/", "name": "HOME"}, {"url": "/promotion", "name": "What\'s New"}, {"url": "/promotion", "name": "맥도날드 프로모션"}]');
+-----------------------------------------------
