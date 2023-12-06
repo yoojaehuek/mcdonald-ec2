@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 const Main = () => {
   return(
     <>
-      <h1>메인</h1>
+      <h1>메인3</h1>
     </>
   )
 }
