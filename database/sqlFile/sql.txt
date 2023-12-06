@@ -1,6 +1,7 @@
 
 -------------visualbackgrounds----------------
 INSERT INTO mcdonalddb.visualbackgrounds (id, title, backgroundImage, path) VALUES ('promotion', '맥도날드 프로모션', '/image/visualBackGround/bg_visual_whats02.jpg', '[{"url": "/", "name": "HOME"}, {"url": "/promotion", "name": "What\'s New"}, {"url": "/promotion", "name": "맥도날드 프로모션"}]');
+INSERT INTO mcdonalddb.visualbackgrounds (id, title, subCopy, backgroundImage, path) VALUES ('brandintro', '브랜드 소개', '1955년 작은 레스토랑에서부터 지금에 이르기까지 고객이 가장 좋아하는 장소이자, \n음식을 즐기는 최고의 방법이 되기 위해 맥도날드는 오늘도 노력합니다.' , '/image/visualBackGround/headerImg.jpg', '[{"url": "/", "name": "HOME"}, {"url": "/story", "name": "Story"}, {"url": "/brandintro", "name": "브랜드 소개"}]');
 INSERT INTO mcdonalddb.visualbackgrounds (id, title, backgroundImage, path) VALUES ('society', '사회적 책임과 지원', '/image/visualBackGround/bg_visual_story02.jpg', '[{"url": "/", "name": "HOME"}, {"url": "/story", "name": "Story"}, {"url": "/society", "name": "맥도날드 사회적 책임"}]');
 -----------------------------------------------
 

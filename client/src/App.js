@@ -17,6 +17,7 @@ import FarmToRestaurant from './page/Story/Competition/FarmToRestaurant/FarmToRe
 import HappyMeal from './page/WhatsNew/HappyMeal/HappyMeal';
 import Promotion from './page/WhatsNew/Promotion/Promotion';
 import DetailPromotion from './page/WhatsNew/Promotion/DetailPromotion/DetailPromotion';
+import BrandHistory from './page/Story/BrandIntro/BrandHistory';
 import Society from './page/Story/Society/Society';
 
 
@@ -35,6 +36,7 @@ function App() {
           <Route path='/farmtorestaurant' element={<FarmToRestaurant/>}></Route>
           <Route element={<Test></Test>}>
           <Route path='/brandintro' element={<BrandIntro/>}></Route>
+          <Route path='/brandhistory' element={<BrandHistory/>}></Route>
           <Route path='/promotion' element={<Promotion />}></Route>
           <Route path='/promotion/detail/:prodNum' element={<DetailPromotion />}></Route>
         </Route>
