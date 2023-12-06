@@ -1,6 +1,7 @@
 
 -------------visualbackgrounds----------------
 INSERT INTO mcdonalddb.visualbackgrounds (id, title, backgroundImage, path) VALUES ('promotion', '맥도날드 프로모션', '/image/visualBackGround/bg_visual_whats02.jpg', '[{"url": "/", "name": "HOME"}, {"url": "/promotion", "name": "What\'s New"}, {"url": "/promotion", "name": "맥도날드 프로모션"}]');
+INSERT INTO mcdonalddb.visualbackgrounds (id, title, backgroundImage, path) VALUES ('society', '사회적 책임과 지원', '/image/visualBackGround/bg_visual_story02.jpg', '[{"url": "/", "name": "HOME"}, {"url": "/story", "name": "Story"}, {"url": "/society", "name": "맥도날드 사회적 책임"}]');
 -----------------------------------------------
 
 
