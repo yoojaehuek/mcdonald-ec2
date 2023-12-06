@@ -9,6 +9,7 @@ import Crew from './page/Story/People/Crew/Crew';
 import Work from './page/Story/People/Work/Work';
 import Recruit from './page/Story/People/Recruit/Recruit';
 import Faq from './page/Story/Competition/Faq/Faq';
+import BrandIntro from './page/Story/BrandIntro/BrandIntro';
 // import Effort from './page/Story/Competition/FarmToRestaurant/Effort';
 // import Safekeeping from './page/Story/Competition/FarmToRestaurant/Safekeeping';
 import FarmToRestaurant from './page/Story/Competition/FarmToRestaurant/FarmToRestaurant';
@@ -33,6 +34,7 @@ function App() {
           <Route path='/faq' element={<Faq/>}></Route>
           <Route path='/farmtorestaurant' element={<FarmToRestaurant/>}></Route>
           <Route element={<Test></Test>}>
+          <Route path='/brandintro' element={<BrandIntro/>}></Route>
           <Route path='/promotion' element={<Promotion />}></Route>
           <Route path='/promotion/detail/:prodNum' element={<DetailPromotion />}></Route>
         </Route>
