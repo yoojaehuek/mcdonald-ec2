@@ -2,6 +2,7 @@ import './Promotion.scss'
 // import styled from 'styled-components'
 import VisualBackGround from '../../../components/VisualBackGround/VisualBackGround';
 import Card from '../../../components/Card/Card';
+import { Route } from 'react-router-dom';
 
 const tmps = [
   {prodNum: 1, prodImg: "/upload/promotion/1700550501889.jpg", prodContent: "신선한 토마토와 매콤한 소스의 만남!"},
@@ -15,7 +16,7 @@ const tmps = [
 const Promotion = () => {
   return(
     <>
-      <VisualBackGround props={{title: "맥도날드 프로모션", bgImg: "/image/visualBackGround/bg_visual_whats02.jpg", path: [{url: "/", name: "HOME"}, {url: "/promotion", name: "What's New"}, {url: "/promotion", name: "맥도날드 프로모션"}]}}></VisualBackGround>
+      {/* <VisualBackGround props={{title: "맥도날드 프로모션", bgImg: "/image/visualBackGround/bg_visual_whats02.jpg", path: [{url: "/", name: "HOME"}, {url: "/promotion", name: "What's New"}, {url: "/promotion", name: "맥도날드 프로모션"}]}}></VisualBackGround> */}
       <div className="contArea">
         <div className="inner">
           <div id='cardList'>

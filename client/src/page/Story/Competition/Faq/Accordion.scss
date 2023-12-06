@@ -1,0 +1,36 @@
+.AccordionContainer {
+  display: flex;
+  flex-direction: column;
+  border-top: solid 2px black;
+  width: 60vw;
+}
+
+.AccordionContainer2 {
+  display: flex;
+  justify-content: space-between; /* 가로 방향으로 7대3으로 나누기 */
+  align-items: center; /* 세로 중앙 정렬 */
+  width: 100%;
+  p{
+    text-align: left;
+    flex:2; 
+    width: 100%;
+  }
+}
+
+.category {
+  margin-right: 3vw;
+}
+
+.title{
+  position: relative;
+  right: 300px;
+  p{
+    width: 100%;
+  }
+}
+
+
+.description {
+  max-height: 500px; /* 원하는 높이로 조절 */
+  overflow: auto; /* 넘치는 내용이 있을 경우 스크롤 생성 */
+}
