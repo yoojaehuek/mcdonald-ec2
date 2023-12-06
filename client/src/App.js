@@ -23,14 +23,14 @@ function App() {
       <Header />
       <Routes>
         <Route path='/' element={<Main></Main>}></Route>
-          <Route path='/crew' element={<Crew/>}></Route>
-          <Route path='/work' element={<Work/>}></Route>
-          <Route path='/recruit' element={<Recruit/>}></Route>
-          <Route path='/faq' element={<Faq/>}></Route>
-          <Route path='/farmtorestaurant' element={<FarmToRestaurant/>}></Route>
         <Route element={<Test></Test>}>
           <Route path='/promotion' element={<Promotion />}></Route>
           <Route path='/promotion/detail/:prodNum' element={<DetailPromotion />}></Route>
+          <Route path='/farmtorestaurant' element={<FarmToRestaurant/>}></Route>
+          <Route path='/faq' element={<Faq/>}></Route>
+          <Route path='/crew' element={<Crew/>}></Route>
+          <Route path='/work' element={<Work/>}></Route>
+          <Route path='/recruit' element={<Recruit/>}></Route>
         </Route>
       </Routes>
       <NavLink to={"/promotion"}>프로모션</NavLink>

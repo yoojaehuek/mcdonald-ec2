@@ -28,7 +28,7 @@ const VisualBackGround = ({props}) => {
     }).catch(err => {
       console.log(err);
     })
-  }, [ currentUrl ])
+  }, [ locationHook ])
   
   
   const visualBackGroundStyle = {
