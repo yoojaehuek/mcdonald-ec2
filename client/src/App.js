@@ -28,12 +28,14 @@ function App() {
           <Route path='/recruit' element={<Recruit/>}></Route>
           <Route path='/faq' element={<Faq/>}></Route>
           <Route path='/farmtorestaurant' element={<FarmToRestaurant/>}></Route>
-        <Route element={<Test></Test>}>
+        <Route element={<Test />}>
+          <Route path='/happymeal' element={<HappyMeal />}></Route>
           <Route path='/promotion' element={<Promotion />}></Route>
-          <Route path='/promotion/detail/:prodNum' element={<DetailPromotion />}></Route>
+          <Route path='/:page/detail/:prodNum' element={<DetailPromotion />}></Route>
         </Route>
       </Routes>
       <NavLink to={"/promotion"}>프로모션</NavLink>
+      <NavLink to={"/happymeal"}>해피밀</NavLink>
       <NavLink to={"/crew"}>Crew</NavLink>
       <NavLink to={"/work"}>work</NavLink>
       <NavLink to={"/recruit"}>recruit</NavLink>
