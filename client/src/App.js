@@ -2,6 +2,7 @@ import './App.css';
 import { Routes, Route, NavLink } from 'react-router-dom';
 import Main from './page/Main';
 import Test from './page/Test';
+import Login from './page/Login/Login';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Crew from './page/Story/People/Crew/Crew';
@@ -18,12 +19,15 @@ import Promotion from './page/WhatsNew/Promotion/Promotion';
 import DetailPromotion from './page/WhatsNew/Promotion/DetailPromotion/DetailPromotion';
 
 
+
 function App() {
   return (
     <div className="App">
       <Header />
       <Routes>
         <Route path='/' element={<Main></Main>}></Route>
+          <Route path='/login' element={<Login/>}/>
+
           <Route path='/crew' element={<Crew/>}></Route>
           <Route path='/work' element={<Work/>}></Route>
           <Route path='/recruit' element={<Recruit/>}></Route>
