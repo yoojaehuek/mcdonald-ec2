@@ -18,7 +18,7 @@ import HappyMeal from './page/WhatsNew/HappyMeal/HappyMeal';
 import Promotion from './page/WhatsNew/Promotion/Promotion';
 import DetailPromotion from './page/WhatsNew/Promotion/DetailPromotion/DetailPromotion';
 import BrandHistory from './page/Story/BrandIntro/BrandHistory';
-
+import Society from './page/Story/Society/Society';
 
 
 function App() {
@@ -27,14 +27,14 @@ function App() {
       <Header />
       <Routes>
         <Route path='/' element={<Main></Main>}></Route>
-        <Route path='/login' element={<Login/>}/>
-
-        <Route path='/crew' element={<Crew/>}></Route>
-        <Route path='/work' element={<Work/>}></Route>
-        <Route path='/recruit' element={<Recruit/>}></Route>
-        <Route path='/faq' element={<Faq/>}></Route>
-        <Route path='/farmtorestaurant' element={<FarmToRestaurant/>}></Route>
-        <Route element={<Test></Test>}>
+          <Route path='/login' element={<Login/>}/>
+          <Route path='/society' element={<Society/>}/>
+          <Route path='/crew' element={<Crew/>}></Route>
+          <Route path='/work' element={<Work/>}></Route>
+          <Route path='/recruit' element={<Recruit/>}></Route>
+          <Route path='/faq' element={<Faq/>}></Route>
+          <Route path='/farmtorestaurant' element={<FarmToRestaurant/>}></Route>
+          <Route element={<Test></Test>}>
           <Route path='/brandintro' element={<BrandIntro/>}></Route>
           <Route path='/brandhistory' element={<BrandHistory/>}></Route>
           <Route path='/promotion' element={<Promotion />}></Route>
