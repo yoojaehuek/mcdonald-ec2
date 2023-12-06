@@ -1,0 +1,15 @@
+.SocietyContainer{
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  .inner{
+    width: 70%;
+    position: relative;
+    .title{
+      font-size: 30px;
+      color: #292929;
+      margin-top: 30px;
+      margin-bottom: 30px;
+    }
+  }
+}
