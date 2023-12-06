@@ -1,11 +1,11 @@
 import React from 'react';
 import './Recruit.scss';
-import Menubar from '../Component/Menubar'
+import BottomMenu from '../Component/BottomMenu';
 
 const Recruit = () => {
   return (
     <>
-    <Menubar/>
+    <BottomMenu/>
       <div className="recruit-container">
         <div className="recruit-section">
           <img src="./images/Story/recruit1.png" alt="마그도나르도" />
