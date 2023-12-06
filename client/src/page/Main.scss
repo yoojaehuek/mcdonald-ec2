@@ -1,0 +1,75 @@
+#container{
+  width: 100%;
+
+  .main-event{
+    position: relative;
+    max-width: 1900px;
+    margin: 0 auto;
+
+    /* Slider Container */
+    .slider-container {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    /* Individual Slide */
+    .slide {
+      display: none;
+    }
+
+    .slide.active {
+      display: block;
+    }
+
+    /* Video Styling */
+    .slide video {
+      width: 100%;
+      height: auto;
+    }
+
+    /* Timer (Progress Bar) */
+    .timer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 5px;
+      width: 0%;
+      background-color: #ffbc0d;
+      transition: width 0.5s linear;
+    }
+
+    /* Control Buttons */
+    .play-pause-button,
+    .stop-button,
+    .resume-button,
+    .prev-button,
+    .next-button {
+      margin: 10px;
+      padding: 10px;
+      cursor: pointer;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+    }
+
+    /* Additional Styling */
+    .play-pause-button:hover,
+    .stop-button:hover,
+    .resume-button:hover,
+    .prev-button:hover,
+    .next-button:hover {
+      background-color: #555;
+    }
+
+    /* Responsive Video Styling (Adjust as needed) */
+    @media screen and (max-width: 768px) {
+      .slide video {
+        width: 100%;
+        height: auto;
+      }
+    }
+
+  }
+}

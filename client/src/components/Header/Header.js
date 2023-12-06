@@ -79,7 +79,7 @@ const Header = () => {
             </ul>
           </div>
           <div className='util'>
-            <NavLink to="/" className="renter" >로그인</NavLink>
+            <NavLink to="/login" className="renter" >로그인</NavLink>
             <NavLink to="/" className="renter2">회원가입</NavLink>
             <NavLink to="/" className="renter3">인재채용</NavLink>
             <div className='topserch'>

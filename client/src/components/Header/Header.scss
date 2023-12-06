@@ -1,4 +1,5 @@
 .header {
+  z-index: 1;
   position: absolute;
   position: fixed;
   top: 0;
@@ -20,7 +21,7 @@
     align-items: center;
   
     input {
-      border: solid 2px black;
+      border: none;
       border-radius: 50px;
       height: 80px;
       width: 70%;
@@ -48,7 +49,7 @@
       margin-left: 20px;
       padding: 10px 20px;
       background-color: #ffbc0d; /* 노란색 배경 */
-      border: solid 2px black;
+      border: none;
       border-radius:50px;
       width: 10%;
       height: 80px;
@@ -66,6 +67,7 @@
       background-color: #ff9e9e; /* 노란색 배경 */
       font-size: 15px;
       font-weight: 700;
+      border: none;
       border-radius: 50px;
       width: 5%;
       height: 60px;
@@ -145,7 +147,7 @@
                 }
 
               &:hover {
-                // 호버 시 적용될 스타일
+                color: #ffbc0d;
               }
             }
 
@@ -191,8 +193,6 @@
 
           .serch{
             cursor: pointer;
-            -webkit-border-radius: 0;
-            -webkit-appearance: none;
             border: 0;
             vertical-align: middle;
             margin-left: 26px;

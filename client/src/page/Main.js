@@ -1,11 +1,18 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom'
+// import { NavLink } from 'react-router-dom'
+import Slider from "../components/Main/Slider";
+import "./Main.scss";
+
 
 const Main = () => {
   return(
-    <>
-      <h1>메인3</h1>
-    </>
+    <div id='container'>
+      <div className='content'>
+        <div className='main-event'>
+          <Slider />
+        </div>
+      </div>
+    </div>
   )
 }
 
