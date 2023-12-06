@@ -35,16 +35,24 @@ function App() {
           <Route path='/recruit' element={<Recruit/>}></Route>
           <Route path='/faq' element={<Faq/>}></Route>
           <Route path='/farmtorestaurant' element={<FarmToRestaurant/>}></Route>
+          <Route path='/happymeal' element={<HappyMeal />}></Route>
           <Route path='/brandintro' element={<BrandIntro/>}></Route>
           <Route path='/brandhistory' element={<BrandHistory/>}></Route>
           <Route path='/promotion' element={<Promotion />}></Route>
-          <Route path='/promotion/detail/:prodNum' element={<DetailPromotion />}></Route>
+          <Route path='/:page/detail/:prodNum' element={<DetailPromotion />}></Route>
         </Route>
       </Routes>
-      <NavLink to={"/promotion"}>프로모션</NavLink>
-      <NavLink to={"/crew"}>Crew</NavLink>
-      <NavLink to={"/work"}>work</NavLink>
-      <NavLink to={"/recruit"}>recruit</NavLink>
+      <NavLink to={"/login"}> Login </NavLink><br/>
+      <NavLink to={"/society"}> Society </NavLink><br/>
+      <NavLink to={"/crew"}> Crew </NavLink><br/>
+      <NavLink to={"/work"}> Work </NavLink><br/>
+      <NavLink to={"/recruit"}> Recruit </NavLink><br/>
+      <NavLink to={"/faq"}> Faq </NavLink><br/>
+      <NavLink to={"/farmtorestaurant"}> FarmToRestaurant </NavLink><br/>
+      <NavLink to={"/happymeal"}> 해피밀 </NavLink><br/>
+      <NavLink to={"/brandintro"}> BrandIntro </NavLink><br/>
+      <NavLink to={"/brandhistory"}> BrandHistory </NavLink><br/>
+      <NavLink to={"/promotion"}> 프로모션 </NavLink><br/>
       <Footer />
     </div>
   );
