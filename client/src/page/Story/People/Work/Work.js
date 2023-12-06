@@ -1,11 +1,11 @@
 import React from 'react';
 import './Work.scss';
-import Menubar from '../Component/Menubar'
+import BottomMenu from '../Component/BottomMenu';
 
 const Work = () => {
   return (
     <>
-    <Menubar/>
+    <BottomMenu/>
       <div className="work-container">
         <h1>Restaurant Department Management</h1>
         <h2>맥도날드에서는 각 레스토랑에서 근무하는 정규 직원을 Manager 라고 부릅니다.<br />Manager는 업무와 교육 과정 수료 여부에 따라 다양한 단계로 나누어집니다.</h2>

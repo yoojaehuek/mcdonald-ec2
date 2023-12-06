@@ -27,14 +27,14 @@ function App() {
       <Header />
       <Routes>
         <Route path='/' element={<Main></Main>}></Route>
-          <Route path='/login' element={<Login/>}/>
+        <Route path='/login' element={<Login/>}/>
+        <Route element={<Test />}>
           <Route path='/society' element={<Society/>}/>
           <Route path='/crew' element={<Crew/>}></Route>
           <Route path='/work' element={<Work/>}></Route>
           <Route path='/recruit' element={<Recruit/>}></Route>
           <Route path='/faq' element={<Faq/>}></Route>
           <Route path='/farmtorestaurant' element={<FarmToRestaurant/>}></Route>
-          <Route element={<Test></Test>}>
           <Route path='/brandintro' element={<BrandIntro/>}></Route>
           <Route path='/brandhistory' element={<BrandHistory/>}></Route>
           <Route path='/promotion' element={<Promotion />}></Route>
