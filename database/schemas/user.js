@@ -4,10 +4,17 @@ class User extends Sequelize.Model {
   static initiate(sequelize) {
     User.init({
       id: {
-        type: Sequelize.STRING(20),
+        type: Sequelize.INTEGER,
         primaryKey: true,
+        autoIncrement: true,
         allowNull: false,
-        comment: "유저 ID (기본키)",
+        comment: "(기본키)",
+      },
+      email: {
+        type: Sequelize.STRING,
+        unique: true, //중복되면 안됨
+        allowNull: false,
+        comment: "ID(이메일)",
       },
       pwd: {
         type: Sequelize.STRING(128),
@@ -19,38 +26,33 @@ class User extends Sequelize.Model {
         allowNull: false,
         comment: "암호화할때 쓴 난수",
       }, 
-      name: {
+      user_name: {
         type: Sequelize.STRING(20),
         allowNull: false,
         comment: "이름",
+      },
+      phone: {
+        type: Sequelize.STRING(20),
+        allowNull: false,
+        comment: "회원 전화번호",
       },
       address: {
         type: Sequelize.STRING(100),
         allowNull: false,
         comment: "주소",
       },
-      // address: {
-      //   type: Sequelize.STRING(100),
-      //   allowNull: false,
-      //   comment: "주소",
-      // },
-      phone: {
-        type: Sequelize.STRING(20),
-        allowNull: false,
-        comment: "회원 전화번호",
-      },
-      regdate: {
+      created_at: {
         type: Sequelize.DATE,
         allowNull: false,
         defaultValue: Sequelize.NOW,
         comment: "회원 가입일",
-      },
+      }
     }, {
       sequelize,
       timestamps: false,
       underscored: false,
       modelName: 'User',
-      tableName: 'users',
+      tableName: 'User',
       paranoid: false,
       charset: 'utf8',
       collate: 'utf8_general_ci',
@@ -58,8 +60,8 @@ class User extends Sequelize.Model {
   }
 
   static associate(db) {
-    //참조키로 Pay모델에 id(sourceKey)를 userId(foreignKey)라는 이름으로 보냄
-    // db.User.hasMany(db.Pay, { foreignKey: 'userId', sourceKey: 'id'});//pay태이블로 보냄 hasMany 가 보낸다 라는뜻
+    //참조키로 Order모델에 id(sourceKey)를 user_id(foreignKey)라는 이름으로 보냄
+    db.User.hasMany(db.Order, { foreignKey: 'user_id', sourceKey: 'id'});
     // db.User.hasMany(db.PlayHistory, { foreignKey: 'userId', sourceKey: 'id'});
     // db.User.hasMany(db.PlayList, { foreignKey: 'userId', sourceKey: 'id'});
     // db.User.hasMany(db.Reservation, { foreignKey: 'userId', sourceKey: 'id'});//Reservation로 보냄 hasMany 가 보낸다 라는뜻
