@@ -1,0 +1,104 @@
+.mcdel-fieldset1{
+    float: left;
+    width: 564px;
+    height: 406px;
+    padding: 40px 30px 50px;
+    border-radius: 40px;
+    background: #f8f8f8;
+    border: none;
+}
+.mcdel-fieldset1 input{
+  color: #292929;
+    height: 70px;
+    padding: 0 28px;
+    line-height: 1;
+    border: 1px solid #d1d1d1;
+    border-radius: 70px;
+    background: #fff;
+
+}
+
+.mcdel-fieldset2{
+    position: relative;
+    float: right;
+    // float: left;
+    // margin-left: 50px;
+    width: 554px;
+    height: 406px;
+    padding: 50px;
+    color: #000;
+    text-align: center;
+    border-radius: 40px;
+    background: #fff;
+    border: 6px solid #bd0017;
+    
+}
+.mcdel-fieldset2::before{
+  content: '';
+    position: absolute;
+    top: 50%;
+    left: -33px;
+    width: 7px;
+    height: 11px;
+    margin: -5px 0 0 0;
+    background: url(../../../../public/image/mcdelivery/bg_arrow.png);
+}
+
+.mcdel-p1::before{
+  background: url(../../../../public/image/mcdelivery/SSI_20220323165650_O2.jpg);
+  background-size: cover;
+  margin: 0 auto;
+
+}
+.mcdel-fieldset2 p::before{
+    content: '';
+    display: block;
+    width: 250px;
+    height: 265px;
+}
+
+.mcdel-button1{
+  padding: 0 38px;
+    font-size: 15px;
+    line-height: 70px;
+    border-radius: 70px;
+    display: inline-block;
+    color: #292929;
+    font-weight: 600;
+    background: #ffbc0d;
+    border: none;
+    cursor: pointer;
+}
+
+.mcdel-input1{
+  width: 100%;
+}
+.mcdel-input2{
+  width: 220px;
+  margin-left: -30px;
+}
+.mcdel-top{
+  width: 100%;
+  position: relative;
+}
+.mcdel-top button{
+  position: absolute;
+  right: 0;
+
+  
+}
+
+.mcdel-maininput{
+  margin-left: 7px;
+  margin-top: 20px;
+}
+.mcdel-input3{
+  width: 100px;
+  margin-left: 7px;
+  margin-right: 7px;
+}
+
+.mcdel-p{
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
