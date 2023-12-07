@@ -5,6 +5,7 @@ import Material from './Material';
 import Safekeeping from './Safekeeping';
 import './FarmToRestaurant.scss';
 import Effort from './Effort';
+import BottomMenu from '../Component/BottomMenu';
 
 class FarmToRestaurant extends React.Component {
   // 클래스 선언 FarmToRestaurant 클래스를 선언하고 React.Component를 확장.
@@ -43,11 +44,11 @@ class FarmToRestaurant extends React.Component {
   };
 
   render() {
-    const videoId = 'fmXeBe7rj6w';
+    const videoId = 'NDfh8m20dy4';
 
     const opts = {
-      height: '390',
-      width: '640',
+      height: '720',
+      width: '1280',
       playerVars: {
         autoplay: 0,
       },
@@ -69,7 +70,8 @@ class FarmToRestaurant extends React.Component {
 
     return (
       <>
-        <MenuBar />
+      <BottomMenu/>
+        {/* <MenuBar /> */}
         <div className="container">
           <div className="youtube-video">
             <YouTube videoId={videoId} opts={opts} />
@@ -90,19 +92,19 @@ class FarmToRestaurant extends React.Component {
               className={this.state.selectedButton === 1 ? 'selected' : ''}
               onClick={() => this.handleButtonClick(1)}
             >
-              1
+              STEP 01 | 원재료 준비와 가공
             </button>
             <button
               className={this.state.selectedButton === 2 ? 'selected' : ''}
               onClick={() => this.handleButtonClick(2)}
             >
-              2
+              STEP 02 | 재료 보관부터 배송까지
             </button>
             <button
               className={this.state.selectedButton === 3 ? 'selected' : ''}
               onClick={() => this.handleButtonClick(3)}
             >
-              3
+              STEP 03 | 레스토랑에서의 노력
             </button>
           </div>
           {this.state.selectedButton === 1 && <Material />}

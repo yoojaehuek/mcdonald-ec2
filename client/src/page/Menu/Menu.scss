@@ -9,17 +9,23 @@
         gap: 60px;
         width: 300px;
         padding-top: 10px;
-        button{
-            font-weight: 800;
+        .select-btn{
             font-size: 20px;
-            color: red;
+            font-weight: 700;
+            color: gray;
             background-color: white;
             border: 0px;
-            border-bottom: 1px solid red;
+            border-bottom: 1px solid white;
             padding-top: 15px;
             margin: 10px;
             vertical-align: center;           
-            height: 50px; 
+            height: 50px;
+            &.active{
+                border-bottom: 1px solid red;
+                font-size: 20px;
+                font-weight: 900;
+                color: red;
+            } 
         }
     }
     #prd-count {
@@ -44,5 +50,28 @@
         grid-template-rows: repeat(2,  minmax(200px, auto));
         row-gap: 30px;
         column-gap: 30px;
+    }
+    #btnMore-box{
+        width: 100%;
+        margin: 50px 0px;
+        .btnMore{
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            position: relative;
+            background-color: #f5bd43;
+            border: #f5bd43;
+            display: block;
+            margin: auto;
+            
+            &::before{
+                content: "\002B";//+기호 유니코드
+                position: absolute;
+                left: 15%;
+                top: -25px;
+                font-size: 100px;
+                font-weight: 100;
+            }
+        }
     }
 }

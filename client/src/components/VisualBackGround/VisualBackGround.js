@@ -4,8 +4,8 @@ import axios from 'axios';
 import { API_URL } from '../../config/contansts';
 import "./VisualBackGround.scss"
 
-const VisualBackGround = ({props}) => {
-  const locationHook = useLocation();
+const VisualBackGround = () => {
+  const { pathname } = useLocation();
   const [currentUrl, setCurrentUrl] = useState(null);
   const [axiosResult, setAxiosResult] = useState({});
   const [axiosResultPath, setAxiosResultPath] = useState([]);
@@ -14,11 +14,11 @@ const VisualBackGround = ({props}) => {
   // console.log("VisualBackGround/props: ", props);
 
   useEffect(() => {
-    const splitUrl = locationHook?.pathname?.split('/') ?? null;
+    const splitUrl = pathname?.split('/') ?? null;
     // console.log("splitUrl: ", splitUrl);
     const location = splitUrl?.length > 1 ? splitUrl[1] : null;
     setCurrentUrl(location);
-    console.log("VisualBackGround/location: ",location);
+    // console.log("VisualBackGround/location: ",location);
 
     axios.get(`${API_URL}/visualbackground/${location}`)
     .then(res => {
@@ -28,7 +28,7 @@ const VisualBackGround = ({props}) => {
     }).catch(err => {
       console.log(err);
     })
-  }, [ currentUrl ])
+  }, [ pathname ])
   
   
   const visualBackGroundStyle = {
