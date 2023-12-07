@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import './FarmToRestaurant.scss';
-import { API_URL } from '../../../../config/contansts';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import "./FarmToRestaurant.scss";
+import { API_URL } from "../../../../config/contansts";
 
-const Material = () => {
+const Material = ({ onMaterialClick }) => {
   const [materials, setMaterials] = useState([]);
   const [selectedMaterial, setSelectedMaterial] = useState(null);
 
@@ -11,36 +11,48 @@ const Material = () => {
     const fetchMaterials = async () => {
       try {
         const response = await axios.get(`${API_URL}/material`);
-        setMaterials(response.data);
-        // console.log(response.data);
+        const fetchedMaterials = response.data;
+        setMaterials(fetchedMaterials);
+        // console.log(fetchedMaterials);
+        if (fetchedMaterials.length > 0) {
+          setSelectedMaterial(fetchedMaterials[0]);
+          onMaterialClick(fetchedMaterials[0]);
+        }
       } catch (error) {
-        console.error('Error:', error);
+        console.error("Error:", error);
       }
     };
 
     fetchMaterials();
-  }, []);
+  }, [onMaterialClick]);
 
   const handleMaterialClick = (material) => {
     setSelectedMaterial(material);
+    onMaterialClick(material);
   };
 
   return (
-    <div className="material-container" style={{ backgroundImage: `url(${ API_URL + selectedMaterial?.background})` }}>
-      <h1>
+    <div className="material-container">
+      <p>
         원재료 공급사에서는 좋은 재료를 준비하기 위해 엄격한 기준으로
+        <br />
         원재료 수급 및 가공 과정을 관리하고 있습니다.
-      </h1>
+      </p>
       <div className="materials-list">
         {materials.map((material) => (
           <div
             key={material.id}
             className={`material-item ${
-              selectedMaterial && selectedMaterial.id === material.id ? 'selected' : ''
+              selectedMaterial && selectedMaterial.id === material.id
+                ? "selected"
+                : ""
             }`}
             onClick={() => handleMaterialClick(material)}
           >
-            <img src={API_URL + material.image} alt={`Material ${material.id}`} />
+            <img
+              src={API_URL + material.image}
+              alt={`Material ${material.id}`}
+            />
           </div>
         ))}
       </div>
@@ -48,12 +60,15 @@ const Material = () => {
         {selectedMaterial && (
           <>
             <div className="material-image">
-              <img src={API_URL + selectedMaterial.image} alt={`Material ${selectedMaterial.id}`} />
+              <img
+                src={API_URL + selectedMaterial.image}
+                alt={`Material ${selectedMaterial.id}`}
+              />
             </div>
             <div className="material-info">
               <h2>{selectedMaterial.title}</h2>
-              <p>{selectedMaterial.description}</p>
-              <p>{selectedMaterial.additionalInfo}</p>
+              <p style={{ color:'gray', lineHeight:'1.7rem', fontWeight:'bold' }}>{selectedMaterial.description}</p>
+              <p style={{ fontSize:'0.8rem'}}>* {selectedMaterial.additionalInfo}</p>
             </div>
           </>
         )}

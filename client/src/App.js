@@ -20,6 +20,8 @@ import DetailPromotion from './page/WhatsNew/Promotion/DetailPromotion/DetailPro
 import BrandHistory from './page/Story/BrandIntro/BrandHistory';
 import Society from './page/Story/Society/Society';
 import Slider from './components/Main/Slider'
+import Scaleforgood from './page/Story/Society/Scaleforgood/Scaleforgood'
+import Kidssoccer from './page/Story/Society/Kidssoccer/Kidssoccer';
 
 
 function App() {
@@ -42,11 +44,13 @@ function App() {
             <Route path='/promotion' element={<Promotion />}></Route>
             <Route path='/slider' element={<Slider />}></Route>
             <Route path='/:page/detail/:prodNum' element={<DetailPromotion />}></Route>
-          </Route>
+            <Route path='/scaleforgood' element={<Scaleforgood/>}/>
+          <Route path='/kidssoccer' element={<Kidssoccer/>}/>
+        </Route>
         </Routes>
       <Footer />
     </div>
   );
 }
-
+//s
 export default App;
