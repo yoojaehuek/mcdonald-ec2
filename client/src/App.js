@@ -22,6 +22,9 @@ import Society from './page/Story/Society/Society';
 import Slider from './components/Main/Slider'
 import Scaleforgood from './page/Story/Society/Scaleforgood/Scaleforgood'
 import Kidssoccer from './page/Story/Society/Kidssoccer/Kidssoccer';
+import McDrive from './page/Store/McDrive/McDrive';
+import Rental from './page/Store/Rental/Rental';
+import McDelivery from './page/Store/McDelivery/McDelivery';
 
 
 function App() {
@@ -45,7 +48,10 @@ function App() {
             <Route path='/slider' element={<Slider />}></Route>
             <Route path='/:page/detail/:prodNum' element={<DetailPromotion />}></Route>
             <Route path='/scaleforgood' element={<Scaleforgood/>}/>
-          <Route path='/kidssoccer' element={<Kidssoccer/>}/>
+          <Route path='/kidssoccer' element={<Kidssoccer />} />
+          <Route path='/mcdrive' element={<McDrive />}></Route>
+          <Route path='/rental' element={<Rental />}></Route>
+          <Route path='/mcdelivery' element={<McDelivery/>}></Route>
         </Route>
         </Routes>
       <Footer />
