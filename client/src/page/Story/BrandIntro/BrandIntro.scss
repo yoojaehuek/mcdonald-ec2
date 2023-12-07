@@ -1,12 +1,139 @@
 .BrandIntro {
-
-
-
-
-
-
-
-
-
+  width: 100%;
+  background: #fff;
+  margin: 0 auto;
+  padding: 0;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.9;
+  display: block;
+  overflow: hidden;
+  position: relative;
+  min-width: 1280px;
+  min-height: 100%;
+  color: #808080;
   
+  * {
+    box-sizing: border-box;
+    text-align: initial;
+  }
+
+  ul {
+    list-style: none outside;
+  }
+  li {
+    list-style: none outside;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  img {
+    margin: 0;
+    padding: 0;
+    line-height: 0;
+    vertical-align: top;
+  }
+  em {
+    font-style: normal;
+  }
+
+  .contents {
+    padding: 30px 0 60px;
+    .inner {
+      width: 1168px;
+      margin: 0 auto;
+    }
+  }
+  .contents>.inner {
+    position: static;
+  }
+  .contents:first-child{
+    margin-top: 0;
+  }
+
+  .inner_btn{
+    margin: 0 -40px 60px;
+    text-align: center;
+  }
+  .inner_btn li {
+    display: inline-block;
+    margin: 0 40px;
+    vertical-align: top;
+  }
+  .inner_btn li a {
+    display: block;
+    height: 40px;
+    font-size: 20px;
+    line-height: 39px;
+  }
+  .inner_btn li a.on {
+    color: #db0007;
+    font-weight: 600;
+    border-bottom: 1px solid #db0007;
+  }
+
+
+  .brandCont01{
+    padding-bottom: 100px;
+    border-bottom: 1px solid #d1d1d1;
+  }
+  .brandCont01 .img {
+    margin-bottom: 45px;
+  }
+  .brandCont01 .titDep2 {
+    line-height: 1.3;
+  }
+  .titDep2 {
+    display: block;
+    color: #292929;
+    margin: 30px 0 30px;
+    font-size: 30px;
+    line-height: 1;
+  }
+
+  .brandCont002 {
+    height: 120vw;
+  }
+  .titDep3 {
+    display: block;
+    color: #292929;
+    margin: 100px 0 30px;
+    font-size: 30px;
+    line-height: 1;
+  }
+  .brandCont02 {
+    margin: 0;
+    padding: 0;
+    border-top: 0;
+  }
+  .brandCont02 ul {
+    margin: -80px 0 0 -50px;
+  }
+  .brandCont02 ul li {
+    float: left;
+    width: 559px;
+    height: 680px;
+    margin: 100px 0 0 50px;
+  }
+  .brandCont02 ul li .cont2_img {
+    display: block;
+  }
+  .brandCont02 .titmain {
+    font-size: 24px;
+    color: #292929;
+    margin: 30px 0px 3px;
+  }
+  .socialList ul:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+
+
+  .history {
+    background: #1a1a1a;
+    padding-bottom: 120px;
+    margin: 150px 0 -122px;
+  }
 }

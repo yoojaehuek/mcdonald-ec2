@@ -1,0 +1,72 @@
+.footer{
+  color: #fff;
+  height: 250px;
+  font-size: 14px;
+  line-height: 1.6;
+  text-align: center;
+  background: #292929;
+
+  .footerara{
+    padding: 45px 0 55px;
+    text-align: left;
+    width: 1168px;
+    margin: 0 auto;
+
+    .futil{
+      float: left;
+      width: 190px;
+
+      > li{
+        margin-top: 5px;
+
+        a{
+          text-decoration: none;
+          color: inherit;
+        }
+      }
+
+      .yellow{
+        color: yellow;
+      }
+
+    }
+
+    .fsans{
+      float: right;
+
+      li{
+        float: left;
+        margin-left: 20px;
+
+        .in{
+          background-position: 0 -40px;
+        }
+
+        .yu{
+          background-position: 0 -80px;
+        }
+
+        .fa{
+          background-position: 0 -120px;
+        }
+
+        a{
+          display: block;
+          width: 40px;
+          height: 40px;
+          overflow: hidden;
+          text-indent: -9999px;
+          background: url(../../../public/images/Footer/ico_sns.png) 0 0 no-repeat;
+        }
+      }
+    }
+
+    .finfo{
+      float: left;
+      font-weight: 400;
+      opacity: .6;
+
+      
+    }
+  }
+}

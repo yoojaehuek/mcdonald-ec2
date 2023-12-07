@@ -1,0 +1,249 @@
+.header {
+  z-index: 5;
+  position: absolute;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  min-width: 1280px;
+  height: 141px;
+  text-align: center;
+  border-bottom: 1px solid #ffbc0d;
+  background: #fff;
+
+  &.on{
+    border-bottom: solid 1px gray;
+  }
+
+  .modal-content2 {
+    width: 80%; /* 모달 전체 너비 조절 */
+    flex-direction: column;
+    align-items: center;
+  
+    input {
+      border: none;
+      border-radius: 50px;
+      height: 80px;
+      width: 70%;
+      padding: 10px;
+      margin-bottom: 10px;
+      font-size: 20px;
+      padding-left: 30px;
+    }
+  
+    .button-container {
+      width: 70%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      display: flex;
+
+      .search-button {
+        order: 1; /* 왼쪽 배치 */
+      }
+  
+    }
+  
+    .search-button{
+      margin-left: 20px;
+      padding: 10px 20px;
+      background-color: #ffbc0d; /* 노란색 배경 */
+      border: none;
+      border-radius:50px;
+      width: 10%;
+      height: 80px;
+      cursor: pointer;
+      color: black;
+      font-size: 15px;
+      font-weight: 800;
+    }
+
+    .close-button{
+      position: absolute;
+      top: 60%;
+      right: 50%;
+      padding: 10px 20px;
+      background-color: #ff9e9e; /* 노란색 배경 */
+      font-size: 15px;
+      font-weight: 700;
+      border: none;
+      border-radius: 50px;
+      width: 5%;
+      height: 60px;
+      cursor: pointer;
+      color: black;
+    }
+  }
+  
+  
+
+
+  .headAra {
+    height: 100%;
+    width: 1168px;
+    margin: 0 auto;
+
+    .mlogo {
+      position: relative;
+      top: 28px;
+      float: left;
+      z-index: 1;
+
+      a {
+        display: block;
+        text-decoration: none;
+        color: inherit;
+
+        img {
+          margin: 0;
+          padding: 0;
+          line-height: 0;
+          vertical-align: top;
+          border: 0 none;
+          background: none;
+        }
+      }
+    }
+
+    .hmenu {
+      display: block;
+      height: 100%;
+      padding: 52px 0;
+
+      .menu {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        text-align: center;
+        background: #fff;
+
+        .depth1 {
+          display: inline-block;
+          padding-left: 0;
+          text-align: left;
+          vertical-align: top;
+          margin-left: -136px;
+
+          > li {
+            float: left;
+            list-style: none outside;
+
+            .dth1 {
+              position: relative;
+              height: 100px;
+              margin-right: 85px;
+              padding: 0 10px;
+              color: #292929;
+              font-size: 20px;
+              line-height: 140px;
+              font-weight: 600;
+              display: inline-block;
+              vertical-align: top;
+
+                &.on + .depth2 {
+                  display: block;
+                }
+
+              &:hover {
+                color: #ffbc0d;
+              }
+            }
+
+            .depth2 {
+              display: none; // 기본적으로 depth2를 감춤
+              padding: 35px 10px 45px;
+
+              li {
+                margin-top: 0px;
+                font-size: 16px;
+                font-weight: 600;
+                color: rgb(155, 155, 155);
+
+                a {
+                  padding-top: 16px;
+                  border-bottom: 1px solid transparent;
+                  display: inline-block;
+                  vertical-align: top;
+                  text-decoration: none;
+                  color: inherit;
+
+                  &:hover {
+                    font-weight: 900;
+                    color: black;
+                    text-decoration: underline;
+                    text-underline-position: under;
+                    text-decoration-thickness: 2px;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .util{
+        position: relative;
+        float: right;
+        margin: 0 0 0 50px;
+
+        .topserch{
+          display: inline-block;
+
+          .serch{
+            cursor: pointer;
+            border: 0;
+            vertical-align: middle;
+            margin-left: 26px;
+            width: 36px;
+            height: 36px;
+            text-indent: -9999px;
+            background: url(../../../public/images/Header/serch.png) 0 0 no-repeat;
+          }
+        }
+
+        .renter{
+          display: inline-block;
+          width: 80px;
+          padding-top: 2px;
+          color: #fff;
+          font-size: 13px;
+          font-weight: 600;
+          line-height: 34px;
+          text-align: center;
+          border-radius: 48px;
+          background: #db0007;
+        }
+
+        .renter2{
+          margin-left: 10px;
+          display: inline-block;
+          width: 80px;
+          padding-top: 2px;
+          color: #fff;
+          font-size: 13px;
+          font-weight: 600;
+          line-height: 34px;
+          text-align: center;
+          background: #d87e00;
+          border-radius: 48px;
+        }
+
+        .renter3{
+          margin-left: 10px;
+          display: inline-block;
+          width: 80px;
+          padding-top: 2px;
+          color: #fff;
+          font-size: 13px;
+          font-weight: 600;
+          line-height: 34px;
+          text-align: center;
+          background: #264a36;
+          border-radius: 48px;
+        }
+      }
+    }
+  }
+}
