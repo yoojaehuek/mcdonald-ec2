@@ -19,43 +19,38 @@ import Promotion from './page/WhatsNew/Promotion/Promotion';
 import DetailPromotion from './page/WhatsNew/Promotion/DetailPromotion/DetailPromotion';
 import BrandHistory from './page/Story/BrandIntro/BrandHistory';
 import Society from './page/Story/Society/Society';
+import Slider from './components/Main/Slider'
+import Scaleforgood from './page/Story/Society/Scaleforgood/Scaleforgood'
+import Kidssoccer from './page/Story/Society/Kidssoccer/Kidssoccer';
 
 
 function App() {
   return (
     <div className="App">
       <Header />
-      <Routes>
-        <Route path='/' element={<Main></Main>}></Route>
-        <Route path='/login' element={<Login/>}/>
-        <Route element={<Test />}>
-          <Route path='/society' element={<Society/>}/>
-          <Route path='/crew' element={<Crew/>}></Route>
-          <Route path='/work' element={<Work/>}></Route>
-          <Route path='/recruit' element={<Recruit/>}></Route>
-          <Route path='/faq' element={<Faq/>}></Route>
-          <Route path='/farmtorestaurant' element={<FarmToRestaurant/>}></Route>
-          <Route path='/happymeal' element={<HappyMeal />}></Route>
-          <Route path='/brandintro' element={<BrandIntro/>}></Route>
-          <Route path='/brandhistory' element={<BrandHistory/>}></Route>
-          <Route path='/promotion' element={<Promotion />}></Route>
-          <Route path='/:page/detail/:prodNum' element={<DetailPromotion />}></Route>
+        <Routes>
+          <Route path='/' element={<Main></Main>}></Route>
+          <Route path='/login' element={<Login/>}/>
+          <Route element={<Test />}>
+            <Route path='/society' element={<Society/>}/>
+            <Route path='/crew' element={<Crew/>}></Route>
+            <Route path='/work' element={<Work/>}></Route>
+            <Route path='/recruit' element={<Recruit/>}></Route>
+            <Route path='/faq' element={<Faq/>}></Route>
+            <Route path='/farmtorestaurant' element={<FarmToRestaurant/>}></Route>
+            <Route path='/happymeal' element={<HappyMeal />}></Route>
+            <Route path='/brandintro' element={<BrandIntro/>}></Route>
+            <Route path='/brandhistory' element={<BrandHistory/>}></Route>
+            <Route path='/promotion' element={<Promotion />}></Route>
+            <Route path='/slider' element={<Slider />}></Route>
+            <Route path='/:page/detail/:prodNum' element={<DetailPromotion />}></Route>
+            <Route path='/scaleforgood' element={<Scaleforgood/>}/>
+          <Route path='/kidssoccer' element={<Kidssoccer/>}/>
         </Route>
-      </Routes>
-      <NavLink to={"/login"}> Login </NavLink><br/>
-      <NavLink to={"/society"}> Society </NavLink><br/>
-      <NavLink to={"/crew"}> Crew </NavLink><br/>
-      <NavLink to={"/work"}> Work </NavLink><br/>
-      <NavLink to={"/recruit"}> Recruit </NavLink><br/>
-      <NavLink to={"/faq"}> Faq </NavLink><br/>
-      <NavLink to={"/farmtorestaurant"}> FarmToRestaurant </NavLink><br/>
-      <NavLink to={"/happymeal"}> 해피밀 </NavLink><br/>
-      <NavLink to={"/brandintro"}> BrandIntro </NavLink><br/>
-      <NavLink to={"/brandhistory"}> BrandHistory </NavLink><br/>
-      <NavLink to={"/promotion"}> 프로모션 </NavLink><br/>
+        </Routes>
       <Footer />
     </div>
   );
 }
-
+//s
 export default App;
