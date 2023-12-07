@@ -19,6 +19,8 @@ import Promotion from './page/WhatsNew/Promotion/Promotion';
 import DetailPromotion from './page/WhatsNew/Promotion/DetailPromotion/DetailPromotion';
 import BrandHistory from './page/Story/BrandIntro/BrandHistory';
 import Society from './page/Story/Society/Society';
+import Scaleforgood from './page/Story/Society/Scaleforgood/Scaleforgood'
+import Kidssoccer from './page/Story/Society/Kidssoccer/Kidssoccer';
 
 
 function App() {
@@ -40,6 +42,8 @@ function App() {
           <Route path='/brandhistory' element={<BrandHistory/>}></Route>
           <Route path='/promotion' element={<Promotion />}></Route>
           <Route path='/:page/detail/:prodNum' element={<DetailPromotion />}></Route>
+          <Route path='/scaleforgood' element={<Scaleforgood/>}/>
+          <Route path='/kidssoccer' element={<Kidssoccer/>}/>
         </Route>
       </Routes>
       <NavLink to={"/login"}> Login </NavLink><br/>
