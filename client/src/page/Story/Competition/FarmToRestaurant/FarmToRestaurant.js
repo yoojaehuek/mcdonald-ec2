@@ -6,6 +6,7 @@ import './FarmToRestaurant.scss';
 import Effort from './Effort';
 import BottomMenu from '../Component/BottomMenu';
 import { API_URL } from '../../../../config/contansts';
+import Buttonmain from "../../../../components/Main/Button";
 
 class FarmToRestaurant extends React.Component {
   // 클래스 선언 FarmToRestaurant 클래스를 선언하고 React.Component를 확장.
@@ -136,6 +137,9 @@ class FarmToRestaurant extends React.Component {
           </div>
           {selectedComponent}
         </div>
+        <>
+          <Buttonmain/>
+        </>
       </>
     );
   }

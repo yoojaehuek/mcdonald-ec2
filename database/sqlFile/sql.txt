@@ -2,15 +2,14 @@
 -------------visualbackgrounds----------------
 INSERT INTO mcdonalddb.visualbackgrounds (id, title, backgroundImage, path) VALUES ('promotion', '맥도날드 프로모션', '/image/visualBackGround/bg_visual_whats02.jpg', '[{"url": "/", "name": "HOME"}, {"url": "/promotion", "name": "What\'s New"}, {"url": "/promotion", "name": "맥도날드 프로모션"}]');
 INSERT INTO mcdonalddb.visualbackgrounds (id, title, backgroundImage, path) VALUES ('happymeal', '이달의 해피밀', '/image/visualBackGround/bg_visual_whats02.jpg', '[{"url": "/", "name": "HOME"}, {"url": "/promotion", "name": "What\'s New"}, {"url": "/happymeal", "name": "이달의 해피밀"}]');
-INSERT INTO mcdonalddb.visualbackgrounds (id, title, backgroundImage, path) VALUES ('farmtorestaurant', '맥도날드 품질 이야기', '/image/visualBackGround/competition.jpg', '[{"url": "/", "name": "HOME"}, {"url": "/promotion", "name": "What\'s New"}, {"url": "/promotion", "name": "맥도날드 프로모션"}]');
-INSERT INTO mcdonalddb.visualbackgrounds (id, title, backgroundImage, path) VALUES ('faq', '맥도날드 경쟁력', '/image/visualBackGround/competition.jpg', '[{"url": "/", "name": "HOME"}, {"url": "/farmtorestaurant", "name": "Story"}, {"url": "/faq", "name": "맥도날드 경쟁력"}]');
-INSERT INTO mcdonalddb.visualbackgrounds (id, title, subCopy, backgroundImage, path) VALUES ('crew', '맥도날드 사람들', '끊임없는 변화와 도전을 통해 성장해온 맥도날드 이 변화의 중심에는 맥도날드와 함께 변화하며 성장하는 ‘맥도날드 사람들’이 있습니다.', '/image/visualBackGround/people.jpg', '[{\"url\": \"/\", \"name\": \"HOME\"}, {\"url\": \"/crew\", \"name\": \"Story\"}, {\"url\": \"/crew\", \"name\": \"맥도날드 사람들\"}]');
-INSERT INTO mcdonalddb.visualbackgrounds (id, title, subCopy, backgroundImage, path) VALUES ('work', '맥도날드 사람들', '끊임없는 변화와 도전을 통해 성장해온 맥도날드 이 변화의 중심에는 맥도날드와 함께 변화하며 성장하는 ‘맥도날드 사람들’이 있습니다.', '/image/visualBackGround/people.jpg', '[{\"url\": \"/\", \"name\": \"HOME\"}, {\"url\": \"/work\", \"name\": \"Story\"}, {\"url\": \"/work\", \"name\": \"맥도날드 사람들\"}]');
-INSERT INTO mcdonalddb.visualbackgrounds (id, title, subCopy, backgroundImage, path) VALUES ('recruit', '맥도날드 사람들', '끊임없는 변화와 도전을 통해 성장해온 맥도날드 이 변화의 중심에는 맥도날드와 함께 변화하며 성장하는 ‘맥도날드 사람들’이 있습니다.', '/image/visualBackGround/people.jpg', '[{\"url\": \"/\", \"name\": \"HOME\"}, {\"url\": \"/recruit\", \"name\": \"Story\"}, {\"url\": \"/recruit\", \"name\": \"맥도날드 사람들\"}]');
+INSERT INTO mcdonalddb.visualbackgrounds (id, title, backgroundImage, path) VALUES ('farmtorestaurant', '맥도날드 품질 이야기', '/image/visualBackGround/competition.jpg', '[{"url": "/", "name": "HOME"}, {"url": "/farmtorestaurant", "name": "Story"}, {"url": "/farmtorestaurant", "name": "맥도날드 품질 이야기"}]');
+INSERT INTO mcdonalddb.visualbackgrounds (id, title, backgroundImage, path) VALUES ('faq', '맥도날드 경쟁력', '/image/visualBackGround/competition.jpg', '[{"url": "/", "name": "HOME"}, {"url": "/faq", "name": "Story"}, {"url": "/faq", "name": "맥도날드 경쟁력"}]');
+INSERT INTO `mcdonalddb`.`visualbackgrounds` (`id`, `title`, `subCopy`, `backgroundImage`, `path`) VALUES ('crew', '맥도날드 사람들', '끊임없는 변화와 도전을 통해 성장해온 맥도날드 이 변화의 중심에는 맥도날드와 함께 변화하며 성장하는 ‘맥도날드 사람들’이 있습니다.', '/image/visualBackGround/people.jpg', '[{\"url\": \"/\", \"name\": \"HOME\"}, {\"url\": \"/crew\", \"name\": \"Story\"}, {\"url\": \"/crew\", \"name\": \"맥도날드 사람들\"}]');
+INSERT INTO `mcdonalddb`.`visualbackgrounds` (`id`, `title`, `subCopy`, `backgroundImage`, `path`) VALUES ('work', '맥도날드 사람들', '끊임없는 변화와 도전을 통해 성장해온 맥도날드 이 변화의 중심에는 맥도날드와 함께 변화하며 성장하는 ‘맥도날드 사람들’이 있습니다.', '/image/visualBackGround/people.jpg', '[{\"url\": \"/\", \"name\": \"HOME\"}, {\"url\": \"/work\", \"name\": \"Story\"}, {\"url\": \"/work\", \"name\": \"맥도날드 사람들\"}]');
+INSERT INTO `mcdonalddb`.`visualbackgrounds` (`id`, `title`, `subCopy`, `backgroundImage`, `path`) VALUES ('recruit', '맥도날드 사람들', '끊임없는 변화와 도전을 통해 성장해온 맥도날드 이 변화의 중심에는 맥도날드와 함께 변화하며 성장하는 ‘맥도날드 사람들’이 있습니다.', '/image/visualBackGround/people.jpg', '[{\"url\": \"/\", \"name\": \"HOME\"}, {\"url\": \"/recruit\", \"name\": \"Story\"}, {\"url\": \"/recruit\", \"name\": \"맥도날드 사람들\"}]');
 INSERT INTO mcdonalddb.visualbackgrounds (id, title, subCopy, backgroundImage, path) VALUES ('brandintro', '브랜드 소개', '1955년 작은 레스토랑에서부터 지금에 이르기까지 고객이 가장 좋아하는 장소이자, \n음식을 즐기는 최고의 방법이 되기 위해 맥도날드는 오늘도 노력합니다.' , '/image/visualBackGround/headerImg.jpg', '[{"url": "/", "name": "HOME"}, {"url": "/story", "name": "Story"}, {"url": "/brandintro", "name": "브랜드 소개"}]');
 INSERT INTO mcdonalddb.visualbackgrounds (id, title, backgroundImage, path) VALUES ('society', '사회적 책임과 지원', '/image/visualBackGround/bg_visual_story02.jpg', '[{"url": "/", "name": "HOME"}, {"url": "/story", "name": "Story"}, {"url": "/society", "name": "맥도날드 사회적 책임"}]');
 -----------------------------------------------
-
 
 
 ------------crew-------------------------------
@@ -110,3 +109,31 @@ VALUES ('7', '치즈 본연의 풍미가 가득한 뉴질랜드 방목 치즈', 
 INSERT INTO `mcdonalddb`.`material` (`id`, `title`, `description`, `additionalInfo`, `image`, `background`) 
 VALUES ('8', 'HACCP 인증 완료한 시설에서 공급하는 신선한 양파', '맥도날드에서 사용되는 모든 양파는 최고의 위생 시설과 관리 하에 꼼꼼한 살균과 세척 과정을 거친 후, 진공포장을 통해 더욱 더 안전하고 신선하게 공급됩니다.', '1', '/upload/material/8.png', '/upload/material/8-1.jpg');
 -------------------------------------------------------------------
+
+
+------------------------------effort----------------------------------------------
+INSERT INTO mcdonalddb.efforts (id, name, description, image, title, itemDescription) VALUES ('1', '철저한 재료관리', '철저한 식재료 관리는 농장에서부터 배송센터 뿐만 아니라 레스토랑에서도 계속 되어야겠죠?
+재료가 레스토랑으로 배송되면 매뉴얼을 준수, 신선한 상태로 유지하도록 최선을 다합니다.', '/upload/effort/1.jpg', '냉장/냉동고로 식재료를 입고할 때
+적정 온도 유지는 필수', '배송된 재료가 바로 냉장/냉동실로 이동될 수 있도록 사전에 필요한 공간을 확보해 둡니다. 그리고 항온 담요와 방수포를 덮어 식재료 온도를 유지하며, 바닥에 닿지 않도록 트레이를 사용하여 냉장/냉동고로 입고시킵니다.');
+INSERT INTO mcdonalddb.efforts (id, name, description, image, title, itemDescription) VALUES ('2', '철저한 재료관리', '철저한 식재료 관리는 농장에서부터 배송센터 뿐만 아니라 레스토랑에서도 계속 되어야겠죠?
+재료가 레스토랑으로 배송되면 매뉴얼을 준수, 신선한 상태로 유지하도록 최선을 다합니다.', '/upload/effort/2.jpg', '샘플 검수를 통해 식재료의 신선한 상태를 점검', '식재료가 배송되면 기준에 미달하는 식재료는 없는지 냉동/냉장 각 재료 중 일부 박스를 샘플로 뜯어 확인하고, 문제가 있을 경우 폐기를 위해 반품 처리 합니다.');
+INSERT INTO mcdonalddb.efforts (id, name, description, image, title, itemDescription) VALUES ('3', '철저한 재료관리', '철저한 식재료 관리는 농장에서부터 배송센터 뿐만 아니라 레스토랑에서도 계속 되어야겠죠?
+재료가 레스토랑으로 배송되면 매뉴얼을 준수, 신선한 상태로 유지하도록 최선을 다합니다.', '/upload/effort/3.jpg', '먼저 들어온 제품을 먼저 사용하고
+냉장/냉동고의 온도를 철저히 유지', '선입선출이라는 말을 아시나요? 먼저 들어온 식재료부터 들어온 순서에 맞게 사용될 수 있도록 보관·관리하며, 재료 박스간의 적정 간격을 유지하여 온도가 잘 유지될 수 있도록 보관합니다.');
+INSERT INTO mcdonalddb.efforts (id, name, description, image, title, itemDescription) VALUES ('4', '조리환경 관리', '본격적인 조리를 시작하기 전 조리를 준비하는 과정에서도 식품 안전을 위한 점검은 계속됩니다.', '/upload/effort/4.jpg', '매일 첫 제품이 제공되기 전에
+조리된 제품의 온도를 체크', '매일 첫 제품이 제공되기 전 패티의 온도를 체크하여 식품 안전 온도를 유지하는지 확인합니다.');
+INSERT INTO mcdonalddb.efforts (id, name, description, image, title, itemDescription) VALUES ('5', '조리환경 관리', '본격적인 조리를 시작하기 전 조리를 준비하는 과정에서도 식품 안전을 위한 점검은 계속됩니다.', '/upload/effort/5.jpg', '식약처 기준보다 더 엄격한 산가기준 적용', '매일 레스토랑 기름의 산가를 측정하여 기준을 초과하는 경우 즉시 교체하고 있습니다. 국내 식품 위생 법률에서 정한 3.0의 산가 기준보다 더 엄격한 2.5의 산가 기준을 적용합니다.');
+INSERT INTO mcdonalddb.efforts (id, name, description, image, title, itemDescription) VALUES ('6', '조리환경 관리', '본격적인 조리를 시작하기 전 조리를 준비하는 과정에서도 식품 안전을 위한 점검은 계속됩니다.', '/upload/effort/6.jpg', '매일 식품 안전사항을 체크하고 관리', '모든 레스토랑에서는 매일 식품 안전사항을 체크하여 철저히 품질 관리를 하며, 맥도날드 글로벌 공통의 레스토랑 식품안전 기준이 상시 유지 중인지 제 3자 점검기관을 통해 전 매장을 점검합니다.');
+INSERT INTO mcdonalddb.efforts (id, name, description, image, title, itemDescription) VALUES ('7', '조리과정 관리', '조리 과정에도 안전과 위생과 만전을 기하고 있습니다.', '/upload/effort/7.jpg', '패티의 종류에 따라 적정 온도로
+조리되는 오토 쿠킹 모드', '패티는 그릴이라는 장비를 통해 자동으로 구워집니다. 오토 쿠킹 모드를 누르면 정해진 조리 시간에 따라 자동으로 조리되며, 정해진 시간이 종료되면 자동으로 상판이 올라가며 조리가 완료됩니다.');
+INSERT INTO mcdonalddb.efforts (id, name, description, image, title, itemDescription) VALUES ('8', '조리과정 관리', '조리 과정에도 안전과 위생과 만전을 기하고 있습니다.', '/upload/effort/8.jpg', '교차 오염 방지를 위한 일회용 장갑 사용', '교차 오염을 방지하기 위해 조리되지 않은 식품을 만질 때는 파란 장갑을, 조리된 식품이나 조리 도구를 만질 때는 흰 장갑을 사용합니다. 한번 사용한 장갑은 바로 폐기하고, 새 장갑으로 교체하여 사용합니다.');
+INSERT INTO mcdonalddb.efforts (id, name, description, image, title, itemDescription) VALUES ('9', '조리과정 관리', '조리 과정에도 안전과 위생과 만전을 기하고 있습니다.', '/upload/effort/9.jpg', '깨끗하고 안전한 제품을
+제공하기 위해 준비하는 크루', '레스토랑 주방에서는 30분마다 한번씩 손 씻기 타이머가 울립니다. 주방에서 근무하는 모든 직원들은 30분마다 한 번씩 손부터 아래팔까지 손을 씻습니다. 청결한 유니폼 착용 등 개인 위생에도 만전을 기합니다.');
+INSERT INTO mcdonalddb.efforts (id, name, description, image, title, itemDescription) VALUES ('10', '조리과정 관리', '조리 과정에도 안전과 위생과 만전을 기하고 있습니다.', '/upload/effort/10.jpg', '4시간 경마다 세척하여 사용하는 조리 도구', '깨끗한 조리 환경을 위해, 레스토랑 직원들은 4시간 경마다 한 번씩 조리 도구를 세척하여 청결하게 사용하고 있습니다.');
+INSERT INTO mcdonalddb.efforts (id, name, description, image, title, itemDescription) VALUES ('11', '고객만족을 위한 노력', '정성을 다해 만든 제품을 제공하기 위해 보이지 않는 곳까지 점검합니다.', '/upload/effort/11.jpg', '주문이 들어옴과 동시에 음식을
+만드는 ‘메이드 포 유’ 시스템', '맥도날드는 음식을 미리 만들어 놓지 않고, 고객 주문 접수와 동시에 음식을 만들어 갓 조리된 신선한 음식만을 제공하는 ‘메이드 포 유(Made for You)’ 시스템을 적용하고 있습니다.');
+INSERT INTO mcdonalddb.efforts (id, name, description, image, title, itemDescription) VALUES ('12', '고객만족을 위한 노력', '정성을 다해 만든 제품을 제공하기 위해 보이지 않는 곳까지 점검합니다.', '/upload/effort/12.jpg', '고객의견을 반영한 제품 구성 및 함량 변경', '위생을 위해 슈레더로 변경한 양상추의 함량이 적게 느껴진다는 고객 의견을 반영하여 일부 메뉴의 슈레더 양상추 함량이 30g씩 늘어났습니다.');
+INSERT INTO mcdonalddb.efforts (id, name, description, image, title, itemDescription) VALUES ('13', '고객만족을 위한 노력', '정성을 다해 만든 제품을 제공하기 위해 보이지 않는 곳까지 점검합니다.', '/upload/effort/13.jpg', '고객이 주문하는 공간도 언제나 깨끗하게 유지', '고객이 주문을 하는 카운터와 디지털 키오스크 공간도 언제나 기분 좋게 사용하실 수 있도록 깨끗이 유지합니다.');
+INSERT INTO mcdonalddb.efforts (id, name, description, image, title, itemDescription) VALUES ('14', '고객만족을 위한 노력', '정성을 다해 만든 제품을 제공하기 위해 보이지 않는 곳까지 점검합니다.', '/upload/effort/14.jpg', '고객이 레스토랑을 나가는 순간까지 깨끗하게', '고객이 음식을 드시는 테이블은 물론, 휴지통과 화장실까지 청결하게 유지될 수 있도록 노력합니다.');
+
+-

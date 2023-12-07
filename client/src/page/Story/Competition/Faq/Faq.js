@@ -4,6 +4,7 @@ import AccordionItem from './Accordion';
 import axios from 'axios';
 import { API_URL } from '../../../../config/contansts';
 import BottomMenu from "../Component/BottomMenu";
+import Buttonmain from "../../../../components/Main/Button";
 
 const Faq = () => {
   const [categories, setCategories] = useState([]);
@@ -96,6 +97,9 @@ const Faq = () => {
         )}
       </div>
     </div>
+    <>
+      <Buttonmain/>
+    </>
     </>
   );
 }

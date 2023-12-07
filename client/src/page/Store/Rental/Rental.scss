@@ -1,0 +1,50 @@
+
+#rental-h2{
+  float: left;
+  display: block;
+  margin: 100px 0px 30px;
+  line-height: 1;
+}
+
+.rental-table{
+  width: 100%;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  display: table;
+  border-collapse:collapse;
+}
+
+td{
+  border-top: 1px solid #808080;
+}
+#rental-ul{
+  border-left: 1px solid;
+  text-align: left;
+}
+
+#rental-ul li{
+  text-align: left;
+  padding-left: 30px;
+  color: #808080;
+  
+}
+
+
+#rental-th1{
+  vertical-align: top;
+  text-align: left;
+  line-height: 4;
+  
+}
+
+
+#rental-th{
+  border-top: 1px solid #808080;
+ vertical-align: top;
+  text-align: left;
+  line-height: 4;
+}
+
+#rental-email{
+  margin-top: 35px;
+}

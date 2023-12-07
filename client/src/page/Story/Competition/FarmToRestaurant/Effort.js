@@ -40,23 +40,23 @@ const Effort = () => {
     <div className="effort-container">
       <h1>레스토랑에 도착한 식재료는 어떻게 관리될까요?</h1>
       <h3>
-        레스토랑으로 배송된 식재료가 음식으로 조리되어 고객에게 전달되는 순간까지 맥도날드의 노력은 멈추지 않습니다.
+        레스토랑으로 배송된 식재료가 음식으로 조리되어 고객에게 전달되는 순간까지<br></br> 맥도날드의 노력은 멈추지 않습니다.
       </h3>
       {/* Object.keys 함수는 주어진 객체의 모든 열거 가능한 속성 이름을 담은 배열을 반환함. */}
       {Object.keys(groupedCategories).map((name) => (
         <div key={name} className="effort-category">
           <h2>{name}</h2>
-          <h3>{groupedCategories[name][0].description}</h3>
+          <div className='yellowbox'>{groupedCategories[name][0].description}</div>
           {groupedCategories[name].map((category) => (
             <div key={category.id} className="effort-item">
-              <img src={category.image} alt={`Item Image ${category.id}`} />
-              <h3>{category.title}</h3>
+              <img src={API_URL + category.image} alt={`Item Image ${category.id}`} />
+              <strong>{category.title}</strong>
               <p>{category.itemDescription}</p>
             </div>
           ))}
         </div>
       ))}
-      <button>이동.</button>
+      <div className='btnARa'><button>맥도날드의 음식과 재료에 대해 더 궁금한 점이 있다면?</button></div>
     </div>
   );
 };
