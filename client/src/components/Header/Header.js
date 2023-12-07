@@ -72,8 +72,8 @@ const Header = () => {
                 <ul className='depth2'>
                   <li><NavLink to="/">브랜드 소개</NavLink></li>
                   <li><NavLink to="/">사회적 책임과 지원</NavLink></li>
-                  <li><NavLink to="/">맥도날드 품질 이야기</NavLink></li>
-                  <li><NavLink to="/">맥도날드 사람들</NavLink></li>
+                  <li><NavLink to="/farmtorestaurant">맥도날드 품질 이야기</NavLink></li>
+                  <li><NavLink to="/crew">맥도날드 사람들</NavLink></li>
                 </ul>
               </li>
             </ul>
