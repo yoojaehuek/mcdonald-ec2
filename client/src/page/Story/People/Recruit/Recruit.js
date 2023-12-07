@@ -1,6 +1,7 @@
 import React from 'react';
 import './Recruit.scss';
 import BottomMenu from '../Component/BottomMenu';
+import Buttonmain from "../../../../components/Main/Button";
 
 const Recruit = () => {
   return (
@@ -27,6 +28,9 @@ const Recruit = () => {
           </div>
         </div>
       </div>
+      <>
+        <Buttonmain />
+      </>
     </>
   );
 };

@@ -4,6 +4,7 @@ import Modal from '../Component/Modal';
 import axios from 'axios';
 import { API_URL } from '../../../../config/contansts';
 import BottomMenu from '../Component/BottomMenu';
+import Buttonmain from "../../../../components/Main/Button";
 
 const Crew = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -51,6 +52,9 @@ const Crew = () => {
         </div>
         {modalOpen && selectedCrew && <Modal crew={selectedCrew} closeModal={closeModal} />}
       </div>
+      <>
+        <Buttonmain />
+      </>
     </>
   );
 };

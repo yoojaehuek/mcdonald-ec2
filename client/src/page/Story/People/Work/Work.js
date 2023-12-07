@@ -1,6 +1,7 @@
 import React from 'react';
 import './Work.scss';
 import BottomMenu from '../Component/BottomMenu';
+import Buttonmain from "../../../../components/Main/Button";
 
 const Work = () => {
   return (
@@ -50,6 +51,9 @@ const Work = () => {
             이것이 바로 맥도날드 교육의 힘입니다.
           </span>
         </div>
+        <>
+          <Buttonmain />
+        </>
       </div>
     </>
   );
