@@ -23,6 +23,7 @@ sequelize.sync({ force: false }) //force가 true면 킬때마다 DB 새로 만�
 var cors = require('cors');
 app.use(cors());
 
+
 app.use('/crew', CrewRouter);
 app.use('/faq', FaqRouter);
 app.use('/material', MaterialRouter);

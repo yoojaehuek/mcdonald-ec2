@@ -1,15 +1,15 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import './DetailProduct.scss';
 
-const DetailProduct =({match})=>{
-    // URL에서 동적으로 전달된 제품 ID를 얻습니다.
-    const productId = match.params.id;
-    
+const DetailProduct =()=>{
+    const { id } = useParams();
+
 	return(
-        <div>
+        <div id='burger-Detail '>
             <h2>상세페이지</h2>
             <p>
-                제품 ID : {productId}
+                제품 ID: {id}
             </p>
 
         </div>
