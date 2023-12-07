@@ -3,7 +3,7 @@ import './Faq.scss';
 import AccordionItem from './Accordion';
 import axios from 'axios';
 import { API_URL } from '../../../../config/contansts';
-import MenuBar from "../Component/Menubar";
+import BottomMenu from "../Component/BottomMenu";
 
 const Faq = () => {
   const [categories, setCategories] = useState([]);
@@ -33,7 +33,7 @@ const Faq = () => {
 
   return (
     <>
-    <MenuBar/>
+    <BottomMenu/>
     <div className="customer-container">
       <div className="search-container">
         <div className="dropdown">

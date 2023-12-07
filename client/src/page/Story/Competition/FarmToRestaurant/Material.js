@@ -26,7 +26,7 @@ const Material = () => {
   };
 
   return (
-    <div className="material-container" style={{ backgroundImage: `url(${selectedMaterial?.background})` }}>
+    <div className="material-container" style={{ backgroundImage: `url(${ API_URL + selectedMaterial?.background})` }}>
       <h1>
         원재료 공급사에서는 좋은 재료를 준비하기 위해 엄격한 기준으로
         원재료 수급 및 가공 과정을 관리하고 있습니다.
@@ -40,7 +40,7 @@ const Material = () => {
             }`}
             onClick={() => handleMaterialClick(material)}
           >
-            <img src={material.image} alt={`Material ${material.id}`} />
+            <img src={API_URL + material.image} alt={`Material ${material.id}`} />
           </div>
         ))}
       </div>
@@ -48,7 +48,7 @@ const Material = () => {
         {selectedMaterial && (
           <>
             <div className="material-image">
-              <img src={selectedMaterial.image} alt={`Material ${selectedMaterial.id}`} />
+              <img src={API_URL + selectedMaterial.image} alt={`Material ${selectedMaterial.id}`} />
             </div>
             <div className="material-info">
               <h2>{selectedMaterial.title}</h2>

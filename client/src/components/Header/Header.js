@@ -56,13 +56,13 @@ const Header = () => {
                 </ul>
               </li>
               <li>
-                <NavLink to="/" className={`dth1 ${isDepth1Open ? 'on' : ''}`}>
+                <NavLink to="/promotion" className={`dth1 ${isDepth1Open ? 'on' : ''}`}>
                   What's New
                 </NavLink>
                 <ul className='depth2'>
-                  <li><NavLink to="/">프로모션</NavLink></li>
+                  <li><NavLink to="/promotion">프로모션</NavLink></li>
                   <li><NavLink to="/">새로운 소식</NavLink></li>
-                  <li><NavLink to="/">이달의 해피밀</NavLink></li>
+                  <li><NavLink to="/happymeal">이달의 해피밀</NavLink></li>
                 </ul>
               </li>
               <li>
