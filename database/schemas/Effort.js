@@ -9,24 +9,29 @@ class Effort extends Sequelize.Model {
           primaryKey: true,
           autoIncrement: true,
         },
-        name: {
-          type: Sequelize.STRING,
+        admin_id: {
+          type: Sequelize.INTEGER,
           allowNull: false,
-        },
-        description: {
-          type: Sequelize.STRING,
-          allowNull: false,
-        },
-        image: {
-          type: Sequelize.STRING,
-          allowNull: false,
+          comment: "admin테이블의 id참초",
         },
         title: {
           type: Sequelize.STRING,
           allowNull: false,
         },
-        itemDescription: {
-          type: Sequelize.TEXT,
+        title_description: {
+          type: Sequelize.STRING,
+          allowNull: false,
+        },
+        img_url: {
+          type: Sequelize.STRING,
+          allowNull: false,
+        },
+        sub_title: {
+          type: Sequelize.STRING,
+          allowNull: false,
+        },
+        sub_title_description: {
+          type: Sequelize.TEXT, //텍스트는 가변 길이 문자열(STRING보다 긴 데이터에 적합) 
           allowNull: false,
         },
       },
@@ -34,7 +39,7 @@ class Effort extends Sequelize.Model {
         sequelize,
         timestamps: false,
         modelName: 'Effort',
-        tableName: 'efforts',
+        tableName: 'Effort',
         paranoid: false,
         charset: 'utf8',
         collate: 'utf8_general_ci',
@@ -43,7 +48,8 @@ class Effort extends Sequelize.Model {
   }
 
   static associate(db) {
-    //
+    //참조키로 SubCategory모델의 id(targetKey)를 sub_category_id(foreignKey)라는 이름으로 가져옴
+    db.Effort.belongsTo(db.Admin, {foreignKey: 'admin_id', targetKey: 'id'});
   }
 }
 
