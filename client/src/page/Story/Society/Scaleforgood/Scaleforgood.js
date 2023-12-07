@@ -1,56 +1,5 @@
-import { useState } from 'react';
-import styled from 'styled-components';
+import Tab from '../../../../components/Tab/Tab';
 
-const TabMenu = styled.ul`
-  background-color: #dcdcdc;
-  color: rgb(232, 234, 237);
-  font-weight: bold;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  list-style: none;
-  margin-bottom: 7rem;
-  margin-top: 10px;
-  
-  .submenu{
-    display: flex;
-    // jsutify-content: space-between;
-    // width: 380px;
-    // height: 30px;
-    width: calc(100% /5);
-    padding: 10px;
-    font-size: 15px;
-    transition: 0.5s;
-    border-radius: 10px 10px 0px 0px;
-  }
-  .focused{
-    background-color: rgb(255, 255, 255);
-    color: rgb(21, 20, 20);
-  }
-  & div.desc{
-    text-align: center;
-  }
-`;
-
-const Desc = styled.div`
-  text-align: center;
-`;
-
-export const Tab = () => {
-  const [currentTab, clickTab] = useState(0);
-
-  const menuArr= [
-    { name: 'Tab1', content: 'Tab menu ONE'},
-    { name: 'Tab2', content: 'Tab menu TWO'},
-    { name: 'Tab3', content: 'Tab menu THREE'},
-    { name: 'Tab4', content: 'Tab menu FOUR'},
-    { name: 'Tab5', content: 'Tab menu FIVE'},
-  ];
-
-  const selectMenuHandler = (index) => {
-    clickTab(index);
-  };
-}
 
 const Scale = [
   {
@@ -80,7 +29,7 @@ const Scaleforgood = () => {
           ))}
           </div>
           <div className="globalMC">
-            
+            <Tab></Tab>
           </div>
         </div>
       </div>
