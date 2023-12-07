@@ -5,57 +5,56 @@ function Login() {
     const [isLabelVisibleId, setIsLabelVisibleId] = useState(false);
     const [isLabelVisiblePwd, setIsLabelVisiblePwd] = useState(false);
     
-        const inputRefId = useRef(null);
-        const inputRefPwd = useRef(null);
-    
-        useEffect(() => {
-            const handleClickOutside = (event) => {
-                // 입력 필드 외부를 클릭하면 라벨을 숨깁니다.
-                if (
-                    inputRefId.current &&
-                    !inputRefId.current.contains(event.target) &&
-                    inputRefPwd.current &&
-                    !inputRefPwd.current.contains(event.target)
-                ) {
-                    const inputValueId = inputRefId.current.value.trim();
-                    const inputValuePwd = inputRefPwd.current.value.trim();
-            
-                    // 입력 필드에 값이 있는 경우 라벨을 보이게 합니다.
-                    setIsLabelVisibleId(!!inputValueId);
-                    setIsLabelVisiblePwd(!!inputValuePwd);
-                }
-            };
-    
-            // 이벤트 리스너 등록
-            document.addEventListener('mousedown', handleClickOutside);
+    const inputRefId = useRef(null);
+    const inputRefPwd = useRef(null);
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            // 입력 필드 외부를 클릭하면 라벨을 숨깁니다.
+            if (
+                inputRefId.current &&
+                !inputRefId.current.contains(event.target) &&
+                inputRefPwd.current &&
+                !inputRefPwd.current.contains(event.target)
+            ) {
+                const inputValueId = inputRefId.current.value.trim();
+                const inputValuePwd = inputRefPwd.current.value.trim();
         
-            // 컴포넌트가 언마운트될 때 이벤트 리스너 제거
-            return () => {
-                document.removeEventListener('mousedown', handleClickOutside);
-            };
-        }, [inputRefId, inputRefPwd]);
-    
-        const handleInputFocus = (inputType) => {
-            if (inputType === 'id') {
-                setIsLabelVisibleId(true);
-            } else if (inputType === 'pwd') {
-                setIsLabelVisiblePwd(true);
+                // 입력 필드에 값이 있는 경우 라벨을 보이게 합니다.
+                setIsLabelVisibleId(!!inputValueId);
+                setIsLabelVisiblePwd(!!inputValuePwd);
             }
         };
+
+        // 이벤트 리스너 등록
+        document.addEventListener('mousedown', handleClickOutside);
     
-        const handleInputBlur = (inputType) => {
-        const inputValue =
-            inputType === 'id' ? inputRefId.current.value : inputRefPwd.current.value;
-    
-        // 만약 입력 필드가 비어있다면, 다시 라벨을 숨길 수 있습니다.
-        if (!inputValue.trim()) {
-            if(inputType === 'id') {
-                setIsLabelVisibleId(false);
-            }else if(inputType === 'pwd') {
-                setIsLabelVisiblePwd(false);
-            }
+        // 컴포넌트가 언마운트될 때 이벤트 리스너 제거
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [inputRefId, inputRefPwd]);
+
+    const handleInputFocus = (inputType) => {
+        if (inputType === 'id') {
+            setIsLabelVisibleId(true);
+        } else if (inputType === 'pwd') {
+            setIsLabelVisiblePwd(true);
         }
-        };
+    };
+
+    const handleInputBlur = (inputType) => {
+    const inputValue = inputType === 'id' ? inputRefId.current.value : inputRefPwd.current.value;
+
+    // 만약 입력 필드가 비어있다면, 다시 라벨을 숨길 수 있습니다.
+    if (!inputValue.trim()) {
+        if(inputType === 'id') {
+            setIsLabelVisibleId(false);
+        }else if(inputType === 'pwd') {
+            setIsLabelVisiblePwd(false);
+        }
+    }
+    };
     
 
     return (
@@ -70,8 +69,8 @@ function Login() {
                         type="text"
                         id="id"
                         placeholder="예) abc@gmail.com"
-                        onFocus={() => handleInputFocus('id')}
-                        onBlur={() => handleInputBlur('id')}
+                        onFocus={() => handleInputFocus('id')}//focus 되었을때
+                        onBlur={() => handleInputBlur('id')}//focus 가 해제되었을때
                     />
                 </li>
                 <li className="input-li">

@@ -1,5 +1,5 @@
 const Sequelize = require("sequelize");
-//고객(id, pw, name, phone, 생일, 성별, companionName, companionPhone)
+
 class VisualBackGround extends Sequelize.Model {
   static initiate(sequelize) {
     VisualBackGround.init({

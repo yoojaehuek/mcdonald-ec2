@@ -3,6 +3,7 @@ import { Routes, Route, NavLink } from 'react-router-dom';
 import Main from './page/Main';
 import Test from './page/Test';
 import Login from './page/Login/Login';
+import Menu from './page/Menu/Menu';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Crew from './page/Story/People/Crew/Crew';
@@ -27,7 +28,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Main></Main>}></Route>
           <Route path='/login' element={<Login/>}/>
-
+          <Route path='/burger' element={<Menu/>}/>
           <Route path='/crew' element={<Crew/>}></Route>
           <Route path='/work' element={<Work/>}></Route>
           <Route path='/recruit' element={<Recruit/>}></Route>

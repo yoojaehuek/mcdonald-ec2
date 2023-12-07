@@ -1,0 +1,48 @@
+#menu-form{
+    margin: auto;
+    width: 1150px;
+    #select{
+        height: 80px;
+        margin: auto;
+        display: flex;
+        text-align: center;
+        gap: 60px;
+        width: 300px;
+        padding-top: 10px;
+        button{
+            font-weight: 800;
+            font-size: 20px;
+            color: red;
+            background-color: white;
+            border: 0px;
+            border-bottom: 1px solid red;
+            padding-top: 15px;
+            margin: 10px;
+            vertical-align: center;           
+            height: 50px; 
+        }
+    }
+    #prd-count {
+        font-weight: 500;
+        margin-bottom: 15px;
+        &::before{
+            content: '';
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            margin: -2px 10px 0 0;
+            vertical-align: middle;
+            border-radius: 100%;
+            background: #f5bd43;
+        }
+    }
+    .menu-grid{
+        //상품목록을 가로3칸 세로 2칸으로 정렬함
+        width: 1150px;
+        display: grid;
+        grid-template-columns: repeat(3,  minmax(100px, auto));
+        grid-template-rows: repeat(2,  minmax(200px, auto));
+        row-gap: 30px;
+        column-gap: 30px;
+    }
+}
