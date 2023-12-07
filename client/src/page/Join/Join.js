@@ -10,35 +10,34 @@ function Login() {
     const [isLabelVisibleId, setIsLabelVisibleId] = useState(false);
     const [isLabelVisiblePwd, setIsLabelVisiblePwd] = useState(false);
     
-        const inputRefId = useRef(null);
-        const inputRefPwd = useRef(null);
-    
-        useEffect(() => {
-            const handleClickOutside = (event) => {
-                // 입력 필드 외부를 클릭하면 라벨을 숨깁니다.
-                if (
-                    inputRefId.current &&
-                    !inputRefId.current.contains(event.target) &&
-                    inputRefPwd.current &&
-                    !inputRefPwd.current.contains(event.target)
-                ) {
-                    const inputValueId = inputRefId.current.value.trim();
-                    const inputValuePwd = inputRefPwd.current.value.trim();
-            
-                    // 입력 필드에 값이 있는 경우 라벨을 보이게 합니다.
-                    setIsLabelVisibleId(!!inputValueId);
-                    setIsLabelVisiblePwd(!!inputValuePwd);
-                }
-            };
-    
-            // 이벤트 리스너 등록
-            document.addEventListener('mousedown', handleClickOutside);
+    const inputRefId = useRef(null);
+    const inputRefPwd = useRef(null);
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            // 입력 필드 외부를 클릭하면 라벨을 숨깁니다.
+            if (
+                inputRefId.current &&
+                !inputRefId.current.contains(event.target) &&
+                inputRefPwd.current &&
+                !inputRefPwd.current.contains(event.target)
+            ) {
+                const inputValueId = inputRefId.current.value.trim();
+                const inputValuePwd = inputRefPwd.current.value.trim();
         
-            // 컴포넌트가 언마운트될 때 이벤트 리스너 제거
-            return () => {
-                document.removeEventListener('mousedown', handleClickOutside);
-            };
-        }, [inputRefId, inputRefPwd]);
+                // 입력 필드에 값이 있는 경우 라벨을 보이게 합니다.
+                setIsLabelVisibleId(!!inputValueId);
+                setIsLabelVisiblePwd(!!inputValuePwd);
+            }
+        };
+        // 이벤트 리스너 등록
+        document.addEventListener('mousedown', handleClickOutside);
+    
+        // 컴포넌트가 언마운트될 때 이벤트 리스너 제거
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [inputRefId, inputRefPwd]);
     
         const handleInputFocus = (inputType) => {
             if (inputType === 'id') {
@@ -62,7 +61,6 @@ function Login() {
         }
         };
     
-
     return (
     <div className="Login">
         <form id='login-form' action="">

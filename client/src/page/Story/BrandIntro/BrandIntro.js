@@ -6,7 +6,7 @@ import BrandCont02 from '../../../components/BrandCont/BrandCont2/BrandCont2';
 
 const tmps = [
   {prodNum: 1, top_img: "/upload/brandintro/img_brand_cont01.jpg", tit_h2: "세계 1위의 푸드서비스 기업, 맥도날드", 
-  txtInfo: "전세계 120개국 3만 7천여 개의 매장에서 매일 6,900만명의 고객들에게 제품과 서비스를 제공하고 있는 맥도날드는 전세계인들이 사랑하는\n퀵 서비스 레스토랑(QSR, Quick Service Restaurant)이자 세계 1위의 푸드서비스 기업으로, 고객에게 더 나은 경험을 제공함으로써\n'고객이 가장 좋아하는 장소이자 음식을 즐기는 최고의 방법(Our Customer’s Favorite Place and Way to Eat)'이 되기 위해 노력하고 있습니다."},
+  txtInfo: "전세계 120개국 3만 7천여 개의 매장에서 매일 6,900만명의 고객들에`게 제품과 서비스를 제공하고 있는 맥도날드는 전세계인들이 사랑하는\n퀵 서비스 레스토랑(QSR, Quick Service Restaurant)이자 세계 1위의 푸드서비스 기업으로, 고객에게 더 나은 경험을 제공함으로써\n'고객이 가장 좋아하는 장소이자 음식을 즐기는 최고의 방법(Our Customer’s Favorite Place and Way to Eat)'이 되기 위해 노력하고 있습니다."},
 ]
 const tmps2 = [
   {prodNum: 1, cont_img: "/upload/brandintro/img_brand_cont02_01.jpg", main_tit: "1988 서울 올림픽을 개최하며 서울이 세계 속에\n우뚝 섰던 그때의 감동을 기억하십니까?",
@@ -56,6 +56,7 @@ const BrandIntro = () => {
             </ul>
           </div>
         </div>
+        <div class="history"></div>
       </div>
 
 
