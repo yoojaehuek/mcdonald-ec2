@@ -1,5 +1,5 @@
 import { API_URL } from "../../config/contansts";
-import { NavLink, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import './Product.scss';
 
 const Product =({props})=>{
