@@ -37,7 +37,6 @@ function Menu() {
     };
     return (
     <> 
-        <VisualBackGround/>
         <div id='menu-form'>
             <div><div id='select'> 
                 <button 
