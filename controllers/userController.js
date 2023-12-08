@@ -11,7 +11,7 @@ class UserController {
             // const {userId, userPwd, userName, userPhone, userGender, userBirth, userCompanionName, userCompanionPhone} = req.body;
             // const tmp = {userId, userPwd, userName, userPhone, userGender, userBirth, userCompanionName, userCompanionPhone};
             const tmp = req.body;
-            console.log("tmp: ",tmp);
+            console.log("유저컨트롤러에서 받은 tmp: ",tmp);
             const newUser = await UserService.addUser(tmp);
             
             if(newUser.errorMessage){

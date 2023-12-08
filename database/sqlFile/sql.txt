@@ -7,6 +7,7 @@ INSERT INTO mcdonalddb.visualbackgrounds (id, title, backgroundImage, path) VALU
 INSERT INTO mcdonalddb.visualbackgrounds (id, title, subCopy, backgroundImage, path) VALUES ('brandintro', '브랜드 소개', '1955년 작은 레스토랑에서부터 지금에 이르기까지 고객이 가장 좋아하는 장소이자, \n음식을 즐기는 최고의 방법이 되기 위해 맥도날드는 오늘도 노력합니다.' , '/image/visualBackGround/headerImg.jpg', '[{"url": "/", "name": "HOME"}, {"url": "/story", "name": "Story"}, {"url": "/brandintro", "name": "브랜드 소개"}]');
 INSERT INTO mcdonalddb.visualbackgrounds (id, title, backgroundImage, path) VALUES ('society', '사회적 책임과 지원', '/image/visualBackGround/bg_visual_story02.jpg', '[{"url": "/", "name": "HOME"}, {"url": "/story", "name": "Story"}, {"url": "/society", "name": "맥도날드 사회적 책임"}]');
 -----------------------------------------------
+INSERT INTO mcdonalddb.visualbackgrounds (id, title, subCopy, backgroundImage, path) VALUES ('burger', '버거', '빅맥®에서 맥스파이시® 상하이버거까지,주문 즉시 바로 조리해 더욱 맛있는, 맥도날드의 다양한 버거를 소개합니다.', '/image/visualBackGround/bg_visual_menu01.jpg', '[{"url": "/", "name": "HOME"},  {"url": "/burger", "name": "Menu"}, {"url": "/burger", "name": "버거"}]');
 
 
 INSERT INTO `mcdonalddb`.`visualbackgrounds` (`id`, `title`, `subCopy`, `backgroundImage`, `path`) VALUES ('crew', '맥도날드 사람들', '끊임없는 변화와 도전을 통해 성장해온 맥도날드 이 변화의 중심에는 맥도날드와 함께 변화하며 성장하는 ‘맥도날드 사람들’이 있습니다.', '/image/visualBackGround/people.jpg', '[{\"url\": \"/\", \"name\": \"HOME\"}, {\"url\": \"/crew\", \"name\": \"Story\"}, {\"url\": \"/crew\", \"name\": \"맥도날드 사람들\"}]');

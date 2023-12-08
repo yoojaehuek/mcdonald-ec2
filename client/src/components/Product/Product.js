@@ -3,9 +3,10 @@ import { NavLink, Link } from 'react-router-dom'
 import './Product.scss';
 
 const Product =({props})=>{
-
+	console.log("props.id",props.id);
 	return(
 	<Link to={`products/${props.id}`}>
+		
 		<div id="product">
 			<div>
 				<img src={API_URL+props.image} alt=""/>

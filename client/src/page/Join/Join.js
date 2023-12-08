@@ -13,15 +13,15 @@ function Join() {
 
     const onSubmitJoin = async (e) => {
         e.preventDefault();
-        const email = e.target.email.value
+        const id = e.target.id.value
         const pwd = e.target.pwd.value
         const confirmPwd = e.target.confirmPwd.value
         const addr = e.target.addr.value
         const phone = e.target.phone.value
 
-        if(pwd === confirmPwd && email !== "" && pwd !== "" && confirmPwd !== "" && phone !== "" && addr !== "")
+        if(pwd === confirmPwd && id !== "" && pwd !== "" && confirmPwd !== "" && phone !== "" && addr !== "")
         {
-            await axios.post(`${API_URL}/user/join`,{email, pwd, addr, phone})
+            await axios.post(`${API_URL}/user/join`,{id, pwd, addr, phone})
             .then(() =>{
                 alert("가입성공!");
                 navigate('/');  
@@ -89,7 +89,7 @@ function Join() {
                     <input
                         ref={inputRefId}
                         type="text"
-                        id="email"
+                        id="id"
                         placeholder="아이디(이메일주소)"
                         onFocus={() => handleInputFocus('id')}
                         onBlur={() => handleInputBlur('id')}
