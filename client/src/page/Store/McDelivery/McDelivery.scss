@@ -1,3 +1,10 @@
+
+//맥딜리버리 미들 박스 크기
+.mcdel-main{
+  height: 450px;
+}
+
+//맥딜리버리 fieldset 구현
 .mcdel-fieldset1{
     float: left;
     width: 564px;
@@ -7,6 +14,7 @@
     background: #f8f8f8;
     border: none;
 }
+//맥딜리버리 fieldset1 안에 input조절
 .mcdel-fieldset1 input{
   color: #292929;
     height: 70px;
@@ -15,14 +23,43 @@
     border: 1px solid #d1d1d1;
     border-radius: 70px;
     background: #fff;
-
+}
+// 첫번째 input 첫번째 button 위치
+.mcdel-top{
+  width: 100%;
+  position: relative;
+  
+}
+//첫번째 버튼 input안에 넣기
+.mcdel-top button{
+  position: absolute;
+  right: 0;
+}
+//두번째 input 세번째 input 박스
+.mcdel-maininput{
+  margin-left: 7px;
+  margin-top: 20px;
 }
 
+//세번째 input조정
+.mcdel-input3{
+  width: 100px;
+  margin-left: 7px;
+  margin-right: 7px;
+}
+//fieldset1안에 p태그
+.mcdel-p{
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+
+//맥딜리버리 p태그 구현
 .mcdel-fieldset2{
     position: relative;
-    float: right;
-    // float: left;
-    // margin-left: 50px;
+    // float: right;
+    float: left;
+    margin-left: 50px;
     width: 554px;
     height: 406px;
     padding: 50px;
@@ -31,8 +68,9 @@
     border-radius: 40px;
     background: #fff;
     border: 6px solid #bd0017;
-    
 }
+
+//fieldset1이랑 fieldset2 사이에 화살표
 .mcdel-fieldset2::before{
   content: '';
     position: absolute;
@@ -43,20 +81,28 @@
     margin: -5px 0 0 0;
     background: url(../../../../public/image/mcdelivery/bg_arrow.png);
 }
+//feildset2 안에 strong 텍스트
+.mcdel-fieldset2 strong{
+ border-bottom: 1px solid;
+}
 
+// fieldset2안에 이미지구현
 .mcdel-p1::before{
-  background: url(../../../../public/image/mcdelivery/SSI_20220323165650_O2.jpg);
+  background: url(../../../../public/image/mcdelivery/bg_delivery_result_new.png);
   background-size: cover;
   margin: 0 auto;
-
 }
+
+//fieldset2 이미지 조절
 .mcdel-fieldset2 p::before{
     content: '';
     display: block;
-    width: 250px;
+    width: 258px;
     height: 265px;
 }
 
+
+//맥딜리버리 첫번째 버튼 구현
 .mcdel-button1{
   padding: 0 38px;
     font-size: 15px;
@@ -68,37 +114,65 @@
     background: #ffbc0d;
     border: none;
     cursor: pointer;
+    
 }
-
+//첫번째 input 크기
 .mcdel-input1{
   width: 100%;
 }
+//두번째 input 위치
 .mcdel-input2{
   width: 220px;
   margin-left: -30px;
 }
-.mcdel-top{
-  width: 100%;
-  position: relative;
-}
-.mcdel-top button{
-  position: absolute;
-  right: 0;
 
+
+
+//두번째 메인박스
+.mcdel-middle{
+  text-align: left;
+  font-size: 13px;
+  margin-left: 20px;
+  
   
 }
 
-.mcdel-maininput{
-  margin-left: 7px;
-  margin-top: 20px;
+//맥딜리버리 ul li 앞에 노랑색
+
+// .mcdel-ul li::before{
+//   content: '';
+//     display: inline-block;
+//     width: 6px;
+//     height: 6px;
+//     margin: -2px 10px 0 -16px;
+//     vertical-align: middle;
+//     border-radius: 100%;
+//     background: #ffbb0a;
+// }
+
+
+//세번째 메인박스
+.mcdel-bottom{
+  width: 100%;
+  // text-align: center;
+  margin-top: 70px;
+  display: inline-flex;
+  margin-bottom: 50px;
+  
+  
 }
-.mcdel-input3{
-  width: 100px;
-  margin-left: 7px;
-  margin-right: 7px;
+//a태그 구현, 위치조절
+.mcdel-a{
+  background-color: #ffbc0d;
+  line-height: 90px;
+  border-radius: 50px;
+  display: inline-block;
+  font-weight: 600;
+  padding: 0 60px;
+  margin-bottom: 50px;
+  margin-right: 20px;
+  margin-left: -20px;
 }
 
-.mcdel-p{
-  margin-top: 20px;
-  margin-bottom: 30px;
-}
+
+

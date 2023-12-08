@@ -1,13 +1,17 @@
+
+//맥드라이브 메인박스
 .mcdrive-main{
   width: 100%;
   height: 100%;
   white-space: pre-wrap;
   line-height: 2.5;
 }
-
+//맥드라이브 텍스트 왼쪽
 #mcdrive-text{
  text-align: left;
 }
+
+//맥드라이브 텍스트 p태그 위치조정
 #mcdrive-text p{
   padding-top: 30px;
   padding-bottom: 50px;
@@ -15,12 +19,13 @@
   font-size: 16px;
  
 }
+//맥드라이브 2번째 메인박스
 .mcdrive-mcd1{
   width: 1168px;
   margin: 0 auto;
   text-align: center;
 }
-
+//맥드라이브 a태그 버튼
 .mcdrive-a{
   background-color: #ffbc0d;
   line-height: 90px;
@@ -29,6 +34,6 @@
   font-weight: 600;
   padding: 0 50px;
   margin-top: 100px;
- 
+  margin-bottom: 100px;
 }
 
