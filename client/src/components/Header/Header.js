@@ -49,7 +49,7 @@ const Header = () => {
                   Store
                 </NavLink>
                 <ul className='depth2'>
-                  <li><NavLink to="/">매장찾기</NavLink></li>
+                  <li><NavLink to="/find">매장찾기</NavLink></li>
                   <li><NavLink to="/">맥딜리버리</NavLink></li>
                   <li><NavLink to="/">맥드라이브</NavLink></li>
                   <li><NavLink to="/">임차문의</NavLink></li>
@@ -70,7 +70,7 @@ const Header = () => {
                   Story
                 </NavLink>
                 <ul className='depth2'>
-                  <li><NavLink to="/">브랜드 소개</NavLink></li>
+                  <li><NavLink to="/brandintro">브랜드 소개</NavLink></li>
                   <li><NavLink to="/">사회적 책임과 지원</NavLink></li>
                   <li><NavLink to="/farmtorestaurant">맥도날드 품질 이야기</NavLink></li>
                   <li><NavLink to="/crew">맥도날드 사람들</NavLink></li>

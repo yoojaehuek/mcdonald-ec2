@@ -10,10 +10,10 @@ const BrandCont02 = ({props}) => {
           <span className='cont2_img'>
             <img src={API_URL+props.cont_img} alt="메인이미지" />
           </span>
-          <div class='titmain'>
+          <div className='titmain'>
             <strong>{props.main_tit}</strong>
           </div>
-          <p class="txtmain">{props.main_txt}</p>
+          <p className="txtmain">{props.main_txt}</p>
         </li>
       </ul>
     </div>
