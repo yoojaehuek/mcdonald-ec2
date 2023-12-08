@@ -1,17 +1,38 @@
-// 아이디: 이메일 
-// 비밀번호
-// 주소 배송지
-// 전화번호
-
 import React, { useState, useRef, useEffect } from 'react';
-import './Login.scss';
+import { useNavigate } from "react-router-dom";
+import axios from 'axios';
+import './Join.scss'
+import { API_URL } from '../../config/contansts'
 
-function Login() {
+function Join() {
     const [isLabelVisibleId, setIsLabelVisibleId] = useState(false);
     const [isLabelVisiblePwd, setIsLabelVisiblePwd] = useState(false);
-    
     const inputRefId = useRef(null);
     const inputRefPwd = useRef(null);
+    const navigate = useNavigate();
+
+    const onSubmitJoin = async (e) => {
+        e.preventDefault();
+        const id = e.target.id.value
+        const pwd = e.target.pwd.value
+        const confirmPwd = e.target.confirmPwd.value
+        const addr = e.target.addr.value
+        const phone = e.target.phone.value
+
+        if(pwd === confirmPwd && id !== "" && pwd !== "" && confirmPwd !== "" && phone !== "" && addr !== "")
+        {
+            await axios.post(`${API_URL}/user/join`,{id, pwd, addr, phone})
+            .then(() =>{
+                alert("가입성공!");
+                navigate('/');  
+            })
+            .catch(err =>{
+                console.error(err);
+            })
+        }else{
+            return alert("전부 입력해주세요");
+        }
+    };
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -32,13 +53,11 @@ function Login() {
         };
         // 이벤트 리스너 등록
         document.addEventListener('mousedown', handleClickOutside);
-    
         // 컴포넌트가 언마운트될 때 이벤트 리스너 제거
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
     }, [inputRefId, inputRefPwd]);
-    
         const handleInputFocus = (inputType) => {
             if (inputType === 'id') {
                 setIsLabelVisibleId(true);
@@ -46,7 +65,6 @@ function Login() {
                 setIsLabelVisiblePwd(true);
             }
         };
-    
         const handleInputBlur = (inputType) => {
         const inputValue =
             inputType === 'id' ? inputRefId.current.value : inputRefPwd.current.value;
@@ -62,17 +80,17 @@ function Login() {
         };
     
     return (
-    <div className="Login">
-        <form id='login-form' action="">
-            <h1>계정에 로그인</h1>
-            <ul id='login-input'>
+    <div className="Join">
+        <form id='Join-form' onSubmit={onSubmitJoin}>
+            <h1>회원가입</h1>
+            <ul id='join-input'>
                 <li className="input-li">
                     <label className={isLabelVisibleId ? '' : 'hidden'}>아이디(이메일주소)</label>
                     <input
                         ref={inputRefId}
                         type="text"
                         id="id"
-                        placeholder="예) abc@gmail.com"
+                        placeholder="아이디(이메일주소)"
                         onFocus={() => handleInputFocus('id')}
                         onBlur={() => handleInputBlur('id')}
                     />
@@ -88,17 +106,44 @@ function Login() {
                         onBlur={() => handleInputBlur('pwd')}
                     />
                 </li>
+                <li className="input-li">
+                    <label className={isLabelVisiblePwd ? '' : 'hidden'}>비밀번호</label>
+                    <input
+                        ref={inputRefPwd}
+                        type="password"
+                        id="confirmPwd"
+                        placeholder="비밀번호 확인"
+                        onFocus={() => handleInputFocus('pwd')}
+                        onBlur={() => handleInputBlur('pwd')}
+                    />
+                </li>
+                <li className="input-li">
+                    <label className={isLabelVisiblePwd ? '' : 'hidden'}>주소</label>
+                    <input
+                        ref={inputRefPwd}
+                        type="text"
+                        id="addr"
+                        placeholder="주소"
+                        onFocus={() => handleInputFocus('pwd')}
+                        onBlur={() => handleInputBlur('pwd')}
+                    />
+                </li>
+                <li className="input-li">
+                    <label className={isLabelVisiblePwd ? '' : 'hidden'}>전화번호</label>
+                    <input
+                        ref={inputRefPwd}
+                        type="text"
+                        id="phone"
+                        placeholder="전화번호"
+                        onFocus={() => handleInputFocus('pwd')}
+                        onBlur={() => handleInputBlur('pwd')}
+                    />
+                </li>
             </ul>
-            <li><a href="">비밀번호를 잊어버렸습니까?</a></li>
-            <li><button id='login-btn'>계정에 로그인</button></li>
-            <li id='login-footer'>
-                <span>Copyright © 2023 McDonald's</span>
-                <a href="">개인정보 처리방침</a>
-                <a href="">콘택트 렌즈</a>
-            </li>
+            <li><button type='submit' id='join-btn'>회원가입</button></li>
         </form>
     </div>
     );
 }
 
-export default Login;
+export default Join;

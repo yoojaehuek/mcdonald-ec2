@@ -3,6 +3,7 @@ import { Routes, Route, NavLink } from 'react-router-dom';
 import Main from './page/Main';
 import Test from './page/Test';
 import Login from './page/Login/Login';
+import Join from './page/Join/Join';
 import Menu from './page/Menu/Menu';
 import DetailProduct from './components/Product/DetailProduct/DetailProduct';
 import Header from './components/Header/Header';
@@ -35,12 +36,13 @@ function App() {
     <div className="App">
       <Header />
         <Routes>
-          <Route path='/' element={<Main></Main>}></Route>
+          <Route path='/' element={<Main></Main>}></Route> 
           <Route path='/login' element={<Login/>}/>
-          <Route element={<Test />}>
+          <Route path='/join' element={<Join/>}/>
+          <Route element={<Test/>}>
             <Route path='/society' element={<Society/>}/>
             <Route path='/burger' element={<Menu/>}/>
-            <Route path='/products/:id' element={<DetailProduct/>}/>
+            <Route path='/burger/products/:id' element={<DetailProduct/>}/>
             <Route path='/crew' element={<Crew/>}></Route>
             <Route path='/work' element={<Work/>}></Route>
             <Route path='/recruit' element={<Recruit/>}></Route>
@@ -54,11 +56,11 @@ function App() {
             <Route path='/slider' element={<Slider />}></Route>
             <Route path='/:page/detail/:prodNum' element={<DetailPromotion />}></Route>
             <Route path='/scaleforgood' element={<Scaleforgood/>}/>
-          <Route path='/kidssoccer' element={<Kidssoccer />} />
-          <Route path='/mcdrive' element={<McDrive />}></Route>
-          <Route path='/rental' element={<Rental />}></Route>
-          <Route path='/mcdelivery' element={<McDelivery/>}></Route>
-        </Route>
+            <Route path='/kidssoccer' element={<Kidssoccer />} />
+            <Route path='/mcdrive' element={<McDrive />}></Route>
+            <Route path='/rental' element={<Rental />}></Route>
+            <Route path='/mcdelivery' element={<McDelivery/>}></Route>
+          </Route>
         </Routes>
       <Footer />
     </div>
