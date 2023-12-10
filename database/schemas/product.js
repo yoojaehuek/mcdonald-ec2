@@ -45,6 +45,7 @@ class Product extends Sequelize.Model {
           type: Sequelize.INTEGER,
           // autoIncrement: true,
           allowNull: false,
+          unique: true,
           comment: "표시될 순서"
         },
         description: {
