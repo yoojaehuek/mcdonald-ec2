@@ -1,0 +1,89 @@
+
+      .aside{
+        position: fixed;
+        bottom: 110px;
+        left: 49%;
+        margin: 0 0 0 635px;
+        z-index: 10;
+
+        .scroll-to-top-button2 {
+          border: none;
+          display: block;
+          width: 121px;
+          height: 121px;
+          overflow: hidden;
+          cursor: pointer;
+          text-indent: -9999px;
+          background: url(../../../public/images/Main/2.png) no-repeat center 0;
+          margin-bottom: 20px;
+        }
+  
+        .scroll-to-top-button3 {
+          border: none;
+          display: block;
+          width: 121px;
+          height: 121px;
+          cursor: pointer;
+          overflow: hidden;
+          text-indent: -9999px;
+          background: url(../../../public/images/Main/111.png) no-repeat center 0;
+          margin-bottom: 20px;
+        }
+      }
+
+      .scroll-to-top-button {
+        border: none;
+        position: fixed;
+        bottom: 45px;
+        left: 50%;
+        width: 51px;
+        height: 48px;
+        margin: 0 0 0 650px;
+        cursor: pointer;
+        text-indent: -9999px;
+        font-size: 1px;
+        z-index: 10;
+        background: url(../../../public/images/Main/3.png) no-repeat center 0;
+      }
+      
+      .show-more-button {
+        position: relative;
+        display: block;
+        margin: 100px auto 0; // 버튼을 가운데 정렬
+        background-color: #ffcc00;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 50%;
+        color: black;
+        width: 5vw;
+        height: 5vw;
+        cursor: pointer;
+        text-align: center; // 텍스트를 가운데 정렬
+      
+        span {
+          position: absolute;
+          top: 40%;
+          left: 50%;
+          transform: translate(-50%, -50%); // 텍스트를 수직, 수평 정렬
+          font-size: 65px;
+        }
+      }
+
+      .titmaain{
+        margin: 0 0 60px;
+        color: #292929;
+        font-size: 40px;
+        font-weight: 600;
+        line-height: 1;
+      }
+
+      .whatsnew{
+        margin: 0 0 -35px -35px;
+        
+        > li{
+          display: grid;
+          place-items: center;
+          grid-template-columns: repeat(3, minmax(366px, auto));
+          row-gap: 40px;
+        }
+      }

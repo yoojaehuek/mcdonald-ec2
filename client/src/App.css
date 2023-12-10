@@ -5,11 +5,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  white-space: pre-wrap;
+  font-family: SpeedeeK, "Malgun Gothic", "맑은 고딕", Dotum, 돋움, Arial, sans-serif;
 }
 
 a{
   text-decoration: none;
+  color: black;
 }
 
 li{
@@ -17,7 +18,8 @@ li{
 }
 
 .inner{
-  width: 1280px;
-  margin: 0 auto;
-  z-index: 1;
+  width: 1168px;
+  margin:  auto;
+  text-align: center;
+  /* z-index: 1; */
 }

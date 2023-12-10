@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import './Crew.scss';
 import Modal from '../Component/Modal';
-import Menubar from '../Component/Menubar';
 import axios from 'axios';
 import { API_URL } from '../../../../config/contansts';
+import BottomMenu from '../Component/BottomMenu';
+import Buttonmain from "../../../../components/Main/Button";
 
 const Crew = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -35,7 +36,7 @@ const Crew = () => {
 
   return (
     <>
-      <Menubar />
+      <BottomMenu />
       <div className="crew-container">
         <h1>크루들이 만들어가는 맥도날드의 변화 이야기</h1>
         <div className="crew-list">
@@ -51,6 +52,9 @@ const Crew = () => {
         </div>
         {modalOpen && selectedCrew && <Modal crew={selectedCrew} closeModal={closeModal} />}
       </div>
+      <>
+        <Buttonmain />
+      </>
     </>
   );
 };

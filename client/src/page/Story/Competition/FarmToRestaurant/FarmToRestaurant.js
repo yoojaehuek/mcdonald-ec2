@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import YouTube from 'react-youtube';
-import MenuBar from '../Component/Menubar';
 import Material from './Material';
 import Safekeeping from './Safekeeping';
 import './FarmToRestaurant.scss';
 import Effort from './Effort';
+import BottomMenu from '../Component/BottomMenu';
+import { API_URL } from '../../../../config/contansts';
+import Buttonmain from "../../../../components/Main/Button";
 
 class FarmToRestaurant extends React.Component {
   // 클래스 선언 FarmToRestaurant 클래스를 선언하고 React.Component를 확장.
@@ -13,8 +15,16 @@ class FarmToRestaurant extends React.Component {
   // 생성자 메서드 컴포넌트의 초기 상태를 설정. selectedButton은 현재 선택된 버튼을 나타냄.
     this.state = {
       selectedButton: 1,
+      selectedMaterial: null,
     };
   }
+
+  handleMaterialSelect = (material) => {
+    this.setState({
+      selectedMaterial: material,
+    });
+  };
+
   // componentDidMount(생명주기) 메서드 컴포넌트가 마운트될 때 호출되는 메서드.
   componentDidMount() {
     // URL의 쿼리?? 매개변수에서 selectedButton 값을 읽어옴.
@@ -43,11 +53,11 @@ class FarmToRestaurant extends React.Component {
   };
 
   render() {
-    const videoId = 'fmXeBe7rj6w';
+    const videoId = '64WJ8UK0IbI';
 
     const opts = {
-      height: '390',
-      width: '640',
+      height: '720',
+      width: '1280',
       playerVars: {
         autoplay: 0,
       },
@@ -66,11 +76,31 @@ class FarmToRestaurant extends React.Component {
     //   }
     // console.log('SeletC:', SelectedComponent);
     // };
+    let selectedComponent;
+    switch (this.state.selectedButton) {
+      case 1:
+        selectedComponent = <Material selectedMaterial={this.state.selectedMaterial} onMaterialClick={this.handleMaterialSelect} />;
+        break;
+      case 2:
+        selectedComponent = <Safekeeping />;
+        break;
+      case 3:
+        selectedComponent = <Effort />;
+        break;
+      default:
+        selectedComponent = null;
+    }
 
     return (
       <>
-        <MenuBar />
-        <div className="container">
+      <BottomMenu/>
+        {/* <MenuBar /> */}
+        <div
+          className="farm-container"
+          style={{
+            backgroundImage: this.state.selectedButton === 1 ? `url(${API_URL + this.state.selectedMaterial?.background})` : 'none',
+          }}
+        >
           <div className="youtube-video">
             <YouTube videoId={videoId} opts={opts} />
           </div>
@@ -90,25 +120,26 @@ class FarmToRestaurant extends React.Component {
               className={this.state.selectedButton === 1 ? 'selected' : ''}
               onClick={() => this.handleButtonClick(1)}
             >
-              1
+              <span>STEP 01</span> | 원재료 준비와 가공
             </button>
             <button
               className={this.state.selectedButton === 2 ? 'selected' : ''}
               onClick={() => this.handleButtonClick(2)}
             >
-              2
+              <span>STEP 02</span> | 재료 보관부터 배송까지
             </button>
             <button
               className={this.state.selectedButton === 3 ? 'selected' : ''}
               onClick={() => this.handleButtonClick(3)}
             >
-              3
+              <span>STEP 03</span> | 레스토랑에서의 노력
             </button>
           </div>
-          {this.state.selectedButton === 1 && <Material />}
-          {this.state.selectedButton === 2 && <Safekeeping />}
-          {this.state.selectedButton === 3 && <Effort />}
+          {selectedComponent}
         </div>
+        <>
+          <Buttonmain/>
+        </>
       </>
     );
   }
