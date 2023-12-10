@@ -31,7 +31,7 @@ db.Effort = Material;
 // db.Point = Point;
 // db.Reservation = Reservation;
 // db.Hall = Hall;
-
+//s
 
 User.initiate(sequelize);
 Crew.initiate(sequelize);
