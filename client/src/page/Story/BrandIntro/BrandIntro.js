@@ -2,6 +2,7 @@ import './BrandIntro.scss';
 import {NavLink, useParams} from 'react-router-dom';
 import BrandCont01 from '../../../components/BrandCont/BrandCont1/BrandCont1';
 import BrandCont02 from '../../../components/BrandCont/BrandCont2/BrandCont2';
+// import Buttonmain from ''
 
 
 const tmps = [
@@ -21,12 +22,12 @@ const tmps2 = [
 const BrandIntro = () => {
 
   return (
-    <div class = "BrandIntro">
-      <div class="contents">
-        <div class="inner">
-          <ul class="inner_btn">
+    <div className = "BrandIntro">
+      <div className="contents">
+        <div className="inner">
+          <ul className="inner_btn">
             <li>
-              <a to="/brandintro" role="button" class="on">
+              <a to="/brandintro" role="button" className="on">
                 맥도날드 소개
               </a>
             </li>
@@ -36,27 +37,27 @@ const BrandIntro = () => {
               </NavLink>
             </li>
           </ul>
-          <div class="brandCont001">
+          <div className="brandCont001">
             {tmps.map(tmp=>
               <BrandCont01 key={tmps.prodNum} props={tmp}/>
             )}
           </div>
-          <div class="brandCont002">
-            <h3 class="titDep3">한국 맥도날드의 첫 걸음</h3>
+          <div className="brandCont002">
+            <h3 className="titDep3">한국 맥도날드의 첫 걸음</h3>
             {tmps2.map(tmp2=>
               <BrandCont02 key={tmps2.prodNum} props={tmp2}/>
             )}
           </div>
         </div>
-        <div class="history">
-          <div class="inner">
+        <div className="history">
+          <div className="inner">
             <h4>맥도날드가 걸어온 길</h4>
-            <ul class="tabType01 tabMn totalTabMn">
+            <ul className="tabType01 tabMn totalTabMn">
               <li><a href='#tab02_01'></a></li>
             </ul>
           </div>
         </div>
-        <div class="history"></div>
+        <div className="history"></div>
       </div>
 
 

@@ -75,13 +75,13 @@ class SubCategory extends Sequelize.Model {
     db.SubCategory.hasMany(db.Product, { foreignKey: 'sub_category_id', sourceKey: 'id'});
 
     //참조키로 HappyMeal모델에 id(sourceKey)를 sub_category_id(foreignKey)라는 이름으로 보냄
-    db.SubCategory.hasMany(db.HappyMeal, { foreignKey: 'sub_category_id', sourceKey: 'id'});
+    // db.SubCategory.hasMany(db.HappyMeal, { foreignKey: 'sub_category_id', sourceKey: 'id'});
 
     //참조키로 News모델에 id(sourceKey)를 sub_category_id(foreignKey)라는 이름으로 보냄
-    db.SubCategory.hasMany(db.News, { foreignKey: 'sub_category_id', sourceKey: 'id'});
+    // db.SubCategory.hasMany(db.News, { foreignKey: 'sub_category_id', sourceKey: 'id'});
 
     //참조키로 Promotion모델에 id(sourceKey)를 sub_category_id(foreignKey)라는 이름으로 보냄
-    db.SubCategory.hasMany(db.Promotion, { foreignKey: 'sub_category_id', sourceKey: 'id'});
+    db.SubCategory.hasMany(db.WhatsNew, { foreignKey: 'sub_category_id', sourceKey: 'id'});
 
 
     //참조키로 SubCategory모델의 id(targetKey)를 sub_category_id(foreignKey)라는 이름으로 가져옴

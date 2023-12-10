@@ -13,6 +13,7 @@ import Work from './page/Story/People/Work/Work';
 import Recruit from './page/Story/People/Recruit/Recruit';
 import Faq from './page/Story/Competition/Faq/Faq';
 import BrandIntro from './page/Story/BrandIntro/BrandIntro';
+import Find from './page/Store/Main/Find/Find';
 // import Effort from './page/Story/Competition/FarmToRestaurant/Effort';
 // import Safekeeping from './page/Story/Competition/FarmToRestaurant/Safekeeping';
 import FarmToRestaurant from './page/Story/Competition/FarmToRestaurant/FarmToRestaurant';
@@ -28,6 +29,7 @@ import Kidssoccer from './page/Story/Society/Kidssoccer/Kidssoccer';
 import McDrive from './page/Store/McDrive/McDrive';
 import Rental from './page/Store/Rental/Rental';
 import McDelivery from './page/Store/McDelivery/McDelivery';
+import Storymain from './page/Story/Main/Main';
 
 
 function App() {
@@ -50,6 +52,7 @@ function App() {
             <Route path='/happymeal' element={<HappyMeal />}></Route>
             <Route path='/brandintro' element={<BrandIntro/>}></Route>
             <Route path='/brandhistory' element={<BrandHistory/>}></Route>
+            <Route path='/find' element={<Find/>}></Route>
             <Route path='/promotion' element={<Promotion />}></Route>
             <Route path='/slider' element={<Slider />}></Route>
             <Route path='/:page/detail/:prodNum' element={<DetailPromotion />}></Route>
@@ -58,6 +61,7 @@ function App() {
             <Route path='/mcdrive' element={<McDrive />}></Route>
             <Route path='/rental' element={<Rental />}></Route>
             <Route path='/mcdelivery' element={<McDelivery/>}></Route>
+            <Route path='/story' element={<Storymain/>}></Route>
           </Route>
         </Routes>
       <Footer />

@@ -51,7 +51,7 @@ const Rental = () => {
          <tr>
              {
              temp.map(tmp =>
-             <th id="rental-th">{tmp.mcdth2}</th>
+             <th id="rental-th2">{tmp.mcdth2}</th>
              )
              }
              <td>
@@ -68,7 +68,7 @@ const Rental = () => {
          </tr>
      </tbody>
       </table>
-          <a href="#" class="mcdrive-a">
+          <a href="#" class="rental-a">
         {
           temp.map(tmp => 
                 tmp.mcda 
@@ -119,7 +119,7 @@ const Rental = () => {
          <tr>
              {
              temp.map(tmp =>
-             <th id="rental-th">{tmp.mcdth2}</th>
+             <th id="rental-th2">{tmp.mcdth2}</th>
              )
              }
              <td>
