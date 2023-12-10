@@ -1,9 +1,9 @@
 const Sequelize = require("sequelize");
 
 
-class Promotion extends Sequelize.Model {
+class WhatsNew extends Sequelize.Model {
   static initiate(sequelize) {
-    Promotion.init(
+    WhatsNew.init(
       {
         id: {
           type: Sequelize.INTEGER,
@@ -17,7 +17,7 @@ class Promotion extends Sequelize.Model {
         },
         thumbnail_img_url: {
           type: Sequelize.STRING,
-          allowNull: false,
+          allowNull: true, //null허용!!!!!!
           comment: "썸네일 이미지 주소"
         },
         title: {
@@ -57,8 +57,8 @@ class Promotion extends Sequelize.Model {
       {
         sequelize,
         timestamps: false,
-        modelName: 'Promotion',
-        tableName: 'Promotion',
+        modelName: 'WhatsNew',
+        tableName: 'WhatsNew',
         paranoid: false,
         charset: 'utf8',
         collate: 'utf8_general_ci',
@@ -68,9 +68,9 @@ class Promotion extends Sequelize.Model {
   }
   static associate(db) {
     //참조키로 SubCategory모델의 id(targetKey)를 sub_category_id(foreignKey)라는 이름으로 가져옴
-    db.Promotion.belongsTo(db.SubCategory, {foreignKey: 'sub_category_id', targetKey: 'id'});
+    db.WhatsNew.belongsTo(db.SubCategory, {foreignKey: 'sub_category_id', targetKey: 'id'});
   }
 
 }
 
-module.exports = Promotion;
+module.exports = WhatsNew;
