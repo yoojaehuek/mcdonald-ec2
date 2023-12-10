@@ -4,10 +4,12 @@ const path = require('path');
 const { sequelize } = require('./database/schemas');//DB테이블
 const visualBackGroundRouter = require('./routers/visualBackGround')
 const port = 8003;
+require('dotenv').config();
 const CrewRouter = require('./routers/crew');
 const FaqRouter = require('./routers/faq');
 const MaterialRouter = require('./routers/material');
 const EffortRouter = require('./routers/effort');
+const userRouter = require('./routers/user');
 
 //시퀄라이즈 연결 부분
 sequelize.sync({ force: true }) //force가 true면 킬때마다 DB 새로 만듬
@@ -23,6 +25,7 @@ sequelize.sync({ force: true }) //force가 true면 킬때마다 DB 새로 만듬
 var cors = require('cors');
 app.use(cors());
 
+app.use('/user', userRouter);
 app.use('/crew', CrewRouter);
 app.use('/faq', FaqRouter);
 app.use('/material', MaterialRouter);
