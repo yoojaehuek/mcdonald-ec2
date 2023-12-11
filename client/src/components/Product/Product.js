@@ -5,7 +5,7 @@ import './Product.scss';
 const Product =({props})=>{
 	console.log("props.id",props.id);
 	return(
-	<NavLink to={`products/${props.id}`}>
+	<NavLink to={`${props.id}`}>
 		<div id="product">
 			<div>
 				<img src={API_URL+props.image} alt=""/>

@@ -42,8 +42,8 @@ function App() {
           <Route path='/join' element={<Join/>}/>
           <Route element={<Test/>}>
             <Route path='/society' element={<Society/>}/>
-            <Route path='/burger' element={<Menu/>}/>
-            <Route path='/burger/products/:id' element={<DetailProduct/>}/>
+            <Route path='/menu/burger' element={<Menu/>}/>
+            <Route path='/menu/burger/:id' element={<DetailProduct/>}/>
             <Route path='/crew' element={<Crew/>}></Route>
             <Route path='/work' element={<Work/>}></Route>
             <Route path='/recruit' element={<Recruit/>}></Route>

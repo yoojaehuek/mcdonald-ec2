@@ -9,15 +9,15 @@ function Menu() {
     const [productCount, setProductCount] = useState(6); // 초기 Product 개수 
 
     const singleProducts = [
-        {koName:"더블 비프 미트칠리버거", engName:"Double Beef Meat Chili Burger", image:"/upload/product/singleMenu (1).png"},
-        {koName:"미트칠리 BLT 버거", engName:"Meat Chili BLT Burger", image:"/upload/product/singleMenu (2).png"},
-        {koName:"빅맥®", engName:"Big Mac®", image:"/upload/product/singleMenu (3).png"},
-        {koName:"더블 쿼터파운더® 치즈", engName:"Double Quarter Pounder® with Cheese", image:"/upload/product/singleMenu (4).png"},
-        {koName:"쿼터파운더® 치즈", engName:"Quarter Pounder® with Cheese", image:"/upload/product/singleMenu (5).png"},
-        {koName:"맥크리스피™ 디럭스 버거", engName:"McCrispy™ Deluxe Burger", image:"/upload/product/singleMenu (6).png"},
-        {koName:"맥크리스피™ 클래식 버거", engName:"McCrispy™ Classic Burger", image:"/upload/product/singleMenu (7).png"},
-        {koName:"맥스파이시® 상하이 버거", engName:"McSpicy® Shanghai Burger", image:"/upload/product/singleMenu (8).png"},
-        {koName:"1955® 버거", engName:"1955® Burger", image:"/upload/product/singleMenu (9).png"},
+        {id:1, koName:"더블 비프 미트칠리버거", engName:"Double Beef Meat Chili Burger", image:"/upload/product/singleMenu (1).png"},
+        {id:2, koName:"미트칠리 BLT 버거", engName:"Meat Chili BLT Burger", image:"/upload/product/singleMenu (2).png"},
+        {id:3, koName:"빅맥®", engName:"Big Mac®", image:"/upload/product/singleMenu (3).png"},
+        {id:4, koName:"더블 쿼터파운더® 치즈", engName:"Double Quarter Pounder® with Cheese", image:"/upload/product/singleMenu (4).png"},
+        {id:5, koName:"쿼터파운더® 치즈", engName:"Quarter Pounder® with Cheese", image:"/upload/product/singleMenu (5).png"},
+        {id:6, koName:"맥크리스피™ 디럭스 버거", engName:"McCrispy™ Deluxe Burger", image:"/upload/product/singleMenu (6).png"},
+        {id:7, koName:"맥크리스피™ 클래식 버거", engName:"McCrispy™ Classic Burger", image:"/upload/product/singleMenu (7).png"},
+        {id:8, koName:"맥스파이시® 상하이 버거", engName:"McSpicy® Shanghai Burger", image:"/upload/product/singleMenu (8).png"},
+        {id:9, koName:"1955® 버거", engName:"1955® Burger", image:"/upload/product/singleMenu (9).png"},
     ]
     const setProducts = [
         {id:1, koName:"더블 비프 미트칠리버거 세트", engName:"Double Beef Meat Chili Burger", image:"/upload/product/setMenu (1).png"},
