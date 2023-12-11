@@ -1,7 +1,7 @@
 #burger-Detail{
     width: 1000px;
     height: 1000px;
-    margin: 30px auto;
+    margin: 180px auto;
     #contents{
         display: flex;
         #prod-img{
@@ -116,66 +116,61 @@
         }
     }
 
+    #menu-info{
+        margin-top: 50px;
+        .btn{
+            width: 100%;
+            background-color: white;
+            border: 0px;
+            #toggle-btn{
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+                border: 0px;
+                border-bottom: 1px solid black;
+                h2{
+                    font-weight: 500;
+                    margin: 10px;
+                }
+                &>button{
+                    font-size: 40px;
+                    font-weight: 100;
+                    background-color: white;
+                    margin-right: 30px;
+                    border: 0px;
+                }
+            }
+            #toggle{
+                padding-bottom: 60px;
+                // 영양정보
+                table{ 
+                    width: 100%;
+                    border-collapse: collapse;
+                    border-bottom: 2px solid black;
+                    th{
+                        height: 60px;
+                        &[scope="row"]{
+                            border-right: 1px solid black;
+                            border-top: 1px solid #d1d1d1;
+                            text-align: left;
+                            padding-left: 10px;
+                            width: 15%;
+                        }
+                    }
+                    td{
+                        border-top: 1px solid #d1d1d1;
+                    }
+                }
+                // 알레르기 정보, 원산지정보`
+                p{
+                    text-align: left;
+                    padding: 20px 10px; 
+                    span{
+                        color: gray;
+                    }
+                }
 
-    // #menu-info{
-    //     .btn{
-    //         width: 100%;
-    //         background-color: white;
-    //         border: 0px;
-            
-    //         #toggle-btn{
-    //             display: flex;
-    //             justify-content: space-between;
-    //             width: 100%;
-    //             border: 0px;
-    //             border-bottom: 1px solid black;
-    //             h2{
-    //                 font-weight: 500;
-    //                 margin: 10px;
-    //             }
-    //             &>button{
-    //                 font-size: 40px;
-    //                 font-weight: 100;
-    //                 background-color: white;
-    //                 margin-right: 30px;
-    //                 border: 0px;
-    //             }
-    //         }
-    //         #toggle{
-    //             padding-bottom: 60px;
-    //             // height: 100%;7-1
-    //             // height: 0px;
-    //             // overflow: hidden;
-    //             // padding: 0;
-    //             // 영양정보
-    //             table{ 
-    //                 width: 100%;
-    //                 border-collapse: collapse;
-    //                 border-bottom: 2px solid black;
-    //                 th{
-    //                     height: 60px;
-    //                     &[scope="row"]{
-    //                         border-right: 1px solid black;
-    //                         border-top: 1px solid #d1d1d1;
-    //                         text-align: left;
-    //                         padding-left: 10px;
-    //                         width: 15%;
-    //                     }
-    //                 }
-    //                 td{
-    //                     border-top: 1px solid #d1d1d1;
-    //                 }
-    //             }
-    //             // 알레르기 정보, 원산지정보`
-    //             p{
-    //                 text-align: left;
-    //                 padding: 20px 10px; 
-    //                 span{
-    //                     color: gray;
-    //                 }
-    //             }
-
-    //         }
-    //     }
-    // }
+            }
+        }
+    }
 }
