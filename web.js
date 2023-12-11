@@ -12,7 +12,7 @@ const EffortRouter = require('./routers/effort');
 const userRouter = require('./routers/user');
 
 //시퀄라이즈 연결 부분
-sequelize.sync({ force: true }) //force가 true면 킬때마다 DB 새로 만듬
+sequelize.sync({ force: false }) //force가 true면 킬때마다 DB 새로 만듬
 .then(() => { 
   console.log("DB연결 성공");
 })
