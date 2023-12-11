@@ -139,14 +139,3 @@ INSERT INTO mcdonalddb.efforts (id, name, description, image, title, itemDescrip
 -------------------------------------------------------------------------------
 
 
----------------------category-----------------------------------------
-INSERT INTO mcdonalddb.category (type, name, link, seq) values ('menu', 'Menu', '/munu/burger', 1);
-INSERT INTO mcdonalddb.category (type, name, link, seq) values ('store', 'Store', '/store/find', 2);
-INSERT INTO mcdonalddb.category (type, name, link, seq) values ('whats-new', 'What\'s New', '/whats-new/promotion', 3);
-INSERT INTO mcdonalddb.category (type, name, link, seq) values ('story', 'Story', '/story/main', 4);
------------------------------------------------------------------------
-
-  
---------------------subCategory----------------------------------------
-INSERT INTO mcdonalddb.subcategory (category_id ,type, h_title, h_background_img_url, h_link, name, link, seq) 
-values (4, 'promotion', '맥도날드 프로모션', '/image/visualBackGround/bg_visual_whats02.jpg', '[{"url": "/", "name": "HOME"}, {"url": "/promotion", "name": "What\'s New"}, {"url": "/promotion", "name": "맥도날드 프로모션"}]', '프로모션', '/whats-new/promotion', 1);
