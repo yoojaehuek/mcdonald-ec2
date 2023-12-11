@@ -136,5 +136,6 @@ INSERT INTO mcdonalddb.efforts (id, name, description, image, title, itemDescrip
 INSERT INTO mcdonalddb.efforts (id, name, description, image, title, itemDescription) VALUES ('12', '고객만족을 위한 노력', '정성을 다해 만든 제품을 제공하기 위해 보이지 않는 곳까지 점검합니다.', '/upload/effort/12.jpg', '고객의견을 반영한 제품 구성 및 함량 변경', '위생을 위해 슈레더로 변경한 양상추의 함량이 적게 느껴진다는 고객 의견을 반영하여 일부 메뉴의 슈레더 양상추 함량이 30g씩 늘어났습니다.');
 INSERT INTO mcdonalddb.efforts (id, name, description, image, title, itemDescription) VALUES ('13', '고객만족을 위한 노력', '정성을 다해 만든 제품을 제공하기 위해 보이지 않는 곳까지 점검합니다.', '/upload/effort/13.jpg', '고객이 주문하는 공간도 언제나 깨끗하게 유지', '고객이 주문을 하는 카운터와 디지털 키오스크 공간도 언제나 기분 좋게 사용하실 수 있도록 깨끗이 유지합니다.');
 INSERT INTO mcdonalddb.efforts (id, name, description, image, title, itemDescription) VALUES ('14', '고객만족을 위한 노력', '정성을 다해 만든 제품을 제공하기 위해 보이지 않는 곳까지 점검합니다.', '/upload/effort/14.jpg', '고객이 레스토랑을 나가는 순간까지 깨끗하게', '고객이 음식을 드시는 테이블은 물론, 휴지통과 화장실까지 청결하게 유지될 수 있도록 노력합니다.');
+-------------------------------------------------------------------------------
 
--
+
