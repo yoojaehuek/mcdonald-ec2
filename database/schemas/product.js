@@ -63,11 +63,6 @@ class Product extends Sequelize.Model {
           allowNull: false,
           comment: "판매 종료 시간",
         },
-        nutritional_information: {
-          type: Sequelize.STRING,
-          allowNull: false,
-          comment: "영양 정보",
-        },
         llergen_information: {
           type: Sequelize.STRING,
           allowNull: false,
