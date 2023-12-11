@@ -140,7 +140,25 @@ function Join() {
                     />
                 </li>
             </ul>
+
+                
+
+
+
+
+
+
             <li><button type='submit' id='join-btn'>회원가입</button></li>
+
+
+
+
+
+
+
+
+
+
         </form>
     </div>
     );
