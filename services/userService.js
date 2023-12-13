@@ -28,26 +28,26 @@ class UserService{
 		return createNewUser
 	}
 
-	static async loginUser({id, pwd}){
+	static async loginUser({email, pwd}){
 		// console.log("id: ",id);
 		// console.log("pwd: ",pwd);
 
-		const user = await UserModel.findOneUserId({ id });
+		const user = await UserModel.findOneUserEmail({ email });
 		if (!user) {
 			const errorMessage = "해당 id는 가입 내역이 없습니다. 다시 한 번 확인해 주세요.";
 			return errorMessage;
 		}
 
-		// Combine entered password with stored salt
+		// 입력한 비밀번호와 조회해온 암호화 난수 함침
 		const combinedPassword = pwd + user.salt;
 
-		// Hash the combined password and salt
+		// 함친 combinedPassword 암호화
 		const hashedPassword = crypto
 			.createHash('sha512')
 			.update(combinedPassword)
 			.digest('hex');
 
-		// Compare the generated hash with the stored hashed password
+		// hashedPassword와 DB의 비밀번호 비교
 		if (hashedPassword === user.pwd) {
 			console.log('Login successful!');
 			// console.log("userService.js/loginUser()/user: ", user);
@@ -55,15 +55,14 @@ class UserService{
 			const refreshToken = makeRefreshToken();
 
 			// userId를 키값으로 refresh token을 redis server에 저장
-			
 			await redisClient.set(user.id, refreshToken);
 			// await redisClient.get(user.id, (err, value) => {
 			// 	console.log("redis.value: ", value); 
 			// });
 			
 			const name = user.name; 
-			const id = user.id;			
-			const newUser = {name, id, accessToken, refreshToken};
+			const email = user.email;			
+			const newUser = {name, email, accessToken, refreshToken};
 
 			return newUser
 		}else {
