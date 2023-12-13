@@ -77,7 +77,7 @@ function App() {
             <Route path='/happyburger' element={<Happyburger/>}></Route>
             <Route path='/safetyguard' element={<Safetyguard/>}></Route>
             <Route path='/mcdonaldhouse' element={<Mcdonaldhouse/>}></Route>
-            <Route path='/event' element={<Event/>}></Route>
+            <Route path='/store/event' element={<Event/>}></Route>
           </Route>
         </Routes>
       <Footer />

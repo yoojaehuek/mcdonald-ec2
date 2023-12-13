@@ -25,7 +25,7 @@ function Maps() {
     >
       <div
         id="map"
-        style={{ width: "60vw", height: "60vh", margin: "5vw" }}
+        style={{ width: "60vw", height: "60vh", margin: "2vw" }}
       ></div>
     </div>
   );
