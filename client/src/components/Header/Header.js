@@ -35,13 +35,13 @@ const Header = () => {
                   Menu
                 </NavLink>
                 <ul className='depth2'>
-                  <li><NavLink to="/menu/burger">버거</NavLink></li>
-                  <li><NavLink to="/">맥런치</NavLink></li>
-                  <li><NavLink to="/">맥모닝</NavLink></li>
-                  <li><NavLink to="/">해피스낵</NavLink></li>
-                  <li><NavLink to="/">사이드&디저트</NavLink></li>
-                  <li><NavLink to="/">맥카페&음료</NavLink></li>
-                  <li><NavLink to="/">해피밀</NavLink></li>
+                  <li><NavLink to="/menu/1">버거</NavLink></li>
+                  <li><NavLink to="/menu/2">맥런치</NavLink></li>
+                  <li><NavLink to="/menu/3">맥모닝</NavLink></li>
+                  <li><NavLink to="/menu/4">해피스낵</NavLink></li>
+                  <li><NavLink to="/menu/5">사이드&디저트</NavLink></li>
+                  <li><NavLink to="/menu/6">맥카페&음료</NavLink></li>
+                  <li><NavLink to="/menu/7">해피밀</NavLink></li>
                 </ul>
               </li>
               <li>
