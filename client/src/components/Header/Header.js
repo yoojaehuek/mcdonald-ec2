@@ -31,7 +31,7 @@ const Header = () => {
               onMouseLeave={() => setDepth1Open(false)}
             >
               <li>
-                <NavLink to="/" className={`dth1 ${isDepth1Open ? 'on' : ''}`}>
+                <NavLink to="/menu/burger" className={`dth1 ${isDepth1Open ? 'on' : ''}`}>
                   Menu
                 </NavLink>
                 <ul className='depth2'>
@@ -45,35 +45,35 @@ const Header = () => {
                 </ul>
               </li>
               <li>
-                <NavLink to="/" className={`dth1 ${isDepth1Open ? 'on' : ''}`}>
+                <NavLink to="/store/find" className={`dth1 ${isDepth1Open ? 'on' : ''}`}>
                   Store
                 </NavLink>
                 <ul className='depth2'>
-                  <li><NavLink to="/find">매장찾기</NavLink></li>
-                  <li><NavLink to="/mcdelivery">맥딜리버리</NavLink></li>
-                  <li><NavLink to="/mcdrive">맥드라이브</NavLink></li>
-                  <li><NavLink to="/rental">임차문의</NavLink></li>
+                  <li><NavLink to="/store/find">매장찾기</NavLink></li>
+                  <li><NavLink to="/store/mcdelivery">맥딜리버리</NavLink></li>
+                  <li><NavLink to="/store/mcdrive">맥드라이브</NavLink></li>
+                  <li><NavLink to="/store/rental">임차문의</NavLink></li>
                 </ul>
               </li>
               <li>
-                <NavLink to="/promotion" className={`dth1 ${isDepth1Open ? 'on' : ''}`}>
+                <NavLink to="/whats-new/promotion" className={`dth1 ${isDepth1Open ? 'on' : ''}`}>
                   What's New
                 </NavLink>
                 <ul className='depth2'>
-                  <li><NavLink to="/promotion">프로모션</NavLink></li>
+                  <li><NavLink to="/whats-new/promotion">프로모션</NavLink></li>
                   <li><NavLink to="/">새로운 소식</NavLink></li>
-                  <li><NavLink to="/happymeal">이달의 해피밀</NavLink></li>
+                  <li><NavLink to="/whats-new/happymeal">이달의 해피밀</NavLink></li>
                 </ul>
               </li>
               <li>
-                <NavLink to="/" className={`dth1 ${isDepth1Open ? 'on' : ''}`}>
+                <NavLink to="/story" className={`dth1 ${isDepth1Open ? 'on' : ''}`}>
                   Story
                 </NavLink>
                 <ul className='depth2'>
-                  <li><NavLink to="/brandintro">브랜드 소개</NavLink></li>
-                  <li><NavLink to="/society">사회적 책임과 지원</NavLink></li>
-                  <li><NavLink to="/farmtorestaurant">맥도날드 품질 이야기</NavLink></li>
-                  <li><NavLink to="/crew">맥도날드 사람들</NavLink></li>
+                  <li><NavLink to="/story/brandintro">브랜드 소개</NavLink></li>
+                  <li><NavLink to="/story/society">사회적 책임과 지원</NavLink></li>
+                  <li><NavLink to="/story/farmtorestaurant">맥도날드 품질 이야기</NavLink></li>
+                  <li><NavLink to="/story/crew">맥도날드 사람들</NavLink></li>
                 </ul>
               </li>
             </ul>
@@ -81,7 +81,7 @@ const Header = () => {
           <div className='util'>
             <NavLink to="/login" className="renter" >로그인</NavLink>
             <NavLink to="/join" className="renter2">회원가입</NavLink>
-            <NavLink to="/" className="renter3">인재채용</NavLink>
+            <NavLink to="/story/recruit" className="renter3">인재채용</NavLink>
             <div className='topserch'>
               <button className='serch'onClick={openModal}></button>
             </div>

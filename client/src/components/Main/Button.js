@@ -12,10 +12,10 @@ const Buttonmain = () => {
 return(
       <>
         <div className='aside'>
-          <NavLink to="/your-first-link" className="nav-link-button">
+          <NavLink to="/store/mcdelivery" className="nav-link-button">
             <button className="scroll-to-top-button2" />
           </NavLink>
-          <NavLink to="/farmtorestaurant" className="nav-link-button">
+          <NavLink to="/story/farmtorestaurant" className="nav-link-button">
             <button className="scroll-to-top-button3" />
           </NavLink>
           </div>
