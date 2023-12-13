@@ -28,11 +28,11 @@ class UserService{
 		return createNewUser
 	}
 
-	static async loginUser({id, pwd}){
+	static async loginUser({email, pwd}){
 		// console.log("id: ",id);
 		// console.log("pwd: ",pwd);
 
-		const user = await UserModel.findOneUserId({ id });
+		const user = await UserModel.findOneUserEmail({ email });
 		if (!user) {
 			const errorMessage = "해당 id는 가입 내역이 없습니다. 다시 한 번 확인해 주세요.";
 			return errorMessage;
@@ -61,8 +61,8 @@ class UserService{
 			// });
 			
 			const name = user.name; 
-			const id = user.id;			
-			const newUser = {name, id, accessToken, refreshToken};
+			const email = user.email;			
+			const newUser = {name, email, accessToken, refreshToken};
 
 			return newUser
 		}else {
