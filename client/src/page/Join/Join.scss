@@ -39,6 +39,12 @@
                 #input-li-addr{
                     display: flex;
                     justify-content: space-between;
+                    padding-bottom: 50px;
+                    input{
+                        width: 80%;
+                        margin: 0px;
+                        
+                    }
                     button{
                         padding: 5px;
                     }

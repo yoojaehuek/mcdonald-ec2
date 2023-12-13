@@ -95,7 +95,7 @@ function Join() {
         const handleInputFocus = (inputType) => {
             if (inputType === 'id') {
                 setIsLabelVisibleId(true);
-            } else if (inputType === 'pwd') {
+            } else if (inputType == 'pwd') {
                 setIsLabelVisiblePwd(true);
             }
         };
@@ -168,25 +168,25 @@ function Join() {
                         ref={inputRefPwd}
                         type="text"
                         id="phone"
-                        placeholder="전화번호"
+                        placeholder="전화번호(010-1234-5678)"
                         onFocus={() => handleInputFocus('pwd')}
                         onBlur={() => handleInputBlur('pwd')}
                     />
                 </li>
                 <li className="input-li">
+                        <label className={isLabelVisiblePwd ? '' : 'hidden'}>주소</label>
                     <div id='input-li-addr'>
-                        <div><label className={isLabelVisiblePwd ? '' : 'hidden'}>주소</label></div>
-                        {/* // 버튼 클릭 시 팝업 생성 */}
+                        <input
+                            ref={inputRefPwd}
+                            type="text"
+                            id="address"
+                            placeholder="주소"
+                            value={selectedAddress} // 주소 입력 필드의 값을 선택된 주소로 설정
+                            onChange={handleAddressChange} // 주소 변경을 처리하기 위한 이벤트 핸들러 추가
+                        />
+                        {/* 버튼 클릭 시 팝업 생성 */}
                         <button type='button' onClick={openPostCode}>우편번호 검색</button>
                     </div>
-                    <input
-                        ref={inputRefPwd}
-                        type="text"
-                        id="address"
-                        placeholder="주소"
-                        value={selectedAddress} // 주소 입력 필드의 값을 선택된 주소로 설정
-                        onChange={handleAddressChange} // 주소 변경을 처리하기 위한 이벤트 핸들러 추가
-                    />
                     <label className={isLabelVisiblePwd ? '' : 'hidden'}>상세주소</label>
                     <input
                         ref={inputRefPwd}

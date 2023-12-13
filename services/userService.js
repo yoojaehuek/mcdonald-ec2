@@ -29,6 +29,7 @@ class UserService{
 	}
 
 	static async loginUser({email, pwd}){
+		console.log("서비스에서: ",email);
 		// console.log("id: ",id);
 		// console.log("pwd: ",pwd);
 
