@@ -33,6 +33,10 @@ import McDrive from './page/Store/McDrive/McDrive';
 import Rental from './page/Store/Rental/Rental';
 import McDelivery from './page/Store/McDelivery/McDelivery';
 import Storymain from './page/Story/Main/Main';
+import Buttonmain from "./components/Main/Button"; 
+import Private from "./page/FooterLink/private";
+import Location from "./page/FooterLink/location"
+import Mypage from "./page/Mypage/Myinfo";
 import Event from './page/Store/Main/Event/Event'
 
 
@@ -40,32 +44,36 @@ function App() {
   return (
     <div className="App">
       <Header />
+      <Buttonmain />
         <Routes>
           <Route path='/' element={<Main></Main>}></Route> 
           <Route path='/login' element={<Login/>}/>
           <Route path='/join' element={<Join/>}/>
           <Route element={<Test/>}>
-            <Route path='/society' element={<Society/>}/>
+            <Route path='/story/society' element={<Society/>}/>
             <Route path='/menu/burger' element={<Menu/>}/>
             <Route path='/menu/:subcategory_id/:id' element={<DetailProduct/>}/>
-            <Route path='/crew' element={<Crew/>}></Route>
-            <Route path='/work' element={<Work/>}></Route>
-            <Route path='/recruit' element={<Recruit/>}></Route>
-            <Route path='/faq' element={<Faq/>}></Route>
-            <Route path='/farmtorestaurant' element={<FarmToRestaurant/>}></Route>
-            <Route path='/happymeal' element={<HappyMeal />}></Route>
-            <Route path='/brandintro' element={<BrandIntro/>}></Route>
-            <Route path='/brandhistory' element={<BrandHistory/>}></Route>
-            <Route path='/find' element={<Find/>}></Route>
-            <Route path='/promotion' element={<Promotion />}></Route>
+            <Route path='/story/crew' element={<Crew/>}></Route>
+            <Route path='/story/work' element={<Work/>}></Route>
+            <Route path='/story/recruit' element={<Recruit/>}></Route>
+            <Route path='/story/faq' element={<Faq/>}></Route>
+            <Route path='/story/farmtorestaurant' element={<FarmToRestaurant/>}></Route>
+            <Route path='/whats-new/happymeal' element={<HappyMeal />}></Route>
+            <Route path='/story/brandintro' element={<BrandIntro/>}></Route>
+            <Route path='/story/brandhistory' element={<BrandHistory/>}></Route>
+            <Route path='/store/find' element={<Find/>}></Route>
+            <Route path='/whats-new/promotion' element={<Promotion />}></Route>
             <Route path='/slider' element={<Slider />}></Route>
             <Route path='/:page/detail/:prodNum' element={<DetailPromotion />}></Route>
             <Route path='/scaleforgood' element={<Scaleforgood/>}/>
             <Route path='/kidssoccer' element={<Kidssoccer />} />
-            <Route path='/mcdrive' element={<McDrive />}></Route>
-            <Route path='/rental' element={<Rental />}></Route>
-            <Route path='/mcdelivery' element={<McDelivery/>}></Route>
+            <Route path='/store/mcdrive' element={<McDrive />}></Route>
+            <Route path='/store/rental' element={<Rental />}></Route>
+            <Route path='/store/mcdelivery' element={<McDelivery/>}></Route>
             <Route path='/story' element={<Storymain/>}></Route>
+            <Route path='/private' element={<Private/>}></Route>
+            <Route path='/location' element={<Location/>}></Route>
+            <Route path='/mypage' element={<Mypage/>}></Route>
             <Route path='/happyburger' element={<Happyburger/>}></Route>
             <Route path='/safetyguard' element={<Safetyguard/>}></Route>
             <Route path='/mcdonaldhouse' element={<Mcdonaldhouse/>}></Route>

@@ -354,17 +354,17 @@ VALUES
 
 
 ------------slider---------------------
-INSERT INTO mcdonalddb.slider (id, content_url) 
+INSERT INTO mcdonalddb.slider (id, type, content_url, path, duration) 
 VALUES
-(1, '/upload/main/1.jpg'),
-(2, '/upload/main/1.mp4'),
-(3, '/upload/main/2.jpg'),
-(4, '/upload/main/3.jpg'),
-(5, '/upload/main/4.jpg'),
-(6, '/upload/main/5.jpg'),
-(7, '/upload/main/6.jpg'),
-(8, '/upload/main/7.jpg'),
-(9, '/upload/main/8.jpg'),
-(10, '/upload/main/9.jpg')
+(1, 'image', '/upload/main/1.jpg', '/', 5000),
+(2, 'video', '/upload/main/1.mp4', '/', 30000),
+(3, 'image', '/upload/main/2.jpg', '/', 5000),
+(4, 'image', '/upload/main/3.jpg', '/', 5000),
+(5, 'image', '/upload/main/4.jpg', '/', 5000),
+(6, 'image', '/upload/main/5.jpg', '/', 5000),
+(7, 'image', '/upload/main/6.jpg', '/', 5000),
+(8, 'image', '/upload/main/7.jpg', '/', 5000),
+(9, 'image', '/upload/main/8.jpg', '/', 5000),
+(10, 'image', '/upload/main/9.jpg', '/', 5000)
 ;
 -------------------------------------
