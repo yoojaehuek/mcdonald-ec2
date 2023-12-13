@@ -1,0 +1,48 @@
+.contArea1 {
+  width: 100vw;
+  height: 38vh;
+  margin-top: 1vw;
+  background-color: rgb(228, 228, 228);
+
+  .search {
+    padding-top: 2vw;
+    display: flex;
+
+    > button {
+      display: flex;
+      flex-direction: column;
+      height: 15vh;
+			width: 8vw;
+      align-items: center;
+      justify-content: center;
+			margin: 2vw;
+			border-radius: 1vw;
+			background-color: white;
+			font-size: 1rem;
+			font-weight: bold;
+    }
+  }
+
+	.search1 {
+		max-width: 70vw;
+	
+		> input {
+			width: 50vw;
+			padding-left: 2vw;
+			height: 7vh;
+			border-radius: 3vw;
+		}
+	
+		> button {
+			height: 7vh;
+			width: 8vw;
+			margin-left: 2vw;
+			border-radius: 3vw;
+			background-color: orange;
+			border: none;
+			font-size: large;
+			font-weight: bold;
+		}
+	}
+	
+}

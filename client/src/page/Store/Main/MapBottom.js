@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import './Menubar.scss';
+import React from 'react';
+import './MapBottom.scss';
 import { NavLink } from 'react-router-dom';
 
 
