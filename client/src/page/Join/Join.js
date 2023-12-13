@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import './Join.scss'
 import { API_URL } from '../../config/contansts'
-
 /** 우편번호 창   */
 import PopupDom from './PopupDom';
 import PopupPostCode from './PopupPostCode';
@@ -20,12 +19,10 @@ function Join() {
 
     // 팝업창 상태 관리
     const [isPopupOpen, setIsPopupOpen] = useState(false)
-
     // 팝업창 열기
     const openPostCode = () => {
         setIsPopupOpen(true)
     }
-    
     // 팝업창 닫기
     const closePostCode = () => {
         setIsPopupOpen(false)
@@ -37,20 +34,28 @@ function Join() {
     const handleSelectedAddress = (address) => {
         setSelectedAddress(address);
     };
-
+    /** 우편검색 결과가 인풋창에 업데이트 되지않아서 이함수로 업데이트 시켜줌 */
+    const handleAddressChange = (e) => {
+        setSelectedAddress(e.target.value);
+    };
     /** 우편번호 창  */
 
     const onSubmitJoin = async (e) => {
         e.preventDefault();
-        const id = e.target.id.value
+        const email = e.target.email.value
         const pwd = e.target.pwd.value
         const confirmPwd = e.target.confirmPwd.value
-        const addr = e.target.addr.value
+        const user_name = e.target.name.value
         const phone = e.target.phone.value
+        const address = e.target.address.value
+        const detail_address = e.target.detail_address.value
 
-        if(pwd === confirmPwd && id !== "" && pwd !== "" && confirmPwd !== "" && phone !== "" && addr !== "")
+        // console.log(email);
+
+        if(pwd === confirmPwd && email !== "" && pwd !== "" && confirmPwd !== "" && user_name !== "" && phone !== "" && address !== ""&& detail_address !== "")
         {
-            await axios.post(`${API_URL}/user/join`,{id, pwd, addr, phone})
+            console.log(email);
+            axios.post(`${API_URL}/user/join`,{email, pwd, user_name, phone, address, detail_address})
             .then(() =>{
                 alert("가입성공!");
                 navigate('/');  
@@ -118,7 +123,7 @@ function Join() {
                     <input
                         ref={inputRefId}
                         type="text"
-                        id="id"
+                        id="email"
                         placeholder="아이디(이메일주소)"
                         onFocus={() => handleInputFocus('id')}
                         onBlur={() => handleInputBlur('id')}
@@ -147,6 +152,28 @@ function Join() {
                     />
                 </li>
                 <li className="input-li">
+                    <label className={isLabelVisiblePwd ? '' : 'hidden'}>이름</label>
+                    <input
+                        ref={inputRefPwd}
+                        type="text"
+                        id="name"
+                        placeholder="이름"
+                        onFocus={() => handleInputFocus('pwd')}
+                        onBlur={() => handleInputBlur('pwd')}
+                    />
+                </li>
+                <li className="input-li">
+                    <label className={isLabelVisiblePwd ? '' : 'hidden'}>전화번호</label>
+                    <input
+                        ref={inputRefPwd}
+                        type="text"
+                        id="phone"
+                        placeholder="전화번호"
+                        onFocus={() => handleInputFocus('pwd')}
+                        onBlur={() => handleInputBlur('pwd')}
+                    />
+                </li>
+                <li className="input-li">
                     <div id='input-li-addr'>
                         <div><label className={isLabelVisiblePwd ? '' : 'hidden'}>주소</label></div>
                         {/* // 버튼 클릭 시 팝업 생성 */}
@@ -155,32 +182,33 @@ function Join() {
                     <input
                         ref={inputRefPwd}
                         type="text"
-                        id="addr"
+                        id="address"
                         placeholder="주소"
+                        value={selectedAddress} // 주소 입력 필드의 값을 선택된 주소로 설정
+                        onChange={handleAddressChange} // 주소 변경을 처리하기 위한 이벤트 핸들러 추가
+                    />
+                    <label className={isLabelVisiblePwd ? '' : 'hidden'}>상세주소</label>
+                    <input
+                        ref={inputRefPwd}
+                        type="text"
+                        id="detail_address"
+                        placeholder="상세주소"
                         onFocus={() => handleInputFocus('pwd')}
                         onBlur={() => handleInputBlur('pwd')}
-                        value={selectedAddress} // 주소 입력 필드의 값을 선택된 주소로 설정
                     />
+                    <div>
+                        {/* 우편번호 창 팝업 생성 기준 div */}
+                        <div id='popupDom'>
+                            {isPopupOpen && (
+                                <PopupDom>
+                                    {/* onSelectAddress prop을 전달 */}
+                                    <PopupPostCode onSelectAddress={handleSelectedAddress} onClose={closePostCode} />
+                                </PopupDom>
+                            )}
+                        </div>
+                    </div>
                 </li>
             </ul>
-
-            {/** 우편번호 창 */}
-
-            <div>
-                {/* // 팝업 생성 기준 div */}
-                <div id='popupDom'>
-                    {isPopupOpen && (
-                        <PopupDom>
-                            {/* onSelectAddress prop을 전달 */}
-                            <PopupPostCode onSelectAddress={handleSelectedAddress} onClose={closePostCode} />
-                        </PopupDom>
-                    )}
-                </div>
-            </div>
-
-            {/** 우편번호 창 */}
-
-
             <li><button type='submit' id='join-btn'>회원가입</button></li>
         </form>
     </div>
