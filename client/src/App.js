@@ -37,6 +37,7 @@ import Buttonmain from "./components/Main/Button";
 import Private from "./page/FooterLink/private";
 import Location from "./page/FooterLink/location"
 import Mypage from "./page/Mypage/Myinfo";
+import Event from './page/Store/Main/Event/Event'
 
 
 function App() {
@@ -76,6 +77,7 @@ function App() {
             <Route path='/happyburger' element={<Happyburger/>}></Route>
             <Route path='/safetyguard' element={<Safetyguard/>}></Route>
             <Route path='/mcdonaldhouse' element={<Mcdonaldhouse/>}></Route>
+            <Route path='/event' element={<Event/>}></Route>
           </Route>
         </Routes>
       <Footer />

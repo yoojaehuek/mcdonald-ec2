@@ -1,6 +1,6 @@
 import React from "react";
 import './Event.scss';
-import MapBotton from "../MapBotton";
+import MapBottom from "../MapBottom";
 import Buttonmain from "../../../../components/Main/Button";
 
 
@@ -26,7 +26,7 @@ import Buttonmain from "../../../../components/Main/Button";
 const Event = () => {
   return (
     <>
-    <MapBotton/>
+    <MapBottom/>
       <div className="FindStore">
         <div class="contents">
           <div class="contArea">
