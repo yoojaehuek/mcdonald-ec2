@@ -5,27 +5,25 @@
   .inner{
     width: 70%;
     position: relative;
-    .links{
-      text-align: center;
+    .inner_btn{
       margin: 0 -40px 60px;
-      position: relative;
-      a{
-        display: block;
-        height: 40px;
-        font-size: 20px;
-        line-height: 39px;
-        text-decoration: none;
-        color: inherit;
-        // float: left;
-        display: flex;
-        justify-content: center;
-        text-align: center;        
-      }
-      a:on{
-        color: red;
-        font-weight: 600;
-        border-bottom: 1px solid red;
-      }
+      text-align: center;
+    }
+    .inner_btn li {
+      display: inline-block;
+      margin: 0 40px;
+      vertical-align: top;
+    }
+    .inner_btn li a {
+      display: block;
+      height: 40px;
+      font-size: 20px;
+      line-height: 39px;
+    }
+    .inner_btn li a.on {
+      color: #db0007;
+      font-weight: 600;
+      border-bottom: 1px solid #db0007;
     }
     .top{
       position: relative;

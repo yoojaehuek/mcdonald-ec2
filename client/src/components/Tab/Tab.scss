@@ -1,6 +1,18 @@
-
-.Tabinput{
-  li::before{
-    background: url(../../../public/images/Story/Ellipse70.png);
+.tabcontainer{
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  .Tabinput{
+    p{
+      white-space: pre;
+      font-size: 16px;
+      color: rgb(128, 128, 128);
+      font-weight: 500;
+      line-height: 1.9;
+    }
+    .maincont{
+      width: 100%;
+      float: left;
+    }
   }
 }
