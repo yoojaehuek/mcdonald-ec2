@@ -1,12 +1,12 @@
 import { API_URL } from "../../config/contansts";
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import './Product.scss';
 
 const Product =({props})=>{
 	console.log("props.id",props.id);
 	return(
-	<Link to={`products/${props.id}`}>
-		
+	<NavLink to={`/menu/${props.subcategory_id}/${props.id}`}>
+	{/* <NavLink to={`/menu/happymeal/${props.id}`}> */}
 		<div id="product">
 			<div>
 				<img src={API_URL+props.image} alt=""/>
@@ -16,7 +16,7 @@ const Product =({props})=>{
 				<p>{props.engName}</p>
 			</div>		
 		</div>
-	</Link>
+	</NavLink>
 	)
 }
 

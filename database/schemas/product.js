@@ -21,6 +21,11 @@ class Product extends Sequelize.Model {
           allowNull: false,
           comment: "admin테이블의 id참초",
         },
+        product_category:{
+          type: Sequelize.BOOLEAN,
+          allowNull: false,
+          comment: "세트, 단품 여부",
+        },
         k_name: {
           type: Sequelize.STRING,
           allowNull: false,
@@ -36,14 +41,8 @@ class Product extends Sequelize.Model {
           allowNull: false,
           comment: "썸네일 이미지 경로",
         },
-        link: {
-          type: Sequelize.STRING,
-          allowNull: false,
-          comment: "클릭시 이동할 URL 주소",
-        },
         seq: {
           type: Sequelize.INTEGER,
-          // autoIncrement: true,
           allowNull: false,
           comment: "표시될 순서"
         },
@@ -54,27 +53,22 @@ class Product extends Sequelize.Model {
         },
         sale_start_time: {
           type: Sequelize.STRING,
-          allowNull: false,
+          allowNull: true,
           comment: "판매 시작 시간",
         },
         sale_end_time: {
           type: Sequelize.STRING,
-          allowNull: false,
+          allowNull: true,
           comment: "판매 종료 시간",
-        },
-        nutritional_information: {
-          type: Sequelize.STRING,
-          allowNull: false,
-          comment: "영양 정보",
         },
         llergen_information: {
           type: Sequelize.STRING,
-          allowNull: false,
+          allowNull: true,
           comment: "알러지 정보",
         },
         cuntry_of_origin: {
           type: Sequelize.STRING,
-          allowNull: false,
+          allowNull: true,
           comment: "원산지",
         },
         price: {
@@ -107,10 +101,10 @@ class Product extends Sequelize.Model {
     db.Product.hasMany(db.OrderMenu, { foreignKey: 'product_id', sourceKey: 'id'});
 
     //참조키로 Admin모델의 id(targetKey)를 admin_id(foreignKey)라는 이름으로 가져옴
-    db.Product.belongsTo(db.Admin, {foreignKey: 'admin_id', targetKey: 'id'});
+    db.Product.belongsTo(db.Admin, { foreignKey: 'admin_id', targetKey: 'id'});
 
     //참조키로 SubCategory모델의 id(targetKey)를 sub_category_id(foreignKey)라는 이름으로 가져옴
-    db.Product.belongsTo(db.SubCategory, {foreignKey: 'sub_category_id', targetKey: 'id'});
+    db.Product.belongsTo(db.SubCategory, { foreignKey: 'sub_category_id', targetKey: 'id'});
   }
 }
 

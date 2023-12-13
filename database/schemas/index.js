@@ -4,18 +4,19 @@ const Category = require('./category');
 const Crew = require('./crew');
 const Effort = require('./effort');
 const Faq = require('./faq');
-const HappyMeal = require('./happymeal');
+// const HappyMeal = require('./happymeal');
 const Material = require('./material');
-const News = require('./news');
+// const News = require('./news');
 const Option = require('./option');
 const Order = require('./order');
 const OrderOption = require('./orderOption');
 const OrderMenu = require('./orderMenu');
 const Product = require('./product');
-const Promotion = require('./promotion');
+const WhatsNew = require('./whatsNew');
 const Store = require('./store')
 const SubCategory = require('./subCategory');
 const User = require('./user'); //user파일을 User로 불러옴 
+const Slider = require('./slider')
 const VisualBackGround = require('./visualBackGround');
 
 const env = process.env.NODE_ENV || 'development'; //상수 env에 NODE_ENV없으면 'development' 넣음
@@ -34,18 +35,19 @@ db.Category = Category;
 db.Crew = Crew;
 db.Effort = Material;
 db.Faq = Faq;
-db.HappyMeal = HappyMeal;
+// db.HappyMeal = HappyMeal; 
 db.Material = Material;
-db.News = News;
+// db.News = News;
 db.Option = Option;
 db.Order = Order;
 db.OrderOption = OrderOption;
 db.OrderMenu = OrderMenu;
 db.Product = Product;
-db.Promotion = Promotion;
+db.WhatsNew = WhatsNew;
 db.Store = Store;
 db.SubCategory = SubCategory;
 db.User = User;
+db.Slider = Slider
 db.VisualBackGround = VisualBackGround;
 
 
@@ -56,17 +58,18 @@ SubCategory.initiate(sequelize);
 Crew.initiate(sequelize);
 Effort.initiate(sequelize);
 Faq.initiate(sequelize);
-HappyMeal.initiate(sequelize);
+// HappyMeal.initiate(sequelize);
 Material.initiate(sequelize);
-News.initiate(sequelize);
+// News.initiate(sequelize);
 Option.initiate(sequelize);
 Order.initiate(sequelize);
 OrderOption.initiate(sequelize);
 OrderMenu.initiate(sequelize);
 Product.initiate(sequelize);
-Promotion.initiate(sequelize);
+WhatsNew.initiate(sequelize);
 Store.initiate(sequelize);
 User.initiate(sequelize);
+Slider.initiate(sequelize);
 VisualBackGround.initiate(sequelize);
 
 
@@ -76,17 +79,18 @@ Crew.associate(db);
 Effort.associate(db);
 Faq.associate(db);
 Material.associate(db);
-News.associate(db);
+// News.associate(db);
 Option.associate(db);
 Order.associate(db);
 OrderOption.associate(db);
 OrderMenu.associate(db);
 Product.associate(db);
-Promotion.associate(db);
-HappyMeal.associate(db);
+WhatsNew.associate(db);
+// HappyMeal.associate(db);
 Store.associate(db);
 User.associate(db);
 VisualBackGround.associate(db);
 SubCategory.associate(db);
+Slider.associate(db);
 
 module.exports = db;

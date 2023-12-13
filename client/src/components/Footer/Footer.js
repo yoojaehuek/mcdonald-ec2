@@ -7,12 +7,12 @@ const Footer = () => {
     <footer className='footer'>
       <div className='footerara'>
         <ul className='futil'>
-          <li className='yellow'><NavLink to="/">개인정보 처리방침</NavLink></li>
-          <li><NavLink to="/">위치정보 이용약관</NavLink></li>
+          <li className='yellow'><NavLink to="/private">개인정보 처리방침</NavLink></li>
+          <li><NavLink to="/location">위치정보 이용약관</NavLink></li>
           <li><NavLink to="/">사이트맵</NavLink></li>
-          <li><NavLink to="/">임차문의</NavLink></li>
+          <li><NavLink to="/store/rental">임차문의</NavLink></li>
           <li><NavLink to="/">고객문의</NavLink></li>
-          <li><NavLink to="/">인재채용</NavLink></li>
+          <li><NavLink to="/story/recruit">인재채용</NavLink></li>
         </ul>
         <ul className='fsans'>
           <li><NavLink to="/" className='fc'></NavLink></li>

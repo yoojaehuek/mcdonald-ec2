@@ -4,12 +4,41 @@ import axios from 'axios';
 import './Join.scss'
 import { API_URL } from '../../config/contansts'
 
+/** 우편번호 창   */
+import PopupDom from './PopupDom';
+import PopupPostCode from './PopupPostCode';
+/** 우편번호 창  */
+
 function Join() {
     const [isLabelVisibleId, setIsLabelVisibleId] = useState(false);
     const [isLabelVisiblePwd, setIsLabelVisiblePwd] = useState(false);
     const inputRefId = useRef(null);
     const inputRefPwd = useRef(null);
     const navigate = useNavigate();
+
+    /** 우편번호 창  */
+
+    // 팝업창 상태 관리
+    const [isPopupOpen, setIsPopupOpen] = useState(false)
+
+    // 팝업창 열기
+    const openPostCode = () => {
+        setIsPopupOpen(true)
+    }
+    
+    // 팝업창 닫기
+    const closePostCode = () => {
+        setIsPopupOpen(false)
+    }
+    
+    const [selectedAddress, setSelectedAddress] = useState('');
+
+    // 선택된 주소를 업데이트하는 콜백 함수
+    const handleSelectedAddress = (address) => {
+        setSelectedAddress(address);
+    };
+
+    /** 우편번호 창  */
 
     const onSubmitJoin = async (e) => {
         e.preventDefault();
@@ -118,7 +147,11 @@ function Join() {
                     />
                 </li>
                 <li className="input-li">
-                    <label className={isLabelVisiblePwd ? '' : 'hidden'}>주소</label>
+                    <div id='input-li-addr'>
+                        <div><label className={isLabelVisiblePwd ? '' : 'hidden'}>주소</label></div>
+                        {/* // 버튼 클릭 시 팝업 생성 */}
+                        <button type='button' onClick={openPostCode}>우편번호 검색</button>
+                    </div>
                     <input
                         ref={inputRefPwd}
                         type="text"
@@ -126,20 +159,28 @@ function Join() {
                         placeholder="주소"
                         onFocus={() => handleInputFocus('pwd')}
                         onBlur={() => handleInputBlur('pwd')}
-                    />
-                </li>
-                <li className="input-li">
-                    <label className={isLabelVisiblePwd ? '' : 'hidden'}>전화번호</label>
-                    <input
-                        ref={inputRefPwd}
-                        type="text"
-                        id="phone"
-                        placeholder="전화번호"
-                        onFocus={() => handleInputFocus('pwd')}
-                        onBlur={() => handleInputBlur('pwd')}
+                        value={selectedAddress} // 주소 입력 필드의 값을 선택된 주소로 설정
                     />
                 </li>
             </ul>
+
+            {/** 우편번호 창 */}
+
+            <div>
+                {/* // 팝업 생성 기준 div */}
+                <div id='popupDom'>
+                    {isPopupOpen && (
+                        <PopupDom>
+                            {/* onSelectAddress prop을 전달 */}
+                            <PopupPostCode onSelectAddress={handleSelectedAddress} onClose={closePostCode} />
+                        </PopupDom>
+                    )}
+                </div>
+            </div>
+
+            {/** 우편번호 창 */}
+
+
             <li><button type='submit' id='join-btn'>회원가입</button></li>
         </form>
     </div>

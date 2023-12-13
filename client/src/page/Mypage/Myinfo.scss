@@ -1,0 +1,96 @@
+
+.container{
+  width: 100%;
+
+  .pagetop{
+    position: relative;
+    padding: 10px 0 60px;
+    width: 1200px;
+    margin: 0 auto;
+  
+    .pagewarp{
+      padding-top: 32px;
+      padding-bottom: 50px;
+  
+      .pagename{
+        float: left;
+        font-size: 28px;
+        font-weight: 200;
+      }
+  
+      .deptarar{
+        float: right;
+        display: flex;
+  
+        >a{
+          font-size: 14px;
+          line-height: 14px;
+          display: inline-block;
+          padding-right: 15px;
+          background-position: right;
+          padding-left: 10px;
+          cursor: pointer;
+          color: var(--txt_02);
+          text-decoration: none;
+          outline: none;
+        }
+      }
+    }
+
+    .slider_scroll {
+      .con {
+        display: flex;
+        list-style: none;
+        margin-bottom: 0;
+  
+        > li {
+          position: relative;
+          cursor: pointer;
+          
+          &::after {
+            content: "";
+            display: block;
+            width: 1px; /* 선의 두께 조절 */
+            height: 50%; /* 선의 높이 조절 */
+            border-left: 1px solid var(--line_03); /* 보더로 선을 표현 */
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+          }
+  
+          > div {
+            font-weight: 800;
+            color: rgba(78, 78, 78, 0.685);
+            padding: 0 26px;
+            cursor: pointer;
+            line-height: 56px;
+          }
+  
+          &:first-child > div {
+            padding-left: 0;
+          }
+        }
+      }
+    }
+
+    .con2{
+      width: 1200px;
+      position: relative;
+      margin: 0 auto;
+      border-top: 1.5px solid var(--colBl);
+      padding-top: 60px;
+
+      .inputList{
+        width: 640px;
+        margin: 0 auto;
+
+        >li{
+          margin-bottom: 30px;
+
+          
+        }
+      }
+    }
+  }
+}
