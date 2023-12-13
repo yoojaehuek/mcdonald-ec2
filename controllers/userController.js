@@ -8,8 +8,7 @@ const UserService = require("../services/userService");
 class UserController {
     static async addUser(req,res,next){
         try {
-            // const {userId, userPwd, userName, userPhone, userGender, userBirth, userCompanionName, userCompanionPhone} = req.body;
-            // const tmp = {userId, userPwd, userName, userPhone, userGender, userBirth, userCompanionName, userCompanionPhone};
+            console.log(req.body);
             const tmp = req.body;
             console.log("유저컨트롤러에서 받은 tmp: ",tmp);
             const newUser = await UserService.addUser(tmp);
