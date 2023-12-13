@@ -25,7 +25,10 @@ import BrandHistory from './page/Story/BrandIntro/BrandHistory';
 import Society from './page/Story/Society/Society';
 import Slider from './components/Main/Slider'
 import Scaleforgood from './page/Story/Society/Scaleforgood/Scaleforgood'
-import Kidssoccer from './page/Story/Society/Kidssoccer/Kidssoccer';
+import Kidssoccer from './page/Story/Society/kidssoccer';
+import Happyburger from './page/Story/Society/happyburger';
+import Safetyguard from './page/Story/Society/safetyguard';
+import Mcdonaldhouse from './page/Story/Society/mcdonaldhouse';
 import McDrive from './page/Store/McDrive/McDrive';
 import Rental from './page/Store/Rental/Rental';
 import McDelivery from './page/Store/McDelivery/McDelivery';
@@ -62,6 +65,9 @@ function App() {
             <Route path='/rental' element={<Rental />}></Route>
             <Route path='/mcdelivery' element={<McDelivery/>}></Route>
             <Route path='/story' element={<Storymain/>}></Route>
+            <Route path='/happyburger' element={<Happyburger/>}></Route>
+            <Route path='/safetyguard' element={<Safetyguard/>}></Route>
+            <Route path='/mcdonaldhouse' element={<Mcdonaldhouse/>}></Route>
           </Route>
         </Routes>
       <Footer />
