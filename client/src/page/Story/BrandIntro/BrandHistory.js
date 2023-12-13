@@ -39,28 +39,28 @@ const tmps4 = [
 
 const BrandHistory = () => {
   return (
-    <div class='BrandHistory'>
-      <div class="contents">
-        <div class="inner">
-          <ul class="inner_btn">
+    <div className='BrandHistory'>
+      <div className="contents">
+        <div className="inner">
+          <ul className="inner_btn">
             <li>
               <a href="/brandintro" role="button">
                 맥도날드 소개
               </a>
             </li>
             <li>
-              <a href="/brandhistory" role="button" class="on">
+              <a href="/brandhistory" role="button" className="on">
                 맥도날드 철학 및 역사
               </a>
             </li>
           </ul>
-          <div class="brandCont001">
+          <div className="brandCont001">
             {tmps.map(tmp=>
               <BrandCont01 key={tmp.prodNum} props={tmp}/>
             )}
           </div>
-          <div class="brandCont005">
-            <div class="mainCont">
+          <div className="brandCont005">
+            <div className="mainCont">
               {tmps3.map(tmp3=>
                 <BrandCont03 key={tmps3.prodNum} props={tmp3}/>
               )}
@@ -69,14 +69,14 @@ const BrandHistory = () => {
               )}
             </div>
           </div>
-          <div class="brandCont004">
-            <div class="brandQscv">
-              <h2 class="titDep2">
+          <div className="brandCont004">
+            <div className="brandQscv">
+              <h2 className="titDep2">
                 <span>맥도날드의 네가지 약속</span>
                 <br/>
                 <span>품질, 서비스, 청결, 가치</span>
               </h2>
-              <div class="philosophy">
+              <div className="philosophy">
                 <blockquote>
                   만약 내가 QSCV를 언급할 때마다
                   <br/>
@@ -101,13 +101,13 @@ const BrandHistory = () => {
                 이는 지금까지도 맥도날드의 핵심 가치로 남아 있습니다.
                 </p>
               </div>
-              <p class="qscvInfo">
-                <em class="color1">*QSC&V : Quality, Service, Cleanliness and Value</em>를 뜻한다.
+              <p className="qscvInfo">
+                <em className="color1">*QSC&V : Quality, Service, Cleanliness and Value</em>를 뜻한다.
                 <br/>
                 고객에게 최고 품질의 청결한 음식과 친절한 서비스를 제공하고자 하는 맥도날드의 기업 정신.
               </p>
             </div>
-            <div class="sociallist">
+            <div className="sociallist">
               {tmps4.map(tmp4=>
                 <BrandCont04 key={tmps4.prodNum} props={tmp4}/>
               )}

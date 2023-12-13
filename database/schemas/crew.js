@@ -9,17 +9,31 @@ class Crew extends Sequelize.Model {
           primaryKey: true,
           autoIncrement: true,
         },
+        admin_id: {
+          type: Sequelize.INTEGER,
+          allowNull: false,
+          comment: "admin테이블의 id참초",
+        },
+        store_id: {
+          type: Sequelize.INTEGER,
+          allowNull: false,
+        },
+        title: {
+          type: Sequelize.STRING,
+          allowNull: false,
+        },
         name: {
           type: Sequelize.STRING,
           allowNull: false,
         },
-        image: {
+        img_url: {
           type: Sequelize.STRING,
           allowNull: false,
         },
-        region: {
+        position: {
           type: Sequelize.STRING,
           allowNull: false,
+          comment: "직책",
         },
         description: {
           type: Sequelize.TEXT,
@@ -30,7 +44,7 @@ class Crew extends Sequelize.Model {
         sequelize,
         timestamps: false,
         modelName: 'Crew',
-        tableName: 'crews',
+        tableName: 'Crew',
         paranoid: false,
         charset: 'utf8',
         collate: 'utf8_general_ci',
@@ -39,7 +53,11 @@ class Crew extends Sequelize.Model {
   }
 
   static associate(db) {
-    //
+    //참조키로 SubCategory모델의 id(targetKey)를 sub_category_id(foreignKey)라는 이름으로 가져옴
+    db.Crew.belongsTo(db.Admin, {foreignKey: 'admin_id', targetKey: 'id'});
+
+    //참조키로 SubCategory모델의 id(targetKey)를 sub_category_id(foreignKey)라는 이름으로 가져옴
+    db.Crew.belongsTo(db.Store, {foreignKey: 'store_id', targetKey: 'id'});
   }
 }
 

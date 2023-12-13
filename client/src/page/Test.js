@@ -6,7 +6,7 @@ import VisualBackGround from '../components/VisualBackGround/VisualBackGround';
 const Test = () => {  
   return(
     <>
-      <VisualBackGround />
+      {/* <VisualBackGround /> */}
       <Outlet />
     </>
   )

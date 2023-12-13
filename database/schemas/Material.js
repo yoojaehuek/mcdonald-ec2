@@ -9,6 +9,11 @@ class Material extends Sequelize.Model {
           primaryKey: true,
           autoIncrement: true,
         },
+        admin_id: {
+          type: Sequelize.INTEGER,
+          allowNull: false,
+          comment: "admin테이블의 id참초",
+        },
         title: {
           type: Sequelize.STRING,
           allowNull: false,
@@ -17,15 +22,15 @@ class Material extends Sequelize.Model {
           type: Sequelize.STRING,
           allowNull: false,
         },
-        additionalInfo: {
+        additional_info: {
           type: Sequelize.STRING,
           allowNull: false,
         },
-        image: {
+        img_url: {
           type: Sequelize.STRING,
           allowNull: false,
         },
-        background: {
+        background_img_url: {
           type: Sequelize.STRING,
           allowNull: false,
         },
@@ -34,7 +39,7 @@ class Material extends Sequelize.Model {
         sequelize,
         timestamps: false,
         modelName: 'Material',
-        tableName: 'material',
+        tableName: 'Material',
         paranoid: false,
         charset: 'utf8',
         collate: 'utf8_general_ci',
@@ -43,7 +48,8 @@ class Material extends Sequelize.Model {
   }
 
   static associate(db) {
-    //
+    //참조키로 Admin모델의 id(targetKey)를 admin_id(foreignKey)라는 이름으로 가져옴
+    db.Material.belongsTo(db.Admin, {foreignKey: 'admin_id', targetKey: 'id'});
   }
 }
 
