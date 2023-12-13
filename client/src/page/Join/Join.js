@@ -16,8 +16,6 @@ function Join() {
     const inputRefPwd = useRef(null);
     const navigate = useNavigate();
 
-
-
     /** 우편번호 창  */
 
     // 팝업창 상태 관리
@@ -149,7 +147,11 @@ function Join() {
                     />
                 </li>
                 <li className="input-li">
-                    <label className={isLabelVisiblePwd ? '' : 'hidden'}>주소</label>
+                    <div id='input-li-addr'>
+                        <div><label className={isLabelVisiblePwd ? '' : 'hidden'}>주소</label></div>
+                        {/* // 버튼 클릭 시 팝업 생성 */}
+                        <button type='button' onClick={openPostCode}>우편번호 검색</button>
+                    </div>
                     <input
                         ref={inputRefPwd}
                         type="text"
@@ -165,8 +167,6 @@ function Join() {
             {/** 우편번호 창 */}
 
             <div>
-                {/* // 버튼 클릭 시 팝업 생성 */}
-                <button type='button' onClick={openPostCode}>우편번호 검색</button>
                 {/* // 팝업 생성 기준 div */}
                 <div id='popupDom'>
                     {isPopupOpen && (

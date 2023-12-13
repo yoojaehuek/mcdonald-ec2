@@ -15,11 +15,10 @@ const VisualBackGround = () => {
 
   useEffect(() => {
     const splitUrl = pathname?.split('/') ?? null;
-    // console.log("splitUrl: ", splitUrl);
-    const location = splitUrl?.length > 1 ? splitUrl[1] : null;
+    console.log("splitUrl: ", splitUrl);
+    const location = splitUrl?.length > 1 ? splitUrl[2] : null;
     setCurrentUrl(location);
-    // console.log("VisualBackGround/location: ",location);
-
+    console.log("VisualBackGround/location: ",location);
     axios.get(`${API_URL}/visualbackground/${location}`)
     .then(res => {
       console.log("VBG/res: ", res.data);

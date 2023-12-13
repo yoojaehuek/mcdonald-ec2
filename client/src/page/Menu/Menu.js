@@ -3,10 +3,13 @@ import Product from '../../components/Product/Product';
 import BtnMore from '../../components/BtnMore/BtnMore';
 import './Menu.scss';
 import VisualBackGround from '../../components/VisualBackGround/VisualBackGround';
+import axios from 'axios';
 
 function Menu() {
     const [select, setSelect] = useState("single");//단품,세트메뉴 선택 
     const [productCount, setProductCount] = useState(6); // 초기 Product 개수 
+
+
 
     const singleProducts = [ // 프토덕트카테고리 0인거는 여기
         {id:1, koName:"더블 비프 미트칠리버거", engName:"Double Beef Meat Chili Burger", image:"/upload/product/singleMenu (1).png"},
