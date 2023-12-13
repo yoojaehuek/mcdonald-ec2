@@ -23,6 +23,7 @@ class UserService{
 			.digest('hex'); 
 
 		const newUser = { email, pwd: hashPassword, salt, user_name, phone, address, detail_address }
+
 		const createNewUser = await UserModel.createUser({newUser});
 		return createNewUser
 	}

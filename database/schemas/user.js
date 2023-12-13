@@ -4,17 +4,10 @@ class User extends Sequelize.Model {
   static initiate(sequelize) {
     User.init({
       id: {
-        type: Sequelize.INTEGER,
-        primaryKey: true,
-        autoIncrement: true,
-        allowNull: false,
-        comment: "(기본키)",
-      },
-      email: {
         type: Sequelize.STRING,
-        unique: true, //중복되면 안됨
+        primaryKey: true,
         allowNull: false,
-        comment: "ID(이메일)",
+        comment: "ID(이메일) 기본키",
       },
       pwd: {
         type: Sequelize.STRING(128),
