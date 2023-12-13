@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from "react";
 
 const { kakao } = window;
 
 function Maps() {
   useEffect(() => {
     // 여기에서 Kakao 지도 API를 사용하여 지도를 초기화하는 코드를 작성
-    const container = document.getElementById('map');
+    const container = document.getElementById("map");
     const options = {
       center: new kakao.maps.LatLng(37.365264512305174, 127.10676860117488),
       level: 3,
@@ -16,9 +16,18 @@ function Maps() {
   }, []);
 
   return (
-    <>
-      <div id="map" style={{ width: '500px', height: '400px' }}></div>
-    </>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <div
+        id="map"
+        style={{ width: "60vw", height: "60vh", margin: "5vw" }}
+      ></div>
+    </div>
   );
 }
 

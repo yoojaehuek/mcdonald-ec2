@@ -33,6 +33,7 @@ import McDrive from './page/Store/McDrive/McDrive';
 import Rental from './page/Store/Rental/Rental';
 import McDelivery from './page/Store/McDelivery/McDelivery';
 import Storymain from './page/Story/Main/Main';
+import Event from './page/Store/Main/Event/Event'
 
 
 function App() {
@@ -68,6 +69,7 @@ function App() {
             <Route path='/happyburger' element={<Happyburger/>}></Route>
             <Route path='/safetyguard' element={<Safetyguard/>}></Route>
             <Route path='/mcdonaldhouse' element={<Mcdonaldhouse/>}></Route>
+            <Route path='/event' element={<Event/>}></Route>
           </Route>
         </Routes>
       <Footer />
