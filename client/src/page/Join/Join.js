@@ -16,8 +16,6 @@ function Join() {
     const inputRefPwd = useRef(null);
     const navigate = useNavigate();
 
-
-
     /** 우편번호 창  */
 
     // 팝업창 상태 관리
