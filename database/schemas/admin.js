@@ -36,12 +36,12 @@ class Admin extends Sequelize.Model {
         allowNull: false,
         comment: "전화번호",
       },
-      // created_at: {
-      //   type: Sequelize.DATE,
-      //   allowNull: false,
-      //   defaultValue: Sequelize.NOW,
-      //   comment: "가입일",
-      // }
+      created_at: {
+        type: Sequelize.DATE,
+        allowNull: false,
+        defaultValue: Sequelize.NOW,
+        comment: "가입일",
+      }
     }, {
       sequelize,
       timestamps: false,

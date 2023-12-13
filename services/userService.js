@@ -37,16 +37,16 @@ class UserService{
 			return errorMessage;
 		}
 
-		// Combine entered password with stored salt
+		// 입력한 비밀번호와 조회해온 암호화 난수 함침
 		const combinedPassword = pwd + user.salt;
 
-		// Hash the combined password and salt
+		// 함친 combinedPassword 암호화
 		const hashedPassword = crypto
 			.createHash('sha512')
 			.update(combinedPassword)
 			.digest('hex');
 
-		// Compare the generated hash with the stored hashed password
+		// hashedPassword와 DB의 비밀번호 비교
 		if (hashedPassword === user.pwd) {
 			console.log('Login successful!');
 			// console.log("userService.js/loginUser()/user: ", user);
@@ -54,7 +54,6 @@ class UserService{
 			const refreshToken = makeRefreshToken();
 
 			// userId를 키값으로 refresh token을 redis server에 저장
-			
 			await redisClient.set(user.id, refreshToken);
 			// await redisClient.get(user.id, (err, value) => {
 			// 	console.log("redis.value: ", value); 
