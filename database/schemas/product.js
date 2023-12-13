@@ -21,7 +21,7 @@ class Product extends Sequelize.Model {
           allowNull: false,
           comment: "admin테이블의 id참초",
         },
-        pruduct_category:{
+        product_category:{
           type: Sequelize.BOOLEAN,
           allowNull: false,
           comment: "세트, 단품 여부",
@@ -44,7 +44,6 @@ class Product extends Sequelize.Model {
         seq: {
           type: Sequelize.INTEGER,
           allowNull: false,
-          unique: true,
           comment: "표시될 순서"
         },
         description: {

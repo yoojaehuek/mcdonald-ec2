@@ -36,6 +36,13 @@
                         color:transparent;
                     }
                 }
+                #input-li-addr{
+                    display: flex;
+                    justify-content: space-between;
+                    button{
+                        padding: 5px;
+                    }
+                }
             }
         }
         #join-btn{

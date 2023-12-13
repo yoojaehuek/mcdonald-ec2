@@ -59,8 +59,6 @@ const DetailProduct =()=>{
         return isVisible ? '-' : '+';
     };
     
-
-
      /** 각 옵션의 수량을 관리할 상태 배열 */ 
     const [optionQuantities, setOptionQuantities] = useState(options.map((option) => ({ id: option.id, name: option.name, quantity: 0 })));
 
@@ -78,7 +76,7 @@ const DetailProduct =()=>{
         setOptionQuantities(updatedQuantities);
     };
 
-     // 각 옵션의 가격 * 수량 값을 더한 총 가격
+    // 각 옵션의 가격 * 수량 값을 더한 총 가격
     // total 은 누적값 초기값0, option 현재 순회중인 options 배열의 요소, index 순회중인 요소의 인덱스
     // reduce는 options 배열의 요소들을 순회하면서 콜백함수를 호출 최종적으로 옵션들의 총값을 추출
     const totalOptionPrice = options.reduce((total, option, index) => {
