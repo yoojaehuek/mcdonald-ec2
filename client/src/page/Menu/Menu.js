@@ -8,7 +8,7 @@ function Menu() {
     const [select, setSelect] = useState("single");//단품,세트메뉴 선택 
     const [productCount, setProductCount] = useState(6); // 초기 Product 개수 
 
-    const singleProducts = [
+    const singleProducts = [ // 프토덕트카테고리 0인거는 여기
         {id:1, koName:"더블 비프 미트칠리버거", engName:"Double Beef Meat Chili Burger", image:"/upload/product/singleMenu (1).png"},
         {id:2, koName:"미트칠리 BLT 버거", engName:"Meat Chili BLT Burger", image:"/upload/product/singleMenu (2).png"},
         {id:3, koName:"빅맥®", engName:"Big Mac®", image:"/upload/product/singleMenu (3).png"},
@@ -19,7 +19,7 @@ function Menu() {
         {id:8, koName:"맥스파이시® 상하이 버거", engName:"McSpicy® Shanghai Burger", image:"/upload/product/singleMenu (8).png"},
         {id:9, koName:"1955® 버거", engName:"1955® Burger", image:"/upload/product/singleMenu (9).png"},
     ]
-    const setProducts = [
+    const setProducts = [ // 프로덕트 카테고리 1인거는 여기
         {id:1, koName:"더블 비프 미트칠리버거 세트", engName:"Double Beef Meat Chili Burger", image:"/upload/product/setMenu (1).png"},
         {id:2, koName:"미트칠리 BLT 버거 세트", engName:"Meat Chili BLT Burger", image:"/upload/product/setMenu (2).png"},
         {id:3,koName:"빅맥® 세트", engName:"Big Mac®", image:"/upload/product/singleMenu (3).png"},

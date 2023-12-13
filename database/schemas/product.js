@@ -21,6 +21,11 @@ class Product extends Sequelize.Model {
           allowNull: false,
           comment: "admin테이블의 id참초",
         },
+        pruduct_category:{
+          type: Sequelize.BOOLEAN,
+          allowNull: false,
+          comment: "세트, 단품 여부",
+        },
         k_name: {
           type: Sequelize.STRING,
           allowNull: false,
@@ -35,11 +40,6 @@ class Product extends Sequelize.Model {
           type: Sequelize.STRING,
           allowNull: false,
           comment: "썸네일 이미지 경로",
-        },
-        link: {
-          type: Sequelize.STRING,
-          allowNull: false,
-          comment: "클릭시 이동할 URL 주소",
         },
         seq: {
           type: Sequelize.INTEGER,
