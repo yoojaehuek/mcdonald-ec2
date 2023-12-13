@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import './Join.scss'
 import { API_URL } from '../../config/contansts'
-
 /** 우편번호 창   */
 import PopupDom from './PopupDom';
 import PopupPostCode from './PopupPostCode';
@@ -25,7 +24,6 @@ function Join() {
     const openPostCode = () => {
         setIsPopupOpen(true)
     }
-    
     // 팝업창 닫기
     const closePostCode = () => {
         setIsPopupOpen(false)
@@ -147,6 +145,17 @@ function Join() {
                     />
                 </li>
                 <li className="input-li">
+                    <label className={isLabelVisiblePwd ? '' : 'hidden'}>전화번호</label>
+                    <input
+                        ref={inputRefPwd}
+                        type="password"
+                        id="confirmPwd"
+                        placeholder="비밀번호 확인"
+                        onFocus={() => handleInputFocus('pwd')}
+                        onBlur={() => handleInputBlur('pwd')}
+                    />
+                </li>
+                <li className="input-li">
                     <div id='input-li-addr'>
                         <div><label className={isLabelVisiblePwd ? '' : 'hidden'}>주소</label></div>
                         {/* // 버튼 클릭 시 팝업 생성 */}
@@ -161,24 +170,20 @@ function Join() {
                         onBlur={() => handleInputBlur('pwd')}
                         value={selectedAddress} // 주소 입력 필드의 값을 선택된 주소로 설정
                     />
+                    <div>
+                        {/* 우편번호 창 팝업 생성 기준 div */}
+                        <div id='popupDom'>
+                            {isPopupOpen && (
+                                <PopupDom>
+                                    {/* onSelectAddress prop을 전달 */}
+                                    <PopupPostCode onSelectAddress={handleSelectedAddress} onClose={closePostCode} />
+                                </PopupDom>
+                            )}
+                        </div>
+                    </div>
                 </li>
             </ul>
 
-            {/** 우편번호 창 */}
-
-            <div>
-                {/* // 팝업 생성 기준 div */}
-                <div id='popupDom'>
-                    {isPopupOpen && (
-                        <PopupDom>
-                            {/* onSelectAddress prop을 전달 */}
-                            <PopupPostCode onSelectAddress={handleSelectedAddress} onClose={closePostCode} />
-                        </PopupDom>
-                    )}
-                </div>
-            </div>
-
-            {/** 우편번호 창 */}
 
 
             <li><button type='submit' id='join-btn'>회원가입</button></li>

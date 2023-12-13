@@ -42,7 +42,7 @@ function App() {
           <Route path='/join' element={<Join/>}/>
           <Route element={<Test/>}>
             <Route path='/society' element={<Society/>}/>
-            <Route path='/menu/burger' element={<Menu/>}/>
+            <Route path='/menu/:subcategory_id' element={<Menu/>}/>
             <Route path='/menu/:subcategory_id/:id' element={<DetailProduct/>}/>
             <Route path='/crew' element={<Crew/>}></Route>
             <Route path='/work' element={<Work/>}></Route>
