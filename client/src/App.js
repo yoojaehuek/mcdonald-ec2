@@ -25,7 +25,10 @@ import BrandHistory from './page/Story/BrandIntro/BrandHistory';
 import Society from './page/Story/Society/Society';
 import Slider from './components/Main/Slider'
 import Scaleforgood from './page/Story/Society/Scaleforgood/Scaleforgood'
-import Kidssoccer from './page/Story/Society/Kidssoccer/Kidssoccer';
+import Kidssoccer from './page/Story/Society/kidssoccer';
+import Happyburger from './page/Story/Society/happyburger';
+import Safetyguard from './page/Story/Society/safetyguard';
+import Mcdonaldhouse from './page/Story/Society/mcdonaldhouse';
 import McDrive from './page/Store/McDrive/McDrive';
 import Rental from './page/Store/Rental/Rental';
 import McDelivery from './page/Store/McDelivery/McDelivery';
@@ -48,7 +51,7 @@ function App() {
           <Route element={<Test/>}>
             <Route path='/story/society' element={<Society/>}/>
             <Route path='/menu/burger' element={<Menu/>}/>
-            <Route path='/menu/burger/:id' element={<DetailProduct/>}/>
+            <Route path='/menu/:subcategory_id/:id' element={<DetailProduct/>}/>
             <Route path='/story/crew' element={<Crew/>}></Route>
             <Route path='/story/work' element={<Work/>}></Route>
             <Route path='/story/recruit' element={<Recruit/>}></Route>
@@ -70,6 +73,9 @@ function App() {
             <Route path='/private' element={<Private/>}></Route>
             <Route path='/location' element={<Location/>}></Route>
             <Route path='/mypage' element={<Mypage/>}></Route>
+            <Route path='/happyburger' element={<Happyburger/>}></Route>
+            <Route path='/safetyguard' element={<Safetyguard/>}></Route>
+            <Route path='/mcdonaldhouse' element={<Mcdonaldhouse/>}></Route>
           </Route>
         </Routes>
       <Footer />
