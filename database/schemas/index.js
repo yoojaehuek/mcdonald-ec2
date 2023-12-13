@@ -16,6 +16,7 @@ const WhatsNew = require('./whatsNew');
 const Store = require('./store')
 const SubCategory = require('./subCategory');
 const User = require('./user'); //user파일을 User로 불러옴 
+const Slider = require('./slider')
 const VisualBackGround = require('./visualBackGround');
 
 const env = process.env.NODE_ENV || 'development'; //상수 env에 NODE_ENV없으면 'development' 넣음
@@ -46,6 +47,7 @@ db.WhatsNew = WhatsNew;
 db.Store = Store;
 db.SubCategory = SubCategory;
 db.User = User;
+db.Slider = Slider
 db.VisualBackGround = VisualBackGround;
 
 
@@ -67,6 +69,7 @@ Product.initiate(sequelize);
 WhatsNew.initiate(sequelize);
 Store.initiate(sequelize);
 User.initiate(sequelize);
+Slider.initiate(sequelize);
 VisualBackGround.initiate(sequelize);
 
 
@@ -88,5 +91,6 @@ Store.associate(db);
 User.associate(db);
 VisualBackGround.associate(db);
 SubCategory.associate(db);
+Slider.associate(db);
 
 module.exports = db;
