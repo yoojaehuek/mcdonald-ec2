@@ -37,6 +37,7 @@ import Buttonmain from "./components/Main/Button";
 import Private from "./page/FooterLink/private";
 import Location from "./page/FooterLink/location"
 import Mypage from "./page/Mypage/Myinfo";
+import Order from "./page/Mypage/Order";
 
 
 function App() {
@@ -48,7 +49,7 @@ function App() {
           <Route path='/' element={<Main></Main>}></Route> 
           <Route path='/login' element={<Login/>}/>
           <Route path='/join' element={<Join/>}/>
-          <Route element={<Test/>}>
+          {/* <Route element={<Test/>}> */}
             <Route path='/story/society' element={<Society/>}/>
             <Route path='/menu/burger' element={<Menu/>}/>
             <Route path='/menu/:subcategory_id/:id' element={<DetailProduct/>}/>
@@ -72,11 +73,13 @@ function App() {
             <Route path='/story' element={<Storymain/>}></Route>
             <Route path='/private' element={<Private/>}></Route>
             <Route path='/location' element={<Location/>}></Route>
-            <Route path='/mypage' element={<Mypage/>}></Route>
+            {/* <Route path='/mypage' element={<Mypage/>}></Route> */}
+            <Route path='/order' element={<Order/>}></Route>
             <Route path='/happyburger' element={<Happyburger/>}></Route>
             <Route path='/safetyguard' element={<Safetyguard/>}></Route>
             <Route path='/mcdonaldhouse' element={<Mcdonaldhouse/>}></Route>
-          </Route>
+          {/* </Route> */}
+          <Route path='/mypage' element={<Mypage/>}></Route>
         </Routes>
       <Footer />
     </div>
