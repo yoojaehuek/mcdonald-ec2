@@ -61,5 +61,34 @@ class UserController {
             next(error)
         }
     }
+
+    static async putUser(req, res, next){
+        try{
+            const userId = req.userId;
+            // const userId = 1;
+            const updateValue = req.body;
+            console.log("userController/updateValue: ", updateValue, userId);
+            const user = await UserService.putUser({updateValue}, {userId});
+
+            // console.log("res임니다요: ",res);
+            res.status(200).json(user)
+        }catch(error){
+            next(error)
+        }
+    }
+
+    static async deleteUser(req, res, next){
+        try{
+            const userId = req.userId;
+            // const userId = 1;
+            console.log("userController/deleteUser: ", userId);
+            const user = await UserService.deleteUser({userId});
+
+            // console.log("res임니다요: ",res);
+            res.status(200).json(user)
+        }catch(error){
+            next(error)
+        }
+    }
 }
 module.exports = UserController;
