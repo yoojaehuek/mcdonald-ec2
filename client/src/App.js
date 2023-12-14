@@ -38,6 +38,7 @@ import Private from "./page/FooterLink/private";
 import Location from "./page/FooterLink/location"
 import Mypage from "./page/Mypage/Myinfo";
 import Order from "./page/Mypage/Order";
+import Event from './page/Store/Main/Event/Event'
 
 
 function App() {
@@ -49,9 +50,10 @@ function App() {
           <Route path='/' element={<Main></Main>}></Route> 
           <Route path='/login' element={<Login/>}/>
           <Route path='/join' element={<Join/>}/>
+          <Route path='/mypage' element={<Mypage/>}></Route>
           {/* <Route element={<Test/>}> */}
             <Route path='/story/society' element={<Society/>}/>
-            <Route path='/menu/burger' element={<Menu/>}/>
+            <Route path='/menu/:subcategory_id' element={<Menu/>}/>
             <Route path='/menu/:subcategory_id/:id' element={<DetailProduct/>}/>
             <Route path='/story/crew' element={<Crew/>}></Route>
             <Route path='/story/work' element={<Work/>}></Route>
@@ -62,6 +64,7 @@ function App() {
             <Route path='/story/brandintro' element={<BrandIntro/>}></Route>
             <Route path='/story/brandhistory' element={<BrandHistory/>}></Route>
             <Route path='/store/find' element={<Find/>}></Route>
+            <Route path='/store/event' element={<Event/>}></Route>
             <Route path='/whats-new/promotion' element={<Promotion />}></Route>
             <Route path='/slider' element={<Slider />}></Route>
             <Route path='/:page/detail/:prodNum' element={<DetailPromotion />}></Route>
@@ -73,13 +76,11 @@ function App() {
             <Route path='/story' element={<Storymain/>}></Route>
             <Route path='/private' element={<Private/>}></Route>
             <Route path='/location' element={<Location/>}></Route>
-            {/* <Route path='/mypage' element={<Mypage/>}></Route> */}
             <Route path='/order' element={<Order/>}></Route>
             <Route path='/happyburger' element={<Happyburger/>}></Route>
             <Route path='/safetyguard' element={<Safetyguard/>}></Route>
             <Route path='/mcdonaldhouse' element={<Mcdonaldhouse/>}></Route>
           {/* </Route> */}
-          <Route path='/mypage' element={<Mypage/>}></Route>
         </Routes>
       <Footer />
     </div>

@@ -77,14 +77,14 @@ router.get('/detail/:id', async (req, res) => {
 });
 
 
-router.get('/:id', async (req, res) => {
+router.get('/subcategory/:id', async (req, res) => {
   const categoryId = req.params.id;
   console.log("product/:id 진입: ", categoryId);
 
   try {
     const products = await Product.findAll({
       where: {
-        category: categoryId,
+        sub_category_id: categoryId,
       },
     });
 

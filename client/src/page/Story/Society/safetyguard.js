@@ -1,5 +1,5 @@
 import './safetyguard.scss'
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const guard = [
     {
@@ -21,20 +21,28 @@ const safetyguard = () => {
         <>
         <div className="sgcontainer">
             <div className="inner">
-                <div className="links">
-                    <a>
-                        <Link to="/kidssoccer">로날드 맥도날드 어린이 축구교실</Link>
-                    </a>
-                    <a>
-                        <Link to ="/happyburger">행복의 버거 캠페인</Link>
-                    </a>
-                    <a>
-                        <Link to ="/">맥도날드 안전지킴 캠페인</Link>
-                    </a>
-                    <a>
-                        <Link to ="/mcdonaldhouse">재단법인 로날드맥도날드하우스</Link>
-                    </a>
-                </div>
+            <ul className="inner_btn">
+                    <li>
+                        <NavLink to="/kidssoccer" role="button">
+                            로날드 맥도날드 어린이 축구교실
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/happyburger" role="button">
+                            행복의 버거 캠페인
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/safetyguard" role="button" className="on">
+                            맥도날드 안전지킴 캠페인
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/mcdonaldhouse" role="button">
+                            재단법인 로날드맥도날드하우스
+                        </NavLink>
+                    </li>
+                </ul>
                 <div className="top">
                     <img src="/"></img>
                     <h2>

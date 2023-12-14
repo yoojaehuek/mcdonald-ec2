@@ -1,15 +1,26 @@
-import React ,{useState}from 'react';
+import React ,{useEffect, useState}from 'react';
 import Product from '../../components/Product/Product';
 import BtnMore from '../../components/BtnMore/BtnMore';
+import { API_URL } from '../../config/contansts';
 import './Menu.scss';
-import VisualBackGround from '../../components/VisualBackGround/VisualBackGround';
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 function Menu() {
     const [select, setSelect] = useState("single");//단품,세트메뉴 선택 
     const [productCount, setProductCount] = useState(6); // 초기 Product 개수 
+    const { subcategory_id } = useParams();// 이거로 id 가저와서 axios.get() 보내서 
+    console.log(subcategory_id);
 
-
+    // const res = await axios.get(`${API_URL}/product?subcategory=${id}`);
+    useEffect(()=>{
+        axios.get(`${API_URL}/product/subcategory/${subcategory_id}`)
+        .then(res => {
+            console.log(res.data);
+        }).catch(err => {
+            console.error(err);
+        })
+    }, [subcategory_id])
 
     const singleProducts = [ // 프토덕트카테고리 0인거는 여기
         {id:1, koName:"더블 비프 미트칠리버거", engName:"Double Beef Meat Chili Burger", image:"/upload/product/singleMenu (1).png"},
