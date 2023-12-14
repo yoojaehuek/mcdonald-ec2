@@ -51,7 +51,7 @@ const Order = () => {
                     checked={selectedPeriod === 'today'}
                     onChange={handlePeriodChange}
                   />
-                  <div>오늘</div>
+                  <div className={`radio-label ${selectedPeriod === 'today' ? 'active' : ''}`}>오늘</div>
                 </label>
               </li>
               <li>
@@ -64,7 +64,7 @@ const Order = () => {
                     checked={selectedPeriod === 'week'}
                     onChange={handlePeriodChange}
                   />
-                  <div>1주일</div>
+                  <div className={`radio-label ${selectedPeriod === 'week' ? 'active' : ''}`}>1주일</div>
                 </label>
               </li>
               <li>
@@ -72,11 +72,12 @@ const Order = () => {
                   <input
                     type='radio'
                     name='serchday'
+                    value="3month"
                     id='order_history_3month'
                     checked={selectedTab === '3month'}
                     onChange={handlePeriodChange}
                   />
-                  <div>3개월</div>
+                  <div className={`radio-label ${selectedPeriod === '3month' ? 'active' : ''}`}>3개월</div>
                 </label>
               </li>
               <li>
@@ -84,11 +85,12 @@ const Order = () => {
                   <input
                     type='radio'
                     name='serchday'
+                    value="6month"
                     id='order_history_6month'
                     checked={selectedTab === '6month'}
                     onChange={handlePeriodChange}
                   />
-                  <div>6개월</div>
+                  <div className={`radio-label ${selectedPeriod === '6month' ? 'active' : ''}`}>6개월</div>
                 </label>
               </li>
               <li>
@@ -97,10 +99,11 @@ const Order = () => {
                     type='radio'
                     name='serchday'
                     id='order_history_year'
+                    value="year"
                     checked={selectedTab === 'year'}
                     onChange={handlePeriodChange}
                   />
-                  <div>1년</div>
+                  <div className={`radio-label ${selectedPeriod === 'year' ? 'active' : ''}`}>1년</div>
                 </label>
               </li>
             </ul>
