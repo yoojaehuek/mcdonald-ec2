@@ -2,14 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import Order from './Order';
 import "./Myinfo.scss";
+import axios from 'axios';
+import { API_URL } from '../../config/contansts';
 
 const Myinfo = () => {
   const [selectedEmail, setSelectedEmail] = useState('');
-  const [selectedPassword, setSelectedPassword] = useState('');
-  const [confirmedPassword, setConfirmedPassword] = useState('');
+  const [selectPhone, setSelectedPhone] = useState('');
   const [selectedAddress, setSelectedAddress] = useState('');
+  const [selectedDetailAddress, setSelectedDetailAddress] = useState('');
   const [selectedPhoneNumber, setSelectedPhoneNumber] = useState('');
   
+  const [user, setUser] = useState({});
 
   const [selectedYear, setSelectedYear] = useState('');
   const [selectedMonth, setSelectedMonth] = useState('');
@@ -36,9 +39,22 @@ const Myinfo = () => {
   };
 
 
-
-
   useEffect(() => {
+    axios.get(`${API_URL}/user/one`)
+    .then(res => {
+      console.log(res.data);
+      setUser(res.data);
+      setSelectedEmail(res.data.user_email);
+      setSelectedAddress(res.data.address);
+      setSelectedDetailAddress(res.data.detail_address);
+      setSelectedPhone(res.data.phone1);
+      setSelectedPhoneNumber(res.data.phone);
+      setSelectedYear(res.data.birth)
+      setSelectedMonth(res.data.birth)
+      setSelectedDay(res.data.birth)
+    }).catch((err) =>{
+      console.error(err);
+    });
     // 페이지 로드 시 현재 날짜와 월일로 기본값 설정
     const currentDate = new Date();
     setSelectedYear(currentDate.getFullYear());
@@ -72,28 +88,32 @@ const Myinfo = () => {
               <ul className='inputList'>
                 <li>
                   <div className='tit'><span>이름</span></div>
-                  <div className='box'><input type='text' value="임헌성" id='name' disabled='disabled'></input></div>
+                  <div className='box'><input type='text' value={user.name} id='name' disabled='disabled'></input></div>
                 </li>
                 <li>
                   <div className='tit'><span>아이디</span></div>
-                  <div className='box'><input type='email'placeholder='이메일을 입력해주세요' value={selectedEmail} id='email' onChange={(e) => setSelectedEmail(e.target.value)}></input></div>
+                  <div className='box'><input type='email'disabled='disabled' value={selectedEmail} id='email' onChange={(e) => setSelectedEmail(e.target.value)}></input></div>
                 </li>
-                <li>
+                {/* <li>
                   <div className='tit'><span>비밀번호</span></div>
                   <div className='box'><input type='password' value={selectedPassword} id='password' onChange={(e) => setSelectedPassword(e.target.value)}></input></div>
                 </li>
                 <li>
                   <div className='tit'><span>비밀번호 재입력</span></div>
                   <div className='box'><input type='password' value={confirmedPassword} id='password' onChange={(e) => setConfirmedPassword(e.target.value)}></input></div>
-                </li>
+                </li> */}
                 <li>
                   <div className='tit'><span>주소</span></div>
-                  <div className='box'><input type='text' placeholder='주소를 입력해주세요' value={selectedAddress} id='adress' onChange={(e) => setSelectedAddress(e.target.value)}></input></div>
+                  <div className='box'><input type='text' disabled='disabled' value={selectedAddress} id='adress' onChange={(e) => setSelectedAddress(e.target.value)}></input></div>
+                </li>
+                <li>
+                  <div className='tit'><span>상세주소</span></div>
+                  <div className='box'><input type='text' placeholder='상세주소를 입력해주세요' value={selectedDetailAddress} id='adress' onChange={(e) => setSelectedDetailAddress(e.target.value)}></input></div>
                 </li>
                 <li>
                   <div className='tit'><span>휴대전화</span></div>
                   <div className='boxFlex'>
-                    <select name='phone1' id='phonejoin'>
+                    <select name='phone1' id='phonejoin' value={selectPhone} >
                       <option value="010">010</option>
                       <option value="011">011</option>
                       <option value="016">016</option>
@@ -101,7 +121,7 @@ const Myinfo = () => {
                       <option value="018">018</option>
                       <option value="019">019</option>
                     </select>
-                    <input type='number' placeholder='숫자만 입력해주세요' id='phone2join' value={selectedPhoneNumber}
+                    <input type='number' id='phone2join' value={selectedPhoneNumber} placeholder='숫자만 입력해주세요'
                       onChange={(e) => setSelectedPhoneNumber(e.target.value)}></input>
                   </div>
                 </li>

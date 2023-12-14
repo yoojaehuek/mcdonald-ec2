@@ -25,11 +25,6 @@ class WhatsNew extends Sequelize.Model {
           allowNull: false,
           comment: "타이틀"
         },
-        link: {
-          type: Sequelize.STRING,
-          allowNull: false,
-          comment: "클릭시 이동할 주소"
-        },
         seq: {
           type: Sequelize.INTEGER,
           // autoIncrement: true,

@@ -27,7 +27,7 @@ const Order = () => {
   };
 
 
-  const periods = ['today', 'week', '3month', '6month', 'year'];
+  // const periods = ['today', 'week', '3month', '6month', 'year'];
 
   const handlePeriodChange = (e) => {
     setSelectedPeriod(e.target.value);

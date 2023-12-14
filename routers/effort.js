@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Effort = require('../database/schemas/Effort');
+const Effort = require('../database/schemas/effort');
 
 router.get('/', async (req, res) => {
   try {

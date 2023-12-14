@@ -15,6 +15,7 @@ const userRouter = require('./routers/user');
 const productRouter = require('./routers/product');
 const sliderRouter = require('./routers/slider');
 const storeRouter = require('./routers/store');
+const whatsNewRouter = require('./routers/whatsNew');
 
 //시퀄라이즈 연결 부분
 sequelize.sync({ force: false }) //force가 true면 킬때마다 DB 새로 만듬
@@ -49,7 +50,21 @@ app.use("/visualbackground", visualBackGroundRouter);
 app.use('/product', productRouter);
 app.use('/slider', sliderRouter);
 app.use('/store', storeRouter);
-
+app.use('/whats-new', whatsNewRouter);
+app.get('/logout', (req, res) => {
+  console.log("logout");
+  res.cookie('accessToken',{},{
+    httpOnly : true,
+    secure : false,
+    sameSite : 'strict',
+  })
+  res.cookie('refreshToken',{},{
+    httpOnly : true,
+    secure : false,
+    sameSite : 'strict',
+  })
+  res.status(200).end();
+})
 
 // '/upload'경로로 뭔가 요청이오면 여기서 걸리고 upload폴더의 정적 파일을 제공하겠다
 // 예: "/upload/image.jpg")에 액세스하면 Express.js는 "upload" 디렉터리에서 정적 파일을 찾아 제공

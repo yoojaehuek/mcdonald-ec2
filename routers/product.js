@@ -57,7 +57,7 @@ router.get('/', async (req, res) => {
 });
 
 
-router.get('/detail/:id', async (req, res) => {
+router.get('/:id', async (req, res) => {
   console.log("req.params", req.params);
   const _productId = req.params.id;
   console.log("product/:productId 진입: ", _productId);

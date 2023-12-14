@@ -65,9 +65,10 @@ function App() {
             <Route path='/story/brandhistory' element={<BrandHistory/>}></Route>
             <Route path='/store/find' element={<Find/>}></Route>
             <Route path='/store/event' element={<Event/>}></Route>
-            <Route path='/whats-new/promotion' element={<Promotion />}></Route>
+            <Route path='/whats-new/12' element={<Promotion />}></Route>
+            <Route path='/whats-new/14' element={<HappyMeal />}></Route>
             <Route path='/slider' element={<Slider />}></Route>
-            <Route path='/:page/detail/:prodNum' element={<DetailPromotion />}></Route>
+            <Route path='/whats-new/:page/:prodNum' element={<DetailPromotion />}></Route>
             <Route path='/scaleforgood' element={<Scaleforgood/>}/>
             <Route path='/kidssoccer' element={<Kidssoccer />} />
             <Route path='/store/mcdrive' element={<McDrive />}></Route>
