@@ -30,6 +30,9 @@ const News = () => {
     <>
       <div className="news-contArea">
         <div className="inner">
+          <div id='news-length'>
+            <strong>총 <span className='color-red'>{items.length}건</span>의 게시글이 있습니다.</strong>
+          </div>
           <ul id='list'>
             {items.map((item, index)=>
               <li key={index} className={'list-item'}>
