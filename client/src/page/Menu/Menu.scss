@@ -7,7 +7,8 @@
         display: flex;
         text-align: center;
         gap: 60px;
-        width: 300px;
+        left: 50%;
+        justify-content: center;
         padding-top: 10px;
         .select-btn{
             font-size: 20px;

@@ -11,9 +11,41 @@ import PopupPostCode from './PopupPostCode';
 function Join() {
     const [isLabelVisibleId, setIsLabelVisibleId] = useState(false);
     const [isLabelVisiblePwd, setIsLabelVisiblePwd] = useState(false);
+    const [selectedAddress, setSelectedAddress] = useState('');// 우편번호
+    const [selectedYear, setSelectedYear] = useState('');
+    const [selectedMonth, setSelectedMonth] = useState('');
+    const [selectedDay, setSelectedDay] = useState('');  
     const inputRefId = useRef(null);
     const inputRefPwd = useRef(null);
     const navigate = useNavigate();
+
+
+    const currentYear = new Date().getFullYear();
+    const years = Array.from({ length: 100 }, (_, index) => currentYear - index);
+    const months = Array.from({ length: 12 }, (_, index) => index + 1);
+    const days = Array.from({ length: 31 }, (_, index) => index + 1);
+  
+    const handleYearChange = (e) => {
+        setSelectedYear(e.target.value);
+    };
+
+    const handleMonthChange = (e) => {
+        setSelectedMonth(e.target.value);
+    };
+
+    const handleDayChange = (e) => {
+        setSelectedDay(e.target.value);
+    };
+
+
+
+
+
+
+
+
+
+
 
     /** 우편번호 창  */
 
@@ -27,9 +59,6 @@ function Join() {
     const closePostCode = () => {
         setIsPopupOpen(false)
     }
-    
-    const [selectedAddress, setSelectedAddress] = useState('');
-
     // 선택된 주소를 업데이트하는 콜백 함수
     const handleSelectedAddress = (address) => {
         setSelectedAddress(address);
@@ -49,8 +78,6 @@ function Join() {
         const phone = e.target.phone.value
         const address = e.target.address.value
         const detail_address = e.target.detail_address.value
-
-        // console.log(email);
 
         if(pwd === confirmPwd && email !== "" && pwd !== "" && confirmPwd !== "" && user_name !== "" && phone !== "" && address !== ""&& detail_address !== "")
         {
@@ -99,18 +126,19 @@ function Join() {
                 setIsLabelVisiblePwd(true);
             }
         };
+
+
         const handleInputBlur = (inputType) => {
-        const inputValue =
-            inputType === 'id' ? inputRefId.current.value : inputRefPwd.current.value;
-    
-        // 만약 입력 필드가 비어있다면, 다시 라벨을 숨길 수 있습니다.
-        if (!inputValue.trim()) {
-            if(inputType === 'id') {
-                setIsLabelVisibleId(false);
-            }else if(inputType === 'pwd') {
-                setIsLabelVisiblePwd(false);
+            const inputValue = inputType === 'id' ? inputRefId.current.value : inputRefPwd.current.value;
+        
+            // 만약 입력 필드가 비어있다면, 다시 라벨을 숨길 수 있습니다.
+            if (!inputValue.trim()) {
+                if(inputType === 'id') {
+                    setIsLabelVisibleId(false);
+                }else if(inputType === 'pwd') {
+                    setIsLabelVisiblePwd(false);
+                }
             }
-        }
         };
     
     return (
@@ -173,6 +201,38 @@ function Join() {
                         onBlur={() => handleInputBlur('pwd')}
                     />
                 </li>
+
+                <li className="input-li">
+                    <div className='tit'><span>생년월일</span></div>
+                    <div className='boxecal'>
+                        <select className='chyear' id='chyearjoin' value={selectedYear} onChange={handleYearChange}>
+                        <option value="">선택</option>
+                        {years.map((year) => (
+                            <option key={year} value={year}>
+                            {year}
+                            </option>
+                        ))}
+                        </select>
+                        <select className='chmonth' id='chmonthjoin' value={selectedMonth} onChange={handleMonthChange}>
+                        <option value="">선택</option>
+                        {months.map((month) => (
+                            <option key={month} value={month}>
+                            {month}
+                            </option>
+                        ))}
+                        </select>
+                        <select className='chday' id='chdayjoin' value={selectedDay} onChange={handleDayChange}>
+                        <option value="">선택</option>
+                        {days.map((day) => (
+                            <option key={day} value={day}>
+                            {day}
+                            </option>
+                        ))}
+                        </select>
+                    </div>
+                </li>
+
+                
                 <li className="input-li">
                         <label className={isLabelVisiblePwd ? '' : 'hidden'}>주소</label>
                     <div id='input-li-addr'>

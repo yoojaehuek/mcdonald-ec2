@@ -46,7 +46,7 @@ const Header = () => {
               onMouseLeave={() => setDepth1Open(false)}
             >
               <li>
-                <NavLink to="/menu/burger" className={`dth1 ${isDepth1Open ? 'on' : ''}`}>
+                <NavLink to="/menu/1" className={`dth1 ${isDepth1Open ? 'on' : ''}`}>
                   Menu
                 </NavLink>
                 <ul className='depth2'>

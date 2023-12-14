@@ -145,4 +145,3 @@ const Order = () => {
 };
 
 export default Order;
-//32
