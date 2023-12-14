@@ -18,7 +18,7 @@ const AccordionItem = ({ category, item }) => {
     <AccordionContainer className="AccordionContainer" onChange={toggleDescription}>
       <AccordionSummary className="AccordionContainer2" expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content">
         <Typography className="category" sx={{ marginRight: "3vw" }}>{category.category}</Typography>
-        <Typography className="title">{item.name}</Typography>
+        <Typography className="title">{item.title}</Typography>
       </AccordionSummary>
       <AccordionDetails className="dectption">
         {showDescription && (

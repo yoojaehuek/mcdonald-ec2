@@ -4,76 +4,78 @@ import MapBotton from "../MapBottom";
 import Maps from "./map";
 import { IconButton } from "@mui/material";
 import MyLocationIcon from "@mui/icons-material/MyLocation";
+import axios from "axios";
+import { API_URL } from "../../../../config/contansts";
 
 // import { NavLink } from 'react-router-dom';
 
-const stores = [
-  {
-    id: 1,
-    store_name: "평택GS DT",
-    phone: "010-0000-0001",
-    address: "경기 평택시 용이동 470-5",
-    start_time: "00:00",
-    end_time: "24:00",
-    yn_24h: true,
-    yn_mcmorning: true,
-    yn_mcdrive: true,
-    yn_mcdelivery: true,
-    yn_parking: true,
-  },
-  {
-    id: 2,
-    store_name: "평택서정 DT점",
-    phone: "010-0000-0002",
-    address: "경기 평택시 서정동 779-5",
-    start_time: "07:00",
-    end_time: "23:00",
-    yn_24h: false,
-    yn_mcmorning: true,
-    yn_mcdrive: true,
-    yn_mcdelivery: true,
-    yn_parking: false,
-  },
-  {
-    id: 3,
-    store_name: "평택 세교DT점",
-    phone: "010-0000-0003",
-    address: "경기 평택시 세교동 277-10",
-    start_time: "00:00",
-    end_time: "24:00",
-    yn_24h: true,
-    yn_mcmorning: false,
-    yn_mcdrive: true,
-    yn_mcdelivery: false,
-    yn_parking: true,
-  },
-  {
-    id: 4,
-    store_name: "송탄",
-    phone: "010-0000-0004",
-    address: "경기 평택시 신장동 302-1",
-    start_time: "08:00",
-    end_time: "24:00",
-    yn_24h: false,
-    yn_mcmorning: false,
-    yn_mcdrive: false,
-    yn_mcdelivery: true,
-    yn_parking: true,
-  },
-  {
-    id: 5,
-    store_name: "송탄",
-    phone: "010-0000-0004",
-    address: "경기 평택시 신장동 302-1",
-    start_time: "08:00",
-    end_time: "24:00",
-    yn_24h: false,
-    yn_mcmorning: false,
-    yn_mcdrive: false,
-    yn_mcdelivery: true,
-    yn_parking: true,
-  },
-];
+// const stores = [
+//   {
+//     id: 1,
+//     store_name: "평택GS DT",
+//     phone: "010-0000-0001",
+//     address: "경기 평택시 용이동 470-5",
+//     start_time: "00:00",
+//     end_time: "24:00",
+//     yn_24h: true,
+//     yn_mcmorning: true,
+//     yn_mcdrive: true,
+//     yn_mcdelivery: true,
+//     yn_parking: true,
+//   },
+//   {
+//     id: 2,
+//     store_name: "평택서정 DT점",
+//     phone: "010-0000-0002",
+//     address: "경기 평택시 서정동 779-5",
+//     start_time: "07:00",
+//     end_time: "23:00",
+//     yn_24h: false,
+//     yn_mcmorning: true,
+//     yn_mcdrive: true,
+//     yn_mcdelivery: true,
+//     yn_parking: false,
+//   },
+//   {
+//     id: 3,
+//     store_name: "평택 세교DT점",
+//     phone: "010-0000-0003",
+//     address: "경기 평택시 세교동 277-10",
+//     start_time: "00:00",
+//     end_time: "24:00",
+//     yn_24h: true,
+//     yn_mcmorning: false,
+//     yn_mcdrive: true,
+//     yn_mcdelivery: false,
+//     yn_parking: true,
+//   },
+//   {
+//     id: 4,
+//     store_name: "송탄",
+//     phone: "010-0000-0004",
+//     address: "경기 평택시 신장동 302-1",
+//     start_time: "08:00",
+//     end_time: "24:00",
+//     yn_24h: false,
+//     yn_mcmorning: false,
+//     yn_mcdrive: false,
+//     yn_mcdelivery: true,
+//     yn_parking: true,
+//   },
+//   {
+//     id: 5,
+//     store_name: "송탄",
+//     phone: "010-0000-0004",
+//     address: "경기 평택시 신장동 302-1",
+//     start_time: "08:00",
+//     end_time: "24:00",
+//     yn_24h: false,
+//     yn_mcmorning: false,
+//     yn_mcdrive: false,
+//     yn_mcdelivery: true,
+//     yn_parking: true,
+//   },
+// ];
 
 const Find = () => {
   const [yn_24h, setYn24] = useState(false);
@@ -82,9 +84,23 @@ const Find = () => {
   const [yn_mcdelivery, setYnmcdelivery] = useState(false);
   const [yn_parking, setYnparking] = useState(false);
   const [searchText, setSearchText] = useState(""); // 입력값을 저장할 상태 추가
+  const [stores, setStores] = useState([]);
   const [result, setResult] = useState(stores);
   const [currentpage, setcurrentpage] = useState(1);
   const [storepage] = useState(4);
+
+  useEffect(() => {
+    axios.get(`${API_URL}/store`)
+      .then(res => {
+        setStores(res.data);
+        const filteredStores = res.data.filter((store) => store.id === 1).slice(0, storepage);
+        setResult(filteredStores);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }, []);
+  
 
   const toggleButton = (setter) => {
     setter((prev) => !prev);
@@ -121,12 +137,6 @@ const Find = () => {
   const currentStores = result.slice(firststore, laststore); // 현재 페이지에 보여줄 친구들 result 배열에서 가져옴
 
   const paginate = (pageNumber) => setcurrentpage(pageNumber); // 페이지 변경 함수. 클릭한 페이지로 이동
-  
-  //초기에 첫 페이지 id가 1인 친구 보여줌. 그 후 첫 페이지에 표시될 애들 제한해서 상태 업데이트
-  useEffect(() => {
-    setResult(stores.filter((store) => store.id === 1).slice(0, storepage));
-    //console.log(result);
-  }, []);
 
   return (
     <>
@@ -239,7 +249,7 @@ const Find = () => {
           {Array.from({ length: Math.ceil(result.length / storepage) }, (_, index) => index + 1).map((pageNumber) => ( // 페이지 번호 생성
             <button key={pageNumber} onClick={() => paginate(pageNumber)}>
               {pageNumber}
-            </button> // 번호 보여주고 클릭 시 이동
+            </button>
           ))}
         </div>
       </div>
