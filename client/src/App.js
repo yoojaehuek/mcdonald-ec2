@@ -18,9 +18,9 @@ import Find from './page/Store/Main/Find/Find';
 // import Safekeeping from './page/Story/Competition/FarmToRestaurant/Safekeeping';
 import FarmToRestaurant from './page/Story/Competition/FarmToRestaurant/FarmToRestaurant';
 // import Material from './page/Story/Competition/FarmToRestaurant/Material';
-import HappyMeal from './page/WhatsNew/HappyMeal/HappyMeal';
-import Promotion from './page/WhatsNew/Promotion/Promotion';
-import DetailPromotion from './page/WhatsNew/Promotion/DetailPromotion/DetailPromotion';
+import News from './page/WhatsNew/News/News.js';
+import Promotion_HappyMeal from './page/WhatsNew/Promotion_HappyMeal/Promotion_HappyMeal.js';
+import DetailPage from './page/WhatsNew/DetailPage/DetailPage.js';
 import BrandHistory from './page/Story/BrandIntro/BrandHistory';
 import Society from './page/Story/Society/Society';
 import Slider from './components/Main/Slider'
@@ -60,14 +60,14 @@ function App() {
             <Route path='/story/recruit' element={<Recruit/>}></Route>
             <Route path='/story/faq' element={<Faq/>}></Route>
             <Route path='/story/farmtorestaurant' element={<FarmToRestaurant/>}></Route>
-            <Route path='/whats-new/happymeal' element={<HappyMeal />}></Route>
+            {/* <Route path='/whats-new/happymeal' element={<HappyMeal />}></Route> */}
             <Route path='/story/brandintro' element={<BrandIntro/>}></Route>
             <Route path='/story/brandhistory' element={<BrandHistory/>}></Route>
             <Route path='/store/find' element={<Find/>}></Route>
             <Route path='/store/event' element={<Event/>}></Route>
-            <Route path='/whats-new/12' element={<Promotion />}></Route>
-            <Route path='/whats-new/14' element={<HappyMeal />}></Route>
-            <Route path='/whats-new/:page/:prodNum' element={<DetailPromotion />}></Route>
+            <Route path='/whats-new/13' element={<News />}></Route>
+            <Route path='/whats-new/:subcategory_id' element={<Promotion_HappyMeal />}></Route>
+            <Route path='/whats-new/:page/:prodNum' element={<DetailPage />}></Route>
             <Route path='/slider' element={<Slider />}></Route>
             <Route path='/scaleforgood' element={<Scaleforgood/>}/>
             <Route path='/kidssoccer' element={<Kidssoccer />} />

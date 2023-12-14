@@ -1,4 +1,4 @@
-import './Promotion.scss'
+import './Promotion_HappyMeal.scss'
 import Card from '../../../components/Card/Card';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
@@ -14,13 +14,13 @@ import { API_URL } from '../../../config/contansts';
 //   {table: "promotion", prodNum: 6, prodImg: "/upload/whatsNew/promotion/1679374416689.jpg", prodContent: "첫 적립 시 2000 포인트 제공!\n 새로워진 마이 맥도날드 리워드!"},
 // ]
 
-const Promotion = () => {
+const Promotion_HappyMeal = () => {
   const { pathname } = useLocation();
   const subcategory_id = pathname.split('/')[2];
 
   const [items, setItems] = useState([]);
 
-  console.log("Promotion/subcategory_id: ", subcategory_id);
+  // console.log("Promotion/subcategory_id: ", subcategory_id);
   useEffect(()=>{
     axios.get(`${API_URL}/whats-new/subcategory/${subcategory_id}`)
     .then(res => {
@@ -28,12 +28,13 @@ const Promotion = () => {
       setItems(res.data);
     }).catch(err => {
       console.error(err);
+      alert('요청하신 페이지가 없습니다.');
     })
-  })
+  },[subcategory_id])
 
   return(
     <>
-      <div className="contArea">
+      <div className="promotion-happymeal-contArea">
         <div className="inner">
           <div id='cardList'>
             {items.map((item, index)=> 
@@ -46,4 +47,4 @@ const Promotion = () => {
   )
 }
 
-export default Promotion; 
+export default Promotion_HappyMeal; 

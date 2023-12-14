@@ -71,7 +71,7 @@ const Header = () => {
                 </ul>
               </li>
               <li>
-                <NavLink to="/whats-new/promotion" className={`dth1 ${isDepth1Open ? 'on' : ''}`}>
+                <NavLink to="/whats-new/12" className={`dth1 ${isDepth1Open ? 'on' : ''}`}>
                   What's New
                 </NavLink>
                 <ul className='depth2'>

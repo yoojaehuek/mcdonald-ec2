@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 
-const BtnArea = () => {
+const BtnArea = ({props}) => {
+  // console.log("BtnArea.js/props: ", props);
   const locationHook = useLocation();
   const [previousUrl, setPreviousUrl] = useState("");
   const [listUrl, setListUrl] = useState("");
@@ -10,9 +11,9 @@ const BtnArea = () => {
 
   useEffect(() => {
     const splitUrl = locationHook?.pathname?.split('/') ?? null;
-    // console.log("splitUrl: ", locationHook);
+    console.log("splitUrl: ", locationHook);
     const previous = splitUrl?.length > 1 ? parseInt(splitUrl[3])-1 : null;
-    const location = splitUrl?.length > 1 ? splitUrl[1] : null;
+    const location = splitUrl?.length > 1 ? splitUrl[1]+'/'+splitUrl[2] : null;
     const next = splitUrl?.length > 1 ? parseInt(splitUrl[3])+1 : null;
     const pathWithoutNumber = locationHook.pathname.substring(0, locationHook.pathname.lastIndexOf('/') + 1);
     setPromotionDetailPath(pathWithoutNumber);
