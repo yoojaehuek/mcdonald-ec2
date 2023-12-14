@@ -56,9 +56,9 @@ router.get('/', async (req, res) => {
 	}
 });
 
-
 router.get('/:id', async (req, res) => {
-  console.log("req.params", req.params);
+  console.log("상품하나만 조회에서 req.params", req.params);
+  console.log("상품하나만 조회에서 req.params.id", req.params.id);
   const _productId = req.params.id;
   console.log("product/:productId 진입: ", _productId);
 
@@ -68,7 +68,6 @@ router.get('/:id', async (req, res) => {
         id: _productId,
       },
     });
-
     res.json(product);
   } catch (error) {
     console.error(error);

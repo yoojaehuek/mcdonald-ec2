@@ -3,16 +3,16 @@ import { NavLink } from 'react-router-dom'
 import './Product.scss';
 
 const Product =({props})=>{
-	console.log("props.id",props.id);
+	console.log("product에서 받은 props",props);
 	return(
-	<NavLink to={`/menu/${props.subcategory_id}/${props.id}`}>
+	<NavLink to={`/menu/${props.sub_category_id}/${props.id}`}>
 		<div id="product">
 			<div>
-				<img src={API_URL+props.image} alt=""/>
+				<img src={API_URL+props.thumbnail_img_url} alt=""/>
 			</div>
 			<div id="prd-name">
-				<h3>{props.koName}</h3>
-				<p>{props.engName}</p>
+				<h3>{props.k_name}</h3>
+				<p>{props.e_name}</p>
 			</div>		
 		</div>
 	</NavLink>
