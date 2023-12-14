@@ -53,16 +53,18 @@ function App() {
             <Route path='/story/society' element={<Society/>}/>
             <Route path='/menu/:subcategory_id' element={<Menu/>}/>
             <Route path='/menu/:subcategory_id/:id' element={<DetailProduct/>}/>
-            {/* <Route path='/story/crew' element={<Crew/>}></Route> */}
+            <Route path='/story/crew' element={<Crew/>}></Route>
             <Route path='/story/work' element={<Work/>}></Route>
             <Route path='/story/recruit' element={<Recruit/>}></Route>
             <Route path='/story/faq' element={<Faq/>}></Route>
-            {/* <Route path='/story/farmtorestaurant' element={<FarmToRestaurant/>}></Route> */}
+            <Route path='/story/farmtorestaurant' element={<FarmToRestaurant/>}></Route>
             <Route path='/whats-new/happymeal' element={<HappyMeal />}></Route>
             <Route path='/story/brandintro' element={<BrandIntro/>}></Route>
             <Route path='/story/brandhistory' element={<BrandHistory/>}></Route>
-            {/* <Route path='/store/find' element={<Find/>}></Route> */}
-            <Route path='/whats-new/promotion' element={<Promotion />}></Route>
+            <Route path='/store/find' element={<Find/>}></Route>
+            <Route path='/store/event' element={<Event/>}></Route>
+            <Route path='/whats-new/12' element={<Promotion />}></Route>
+            <Route path='/whats-new/14' element={<HappyMeal />}></Route>
             <Route path='/slider' element={<Slider />}></Route>
             <Route path='/:page/detail/:prodNum' element={<DetailPromotion />}></Route>
             <Route path='/scaleforgood' element={<Scaleforgood/>}/>
@@ -77,12 +79,7 @@ function App() {
             <Route path='/happyburger' element={<Happyburger/>}></Route>
             <Route path='/safetyguard' element={<Safetyguard/>}></Route>
             <Route path='/mcdonaldhouse' element={<Mcdonaldhouse/>}></Route>
-            {/* <Route path='/store/event' element={<Event/>}></Route> */}
           {/* </Route> */}
-          <Route path='/store/find' element={<Find/>}></Route>
-          <Route path='/store/event' element={<Event/>}></Route>
-          <Route path='/story/farmtorestaurant' element={<FarmToRestaurant/>}></Route>
-          <Route path='/story/crew' element={<Crew/>}></Route>
         </Routes>
       <Footer />
     </div>
