@@ -6,6 +6,13 @@
 .news-contArea{
   padding: 10px;
   // border: 1px solid #000;
+  .color-red{
+    color: red;
+  }
+  #news-length{
+    display: flex;
+    justify-content: start;
+  }
   #list{
     border:solid #292929; 
     border-width:2px 0 1px;
