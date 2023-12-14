@@ -28,9 +28,9 @@ const BtnArea = ({props}) => {
       {/* <NavLink to={props.previousUrl} className='Arrow_Btn'>{`<`}</NavLink>
       <NavLink to={props.listUrl} className='List_Btn'>목록으로</NavLink>
       <NavLink to={props.nextUrl} className='Arrow_Btn'>{`>`}</NavLink> */}
-      {previousUrl==0?<></>:<NavLink to={promotionDetailPath+previousUrl} className='Arrow_Btn'>{`<`}</NavLink>}
+      {/* {previousUrl==0?<></>:<NavLink to={promotionDetailPath+previousUrl} className='Arrow_Btn'>{`<`}</NavLink>} */}
       <NavLink to={'/'+listUrl} className='List_Btn'>목록으로</NavLink>
-      <NavLink to={promotionDetailPath+nextUrlL}  className='Arrow_Btn'>{`>`}</NavLink>
+      {/* <NavLink to={promotionDetailPath+nextUrlL}  className='Arrow_Btn'>{`>`}</NavLink> */}
     </div>
   )
 }
