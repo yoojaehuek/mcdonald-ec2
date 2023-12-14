@@ -15,6 +15,8 @@
         float: left;
         font-size: 30px;
         font-weight: 500;
+        font-size: 30px;
+        font-weight: 500;
       }
   
       .deptarar{
@@ -186,6 +188,10 @@
       }
     }
 
+
+    .warrper{
+      height: 30vw;
+    }
     .con3{
         width: 1200px;
         position: relative;
@@ -208,7 +214,7 @@
                 font-size: 19px;
                 font-weight: 500;
                 cursor: pointer;
-
+               
                 &::after{
                   content: "";
                   display: block;
@@ -247,6 +253,12 @@
                   padding: 0 26px;
                   color: var(--txt_02);
                   cursor: pointer;
+
+                  &.active {
+                    border-bottom:solid 3px rgb(250, 226, 89);
+                    color: rgb(233, 195, 25); /* 선택된 탭의 폰트 색상을 변경 */
+                    font-weight: 800; 
+                  }
                 }
             }
           }
@@ -287,6 +299,37 @@
 
             &:last-child::after {
               content: none;
+            }
+          }
+
+          .txt2{
+            flex-grow: 1;
+          }
+        }
+
+        .orderItem{
+          display: flex;
+          align-items: center;
+          height: 70px;
+          text-align: center;
+
+          >li{
+            width: 130px;
+            color: black;
+            font-size: 17px;
+            font-weight: 700;
+            position: relative;
+
+            &::after{
+              content: "";
+              display: block;
+              width: 1px;
+              height: 16px;
+              position: absolute;
+              right: 0;
+              top: 50%;
+              transform: translateY(-50%);
+              background-color: gray;
             }
           }
 

@@ -7,7 +7,7 @@ const { makeRefreshToken, makeAccessToken } = require('../utils/token');
 
 class UserService{
 	//유효성 검사 이메일 겹치는지 등등
-	static async addUser({email, pwd, user_name, phone, address, detail_address }){
+	static async addUser({email, pwd, user_name, phone, address, detail_address, birth }){
 		console.log("email: ",email);
 
 		//crypto.randomBytes(128): 길이가 128인 임의의 바이트 시퀀스를 생성
@@ -22,7 +22,7 @@ class UserService{
 			.update(pwd + salt)
 			.digest('hex'); 
 
-		const newUser = { email, pwd: hashPassword, salt, user_name, phone, address, detail_address }
+		const newUser = { email, pwd: hashPassword, salt, user_name, phone, address, detail_address, birth }
 
 		const createNewUser = await UserModel.createUser({newUser});
 		return createNewUser
