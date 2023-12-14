@@ -29,7 +29,12 @@ router.get('/subcategory/:subcategory_id', async (req, res) => {
         sub_category_id: categoryId,
       }
     });
-    res.json(result);
+    if (result.length == 0) {
+      console.log("없음");
+      res.status(404).json({ error: "요청데이터 없음" });
+    }else{
+      res.status(200).json(result);
+    }
   } catch (error) {
     console.error('에러.:', error);
     res.status(500).json({ error: '서버 에러.' });

@@ -1,8 +1,8 @@
 import {useLocation } from 'react-router-dom';
-import { API_URL } from '../../../../config/contansts';
+import { API_URL } from '../../../config/contansts';
 import { useEffect, useState } from 'react';
-import BtnArea from '../../../../components/BtnArea/BtnArea';
-import './DetailPromotion.scss';
+import BtnArea from '../../../components/BtnArea/BtnArea';
+import './DetailPage.scss';
 import axios from 'axios';
 
 // const tmps = [
@@ -15,7 +15,7 @@ import axios from 'axios';
 //   {table: "happymeal", id: 1, title: "입양하세요!\n귀여운 애완 동물들을\n맥도날드 해피밀 토이로 만나보세요!", date: "2023-12-25", read_count: "101010", content: "/upload/whatsNew/happyMeal/1698285826592.jpg"},
 // ]
 
-const DetailPromotion = () => {
+const DetailPage = () => {
   const { pathname } = useLocation();
   
   const [targetObject, setTargetObject] = useState({});
@@ -53,4 +53,4 @@ const DetailPromotion = () => {
   )
 }
 
-export default DetailPromotion; 
+export default DetailPage; 

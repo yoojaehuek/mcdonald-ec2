@@ -1,0 +1,38 @@
+.visualBackGround{
+  border: 1px solid #000;
+  // background-image: url('image/visualBackGround/bg_visual_whats02.jpg');
+}
+
+.news-contArea{
+  padding: 10px;
+  // border: 1px solid #000;
+  #list{
+    border:solid #292929; 
+    border-width:2px 0 1px;
+  }
+  .list-item{
+    background: #f8f8f8;
+    border-bottom: 1px solid #ccc;
+    padding: 25px 0;
+    a{
+      display: grid;
+      grid-template-columns: 1fr 7fr 2fr;
+    }
+    .news-icon{
+      place-self: center;
+    }
+    .item-title{
+      justify-self: flex-start;
+    }
+    // place-items: center;
+  }
+}
+
+// #cardList {
+//   display: grid;
+//   place-items: center;
+//   grid-template-columns: repeat(3,  minmax(366px, auto));
+//   // grid-template-rows: repeat(2,  minmax(200px, auto));
+//   row-gap: 40px;
+//   // column-gap: 20px;
+// }
