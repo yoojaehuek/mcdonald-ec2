@@ -27,6 +27,18 @@ class UserModel {
     console.log("찾음: ",user);
     return user;
   }
+  
+  static async putUser({update}, {userId}){
+    console.log("update: ",update);
+    const user = await User.update({
+      ...update
+    }, {
+      where: {
+        id: userId
+      }
+    });//where: {id: asdf} 형태가 들어와야함
+    return user;
+  }
 
   static async destroyUser({userId}){
     // console.log("userId",userId);
@@ -37,6 +49,7 @@ class UserModel {
     });//where: {id: asdf} 형태가 들어와야함
     return user;
   }
+
 }
 
 module.exports = UserModel; 

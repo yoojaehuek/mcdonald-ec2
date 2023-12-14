@@ -69,7 +69,6 @@ class UserService{
 		}else {
 			console.log('Invalid login credentials.');
 		}
-
 	}
 
 	static async detailUser({id}){
@@ -83,8 +82,6 @@ class UserService{
 		// const birth = user.birth;
 		const birth = "test";
 
-
-
 		const userInfo = {
 			name,
 			user_email,
@@ -97,5 +94,29 @@ class UserService{
 		return userInfo;
 	}
 
+	static async putUser({updateValue}, {userId}){
+		console.log("서비스에서: ",updateValue, userId);
+		// const email = updateValue.user_name;
+		// const phone = updateValue.phoneNumberPrefix + updateValue.phoneNumberSuffix;
+		// const address = updateValue.address;
+		// const detail_address = updateValue.detail_address;
+		// const birth = updateValue.selectedYear+'-'+updateValue.selectedMonth+'-'+updateValue.selectedDay;
+		const update = {};
+		update.user_name = updateValue.user_name;
+		update.phone = updateValue.phoneNumberPrefix + updateValue.phoneNumberSuffix;
+		update.address = updateValue.address;
+		update.detail_address = updateValue.detail_address;
+		// update.birth = updateValue.selectedYear+'-'+updateValue.selectedMonth+'-'+updateValue.selectedDay;
+		console.log(update);
+
+		const user = await UserModel.putUser({update}, {userId});
+		return user;
+	}
+
+	static async deleteUser({userId}){
+		console.log("서비스에서: ", userId);
+		const user = await UserModel.destroyUser({userId});
+		return user;
+	}
 }
 module.exports = UserService;

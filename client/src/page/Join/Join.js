@@ -246,6 +246,7 @@ function Join() {
 							placeholder="주소"
 							value={selectedAddress} // 주소 입력 필드의 값을 선택된 주소로 설정
 							onChange={handleAddressChange} // 주소 변경을 처리하기 위한 이벤트 핸들러 추가
+							disabled='disabled'
 						/>
 						{/* 버튼 클릭 시 팝업 생성 */}
 						<button type='button' onClick={openPostCode}>우편번호 검색</button>
