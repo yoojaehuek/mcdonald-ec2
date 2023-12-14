@@ -60,9 +60,9 @@ const Header = () => {
                   What's New
                 </NavLink>
                 <ul className='depth2'>
-                  <li><NavLink to="/whats-new/promotion">프로모션</NavLink></li>
-                  <li><NavLink to="/">새로운 소식</NavLink></li>
-                  <li><NavLink to="/whats-new/happymeal">이달의 해피밀</NavLink></li>
+                  <li><NavLink to="/whats-new/12">프로모션</NavLink></li>
+                  <li><NavLink to="/whats-new/13">새로운 소식</NavLink></li>
+                  <li><NavLink to="/whats-new/14">이달의 해피밀</NavLink></li>
                 </ul>
               </li>
               <li>

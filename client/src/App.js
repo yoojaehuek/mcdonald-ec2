@@ -49,7 +49,7 @@ function App() {
           <Route path='/' element={<Main></Main>}></Route> 
           <Route path='/login' element={<Login/>}/>
           <Route path='/join' element={<Join/>}/>
-          <Route element={<Test/>}>
+          {/* <Route element={<Test/>}> */}
             <Route path='/story/society' element={<Society/>}/>
             <Route path='/menu/:subcategory_id' element={<Menu/>}/>
             <Route path='/menu/:subcategory_id/:id' element={<DetailProduct/>}/>
@@ -58,11 +58,11 @@ function App() {
             <Route path='/story/recruit' element={<Recruit/>}></Route>
             <Route path='/story/faq' element={<Faq/>}></Route>
             <Route path='/story/farmtorestaurant' element={<FarmToRestaurant/>}></Route>
-            <Route path='/whats-new/happymeal' element={<HappyMeal />}></Route>
             <Route path='/story/brandintro' element={<BrandIntro/>}></Route>
             <Route path='/story/brandhistory' element={<BrandHistory/>}></Route>
             <Route path='/store/find' element={<Find/>}></Route>
-            <Route path='/whats-new/promotion' element={<Promotion />}></Route>
+            <Route path='/whats-new/12' element={<Promotion />}></Route>
+            <Route path='/whats-new/14' element={<HappyMeal />}></Route>
             <Route path='/slider' element={<Slider />}></Route>
             <Route path='/:page/detail/:prodNum' element={<DetailPromotion />}></Route>
             <Route path='/scaleforgood' element={<Scaleforgood/>}/>
@@ -78,7 +78,7 @@ function App() {
             <Route path='/safetyguard' element={<Safetyguard/>}></Route>
             <Route path='/mcdonaldhouse' element={<Mcdonaldhouse/>}></Route>
             <Route path='/store/event' element={<Event/>}></Route>
-          </Route>
+          {/* </Route> */}
         </Routes>
       <Footer />
     </div>

@@ -1,5 +1,9 @@
 import './Promotion.scss'
 import Card from '../../../components/Card/Card';
+import { useEffect } from 'react';
+import axios from 'axios';
+import { useLocation, useParams } from 'react-router-dom';
+import { API_URL } from '../../../config/contansts';
 
 const tmps = [
   {table: "promotion", prodNum: 1, prodImg: "/upload/whatsNew/promotion/1700550501889.jpg", prodContent: "신선한 토마토와 매콤한 소스의 만남!"},
@@ -11,6 +15,18 @@ const tmps = [
 ]
 
 const Promotion = () => {
+  const { pathname } = useLocation();
+  const subcategory_id = pathname.split('/')[2];
+  console.log("Promotion/subcategory_id: ", subcategory_id);
+  useEffect(()=>{
+    axios.get(`${API_URL}/whats-new/subcategory/${subcategory_id}`)
+    .then(res => {
+      console.log(res.data);
+    }).catch(err => {
+      console.error(err);
+    })
+  })
+
   return(
     <>
       <div className="contArea">
