@@ -50,6 +50,7 @@ function App() {
           <Route path='/' element={<Main></Main>}></Route> 
           <Route path='/login' element={<Login/>}/>
           <Route path='/join' element={<Join/>}/>
+          <Route path='/mypage' element={<Mypage/>}></Route>
           {/* <Route element={<Test/>}> */}
             <Route path='/story/society' element={<Society/>}/>
             <Route path='/menu/:subcategory_id' element={<Menu/>}/>
