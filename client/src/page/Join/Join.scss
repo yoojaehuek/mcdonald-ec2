@@ -43,17 +43,21 @@
                     input{
                         width: 80%;
                         margin: 0px;
-                        
                     }
                     button{
                         padding: 5px;
                     }
                 }
+                #birth-label{
+                    padding: 5px;
+                    margin-bottom: 10px;
+                }
                 .boxecal{
-                    width: calc(100% - 160px);
                     display: flex;
-                    justify-content: space-between;
-                    float: right;
+                    justify-content: start;
+                    padding-bottom: 50px;
+                    padding-top: 10px;
+                    
                     select{
                         min-width: 150px;
                         background-color: #fff;
@@ -79,4 +83,14 @@
             border-radius: 5px;
         }
     }
+    #bg{
+        border: 1px solid #000;
+        width: 1000%;
+        height: 250%;
+        position: absolute;
+        left: 0px;
+        top: 0;
+        background:rgba(0,0,0,0.5);
+      
+      }
 }

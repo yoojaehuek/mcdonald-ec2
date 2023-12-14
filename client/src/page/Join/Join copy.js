@@ -1,12 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
-import axios from 'axios';
-import './Join.scss'
 import { API_URL } from '../../config/contansts'
-/** 우편번호 창   */
-import PopupDom from './PopupDom';
-import PopupPostCode from './PopupPostCode';
-/** 우편번호 창  */
+import axios from 'axios';
+import PopupDom from './PopupDom';/** 우편번호 창   */
+import PopupPostCode from './PopupPostCode';/** 우편번호 창  */
+import './Join.scss'
+
 
 function Join() {
 	const [isLabelVisibleId, setIsLabelVisibleId] = useState(false);
@@ -26,14 +25,13 @@ function Join() {
 	const days = Array.from({ length: 31 }, (_, index) => index + 1);
   
 	const handleYearChange = (e) => {
-		setSelectedYear(e.target.value);
+		setSelectedYear(e.target.value);console.log("생년월일:",selectedYear,selectedMonth,selectedDay);
 	};
 	const handleMonthChange = (e) => {
-		setSelectedMonth(e.target.value);
+		setSelectedMonth(e.target.value);console.log("생년월일:",selectedYear,selectedMonth,selectedDay);
 	};
-
 	const handleDayChange = (e) => {
-		setSelectedDay(e.target.value);
+		setSelectedDay(e.target.value);console.log("생년월일:",selectedYear,selectedMonth,selectedDay);
 	};
 
 	/** 우편번호 창  */
@@ -67,21 +65,13 @@ function Join() {
 		const phone = e.target.phone.value
 		const address = e.target.address.value
 		const detail_address = e.target.detail_address.value
-		const addZeroMonth= selectedMonth < 10 ? `0`+selectedMonth:selectedMonth 
-		const addZeroDay= selectedDay < 10 ? `0`+selectedDay:selectedDay 
-		const birth = `${selectedYear}-${addZeroMonth}-${addZeroDay}`;
-		if(pwd === confirmPwd 
-			&& email !== "" 
-			&& pwd !== "" 
-			&& confirmPwd !== "" 
-			&& user_name !== "" 
-			&& phone !== "" 
-			&& address !== ""
-			&& detail_address !== "" 
-			&& selectedYear !== "" 
-			&& selectedMonth !== ""
-			&& selectedDay !== ""){
-			axios.post(`${API_URL}/user/join`,{email, pwd, user_name, phone, address, detail_address, birth})
+
+		
+
+		if(pwd === confirmPwd && email !== "" && pwd !== "" && confirmPwd !== "" && user_name !== "" && phone !== "" && address !== ""&& detail_address !== "")
+		{
+			console.log(email);
+			axios.post(`${API_URL}/user/join`,{email, pwd, user_name, phone, address, detail_address})
 			.then(() =>{
 				alert("가입성공!");
 				navigate('/');  
@@ -246,7 +236,6 @@ function Join() {
 							placeholder="주소"
 							value={selectedAddress} // 주소 입력 필드의 값을 선택된 주소로 설정
 							onChange={handleAddressChange} // 주소 변경을 처리하기 위한 이벤트 핸들러 추가
-							disabled='disabled'
 						/>
 						{/* 버튼 클릭 시 팝업 생성 */}
 						<button type='button' onClick={openPostCode}>우편번호 검색</button>
