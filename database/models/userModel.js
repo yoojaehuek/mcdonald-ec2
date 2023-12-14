@@ -17,6 +17,17 @@ class UserModel {
     return user;
   }
 
+  static async findOneUserEmail({email}){
+    console.log("userId",typeof(email));
+    const user = await User.findOne({
+      where: {
+        email: email
+      }
+    }); //where: {id: asdf} 형태가 들어와야함
+    console.log("찾음: ",user);
+    return user;
+  }
+
   static async destroyUser({userId}){
     // console.log("userId",userId);
     const user = await User.destroy({

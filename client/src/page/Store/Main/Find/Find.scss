@@ -1,7 +1,6 @@
 .contArea1 {
   width: 100vw;
   height: 38vh;
-  margin-top: 1vw;
   background-color: rgb(228, 228, 228);
 
   .search {
@@ -42,7 +41,75 @@
 			border: none;
 			font-size: large;
 			font-weight: bold;
+			cursor: pointer;
 		}
 	}
-	
+}
+
+.myLocationButton {
+  background-color: #FFA500;
+	width: 15vw;
+  display: flex;
+  padding: 10px;
+  border-radius: 5vw;
+	align-items: center;
+	justify-content: center;
+	margin-left: 19vw;
+
+  > p {
+    color: #000000;
+		font-weight: bold;
+  }
+
+  .MuiSvgIcon-root {
+    color: #000000;
+  }
+}
+
+.storeResult {
+  max-width: 60vw;
+  margin: 2vw auto;
+  flex-direction: column;
+  align-items: center;
+  border-top: 2px solid #000;
+  border-bottom: 2px solid #000;
+}
+
+.mcStore > table {
+  width: 100%;
+  border-collapse: collapse;
+
+  th,
+  td {
+    text-align: center;
+		padding: 2vw;
+  }
+}
+
+
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 2vw;
+  margin-bottom: 2vw;
+
+  > button {
+    padding: 8px 16px;
+    margin: 0 4px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    color: #333;
+
+    &:hover {
+      background-color: #f4f4f4;
+    }
+
+    &.active {
+      background-color: #007bff;
+      color: #fff;
+      border: 1px solid #007bff;
+    }
+  }
 }

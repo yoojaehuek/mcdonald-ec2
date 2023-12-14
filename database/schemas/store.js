@@ -35,6 +35,16 @@ class Store extends Sequelize.Model {
           allowNull: false,
           comment: "판매 종료 시간",
         },
+        latitude: {
+          type: Sequelize.FLOAT,
+          allowNull: false,
+          comment: "위도 좌표"
+        },
+        longitude: {
+          type: Sequelize.FLOAT,
+          allowNull: false,
+          comment: "경도 좌표"
+        },
         yn_24h: {
           type: Sequelize.BOOLEAN,
           allowNull: false,

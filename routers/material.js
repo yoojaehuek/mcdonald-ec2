@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Material = require('../database/schemas/Material');
+const Material = require('../database/schemas/material');
 
 router.get('/', async (req, res) => {
   try {

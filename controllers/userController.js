@@ -8,8 +8,7 @@ const UserService = require("../services/userService");
 class UserController {
     static async addUser(req,res,next){
         try {
-            // const {userId, userPwd, userName, userPhone, userGender, userBirth, userCompanionName, userCompanionPhone} = req.body;
-            // const tmp = {userId, userPwd, userName, userPhone, userGender, userBirth, userCompanionName, userCompanionPhone};
+            console.log(req.body);
             const tmp = req.body;
             console.log("유저컨트롤러에서 받은 tmp: ",tmp);
             const newUser = await UserService.addUser(tmp);
@@ -25,10 +24,8 @@ class UserController {
     }
     static async loginUser(req,res,next){
         try {
-            // const {userId, userPwd, userName, userPhone, userGender, userBirth, userCompanionName, userCompanionPhone} = req.body;
-            // const tmp = {userId, userPwd, userName, userPhone, userGender, userBirth, userCompanionName, userCompanionPhone};
             const tmp = req.body;
-            console.log("tmp: ",tmp);
+            console.log("컨트롤러에서 tmp: ",tmp);
             const user = await UserService.loginUser(tmp);
             console.log("userControll.loginUser: ", user);
             

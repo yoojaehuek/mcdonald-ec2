@@ -1,12 +1,36 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './Login.scss';
+import axios from 'axios';
+import { API_URL } from '../../config/contansts';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
     const [isLabelVisibleId, setIsLabelVisibleId] = useState(false);
     const [isLabelVisiblePwd, setIsLabelVisiblePwd] = useState(false);
-    
     const inputRefId = useRef(null);
     const inputRefPwd = useRef(null);
+    const navigate = useNavigate();
+
+    /** 로그인 */
+    const onSubmitLogin = async (e) => {
+        e.preventDefault();
+        const email = e.target.email.value
+        const pwd = e.target.pwd.value
+
+        if( email !== "" && pwd !== ""){
+            console.log(email);
+            axios.post(`${API_URL}/user/login`,{email, pwd})
+            .then(() =>{
+                alert("로그인성공!");
+                navigate('/');  
+            })
+            .catch(err =>{
+                console.error(err);
+            })
+        }else{
+            return alert("전부 입력해주세요");
+        }
+    };
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -19,7 +43,7 @@ function Login() {
             ) {
                 const inputValueId = inputRefId.current.value.trim();
                 const inputValuePwd = inputRefPwd.current.value.trim();
-        
+
                 // 입력 필드에 값이 있는 경우 라벨을 보이게 합니다.
                 setIsLabelVisibleId(!!inputValueId);
                 setIsLabelVisiblePwd(!!inputValuePwd);
@@ -28,7 +52,7 @@ function Login() {
 
         // 이벤트 리스너 등록
         document.addEventListener('mousedown', handleClickOutside);
-    
+
         // 컴포넌트가 언마운트될 때 이벤트 리스너 제거
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
@@ -59,7 +83,7 @@ function Login() {
 
     return (
     <div className="Login">
-        <form id='login-form' action="">
+        <form id='login-form' onSubmit={onSubmitLogin}>
             <h1>계정에 로그인</h1>
             <ul id='login-input'>
                 <li className="input-li">
@@ -67,7 +91,7 @@ function Login() {
                     <input
                         ref={inputRefId}
                         type="text"
-                        id="id"
+                        id="email"
                         placeholder="예) abc@gmail.com"
                         onFocus={() => handleInputFocus('id')}//focus 되었을때
                         onBlur={() => handleInputBlur('id')}//focus 가 해제되었을때
@@ -86,7 +110,7 @@ function Login() {
                 </li>
             </ul>
             <li><a href="">비밀번호를 잊어버렸습니까?</a></li>
-            <li><button id='login-btn'>계정에 로그인</button></li>
+            <li><button id='login-btn' type='submit'>계정에 로그인</button></li>
             <li id='login-footer'>
                 <span>Copyright © 2023 McDonald's</span>
                 <a href="">개인정보 처리방침</a>

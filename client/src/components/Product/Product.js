@@ -6,7 +6,6 @@ const Product =({props})=>{
 	console.log("props.id",props.id);
 	return(
 	<NavLink to={`/menu/${props.subcategory_id}/${props.id}`}>
-	{/* <NavLink to={`/menu/happymeal/${props.id}`}> */}
 		<div id="product">
 			<div>
 				<img src={API_URL+props.image} alt=""/>
