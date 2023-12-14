@@ -50,7 +50,7 @@ const Material = ({ onMaterialClick }) => {
             onClick={() => handleMaterialClick(material)}
           >
             <img
-              src={API_URL + material.image}
+              src={API_URL + material.img_url}
               alt={`Material ${material.id}`}
             />
           </div>
@@ -59,16 +59,16 @@ const Material = ({ onMaterialClick }) => {
       <div className="material-details">
         {selectedMaterial && (
           <>
-            <div className="material-image">
+            <div className="material-img_url">
               <img
-                src={API_URL + selectedMaterial.image}
+                src={API_URL + selectedMaterial.img_url}
                 alt={`Material ${selectedMaterial.id}`}
               />
             </div>
             <div className="material-info">
               <h2>{selectedMaterial.title}</h2>
               <p style={{ color:'gray', lineHeight:'1.7rem', fontWeight:'bold' }}>{selectedMaterial.description}</p>
-              <p style={{ fontSize:'0.8rem'}}>* {selectedMaterial.additionalInfo}</p>
+              <p style={{ fontSize:'0.8rem'}}>* {selectedMaterial.additional_info}</p>
             </div>
           </>
         )}

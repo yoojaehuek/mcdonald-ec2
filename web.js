@@ -14,6 +14,7 @@ const EffortRouter = require('./routers/effort');
 const userRouter = require('./routers/user');
 const productRouter = require('./routers/product');
 const sliderRouter = require('./routers/slider');
+const storeRouter = require('./routers/store');
 const whatsNewRouter = require('./routers/whatsNew');
 
 //시퀄라이즈 연결 부분
@@ -48,6 +49,7 @@ app.use('/effort', EffortRouter);
 app.use("/visualbackground", visualBackGroundRouter);
 app.use('/product', productRouter);
 app.use('/slider', sliderRouter);
+app.use('/store', storeRouter);
 app.use('/whats-new', whatsNewRouter);
 
 // '/upload'경로로 뭔가 요청이오면 여기서 걸리고 upload폴더의 정적 파일을 제공하겠다
