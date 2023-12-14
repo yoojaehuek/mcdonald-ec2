@@ -1,7 +1,7 @@
 #burger-Detail{
     width: 1000px;
     height: 1000px;
-    margin: 180px auto;
+    margin: 100px auto;
     #contents{
         display: flex;
         #prod-img{
@@ -23,7 +23,12 @@
                 border-bottom: 1px solid black;
                 padding: 10px 0px;
                 &:nth-child(1){ padding-top: 0px; }
-                #info{ margin-top: 10px; }
+                #info,#sale-time{ 
+                    color: gray; 
+                    margin-top: 10px;
+                    font-weight: bold;
+                }
+
             }
             #option{
                 div:nth-child(1){
@@ -31,7 +36,8 @@
                     justify-content: space-between;
                 }   
                 #option-ul{
-                    padding: 10px 0px;
+                    padding-top: 10px;
+                    padding-bottom: 80px;
                     li{
                         padding: 0px;
                         padding: 10px;

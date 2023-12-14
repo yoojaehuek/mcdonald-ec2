@@ -11,7 +11,13 @@ INSERT INTO mcdonalddb.visualbackgrounds (id, title, subCopy, backgroundImage, p
 INSERT INTO mcdonalddb.visualbackgrounds (id, title, backgroundImage, path) VALUES ('society', '사회적 책임과 지원', '/image/visualBackGround/bg_visual_story02.jpg', '[{"url": "/", "name": "HOME"}, {"url": "/story", "name": "Story"}, {"url": "/society", "name": "맥도날드 사회적 책임"}]');
 
 INSERT INTO mcdonalddb.visualbackgrounds (id, title, subCopy, backgroundImage, path) VALUES ('1', '버거', '빅맥®에서 맥스파이시® 상하이버거까지,주문 즉시 바로 조리해 더욱 맛있는, 맥도날드의 다양한 버거를 소개합니다.', '/image/visualBackGround/bg_visual_menu01.jpg', '[{"url": "/", "name": "HOME"},  {"url": "/menu/1", "name": "Menu"}, {"url": "/menu/1", "name": "버거"}]');
-INSERT INTO mcdonalddb.visualbackgrounds (id, title, subCopy, backgroundImage, path) VALUES ('2', '맥런치','오전 10시 30분부터 오후 2시까지점심만의 특별한 할인으로 맥런치 세트를 즐겨보세요!', '/image/visualBackGround/pc_1922x220_mclunch_banner.jpg', '[{"url": "/", "name": "HOME"},  {"url": "/menu/2", "name": "Menu"}, {"url": "/menu/2", "name": "맥런치"}]');
+INSERT INTO mcdonalddb.visualbackgrounds (id, title, subCopy, backgroundImage, path) VALUES ('2', '맥런치','오전 10시 30분부터 오후 2시까지점심만의 특별한 할인으로 맥런치 세트를 즐겨보세요!', '/image/visualBackGround/pc_1922x220_mclunch_banner.jpg', '[{"url": "/", "name": "HOME"},  {"url": "/menu/1", "name": "Menu"}, {"url": "/menu/2", "name": "맥런치"}]');
+
+INSERT INTO mcdonalddb.visualbackgrounds (id, title, subCopy, backgroundImage, path) VALUES ('3', '맥모닝','맥모닝새벽 4시부터 오전 10시 30분까지 갓 구워내 신선한 맥모닝으로 따뜻한 아침 식사를 챙겨 드세요!', '/image/visualBackGround/bg_visual_menu02.jpg', '[{"url": "/", "name": "HOME"},  {"url": "/menu/1", "name": "Menu"}, {"url": "/menu/3", "name": "맥모닝"}]');
+INSERT INTO mcdonalddb.visualbackgrounds (id, title, subCopy, backgroundImage, path) VALUES ('4', '해피스낵','시즌 별 인기 스낵을 하루종일 할인 가격으로 만나보세요!', '/image/visualBackGround/pc_1922x220_happy_snack_kr_01.jpg', '[{"url": "/", "name": "HOME"},  {"url": "/menu/1", "name": "Menu"}, {"url": "/menu/4", "name": "해피스낵"}]');
+INSERT INTO mcdonalddb.visualbackgrounds (id, title, subCopy, backgroundImage, path) VALUES ('5', '사이드&디저트','가볍게 즐겨도, 버거와 함께 푸짐하게 즐겨도,언제나 맛있는 사이드와 디저트 메뉴!', '/image/visualBackGround/bg_visual_menu04.jpg', '[{"url": "/", "name": "HOME"},  {"url": "/menu/1", "name": "Menu"}, {"url": "/menu/5", "name": "사이드&디저트"}]');
+INSERT INTO mcdonalddb.visualbackgrounds (id, title, subCopy, backgroundImage, path) VALUES ('6', '맥카페&음료','언제나 즐겁게, 맥카페와 다양한 음료를 부담없이 즐기세요!', '/image/visualBackGround/bg_visual_menu05.jpg', '[{"url": "/", "name": "HOME"},  {"url": "/menu/1", "name": "Menu"}, {"url": "/menu/6", "name": "맥카페&음료"}]');
+INSERT INTO mcdonalddb.visualbackgrounds (id, title, subCopy, backgroundImage, path) VALUES ('7', '해피밀','맛과 즐거움 모두 해피밀을 통해 느껴보세요!', '/image/visualBackGround/bg_visual_menu03.jpg', '[{"url": "/", "name": "HOME"},  {"url": "/menu/1", "name": "Menu"}, {"url": "/menu/7", "name": "해피밀"}]');
 -----------------------------------------------
 
 

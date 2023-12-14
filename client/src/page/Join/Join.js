@@ -11,6 +11,7 @@ import PopupPostCode from './PopupPostCode';
 function Join() {
     const [isLabelVisibleId, setIsLabelVisibleId] = useState(false);
     const [isLabelVisiblePwd, setIsLabelVisiblePwd] = useState(false);
+    const [selectedAddress, setSelectedAddress] = useState('');// 우편번호
     const inputRefId = useRef(null);
     const inputRefPwd = useRef(null);
     const navigate = useNavigate();
@@ -27,9 +28,6 @@ function Join() {
     const closePostCode = () => {
         setIsPopupOpen(false)
     }
-    
-    const [selectedAddress, setSelectedAddress] = useState('');
-
     // 선택된 주소를 업데이트하는 콜백 함수
     const handleSelectedAddress = (address) => {
         setSelectedAddress(address);
@@ -49,8 +47,6 @@ function Join() {
         const phone = e.target.phone.value
         const address = e.target.address.value
         const detail_address = e.target.detail_address.value
-
-        // console.log(email);
 
         if(pwd === confirmPwd && email !== "" && pwd !== "" && confirmPwd !== "" && user_name !== "" && phone !== "" && address !== ""&& detail_address !== "")
         {
@@ -99,18 +95,19 @@ function Join() {
                 setIsLabelVisiblePwd(true);
             }
         };
+
+
         const handleInputBlur = (inputType) => {
-        const inputValue =
-            inputType === 'id' ? inputRefId.current.value : inputRefPwd.current.value;
-    
-        // 만약 입력 필드가 비어있다면, 다시 라벨을 숨길 수 있습니다.
-        if (!inputValue.trim()) {
-            if(inputType === 'id') {
-                setIsLabelVisibleId(false);
-            }else if(inputType === 'pwd') {
-                setIsLabelVisiblePwd(false);
+            const inputValue = inputType === 'id' ? inputRefId.current.value : inputRefPwd.current.value;
+        
+            // 만약 입력 필드가 비어있다면, 다시 라벨을 숨길 수 있습니다.
+            if (!inputValue.trim()) {
+                if(inputType === 'id') {
+                    setIsLabelVisibleId(false);
+                }else if(inputType === 'pwd') {
+                    setIsLabelVisiblePwd(false);
+                }
             }
-        }
         };
     
     return (
