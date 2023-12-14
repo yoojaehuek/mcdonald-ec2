@@ -1,10 +1,25 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import "./Header.scss";
+import { useRecoilState } from "recoil";
+import { loginState } from "../../recoil/atoms/State";
+import axios from 'axios';
+import { API_URL } from '../../config/contansts';
 
 const Header = () => {
   const [isDepth1Open, setDepth1Open] = useState(false);
   const [isModalOpen, setModalOpen] = useState(false);
+  const [isLogin, setIsLogin] = useRecoilState(loginState); //useState와 거의 비슷한 사용법
+
+  const logout = async () => {
+    axios.get(`${API_URL}/logout`, { withCredentials: true })
+      .then(()=>{
+        setIsLogin(false);
+      })
+      .catch((err) => {
+        console.log("logout/err: ", err);
+      })
+  } 
 
   const openModal = () => {
     setModalOpen(true);
@@ -79,12 +94,25 @@ const Header = () => {
             </ul>
           </div>
           <div className='util'>
-            <NavLink to="/login" className="renter" >로그인</NavLink>
-            <NavLink to="/join" className="renter2">회원가입</NavLink>
-            <NavLink to="/story/recruit" className="renter3">인재채용</NavLink>
-            <div className='topserch'>
-              <button className='serch'onClick={openModal}></button>
-            </div>
+          {isLogin ? 
+            <>
+              <NavLink to="/mypage" className="renter" >마이페이지</NavLink>
+              <NavLink to="/" onClick={logout} className="renter2">로그아웃</NavLink>
+              <NavLink to="/story/recruit" className="renter3">인재채용</NavLink>
+              <div className='topserch'>
+                <button className='serch'onClick={openModal}></button>
+              </div>
+            </>
+            :
+            <>
+              <NavLink to="/login" className="renter" >로그인</NavLink>
+              <NavLink to="/join" className="renter2">회원가입</NavLink>
+              <NavLink to="/story/recruit" className="renter3">인재채용</NavLink>
+              <div className='topserch'>
+                <button className='serch'onClick={openModal}></button>
+              </div>
+            </>
+          }
           </div>
         </nav>
       </div>

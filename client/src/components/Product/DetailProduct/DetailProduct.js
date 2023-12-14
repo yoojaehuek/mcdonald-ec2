@@ -64,7 +64,7 @@ const DetailProduct =()=>{
     
      /** 각 옵션의 수량을 관리할 상태 배열 */ 
     const [optionQuantities, setOptionQuantities] = useState(options.map((option) => ({
-    id: option.id, name: option.name, quantity: 0 })));
+    id: option.id, name: option.name, quantity: 0, price: option.price })));
 
     /**  옵션수량 증감함수 */
     const optionDecrease = (index) => {
@@ -98,14 +98,18 @@ const DetailProduct =()=>{
         .map((option) => ({
             option_id: option.id,
             option_name: option.name,
+            option_price: option.price,
             quantity: option.quantity,
         }));
-        // 저장할 데이터를 구성합니다.
         const cartItem = {
-            menu_id: product.id,
+            img:product.thumbnail_img_url,
+            name: product.k_name,
+            price: product.price, // 상품 단가
+            menu_id: product.id, //상품 id
             quantity: number, // 옵션 수량 대신 `number`를 사용할 수 있습니다.
-            totalPrice: totalOptionPrice + totalProductPrice,
-            options: selectedOptions
+            totalOptionPrice: totalOptionPrice,
+            totalPrice: totalOptionPrice + totalProductPrice,//상품 총가격
+            options: selectedOptions 
         };
 
         // 로컬 스토리지에서 기존의 장바구니 아이템을 가져오거나 빈 배열로 초기화합니다.

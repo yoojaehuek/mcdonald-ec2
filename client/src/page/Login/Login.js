@@ -3,10 +3,13 @@ import './Login.scss';
 import axios from 'axios';
 import { API_URL } from '../../config/contansts';
 import { useNavigate } from 'react-router-dom';
+import { useRecoilState } from "recoil";
+import { loginState } from "../../recoil/atoms/State";
 
 function Login() {
     const [isLabelVisibleId, setIsLabelVisibleId] = useState(false);
     const [isLabelVisiblePwd, setIsLabelVisiblePwd] = useState(false);
+    const [islogin, setIslogin] = useRecoilState(loginState); //useState와 거의 비슷한 사용법
     const inputRefId = useRef(null);
     const inputRefPwd = useRef(null);
     const navigate = useNavigate();
@@ -19,9 +22,14 @@ function Login() {
 
         if( email !== "" && pwd !== ""){
             console.log(email);
-            axios.post(`${API_URL}/user/login`,{email, pwd})
+            axios.post(
+                `${API_URL}/user/login`,
+                {email, pwd},
+                { withCredentials: true }
+            )
             .then(() =>{
                 alert("로그인성공!");
+                setIslogin(true);
                 navigate('/');  
             })
             .catch(err =>{
@@ -109,12 +117,12 @@ function Login() {
                     />
                 </li>
             </ul>
-            <li><a href="">비밀번호를 잊어버렸습니까?</a></li>
+            <li><a href="/">비밀번호를 잊어버렸습니까?</a></li>
             <li><button id='login-btn' type='submit'>계정에 로그인</button></li>
             <li id='login-footer'>
                 <span>Copyright © 2023 McDonald's</span>
-                <a href="">개인정보 처리방침</a>
-                <a href="">콘택트 렌즈</a>
+                <a href="/">개인정보 처리방침</a>
+                <a href="/">콘택트 렌즈</a>
             </li>
         </form>
     </div>

@@ -61,7 +61,7 @@ class UserService{
 			// 	console.log("redis.value: ", value); 
 			// });
 			
-			const name = user.name; 
+			const name = user.user_name; 
 			const email = user.email;			
 			const newUser = {name, email, accessToken, refreshToken};
 
@@ -75,20 +75,23 @@ class UserService{
 	static async detailUser({id}){
 		const user = await UserModel.findOneUserId({id});
 		// console.log({myId});
-		const name = user.name;
-		const user_id = user.id;
+		const name = user.user_name;
+		const user_email = user.email;
+		const address = user.address;
+		const detail_address = user.detail_address;
 		const phone = user.phone;
-		const companionName = user.companionName;
-		const companionPhone = user.companionPhone;
-		const birth = user.birth;
+		// const birth = user.birth;
+		const birth = "test";
+
+
 
 		const userInfo = {
-			user_id,
 			name,
+			user_email,
+			address,
+			detail_address,
 			phone,
-			companionName,
-			companionPhone,
-			birth,
+			birth
 		};
 
 		return userInfo;

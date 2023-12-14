@@ -12,9 +12,40 @@ function Join() {
     const [isLabelVisibleId, setIsLabelVisibleId] = useState(false);
     const [isLabelVisiblePwd, setIsLabelVisiblePwd] = useState(false);
     const [selectedAddress, setSelectedAddress] = useState('');// 우편번호
+    const [selectedYear, setSelectedYear] = useState('');
+    const [selectedMonth, setSelectedMonth] = useState('');
+    const [selectedDay, setSelectedDay] = useState('');  
     const inputRefId = useRef(null);
     const inputRefPwd = useRef(null);
     const navigate = useNavigate();
+
+
+    const currentYear = new Date().getFullYear();
+    const years = Array.from({ length: 100 }, (_, index) => currentYear - index);
+    const months = Array.from({ length: 12 }, (_, index) => index + 1);
+    const days = Array.from({ length: 31 }, (_, index) => index + 1);
+  
+    const handleYearChange = (e) => {
+        setSelectedYear(e.target.value);
+    };
+
+    const handleMonthChange = (e) => {
+        setSelectedMonth(e.target.value);
+    };
+
+    const handleDayChange = (e) => {
+        setSelectedDay(e.target.value);
+    };
+
+
+
+
+
+
+
+
+
+
 
     /** 우편번호 창  */
 
@@ -170,6 +201,38 @@ function Join() {
                         onBlur={() => handleInputBlur('pwd')}
                     />
                 </li>
+
+                <li className="input-li">
+                    <div className='tit'><span>생년월일</span></div>
+                    <div className='boxecal'>
+                        <select className='chyear' id='chyearjoin' value={selectedYear} onChange={handleYearChange}>
+                        <option value="">선택</option>
+                        {years.map((year) => (
+                            <option key={year} value={year}>
+                            {year}
+                            </option>
+                        ))}
+                        </select>
+                        <select className='chmonth' id='chmonthjoin' value={selectedMonth} onChange={handleMonthChange}>
+                        <option value="">선택</option>
+                        {months.map((month) => (
+                            <option key={month} value={month}>
+                            {month}
+                            </option>
+                        ))}
+                        </select>
+                        <select className='chday' id='chdayjoin' value={selectedDay} onChange={handleDayChange}>
+                        <option value="">선택</option>
+                        {days.map((day) => (
+                            <option key={day} value={day}>
+                            {day}
+                            </option>
+                        ))}
+                        </select>
+                    </div>
+                </li>
+
+                
                 <li className="input-li">
                         <label className={isLabelVisiblePwd ? '' : 'hidden'}>주소</label>
                     <div id='input-li-addr'>

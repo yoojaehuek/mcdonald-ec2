@@ -37,6 +37,7 @@ import Buttonmain from "./components/Main/Button";
 import Private from "./page/FooterLink/private";
 import Location from "./page/FooterLink/location"
 import Mypage from "./page/Mypage/Myinfo";
+import Order from "./page/Mypage/Order";
 import Event from './page/Store/Main/Event/Event'
 
 
@@ -49,7 +50,7 @@ function App() {
           <Route path='/' element={<Main></Main>}></Route> 
           <Route path='/login' element={<Login/>}/>
           <Route path='/join' element={<Join/>}/>
-          <Route element={<Test/>}>
+          {/* <Route element={<Test/>}> */}
             <Route path='/story/society' element={<Society/>}/>
             <Route path='/menu/:subcategory_id' element={<Menu/>}/>
             <Route path='/menu/:subcategory_id/:id' element={<DetailProduct/>}/>
@@ -66,7 +67,7 @@ function App() {
             <Route path='/whats-new/12' element={<Promotion />}></Route>
             <Route path='/whats-new/14' element={<HappyMeal />}></Route>
             <Route path='/slider' element={<Slider />}></Route>
-            <Route path='/:page/detail/:prodNum' element={<DetailPromotion />}></Route>
+            <Route path='/whats-new/:page/:prodNum' element={<DetailPromotion />}></Route>
             <Route path='/scaleforgood' element={<Scaleforgood/>}/>
             <Route path='/kidssoccer' element={<Kidssoccer />} />
             <Route path='/store/mcdrive' element={<McDrive />}></Route>
@@ -75,11 +76,11 @@ function App() {
             <Route path='/story' element={<Storymain/>}></Route>
             <Route path='/private' element={<Private/>}></Route>
             <Route path='/location' element={<Location/>}></Route>
-            <Route path='/mypage' element={<Mypage/>}></Route>
+            <Route path='/order' element={<Order/>}></Route>
             <Route path='/happyburger' element={<Happyburger/>}></Route>
             <Route path='/safetyguard' element={<Safetyguard/>}></Route>
             <Route path='/mcdonaldhouse' element={<Mcdonaldhouse/>}></Route>
-          </Route>
+          {/* </Route> */}
         </Routes>
       <Footer />
     </div>
