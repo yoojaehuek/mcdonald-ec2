@@ -4,7 +4,51 @@ const  Product = require('../database/schemas/product');
 
 router.get('/', async (req, res) => {
   try {
-    const products = await Product.findAll();
+    // const products = await Product.findAll();
+    const products = [
+      {
+        sub_category_id: 1, 
+        product_category: 1,
+        k_name: "치즈버거", 
+        e_name: "cheeseburger", 
+        thumbnail_img_url: "이미지 저장 경로", 
+        seq: 1, 
+        description: "상품설명", 
+        sale_start_time: "00:00", 
+        sale_end_time: "24:00", 
+        price: "12000",
+        llergen_information: "알레르기정보",
+        cuntry_of_origin: "원산지 정보",
+      },
+      {
+        sub_category_id: 1, 
+        product_category: 1,
+        k_name: "치즈버거", 
+        e_name: "cheeseburger", 
+        thumbnail_img_url: "이미지 저장 경로", 
+        seq: 1, 
+        description: "상품설명", 
+        sale_start_time: "00:00", 
+        sale_end_time: "24:00", 
+        price: "12000",
+        llergen_information: "알레르기정보",
+        cuntry_of_origin: "원산지 정보",
+      },
+      {
+        sub_category_id: 1, 
+        product_category: 1,
+        k_name: "치즈버거", 
+        e_name: "cheeseburger", 
+        thumbnail_img_url: "이미지 저장 경로", 
+        seq: 1, 
+        description: "상품설명", 
+        sale_start_time: "00:00", 
+        sale_end_time: "24:00", 
+        price: "12000",
+        llergen_information: "알레르기정보",
+        cuntry_of_origin: "원산지 정보",
+      },
+    ]
     res.json(products);
   } catch (error) {
     console.error(error);
@@ -12,9 +56,9 @@ router.get('/', async (req, res) => {
 	}
 });
 
-
-router.get('/detail/:id', async (req, res) => {
-  console.log("req.params", req.params);
+router.get('/:id', async (req, res) => {
+  console.log("상품하나만 조회에서 req.params", req.params);
+  console.log("상품하나만 조회에서 req.params.id", req.params.id);
   const _productId = req.params.id;
   console.log("product/:productId 진입: ", _productId);
 
@@ -24,7 +68,6 @@ router.get('/detail/:id', async (req, res) => {
         id: _productId,
       },
     });
-
     res.json(product);
   } catch (error) {
     console.error(error);
@@ -33,14 +76,14 @@ router.get('/detail/:id', async (req, res) => {
 });
 
 
-router.get('/:id', async (req, res) => {
+router.get('/subcategory/:id', async (req, res) => {
   const categoryId = req.params.id;
   console.log("product/:id 진입: ", categoryId);
 
   try {
     const products = await Product.findAll({
       where: {
-        category: categoryId,
+        sub_category_id: categoryId,
       },
     });
 

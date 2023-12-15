@@ -75,19 +75,19 @@ const Faq = () => {
             {categories
               .filter(category => category.category === selectedCategory.category)
               .filter(item =>
-                item.name.toLowerCase().includes(searchT.toLowerCase()) ||
+                item.title.toLowerCase().includes(searchT.toLowerCase()) ||
                 item.description.toLowerCase().includes(searchT.toLowerCase())
               )
               .map((item, index) => (
                 <AccordionItem key={index} category={item} item={item} />
               ))}
-          </div>
+          </div>  
         ) : (
           <div>
             {categories
               .filter(category => category.category !== '전체')
               .filter(item =>
-                item.name.toLowerCase().includes(searchT.toLowerCase()) ||
+                item.title.toLowerCase().includes(searchT.toLowerCase()) ||
                 item.description.toLowerCase().includes(searchT.toLowerCase())
               )
               .map((item, index) => (

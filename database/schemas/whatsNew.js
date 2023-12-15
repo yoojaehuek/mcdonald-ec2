@@ -25,11 +25,6 @@ class WhatsNew extends Sequelize.Model {
           allowNull: false,
           comment: "타이틀"
         },
-        link: {
-          type: Sequelize.STRING,
-          allowNull: false,
-          comment: "클릭시 이동할 주소"
-        },
         seq: {
           type: Sequelize.INTEGER,
           // autoIncrement: true,
@@ -48,7 +43,7 @@ class WhatsNew extends Sequelize.Model {
           comment: "내용의 이미지 주소"
         },
         created_at: {
-          type: Sequelize.DATEONLY, //YYYY-MM-DD만 들어가게
+          type: Sequelize.DATEONLY,
           allowNull: false,
           defaultValue: Sequelize.literal('CURRENT_DATE'), // 현재 날짜를 기본값으로 사용
           comment: "글 생성일(YYYY-MM-DD)",
@@ -63,7 +58,6 @@ class WhatsNew extends Sequelize.Model {
         charset: 'utf8',
         collate: 'utf8_general_ci',
       }
-
     )
   }
   static associate(db) {

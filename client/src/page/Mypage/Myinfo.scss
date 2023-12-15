@@ -1,0 +1,393 @@
+
+.container{
+  width: 100%;
+
+  .pagetop{
+    position: relative;
+    width: 1200px;
+    margin: 0 auto;
+  
+    .pagewarp{
+      padding-top: 32px;
+      padding-bottom: 50px;
+  
+      .pagename{
+        float: left;
+        font-size: 30px;
+        font-weight: 500;
+        font-size: 30px;
+        font-weight: 500;
+      }
+  
+      .deptarar{
+        float: right;
+        display: flex;
+  
+        >a{
+          font-size: 14px;
+          line-height: 14px;
+          display: inline-block;
+          padding-right: 15px;
+          background-position: right;
+          padding-left: 10px;
+          cursor: pointer;
+          color: var(--txt_02);
+          text-decoration: none;
+          outline: none;
+        }
+      }
+    }
+
+    .slider_scroll {
+      .con {
+        display: flex;
+        list-style: none;
+        margin-bottom: 0;
+  
+        > li {
+          font-size: 20px;
+          position: relative;
+          cursor: pointer;
+
+          &.active > div {
+            color: rgb(233, 195, 25); /* 선택된 탭의 폰트 색상을 변경 */
+            font-weight: 900; /* 선택된 탭의 폰트 두껍게 변경 */
+          }
+
+          &::after {
+            content: "";
+            display: block;
+            width: 1px; /* 선의 두께 조절 */
+            height: 50%; /* 선의 높이 조절 */
+            border-left: 1px solid rgb(141, 120, 0); /* 보더로 선을 표현 */
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+          }
+
+          &:last-child::after {
+            content: none;
+          }
+  
+          > div {
+            font-weight: 800;
+            color: rgba(78, 78, 78, 0.685);
+            padding: 0 26px;
+            cursor: pointer;
+            line-height: 56px;
+          }
+
+          &:first-child > div {
+            padding-left: 0;
+          }
+        }
+      }
+    }
+  }
+
+  .con2{
+    width: 1200px;
+    position: relative;
+    margin: 0 auto;
+    border-top: 1.5px solid rgb(141, 120, 0);
+    
+    .inputList{
+      width: 640px;
+      margin: 60px auto 0;
+
+      >li{
+        margin-bottom: 30px;
+
+      
+        .tit{
+          line-height: 42px;
+          width: 160px;
+          display: inline-block;
+
+          span{
+            font-size: 18px;
+            font-weight: 600;
+          }
+        }
+
+        .box{
+          width: calc(100% - 160px);
+          float: right;
+
+          input{
+            width: 100%;
+            border-radius: 0;
+            height: 42px;
+            border: 1px solid rgba(112, 112, 112, 0.575);
+            padding: 0 20px;
+            font-weight: 900;
+            color: black;
+            font-size: 16px;
+          }
+        }
+
+        .boxFlex{
+          width: calc(100% - 160px);
+          display: flex;
+          float: right;
+
+          select{
+            min-width: 120px;
+            margin-right: 10px;
+            background-color: #fff;
+            font-weight: 500;
+            height: 42px;
+            border: 1px solid rgba(112, 112, 112, 0.575);
+            padding: 0 20px;
+            padding-right: 50px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 800;
+          }
+
+          input[type="number"] {
+            width: 100%;
+            border-radius: 0;
+            height: 42px;
+            border: 1px solid rgba(112, 112, 112, 0.575);
+            padding: 0 20px;
+            font-size: 16px;
+            font-weight: 800;
+            color: rgb(0, 0, 0);
+          }
+          
+          /* 숫자 입력 필드에서 화살표 제거 */
+            input[type="number"]::-webkit-inner-spin-button,
+            input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+          }
+          
+        }
+
+        .boxecal{
+          width: calc(100% - 160px);
+          display: flex;
+          justify-content: space-between;
+          float: right;
+
+            select{
+            min-width: 150px;
+            background-color: #fff;
+            font-weight: 500;
+            height: 42px;
+            border: 1px solid rgba(112, 112, 112, 0.575);
+            padding: 0 20px;
+            padding-right: 50px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 800;
+          }
+        }
+      }
+    }
+
+
+    .warrper{
+      height: 30vw;
+    }
+    .con3{
+        width: 1200px;
+        position: relative;
+        margin: 0 auto;
+
+        .serch-warp{
+          display: flex;
+          align-items: center;
+          position: relative;
+          border-bottom: 1px solid rgba(187, 159, 3, 0.61);
+
+          >ul{
+            display: flex;
+            list-style: none;
+            margin-bottom: 0;
+
+            >li{
+                position: relative;
+                color: gray;
+                font-size: 19px;
+                font-weight: 500;
+                cursor: pointer;
+               
+                &::after{
+                  content: "";
+                  display: block;
+                  width: 1px;
+                  height: 16px;
+                  position: absolute;
+                  right: 0;
+                  top: 50%;
+                  transform: translateY(-50%);
+                  background-color: gray;
+                }
+
+                &:last-child::after {
+                  content: none;
+                }
+
+                input{
+                  position: absolute;
+                  left: 0;
+                  top: 0;
+                  width: 100%;
+                  opacity: 0;
+                  height: 100%;
+                  cursor: pointer;
+                  border-radius: 0;
+                  height: 42px;
+                  border: 1px solid rgb(141, 120, 0);
+                  padding: 0 20px;
+                  font-weight: 500;
+                }
+
+                div{
+                  line-height: 76px;
+                  padding-left: 20px;    
+                  font-size: 18px;
+                  padding: 0 26px;
+                  color: var(--txt_02);
+                  cursor: pointer;
+
+                  &.active {
+                    border-bottom:solid 3px rgb(250, 226, 89);
+                    color: rgb(233, 195, 25); /* 선택된 탭의 폰트 색상을 변경 */
+                    font-weight: 800; 
+                  }
+                }
+            }
+          }
+
+          .txt{
+            color: black;
+            position: absolute;
+            right: 0;
+            font-size: 14px;
+          }
+        }
+
+        .orderheader{
+          display: flex;
+          align-items: center;
+          height: 70px;
+          text-align: center;
+          border-bottom: 1px solid rgba(187, 159, 3, 0.61);
+
+          >li{
+            width: 130px;
+            color: black;
+            font-size: 16px;
+            font-weight: 900;
+            position: relative;
+
+            &::after{
+              position: absolute;
+              right: 0;
+              content: "";
+              display: block;
+              top: 50%;
+              transform: translateY(-50%);
+              width: 1px;
+              height: 16px;
+              background-color: rgb(187, 159, 3);
+            }     
+
+            &:last-child::after {
+              content: none;
+            }
+          }
+
+          .txt2{
+            flex-grow: 1;
+          }
+        }
+
+        .orderItem{
+          display: flex;
+          align-items: center;
+          height: 70px;
+          text-align: center;
+
+          >li{
+            width: 130px;
+            color: black;
+            font-size: 17px;
+            font-weight: 700;
+            position: relative;
+
+            &::after{
+              content: "";
+              display: block;
+              width: 1px;
+              height: 16px;
+              position: absolute;
+              right: 0;
+              top: 50%;
+              transform: translateY(-50%);
+              background-color: gray;
+            }
+          }
+
+          .txt2{
+            flex-grow: 1;
+          }
+        }
+
+        .empty{
+          height: 580px;
+          padding-top: 120px;
+          text-align: center;
+
+          .txt5{
+            color: var(--txt_03);
+            font-size: 22px;
+            font-weight: 600;
+            width: 100%;
+          }
+        }
+    }
+
+    .btnwarp{
+      position: relative;
+      padding-top: 40px;
+      border-top: 1px solid rgb(141, 120, 0);
+      width: 640px;
+      margin: 0 auto;
+      text-align: center;
+      margin-top: 40px;
+      margin-bottom: 40px;
+
+      .cola{
+        width: 270px;
+        height: 64px;
+        font-weight: 600;
+        border: none;
+        font-size: 20px;
+        cursor: pointer;
+        background-color: rgb(248, 222, 71);
+      }
+
+      .colb{
+        position: absolute;
+        left: 0;
+        top: 40px;
+        cursor: pointer;
+        border: none;
+        background-color:transparent;
+
+        span{
+          font-size: 15px;
+          font-weight: 800;
+          padding-right: 12px;
+          background-size: 5px;
+          background-position: right;
+        }
+      }
+    }
+  }
+}

@@ -41,6 +41,16 @@ class User extends Sequelize.Model {
         allowNull: false,
         comment: "주소",
       },
+      detail_address: {
+        type: Sequelize.STRING(100),
+        allowNull: false,
+        comment: "상세주소",
+      },
+      birth: {
+        type: Sequelize.DATEONLY,
+        allowNull: false,
+        comment: "생년월일",
+      },
       created_at: {
         type: Sequelize.DATE,
         allowNull: false,

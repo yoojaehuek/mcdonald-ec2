@@ -53,7 +53,7 @@ class FarmToRestaurant extends React.Component {
   };
 
   render() {
-    const videoId = '64WJ8UK0IbI';
+    const videoId = 'KEVgb6-cEPU';
 
     const opts = {
       height: '720',
@@ -98,7 +98,7 @@ class FarmToRestaurant extends React.Component {
         <div
           className="farm-container"
           style={{
-            backgroundImage: this.state.selectedButton === 1 ? `url(${API_URL + this.state.selectedMaterial?.background})` : 'none',
+            backgroundImage: this.state.selectedButton === 1 ? `url(${API_URL + this.state.selectedMaterial?.background_img_url})` : 'none',
           }}
         >
           <div className="youtube-video">

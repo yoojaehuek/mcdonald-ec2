@@ -34,7 +34,7 @@ const Work = () => {
         </div>
         <h1>맥도날드 교육의 힘</h1>
         <div className="image-container">
-          <img src="./images/Story/work.jpg" alt="맥도날드 Work" />
+          <img src="../images/Story/work.jpg" alt="맥도날드 Work" />
           <h4>햄버거 철학을 배우다.</h4>
         </div>
         <div className="work-span">

@@ -32,7 +32,7 @@ const Effort = () => {
   }, []);
 
   useEffect(() => {
-    setGroupedCategories(groupBy(categoriesData, 'name'));
+    setGroupedCategories(groupBy(categoriesData, 'title'));
   }, [categoriesData]);
   // caategoriesData에 name을 그룹화, 그 후 categoriesData(의존성 배열)이 바뀌면 실행
 
@@ -43,15 +43,15 @@ const Effort = () => {
         레스토랑으로 배송된 식재료가 음식으로 조리되어 고객에게 전달되는 순간까지<br></br> 맥도날드의 노력은 멈추지 않습니다.
       </h3>
       {/* Object.keys 함수는 주어진 객체의 모든 열거 가능한 속성 이름을 담은 배열을 반환함. */}
-      {Object.keys(groupedCategories).map((name) => (
-        <div key={name} className="effort-category">
-          <h2>{name}</h2>
-          <div className='yellowbox'>{groupedCategories[name][0].description}</div>
-          {groupedCategories[name].map((category) => (
+      {Object.keys(groupedCategories).map((title) => (
+        <div key={title} className="effort-category">
+          <h2>{title}</h2>
+          <div className='yellowbox'>{groupedCategories[title][0].title_description}</div>
+          {groupedCategories[title].map((category) => (
             <div key={category.id} className="effort-item">
-              <img src={API_URL + category.image} alt={`Item Image ${category.id}`} />
-              <strong>{category.title}</strong>
-              <p>{category.itemDescription}</p>
+              <img src={API_URL + category.img_url} alt={`Item Image ${category.id}`} />
+              <strong>{category.sub_title}</strong>
+              <p>{category.sub_title_description}</p>
             </div>
           ))}
         </div>

@@ -1,10 +1,25 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import "./Header.scss";
+import { useRecoilState } from "recoil";
+import { loginState } from "../../recoil/atoms/State";
+import axios from 'axios';
+import { API_URL } from '../../config/contansts';
 
 const Header = () => {
   const [isDepth1Open, setDepth1Open] = useState(false);
   const [isModalOpen, setModalOpen] = useState(false);
+  const [isLogin, setIsLogin] = useRecoilState(loginState); //useState와 거의 비슷한 사용법
+
+  const logout = async () => {
+    axios.get(`${API_URL}/logout`, { withCredentials: true })
+      .then(()=>{
+        setIsLogin(false);
+      })
+      .catch((err) => {
+        console.log("logout/err: ", err);
+      })
+  } 
 
   const openModal = () => {
     setModalOpen(true);
@@ -31,60 +46,73 @@ const Header = () => {
               onMouseLeave={() => setDepth1Open(false)}
             >
               <li>
-                <NavLink to="/" className={`dth1 ${isDepth1Open ? 'on' : ''}`}>
+                <NavLink to="/menu/1" className={`dth1 ${isDepth1Open ? 'on' : ''}`}>
                   Menu
                 </NavLink>
                 <ul className='depth2'>
-                  <li><NavLink to="/menu/burger">버거</NavLink></li>
-                  <li><NavLink to="/">맥런치</NavLink></li>
-                  <li><NavLink to="/">맥모닝</NavLink></li>
-                  <li><NavLink to="/">해피스낵</NavLink></li>
-                  <li><NavLink to="/">사이드&디저트</NavLink></li>
-                  <li><NavLink to="/">맥카페&음료</NavLink></li>
-                  <li><NavLink to="/">해피밀</NavLink></li>
+                  <li><NavLink to="/menu/1">버거</NavLink></li>
+                  <li><NavLink to="/menu/2">맥런치</NavLink></li>
+                  <li><NavLink to="/menu/3">맥모닝</NavLink></li>
+                  <li><NavLink to="/menu/4">해피스낵</NavLink></li>
+                  <li><NavLink to="/menu/5">사이드&디저트</NavLink></li>
+                  <li><NavLink to="/menu/6">맥카페&음료</NavLink></li>
+                  <li><NavLink to="/menu/7">해피밀</NavLink></li>
                 </ul>
               </li>
               <li>
-                <NavLink to="/" className={`dth1 ${isDepth1Open ? 'on' : ''}`}>
+                <NavLink to="/store/find" className={`dth1 ${isDepth1Open ? 'on' : ''}`}>
                   Store
                 </NavLink>
                 <ul className='depth2'>
-                  <li><NavLink to="/find">매장찾기</NavLink></li>
-                  <li><NavLink to="/mcdelivery">맥딜리버리</NavLink></li>
-                  <li><NavLink to="/mcdrive">맥드라이브</NavLink></li>
-                  <li><NavLink to="/rental">임차문의</NavLink></li>
+                  <li><NavLink to="/store/find">매장찾기</NavLink></li>
+                  <li><NavLink to="/store/mcdelivery">맥딜리버리</NavLink></li>
+                  <li><NavLink to="/store/mcdrive">맥드라이브</NavLink></li>
+                  <li><NavLink to="/store/rental">임차문의</NavLink></li>
                 </ul>
               </li>
               <li>
-                <NavLink to="/promotion" className={`dth1 ${isDepth1Open ? 'on' : ''}`}>
+                <NavLink to="/whats-new/12" className={`dth1 ${isDepth1Open ? 'on' : ''}`}>
                   What's New
                 </NavLink>
                 <ul className='depth2'>
-                  <li><NavLink to="/promotion">프로모션</NavLink></li>
-                  <li><NavLink to="/">새로운 소식</NavLink></li>
-                  <li><NavLink to="/happymeal">이달의 해피밀</NavLink></li>
+                  <li><NavLink to="/whats-new/12">프로모션</NavLink></li>
+                  <li><NavLink to="/whats-new/13">새로운 소식</NavLink></li>
+                  <li><NavLink to="/whats-new/14">이달의 해피밀</NavLink></li>
                 </ul>
               </li>
               <li>
-                <NavLink to="/" className={`dth1 ${isDepth1Open ? 'on' : ''}`}>
+                <NavLink to="/story" className={`dth1 ${isDepth1Open ? 'on' : ''}`}>
                   Story
                 </NavLink>
                 <ul className='depth2'>
-                  <li><NavLink to="/brandintro">브랜드 소개</NavLink></li>
-                  <li><NavLink to="/society">사회적 책임과 지원</NavLink></li>
-                  <li><NavLink to="/farmtorestaurant">맥도날드 품질 이야기</NavLink></li>
-                  <li><NavLink to="/crew">맥도날드 사람들</NavLink></li>
+                  <li><NavLink to="/story/brandintro">브랜드 소개</NavLink></li>
+                  <li><NavLink to="/story/society">사회적 책임과 지원</NavLink></li>
+                  <li><NavLink to="/story/farmtorestaurant">맥도날드 품질 이야기</NavLink></li>
+                  <li><NavLink to="/story/crew">맥도날드 사람들</NavLink></li>
                 </ul>
               </li>
             </ul>
           </div>
           <div className='util'>
-            <NavLink to="/login" className="renter" >로그인</NavLink>
-            <NavLink to="/join" className="renter2">회원가입</NavLink>
-            <NavLink to="/" className="renter3">인재채용</NavLink>
-            <div className='topserch'>
-              <button className='serch'onClick={openModal}></button>
-            </div>
+          {isLogin ? 
+            <>
+              <NavLink to="/mypage" className="renter" >마이페이지</NavLink>
+              <NavLink to="/" onClick={logout} className="renter2">로그아웃</NavLink>
+              <NavLink to="/story/recruit" className="renter3">인재채용</NavLink>
+              <div className='topserch'>
+                <button className='serch'onClick={openModal}></button>
+              </div>
+            </>
+            :
+            <>
+              <NavLink to="/login" className="renter" >로그인</NavLink>
+              <NavLink to="/join" className="renter2">회원가입</NavLink>
+              <NavLink to="/story/recruit" className="renter3">인재채용</NavLink>
+              <div className='topserch'>
+                <button className='serch'onClick={openModal}></button>
+              </div>
+            </>
+          }
           </div>
         </nav>
       </div>

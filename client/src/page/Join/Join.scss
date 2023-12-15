@@ -36,6 +36,41 @@
                         color:transparent;
                     }
                 }
+                #input-li-addr{
+                    display: flex;
+                    justify-content: space-between;
+                    padding-bottom: 50px;
+                    input{
+                        width: 80%;
+                        margin: 0px;
+                    }
+                    button{
+                        padding: 5px;
+                    }
+                }
+                #birth-label{
+                    padding: 5px;
+                    margin-bottom: 10px;
+                }
+                .boxecal{
+                    display: flex;
+                    justify-content: start;
+                    padding-bottom: 50px;
+                    padding-top: 10px;
+                    
+                    select{
+                        min-width: 150px;
+                        background-color: #fff;
+                        font-weight: 500;
+                        height: 42px;
+                        border: 1px solid rgba(112, 112, 112, 0.575);
+                        padding: 0 20px;
+                        padding-right: 50px;
+                        cursor: pointer;
+                        font-size: 15px;
+                        font-weight: 800;
+                    }
+                }
             }
         }
         #join-btn{
@@ -48,4 +83,14 @@
             border-radius: 5px;
         }
     }
+    #bg{
+        border: 1px solid #000;
+        width: 1000%;
+        height: 250%;
+        position: absolute;
+        left: 0px;
+        top: 0;
+        background:rgba(0,0,0,0.5);
+      
+      }
 }
