@@ -7,9 +7,9 @@ const { makeRefreshToken, makeAccessToken } = require('../utils/token');
 
 class UserService{
 	//유효성 검사 이메일 겹치는지 등등
-	static async addUser({email, pwd, user_name, phone, address, detail_address, birth }){
-		console.log("email: ",email);
-
+	static async addUser({email, pwd, user_name, phone, address, detail_address, selectedYear, selectedMonth, selectedDay}){
+		const birth = selectedYear+'-'+selectedMonth+'-'+selectedDay;
+		console.log("birth: ", birth);
 		//crypto.randomBytes(128): 길이가 128인 임의의 바이트 시퀀스를 생성
 		//.toString('base64'): 임의의 바이트를 base64로 인코딩된 문자열로 변환
 		const salt = crypto.randomBytes(128).toString('base64'); 
@@ -101,11 +101,17 @@ class UserService{
 		// const address = updateValue.address;
 		// const detail_address = updateValue.detail_address;
 		// const birth = updateValue.selectedYear+'-'+updateValue.selectedMonth+'-'+updateValue.selectedDay;
-		const update = {};
-		update.user_name = updateValue.user_name;
-		update.phone = updateValue.phoneNumberPrefix + updateValue.phoneNumberSuffix;
-		update.address = updateValue.address;
-		update.detail_address = updateValue.detail_address;
+		const update = {
+			user_name: updateValue.user_name,
+			phone: updateValue.phone_number_prefix + updateValue.phone_number_suffix,
+			address: updateValue.address,
+			detail_address: updateValue.detail_address,
+			birth: updateValue.selected_year+'-'+updateValue.selected_month+'-'+updateValue.selected_day,
+		};
+		// update.user_name = updateValue.user_name;
+		// update.phone = updateValue.phone_number_prefix + updateValue.phone_number_suffix;
+		// update.address = updateValue.address;
+		// update.detail_address = updateValue.detail_address;
 		// update.birth = updateValue.selectedYear+'-'+updateValue.selectedMonth+'-'+updateValue.selectedDay;
 		console.log(update);
 

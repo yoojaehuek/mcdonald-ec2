@@ -67,9 +67,17 @@ function Join() {
 		const phone = e.target.phone.value
 		const address = e.target.address.value
 		const detail_address = e.target.detail_address.value
-		const addZeroMonth= selectedMonth < 10 ? `0`+selectedMonth:selectedMonth 
-		const addZeroDay= selectedDay < 10 ? `0`+selectedDay:selectedDay 
-		const birth = `${selectedYear}-${addZeroMonth}-${addZeroDay}`;
+		// const addZeroMonth= selectedMonth < 10 ? `0`+selectedMonth:selectedMonth 
+		// const addZeroDay= selectedDay < 10 ? `0`+selectedDay:selectedDay 
+		// const birth = `${selectedYear}-${addZeroMonth}-${addZeroDay}`;
+		// const join_value = {
+		// 	email: e.target.email.value,
+		// 	pwd: e.target.pwd.value,
+		// 	user_name: e.target.name.value,
+		// 	phone: e.target.phone.value,
+		// 	address: e.target.address.value,
+		// 	detail_address: e.target.detail_address.value,
+		// }
 		if(pwd === confirmPwd 
 			&& email !== "" 
 			&& pwd !== "" 
@@ -81,7 +89,7 @@ function Join() {
 			&& selectedYear !== "" 
 			&& selectedMonth !== ""
 			&& selectedDay !== ""){
-			axios.post(`${API_URL}/user/join`,{email, pwd, user_name, phone, address, detail_address, birth})
+			axios.post(`${API_URL}/user/join`,{email, pwd, user_name, phone, address, detail_address, selectedYear, selectedMonth, selectedDay})
 			.then(() =>{
 				alert("가입성공!");
 				navigate('/');  

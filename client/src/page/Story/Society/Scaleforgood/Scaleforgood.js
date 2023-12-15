@@ -27,7 +27,7 @@ const Scaleforgood = () => {
           <div className="Scaleforgood">
           {Scale.map(View => (
             <div key={View.id} className='topcont'>            
-              <img src={View.image} alt={`Image ${View.id}`} />
+              <img src={View.img_url} alt={`Image ${View.id}`} />
               <h3>{View.title}</h3>
               <p>{View.desc}</p>            
             </div>
