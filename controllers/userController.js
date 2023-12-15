@@ -24,10 +24,8 @@ class UserController {
     }
     static async loginUser(req,res,next){
         try {
-            // const {userId, userPwd, userName, userPhone, userGender, userBirth, userCompanionName, userCompanionPhone} = req.body;
-            // const tmp = {userId, userPwd, userName, userPhone, userGender, userBirth, userCompanionName, userCompanionPhone};
             const tmp = req.body;
-            console.log("tmp: ",tmp);
+            console.log("컨트롤러에서 tmp: ",tmp);
             const user = await UserService.loginUser(tmp);
             console.log("userControll.loginUser: ", user);
             
@@ -56,6 +54,35 @@ class UserController {
             const id = req.userId;
             console.log(id);
             const user = await UserService.detailUser({id});
+
+            // console.log("res임니다요: ",res);
+            res.status(200).json(user)
+        }catch(error){
+            next(error)
+        }
+    }
+
+    static async putUser(req, res, next){
+        try{
+            const userId = req.userId;
+            // const userId = 1;
+            const updateValue = req.body;
+            console.log("userController/updateValue: ", updateValue, userId);
+            const user = await UserService.putUser({updateValue}, {userId});
+
+            // console.log("res임니다요: ",res);
+            res.status(200).json(user)
+        }catch(error){
+            next(error)
+        }
+    }
+
+    static async deleteUser(req, res, next){
+        try{
+            const userId = req.userId;
+            // const userId = 1;
+            console.log("userController/deleteUser: ", userId);
+            const user = await UserService.deleteUser({userId});
 
             // console.log("res임니다요: ",res);
             res.status(200).json(user)

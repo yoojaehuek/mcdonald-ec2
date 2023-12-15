@@ -1,19 +1,34 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { API_URL } from "../../../config/contansts";
 import './DetailProduct.scss';
+import axios from 'axios';
+
 
 const DetailProduct =()=>{
-    const { id } = useParams();// 이거로 id 가저와서 axios.get() 보내서 
-    console.log("id: ", id);
+    const { id } = useParams();// 주소에서 상품id 가져옴
+    console.log("디테일 파람스 id: ", id);//나옴 1
     //페이지 열때 get으로 상품정보 가져오고 정보중에서 가격이랑 옵션 등 만 수정해서 로컬로 보냄 
     const [number, setNumber] = useState(1); //상품개수 증감변수
     const [isOptionVisible, setOptionVisible] = useState(true); //옵션 보여지는 여부 
+    const [product, setProduct] = useState({}); 
+    useEffect(()=>{
+        axios.get(`${API_URL}/product/${id}`)
+        .then(res => {
+            console.log("디테일에서받은res.data: ",res.data);
+            setProduct(res.data); 
+        }).catch(err => {
+            console.error(err);
+        })
+        console.log("product에 담음:",product);
+    }, [id])
+
     /**옵션버튼 화살표이미지 */
     const optionBtn = {
         src1:"/images/Product/arrow_down_bf.png",
         src2:"/images/Product/arrow_up_bf.png",
     }
+    
     const options = [
         {id:1, name:"감튀",     price:"1600"},
         {id:2, name:"사이다",   price:"1500"},
@@ -34,21 +49,9 @@ const DetailProduct =()=>{
     const decrease = () => {
         if(number>1) setNumber(number - 1); 
     };              
-    const detailProd = {               
-        id:1, 
-        koName:"더블 비프 미트칠리버거", 
-        engName:"Double Beef Meat Chili Burger",
-        image:"/upload/detailproduct/burgerdetail.png",
-        info:"진한 고기맛 살리는 미트칠리소스에 상큼한 사워크림, 순쇠고기 100% 패티 2장과 짭조롬한 치즈와 베이컨까지!연말엔 더블 비프 미트칠리 버거!",
-        price:12000,
-    };
-    const [isNutritionVisible, setNutritionVisible] = useState(false);
     const [isAllergyVisible, setAllergyVisible] = useState(false);
     const [isOriginVisible, setOriginVisible] = useState(false);
     /** 영양정보, 알레르기정보, 원산지 정보 */
-    const handleNutritionButtonClick = () => {
-        setNutritionVisible(!isNutritionVisible);
-    };
     const handleAllergyButtonClick = () => {
         setAllergyVisible(!isAllergyVisible);
     };
@@ -60,7 +63,8 @@ const DetailProduct =()=>{
     };
     
      /** 각 옵션의 수량을 관리할 상태 배열 */ 
-    const [optionQuantities, setOptionQuantities] = useState(options.map((option) => ({ id: option.id, name: option.name, quantity: 0 })));
+    const [optionQuantities, setOptionQuantities] = useState(options.map((option) => ({
+    id: option.id, name: option.name, quantity: 0, price: option.price })));
 
     /**  옵션수량 증감함수 */
     const optionDecrease = (index) => {
@@ -84,10 +88,9 @@ const DetailProduct =()=>{
     }, 0);
 
     // 전체 상품 가격
-    const totalProductPrice = detailProd.price * number;
+    const totalProductPrice = product.price * number;
 
     /** 장바구니버튼클릭시 로컬스토리지로 값보냄 */
-    
     const handleCartButtonClick = () => {
         // console.log(optionQuantities[0]);
         const selectedOptions = optionQuantities
@@ -95,15 +98,19 @@ const DetailProduct =()=>{
         .map((option) => ({
             option_id: option.id,
             option_name: option.name,
+            option_price: option.price,
             quantity: option.quantity,
         }));
-        // 저장할 데이터를 구성합니다.
         const cartItem = {
-                    menu_id: detailProd.id,
-                    quantity: number, // 옵션 수량 대신 `number`를 사용할 수 있습니다.
-                    totalPrice: totalOptionPrice + totalProductPrice,
-                    options: selectedOptions
-                };
+            img:product.thumbnail_img_url,
+            name: product.k_name,
+            price: product.price, // 상품 단가
+            menu_id: product.id, //상품 id
+            quantity: number, // 옵션 수량 대신 `number`를 사용할 수 있습니다.
+            totalOptionPrice: totalOptionPrice,
+            totalPrice: totalOptionPrice + totalProductPrice,//상품 총가격
+            options: selectedOptions 
+        };
 
         // 로컬 스토리지에서 기존의 장바구니 아이템을 가져오거나 빈 배열로 초기화합니다.
         const existingCartItems = JSON.parse(sessionStorage.getItem('cart')) || [];
@@ -121,13 +128,14 @@ const DetailProduct =()=>{
             <div>                                               
                 <div id='contents'>
                     <div id='prod-img'>             
-                        <img src={API_URL+detailProd.image} alt="" />
+                        <img src={API_URL+product.thumbnail_img_url} alt="" />
                     </div>
                     <form >
                         <li>
-                            <h1>{detailProd.koName}</h1>
-                            <p>{detailProd.engName}</p>
-                            <p id='info'>{detailProd.info}</p>
+                            <h1>{product.k_name}</h1>
+                            <p>{product.e_name}</p>
+                            <p id='info'>{product.description}</p>
+                            <p id='sale-time'>*판매시간:{product.sale_start_time}~{product.sale_end_time}</p>
                         </li>
                         <li id='prod-count'>
                             <div><h2>수량</h2></div>
@@ -176,7 +184,7 @@ const DetailProduct =()=>{
                             </div>
                             <div id='order-btn'>
                                 <div>
-                                <button type='button' id='cartBtn' onClick={handleCartButtonClick}>장바구니</button>{/* 로컬스토리지에 저장 */}
+                                    <button type='button' id='cartBtn' onClick={handleCartButtonClick}>장바구니</button>{/* 로컬스토리지에 저장 */}
                                     <button type='submit' id='orderBtn'>주문하기</button> {/** 로컬 스토리지에 저장될걸 불러와서 post로 보냄 */}
                                 </div>
                             </div>
@@ -186,7 +194,7 @@ const DetailProduct =()=>{
             </div>
 
             <div id='menu-info'>
-                <li>
+                {/* <li>
                     <button className='btn'onClick={handleNutritionButtonClick}>
                         <div id='toggle-btn'>  
                             <h2>영양정보</h2> <button>{renderButtonContent(isNutritionVisible)}</button>
@@ -235,7 +243,7 @@ const DetailProduct =()=>{
                             </div>
                         )}
                     </button>
-                </li>
+                </li> */}
                 <li>
                     <button className='btn'onClick={handleAllergyButtonClick}>
                         <div id='toggle-btn'>  
@@ -244,7 +252,7 @@ const DetailProduct =()=>{
                         {isAllergyVisible && (
                             <div id="toggle">
                             <p>
-                                <b>알레르기 유발 가능 식재료</b><span> (난류,우유,대두,밀,돼지고기,토마토,쇠고기)</span> <br/>
+                                <b>알레르기 유발 가능 식재료</b><span> {product.llergen_information}</span> <br/>
                                 <b>* 일부 튀김류 제품은 새우 패티와 같은 조리기구를 사용하고 있습니다.</b>
                             </p>
                             </div>
@@ -260,8 +268,7 @@ const DetailProduct =()=>{
                             <div id="toggle">
                                 <p>
                                     <b>
-                                        쇠고기:호주산 <br/>
-                                        돼지고기(베이컨):외국산(아일랜드,스페인,캐나다)
+                                        {product.cuntry_of_origin}
                                     </b>
                                 </p>
                             </div>

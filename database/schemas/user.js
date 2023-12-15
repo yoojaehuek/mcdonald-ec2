@@ -4,10 +4,17 @@ class User extends Sequelize.Model {
   static initiate(sequelize) {
     User.init({
       id: {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
         primaryKey: true,
+        autoIncrement: true,
         allowNull: false,
-        comment: "ID(이메일) 기본키",
+        comment: "(기본키)",
+      },
+      email: {
+        type: Sequelize.STRING,
+        unique: true, //중복되면 안됨
+        allowNull: false,
+        comment: "ID(이메일)",
       },
       pwd: {
         type: Sequelize.STRING(128),
@@ -33,6 +40,16 @@ class User extends Sequelize.Model {
         type: Sequelize.STRING(100),
         allowNull: false,
         comment: "주소",
+      },
+      detail_address: {
+        type: Sequelize.STRING(100),
+        allowNull: false,
+        comment: "상세주소",
+      },
+      birth: {
+        type: Sequelize.DATEONLY,
+        allowNull: false,
+        comment: "생년월일",
       },
       created_at: {
         type: Sequelize.DATE,

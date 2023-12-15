@@ -24,7 +24,7 @@ class Material extends Sequelize.Model {
         },
         additional_info: {
           type: Sequelize.STRING,
-          allowNull: false,
+          allowNull: true,
         },
         img_url: {
           type: Sequelize.STRING,
