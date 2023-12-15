@@ -85,7 +85,7 @@ function App() {
         <Route path='/safetyguard' element={<Safetyguard />}></Route>
         <Route path='/mcdonaldhouse' element={<Mcdonaldhouse />}></Route>
         <Route path='/mcart' element={<Mcart/>}></Route>
-       
+      
         <Route path='/adminmain' element={<AdminMain />}></Route>
         {/* </Route> */}
       </Routes>

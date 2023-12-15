@@ -52,6 +52,7 @@ class UserController {
     static async detailUser(req, res, next){
         try{
             const id = req.userId;
+            // const id = 1;
             console.log(id);
             const user = await UserService.detailUser({id});
 

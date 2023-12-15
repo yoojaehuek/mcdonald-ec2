@@ -21,11 +21,11 @@ const Mcart = () => {
     
   },[])
 
- const increase = () => {
-   setNumber(number + 1);
- };
- const decrease = () => {
-   if (number > 1) setNumber(number - 1);
+  const increase = () => {
+    setNumber(number + 1);
+  };
+  const decrease = () => {
+    if (number > 1) setNumber(number - 1);
   };
   
 
@@ -39,7 +39,7 @@ const Mcart = () => {
         <button>방문포장</button>
       </div>
       <div class="midbox">
-      <div class="Mcart-mid">
+        <div class="Mcart-mid">
         <ul class="Mcart-ul">
           <li class="Mcart-li1">
               <div>
@@ -69,46 +69,42 @@ const Mcart = () => {
         <div class="Mcart-h3">
               <h3>주문상품</h3>
         </div>
-        {
-          cart.map(tmp =>
-      <ul class="Mcart-ul1">
-        <li class="Mcart-li4">
-          <button class="Mcart-btn2"></button>
-          <div class="Mcart-middle1">
-                  <div><img></img></div>
-            <div>
-              <div class="Mcart-txt">
-                  <div>
-                        <h4>{}</h4> 
+        {cart.map(tmp =>
+          <ul class="Mcart-ul1">
+            <li class="Mcart-li4">
+              <button class="Mcart-btn2"></button>
+              <div class="Mcart-middle1">
+                      <div><img></img></div>
+                <div>
+                  <div class="Mcart-txt">
+                      <div>
+                            <h4>{}</h4> 
+                      </div>
+                      <div>
+                            <p>{}</p>   
+                      </div>
                   </div>
-                  <div>
-                        <p>{}</p>   
-                   </div>
+                </div>
               </div>
-            </div>
-          </div>
 
-          <div class="Mcart-middle2">
-            <div class="Mcart-plusb"> 
-                {/* 상품개수 증감버튼 type='button'으로해야 새로고침안됨:number값 초기화 안됨 */}
-                <button type='button' onClick={decrease}><div>-</div></button> 
-                <button type='button'>{number}</button>
-                <button type='button' onClick={increase}><span>+</span></button>
-            </div>  
-              <div><p>{17900 * number}원</p></div>
-          </div>
-        </li>
-      </ul>
-             )
-            } 
-      <div class="Mcart-bottom">
-      총 상품 금액
-          <span>{17900 * number}원</span>
+              <div class="Mcart-middle2">
+                <div class="Mcart-plusb"> 
+                    {/* 상품개수 증감버튼 type='button'으로해야 새로고침안됨:number값 초기화 안됨 */}
+                    <button type='button' onClick={decrease}><div>-</div></button> 
+                    <button type='button'>{number}</button>
+                    <button type='button' onClick={increase}><span>+</span></button>
+                </div>  
+                  <div><p>{17900 * number}원</p></div>
+              </div>
+            </li>
+          </ul>
+        )} 
+        <div class="Mcart-bottom">
+        총 상품 금액
+            <span>{17900 * number}원</span>
+        </div>
       </div>
-
-       
-      </div>
-       <div class="Mcart-botbotton">
+      <div class="Mcart-botbotton">
           <button class="botbutton1">메뉴추가</button>
             <button class="botbutton2">주문하기</button>
       </div>
