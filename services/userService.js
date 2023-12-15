@@ -101,11 +101,17 @@ class UserService{
 		// const address = updateValue.address;
 		// const detail_address = updateValue.detail_address;
 		// const birth = updateValue.selectedYear+'-'+updateValue.selectedMonth+'-'+updateValue.selectedDay;
-		const update = {};
-		update.user_name = updateValue.user_name;
-		update.phone = updateValue.phoneNumberPrefix + updateValue.phoneNumberSuffix;
-		update.address = updateValue.address;
-		update.detail_address = updateValue.detail_address;
+		const update = {
+			user_name: updateValue.user_name,
+			phone: updateValue.phone_number_prefix + updateValue.phone_number_suffix,
+			address: updateValue.address,
+			detail_address: updateValue.detail_address,
+			birth: updateValue.selected_year+'-'+updateValue.selected_month+'-'+updateValue.selected_day,
+		};
+		// update.user_name = updateValue.user_name;
+		// update.phone = updateValue.phone_number_prefix + updateValue.phone_number_suffix;
+		// update.address = updateValue.address;
+		// update.detail_address = updateValue.detail_address;
 		// update.birth = updateValue.selectedYear+'-'+updateValue.selectedMonth+'-'+updateValue.selectedDay;
 		console.log(update);
 
