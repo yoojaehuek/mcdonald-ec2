@@ -17,7 +17,7 @@ router.get('/mcdelivery', async (req, res) => {
   const address = req.query.address;
   var elements = address.split(' ');
   var dong = elements[elements.length - 2]; 
-  console.log("query: ", query);
+  console.log("dong: ", dong);
   try {
     const result = await Store.findOne({
       where: {
@@ -28,7 +28,11 @@ router.get('/mcdelivery', async (req, res) => {
     }
     );
     console.log(result);
-    res.status(200).json({mcdelivery: result});
+    let mcdelivery = true;
+    if (result == null) {
+      mcdelivery = false;
+    }
+    res.status(200).json({"mcdelivery": mcdelivery});
     // res.json(result);
   } catch (error) {
     console.error('에러.:', error);
