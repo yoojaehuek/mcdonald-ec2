@@ -17,12 +17,13 @@ router.get('/mcdelivery', async (req, res) => {
   const address = req.query.address;
   var elements = address.split(' ');
   var dong = elements[elements.length - 2]; 
-  console.log("dong: ", dong);
+  var dongWithoutLastCharacter = dong.slice(0, -1); // 마지막 글자 제거
+  console.log("dong: ", dongWithoutLastCharacter);
   try {
-    const result = await Store.findOne({
+    const result = await Store.findAll({
       where: {
         address: {
-          [Op.like]: `%${dong}%`,
+          [Op.like]: `%${dongWithoutLastCharacter}%`,
         }
       }
     }

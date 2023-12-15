@@ -8,6 +8,7 @@ const { makeRefreshToken, makeAccessToken } = require('../utils/token');
 class UserService{
 	//유효성 검사 이메일 겹치는지 등등
 	static async addUser({email, pwd, user_name, phone, address, detail_address, selectedYear, selectedMonth, selectedDay}){
+		// const birth = selectedYear+'-'+selectedMonth+'-'+selectedDay;
 		const birth = selectedYear+'-'+selectedMonth+'-'+selectedDay;
 		console.log("birth: ", birth);
 		//crypto.randomBytes(128): 길이가 128인 임의의 바이트 시퀀스를 생성
@@ -78,17 +79,25 @@ class UserService{
 		const user_email = user.email;
 		const address = user.address;
 		const detail_address = user.detail_address;
-		const phone = user.phone;
+		// const phone = user.phone;
+		const phone_number_prefix = user.phone.substring(0, 3);
+		const phone_number_suffix = user.phone.substring(3);
 		// const birth = user.birth;
-		const birth = "test";
+		const date = new Date(user.birth);
+		const year = date.getFullYear();
+		const month = date.getMonth()+1;
+		const day = date.getDate();
 
 		const userInfo = {
 			name,
 			user_email,
 			address,
 			detail_address,
-			phone,
-			birth
+			phone_number_prefix,
+			phone_number_suffix,
+			year,
+			month,
+			day,
 		};
 
 		return userInfo;
