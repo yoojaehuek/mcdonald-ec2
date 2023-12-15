@@ -1,0 +1,267 @@
+
+//전체크기 
+.Mcart-top{
+  width: 1200px;
+  margin: 0 auto;
+}
+//메인로고
+.Mcart-h2{
+  padding-top: 30px;
+  padding-bottom: 20px;
+}
+
+//로고버튼
+.Mcart-btn button{
+  // float: left;
+  width: 135px;
+  font-size: 15px;
+  font-weight: 600;
+  height: 50px;
+  // background-color: #f6f6f6;
+  border: none;
+  cursor: pointer;
+}
+
+//로고버튼 색
+.Mcart-btn1{
+  background-color: #ffe100;
+}
+
+// .midbox{
+//   width: 1200px;
+//   position: relative;
+//   margin: 0 auto;
+// }
+
+//배달주소, 수령인 박스
+.Mcart-mid{
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+}
+
+//보더 오른쪽 줄
+.Mcart-mid li{
+  border-right: 1px solid ;
+  padding: 6px 30px;
+}
+
+//li마지막 오른쪽 보더 제거
+.Mcart-mid li:last-child{
+  border-right: none; 
+}
+
+// ul
+.Mcart-ul{
+  display: flex;
+  padding: 20px 0;
+}
+
+
+//Mcart 첫번째 li
+.Mcart-li1{
+  width: 650px;
+}
+
+//Mcart p태그
+.Mcart-p{
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+
+//Mcart 두번째 li
+.Mcart-li2{
+  text-align: center;
+  width: 200px;
+}
+
+
+//Mcart-li2 안에 버튼 조절
+.Mcart-li2 button{
+  background-color: #f2f2f2;
+  border: none;
+  width: 100px;
+  height: 30px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+
+//버튼 마우스 올리면 색변경
+.Mcart-li2 button:hover{
+  background-color: white;
+  border: 1px solid #e3e3e3;
+}
+
+
+//Mcart 세번째 li
+.Mcart-li3 input{
+  background-color: #f2f2f2;
+  border: 1px solid #e3e3e3;
+  margin-top: 10px;
+  width: 200px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+//Mcart-li3 버튼
+.Mcart-li3 button{
+  border: 1px solid #e3e3e3;
+  height: 30px;
+  width: 50px;
+  cursor: pointer;
+}
+
+//Mcart-li3 마우스 올리면 색변경
+.Mcart-li3 button:hover{
+  background-color: white;
+}
+
+
+//h3 line-height
+.Mcart-h3{
+  line-height: 4;
+  border-bottom: 1px solid #dbdbdb;
+}
+
+
+//Mcart-ul1박스 (주문상품 박스)
+// .Mcart-ul1{
+//   border-bottom: 1px solid #dbdbdb;
+//   border-top: 1px solid #dbdbdb;
+// }
+
+
+//Mcart 네번째 li
+.Mcart-li4{
+  border-bottom: 1px solid #dbdbdb;
+  position: relative;
+  padding: 20px 0;
+}
+
+//Mcart 두번째 버튼 (x버튼)
+.Mcart-btn2{
+  background-image: url(../../../../public/image/Mcart/icon_x_g.png);
+  position: absolute;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  background-size: cover;
+  font-size: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  border: none;
+  background-color: white;
+}
+
+
+//middle1 첫번째 박스
+.Mcart-middle1{
+    float: left;
+    width: 700px;
+    border-right: 1px solid #dbdbdb;
+}
+//middle1 이미지
+.Mcart-middle1 img{
+  display: flex;
+  float: left;
+  width: 100px;
+  background-color: #fafafa;
+  height: 100px;
+  padding: 10px;
+  margin-right: 30px;
+}
+
+//middle1안에 텍스트
+.Mcart-txt{
+  align-items: center;
+  padding: 20px;
+  line-height: 2;
+}
+
+//Mcart 두번째 middle2 박스
+.Mcart-middle2{
+  // float: right;
+    display: flex;
+    height: 100px;
+    align-items: center;
+    // flex-wrap: wrap;
+    // padding-right: 70px;
+}
+
+//middle2 p태그 위치조절
+.Mcart-middle2 p{
+    font-size: 18px;
+    font-weight: 600;
+    text-align: right;
+    width: 150px;
+}
+
+//middle2안에 마이너스 플러스 박스
+.Mcart-plusb{
+  margin-right: 50px;
+ margin-left: 50px;
+ display: flex;
+ border: 1px solid #D1D1D1;
+ border-radius: 50px;
+ 
+ //middle2안에 마이너스 플러스 버튼
+ button{
+ padding-bottom: 5px;
+ width: 40px;
+ border: 0px;
+ font-size: 30px;
+ font-weight: bold;
+ background: rgba(0,0,0,0);
+ cursor: pointer;
+ }
+}
+
+
+//Mcart bottom박스
+.Mcart-bottom{
+  border-bottom: 1px solid ;
+  line-height: 80px;
+  text-align: right;
+  
+}
+
+//Mcart-bottom span태그 사이즈 색변경
+.Mcart-bottom span{
+    font-size: 25px;
+    font-weight: 700;
+    color: #00a1e9;
+    padding-left: 20px;
+}
+
+
+//Mcart-botbottom 박스 margin주기
+.Mcart-botbotton{
+  margin-top: 50px;
+  margin-bottom: 150px;
+}
+
+
+//botbottom button 크기
+.Mcart-botbotton button{
+  width: 150px;
+  height: 50px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+//botbottom 첫번째 버튼
+.botbutton1{
+  background-color: white;
+  border: 1px solid #e3e3e3;
+}
+
+//botbottom 두번째 버튼
+.botbutton2{
+  float: right;
+  background-color: #000;
+  color: #ffffff;
+  border: none;
+}

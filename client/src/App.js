@@ -30,6 +30,7 @@ import McDrive from './page/Store/McDrive/McDrive';
 import Rental from './page/Store/Rental/Rental';
 import McDelivery from './page/Store/McDelivery/McDelivery';
 import Storymain from './page/Story/Main/Main';
+import Mcart from './page/Store/Mcart/Mcart';
 
 
 function App() {
@@ -61,7 +62,8 @@ function App() {
             <Route path='/mcdrive' element={<McDrive />}></Route>
             <Route path='/rental' element={<Rental />}></Route>
             <Route path='/mcdelivery' element={<McDelivery/>}></Route>
-            <Route path='/story' element={<Storymain/>}></Route>
+           <Route path='/story' element={<Storymain />}></Route>
+          <Route path='/mcart' element={<Mcart/>}></Route>
           </Route>
         </Routes>
       <Footer />
