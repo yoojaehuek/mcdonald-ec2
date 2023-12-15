@@ -1,6 +1,5 @@
 import React from "react";
 import './McDrive.scss';
-// import { NavLink } from "react-router-dom";
 import YouTube from "react-youtube";
 
 const temp = [
