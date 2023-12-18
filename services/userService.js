@@ -103,28 +103,28 @@ class UserService{
 		return userInfo;
 	}
 
-	static async putUser({updateValue}, {userId}){
-		console.log("서비스에서: ",updateValue, userId);
-		// const email = updateValue.user_name;
-		// const phone = updateValue.phoneNumberPrefix + updateValue.phoneNumberSuffix;
-		// const address = updateValue.address;
-		// const detail_address = updateValue.detail_address;
-		// const birth = updateValue.selectedYear+'-'+updateValue.selectedMonth+'-'+updateValue.selectedDay;
+	static async putUser({toUpdate, userId}){
+		console.log("서비스에서: ",toUpdate, userId);
+		// const email = toUpdate.user_name;
+		// const phone = toUpdate.phoneNumberPrefix + toUpdate.phoneNumberSuffix;
+		// const address = toUpdate.address;
+		// const detail_address = toUpdate.detail_address;
+		// const birth = toUpdate.selectedYear+'-'+toUpdate.selectedMonth+'-'+toUpdate.selectedDay;
 		const update = {
-			user_name: updateValue.user_name,
-			phone: updateValue.phone_number_prefix + updateValue.phone_number_suffix,
-			address: updateValue.address,
-			detail_address: updateValue.detail_address,
-			birth: updateValue.selected_year+'-'+updateValue.selected_month+'-'+updateValue.selected_day,
+			user_name: toUpdate.user_name,
+			phone: toUpdate.phone_number_prefix + toUpdate.phone_number_suffix,
+			address: toUpdate.address,
+			detail_address: toUpdate.detail_address,
+			birth: toUpdate.selected_year+'-'+toUpdate.selected_month+'-'+toUpdate.selected_day,
 		};
-		// update.user_name = updateValue.user_name;
-		// update.phone = updateValue.phone_number_prefix + updateValue.phone_number_suffix;
-		// update.address = updateValue.address;
-		// update.detail_address = updateValue.detail_address;
-		// update.birth = updateValue.selectedYear+'-'+updateValue.selectedMonth+'-'+updateValue.selectedDay;
+		// update.user_name = toUpdate.user_name;
+		// update.phone = toUpdate.phone_number_prefix + toUpdate.phone_number_suffix;
+		// update.address = toUpdate.address;
+		// update.detail_address = toUpdate.detail_address;
+		// update.birth = toUpdate.selectedYear+'-'+toUpdate.selectedMonth+'-'+toUpdate.selectedDay;
 		console.log(update);
 
-		const user = await UserModel.putUser({update}, {userId});
+		const user = await UserModel.putUser({update, userId});
 		return user;
 	}
 

@@ -53,7 +53,7 @@ class UserController {
         try{
             const id = req.userId;
             // const id = 1;
-            console.log(id);
+            console.log("id: ",id);
             const user = await UserService.detailUser({id});
 
             // console.log("res임니다요: ",res);
@@ -67,9 +67,11 @@ class UserController {
         try{
             const userId = req.userId;
             // const userId = 1;
-            const updateValue = req.body;
-            console.log("userController/updateValue: ", updateValue, userId);
-            const user = await UserService.putUser({updateValue}, {userId});
+            const {...props} = req.body;
+            const toUpdate = {...props}
+            // const updateValue = req.body;
+            console.log("userController/updateValue: ", toUpdate, userId);
+            const user = await UserService.putUser({toUpdate, userId});
 
             // console.log("res임니다요: ",res);
             res.status(200).json(user)

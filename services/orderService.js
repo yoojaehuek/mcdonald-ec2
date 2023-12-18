@@ -56,6 +56,42 @@ class OrderService{
     return orderData;
   }
 
+  static async findAllOrderDate({userId, dateType}){
+
+    const date = new Date();
+    //월별 조회
+    if (dateType.month) {
+      // console.log(typeof(parseInt(dateType.month)));
+      date.setMonth(date.getMonth()-parseInt(dateType.month));
+    }
+    // 일별 조회
+    else if (dateType.day) {
+      date.setDate(date.getDate()-parseInt(dateType.day));
+    }
+    // 주별 조회
+    else if (dateType.week) {
+      date.setDate(date.getDate()-(parseInt(dateType.week)*7));
+    }
+    //연별 조회
+    else if (dateType.year) {
+      date.setFullYear(date.getFullYear()-parseInt(dateType.year));
+    }
+    // 적절한 쿼리가 제공되지 않은 경우
+    else {
+      // throw new Error("'Invalid request. Please provide month, day, or week.'");
+      const errorMessage = "잘못 요청";
+      return errorMessage;
+    }
+    const result = await OrderModel.findAllOrderDate({userId, date});
+    return result;
+  }
+
+  static async deleteOrder({orderId}){
+    const result = await OrderModel.deleteOrder({orderId});
+    return result;
+  }
+
+
 }
 
 module.exports = OrderService;
