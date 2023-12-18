@@ -7,6 +7,7 @@ const { sequelize } = require('./database/schemas');//DB테이블
 const visualBackGroundRouter = require('./routers/visualBackGround')
 const port = 8003;
 require('dotenv').config();
+const errorMiddleware = require('./utils/errorMiddleware');
 const CrewRouter = require('./routers/crew');
 const FaqRouter = require('./routers/faq');
 const MaterialRouter = require('./routers/material');
@@ -71,6 +72,8 @@ app.get('/logout', (req, res) => {
 // '/upload'경로로 뭔가 요청이오면 여기서 걸리고 upload폴더의 정적 파일을 제공하겠다
 // 예: "/upload/image.jpg")에 액세스하면 Express.js는 "upload" 디렉터리에서 정적 파일을 찾아 제공
 app.use("/upload", express.static("upload"));  
+
+app.use(errorMiddleware);
 
 app.use(express.static(path.join(__dirname, 'client/build')));
 
