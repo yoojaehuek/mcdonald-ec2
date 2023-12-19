@@ -19,43 +19,26 @@ function Join() {
 	const inputRefPwd = useRef(null);
 	const navigate = useNavigate();
 
-
+	/** 생년월일 선택 */
 	const currentYear = new Date().getFullYear();
 	const years = Array.from({ length: 100 }, (_, index) => currentYear - index);
 	const months = Array.from({ length: 12 }, (_, index) => index + 1);
 	const days = Array.from({ length: 31 }, (_, index) => index + 1);
-  
-	const handleYearChange = (e) => {
-		setSelectedYear(e.target.value);
-	};
-	const handleMonthChange = (e) => {
-		setSelectedMonth(e.target.value);
-	};
-
-	const handleDayChange = (e) => {
-		setSelectedDay(e.target.value);
-	};
+	const handleYearChange = (e) => {	setSelectedYear(e.target.value); };
+	const handleMonthChange = (e) => {	setSelectedMonth(e.target.value);};
+	const handleDayChange = (e) => {	setSelectedDay(e.target.value);};
 
 	/** 우편번호 창  */
-
 	// 팝업창 상태 관리
 	const [isPopupOpen, setIsPopupOpen] = useState(false)
 	// 팝업창 열기
-	const openPostCode = () => {
-		setIsPopupOpen(true)
-	}
+	const openPostCode = () => { setIsPopupOpen(true) }
 	// 팝업창 닫기
-	const closePostCode = () => {
-		setIsPopupOpen(false)
-	}
+	const closePostCode = () => {	setIsPopupOpen(false)	}
 	// 선택된 주소를 업데이트하는 콜백 함수
-	const handleSelectedAddress = (address) => {
-		setSelectedAddress(address);
-	};
+	const handleSelectedAddress = (address) => {	setSelectedAddress(address); };
 	/** 우편검색 결과가 인풋창에 업데이트 되지않아서 이함수로 업데이트 시켜줌 */
-	const handleAddressChange = (e) => {
-		setSelectedAddress(e.target.value);
-	};
+	const handleAddressChange = (e) => {	setSelectedAddress(e.target.value); };
 	/** 우편번호 창  */
 
 	const onSubmitJoin = async (e) => {
@@ -70,7 +53,8 @@ function Join() {
 		const addZeroMonth= selectedMonth < 10 ? `0`+selectedMonth:selectedMonth 
 		const addZeroDay= selectedDay < 10 ? `0`+selectedDay:selectedDay 
 		const birth = `${selectedYear}-${addZeroMonth}-${addZeroDay}`;
-		if(pwd === confirmPwd 
+		if(
+			pwd === confirmPwd 
 			&& email !== "" 
 			&& pwd !== "" 
 			&& confirmPwd !== "" 
@@ -80,7 +64,8 @@ function Join() {
 			&& detail_address !== "" 
 			&& selectedYear !== "" 
 			&& selectedMonth !== ""
-			&& selectedDay !== ""){
+			&& selectedDay !== ""
+			){
 			axios.post(`${API_URL}/user/join`,{email, pwd, user_name, phone, address, detail_address, birth})
 			.then(() =>{
 				alert("가입성공!");
