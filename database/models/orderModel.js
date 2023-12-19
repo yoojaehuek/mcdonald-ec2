@@ -2,8 +2,7 @@ const { Product, Store, Option } = require('../schemas');
 const Order = require('../schemas/order'); 
 const OrderMenu = require('../schemas/orderMenu'); 
 const OrderOption = require('../schemas/orderOption'); 
-// const Planner = require('../schemas/planner'); 
-const { Op, literal } = require('sequelize');
+const { Op } = require('sequelize');
 
 class OrderModel {
 

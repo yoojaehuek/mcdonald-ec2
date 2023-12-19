@@ -18,6 +18,7 @@ const sliderRouter = require('./routers/slider');
 const storeRouter = require('./routers/store');
 const whatsNewRouter = require('./routers/whatsNew');
 const orderRouter = require('./routers/order');
+const optionRouter = require('./routers/option');
 
 //시퀄라이즈 연결 부분
 sequelize.sync({ force: false }) //force가 true면 킬때마다 DB 새로 만듬
@@ -54,6 +55,7 @@ app.use('/slider', sliderRouter);
 app.use('/store', storeRouter);
 app.use('/whats-new', whatsNewRouter);
 app.use('/order', orderRouter);
+app.use('/option', optionRouter);
 app.get('/logout', (req, res) => {
   console.log("logout");
   res.cookie('accessToken',{},{
