@@ -1,25 +1,17 @@
 const express = require('express');
 const router = express.Router();
-const Material = require('../database/schemas/material');
+const MaterialController = require('../controllers/materialController');
 
-router.get('/', async (req, res) => {
-  try {
-    const materials = await Material.findAll();
-    res.json(materials);
-  } catch (error) {
-    console.error(error);
-    res.status(500).send('Server Error');
-  }
-});
 
-// router.get('/:id', async (req, res) => {
-//   const { id } = req.params;
+router.post('/', MaterialController.createMaterial);
+router.get('/', MaterialController.getAllMaterial);
+router.patch('/:material_id', MaterialController.updateMaterial);
+router.delete('/:material_id', MaterialController.deleteMaterial);
+
+// router.get('/', async (req, res) => {
 //   try {
-//     const material = await Material.findByPk(id);
-//     if (!material) {
-//       return res.status(404).send('x');
-//     }
-//     res.json(material);
+//     const materials = await Material.findAll();
+//     res.json(materials);
 //   } catch (error) {
 //     console.error(error);
 //     res.status(500).send('Server Error');

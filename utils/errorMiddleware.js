@@ -6,6 +6,7 @@ function errorMiddleware(error, req, res, next) {
   res.status(StatusCodes.NOT_FOUND).json({ //클라이언트에게 404 상태 코드와 함께 JSON 응답을 보냅니다. 응답 내용은 result가 "fail"이고 error는 현재 요청의 경로
     result: "fail",
     error: `Page not found ${req.path}`,
+    message: error.message,
   });
 }
 

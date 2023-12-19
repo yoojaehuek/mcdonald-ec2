@@ -8,16 +8,16 @@ const OrderService = require("../services/orderService");
 class OrderController {
   static async addOrder(req,res,next){
     try {
-        const tmp = req.body;
-        // tmp.userId = req.userId;
-        tmp.userId = 1;
+        // const tmp = req.body;
+        tmp.userId = req.userId;
+        // tmp.userId = 1;
         // console.log("tmp: ",tmp);
         const newOrder = await OrderService.addOrder(tmp);
         
         if(newOrder.errorMessage){
             throw new Error(newOrder.errorMessage)
         }
-        res.status(200).json(newOrder);
+        res.status(201).json(newOrder);
 
     } catch (error) {
         next(error)
@@ -26,8 +26,8 @@ class OrderController {
   static async getOrderByUserId(req, res, next){
     try {
       console.log("req.userId: ", req.userId);
-      // const userId = req.userId;
-      const userId = 1;
+      const userId = req.userId;
+      // const userId = 1;
       const result = await OrderService.getOrderByUserId({id: userId});
       console.log("orderController.js/getOrderByUserId()/result: ", result);
       res.status(200).json(result);
@@ -38,8 +38,8 @@ class OrderController {
 
   static async findAllOrderDate(req, res, next){
     try {
-      // const userId = req.userId;
-      const userId = 1;
+      const userId = req.userId;
+      // const userId = 1;
       const dateType = req.query;
       const result = await OrderService.findAllOrderDate({userId, dateType});
       // console.log("orderController.js/getOrderByUserId()/result: ", result);
@@ -54,9 +54,9 @@ class OrderController {
 
   static async deleteOrder(req, res, next){
     try {
-      // const userId = req.body;
-      const orderId = 8;
-      const result = await OrderService.deleteOrder({orderId});
+      const order_id = req.params.order_id;
+      // const orderId = 8;
+      const result = await OrderService.deleteOrder({order_id});
       res.status(200).json(result);
     } catch (error) {
       next(error)

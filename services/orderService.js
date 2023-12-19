@@ -86,8 +86,8 @@ class OrderService{
     return result;
   }
 
-  static async deleteOrder({orderId}){
-    const result = await OrderModel.deleteOrder({orderId});
+  static async deleteOrder({order_id}){
+    const result = await OrderModel.deleteOrder({order_id});
     return result;
   }
 

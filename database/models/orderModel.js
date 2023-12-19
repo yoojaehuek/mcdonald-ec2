@@ -154,11 +154,11 @@ class OrderModel {
   }
 
 //삭제 쿼리
-  static async deleteOrder({orderId}){
+  static async deleteOrder({order_id}){
     // console.log("orderId",orderId);
     const order = await Order.destroy({
       where: {
-        id: orderId
+        id: order_id
       }
     });//where: {id: asdf} 형태가 들어와야함
     return order;
