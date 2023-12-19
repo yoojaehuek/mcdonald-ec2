@@ -18,6 +18,7 @@ const sliderRouter = require('./routers/slider');
 const storeRouter = require('./routers/store');
 const whatsNewRouter = require('./routers/whatsNew');
 const orderRouter = require('./routers/order');
+const optionRouter = require('./routers/option');
 
 //시퀄라이즈 연결 부분
 sequelize.sync({ force: false }) //force가 true면 킬때마다 DB 새로 만듬
@@ -35,7 +36,7 @@ app.use(cookieParser());
 // URL-encoded방식 사용할수있게 설정 (.urlencoded()은 x-www-form-urlencoded형태의 데이터를 해석  )
 // json형식의 데이터를 처리할 수 있게 설정 (.json()은 JSON형태의 데이터를 해석.)
 // 자세한 설명: https://kirkim.github.io/javascript/2021/10/16/body_parser.html
-app.use(express.urlencoded({extended:false}));  
+app.use(express.urlencoded({extended: false}));  
 app.use(express.json());
 
 
@@ -54,6 +55,7 @@ app.use('/slider', sliderRouter);
 app.use('/store', storeRouter);
 app.use('/whats-new', whatsNewRouter);
 app.use('/order', orderRouter);
+app.use('/option', optionRouter);
 app.get('/logout', (req, res) => {
   console.log("logout");
   res.cookie('accessToken',{},{

@@ -2,8 +2,12 @@ const { Product, Store, Option } = require('../schemas');
 const Order = require('../schemas/order'); 
 const OrderMenu = require('../schemas/orderMenu'); 
 const OrderOption = require('../schemas/orderOption'); 
+<<<<<<< HEAD
 // const Planner = require('../schemas/planner'); 
 const { Op, literal } = require('sequelize');
+=======
+const { Op } = require('sequelize');
+>>>>>>> 64f7291fae52f9779fbee32ef3f65595ecceb33e
 
 class OrderModel {
 
@@ -154,11 +158,19 @@ class OrderModel {
   }
 
 //삭제 쿼리
+<<<<<<< HEAD
   static async deleteOrder({orderId}){
     // console.log("orderId",orderId);
     const order = await Order.destroy({
       where: {
         id: orderId
+=======
+  static async deleteOrder({order_id}){
+    // console.log("orderId",orderId);
+    const order = await Order.destroy({
+      where: {
+        id: order_id
+>>>>>>> 64f7291fae52f9779fbee32ef3f65595ecceb33e
       }
     });//where: {id: asdf} 형태가 들어와야함
     return order;

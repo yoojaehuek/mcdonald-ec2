@@ -20,11 +20,6 @@ class Slider extends Sequelize.Model {
           allowNull: false,
           comment: "슬라이더안에 들어갈 이미지, 동영상 저장 경로"
         },
-        path: {
-          type: Sequelize.STRING,
-          allowNull: false,
-          comment: "클릭시 이동 경로"
-        },
         duration: {
           type: Sequelize.INTEGER,
           allowNull: false,
