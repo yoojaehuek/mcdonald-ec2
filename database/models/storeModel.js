@@ -2,15 +2,26 @@ const Store = require('../schemas/store');
 const { Op } = require('sequelize');
 
 class StoreModel {
+
   static async createStore({newStore}){
     console.log("newStore",newStore);
-    const createNewStore = await Store.create(newStore);
-    return createNewStore;
+    const result = await Store.create(newStore);
+    return result;
   }
 
   static async getAllStore(){
     // console.log("storeId: ",storeId);
     const result = await Store.findAll();
+    return result;
+  }
+
+  static async getOneStore({store_id}){
+    // console.log("storeId: ",storeId);
+    const result = await Store.findOne({
+      where: {
+        id: store_id,
+      }
+    });
     return result;
   }
 
@@ -37,23 +48,23 @@ class StoreModel {
   //   return store;
   // }
   
-  static async putStore({update, storeId}){
-    console.log("update: ",update);
+  static async updateStore({update, store_id}){
+    console.log("Model/update: ",update);
     const store = await Store.update({
       ...update
     }, {
       where: {
-        id: storeId
+        id: store_id
       }
     });//where: {id: asdf} 형태가 들어와야함
     return store;
   }
 
-  static async destroyStore({storeId}){
+  static async deleteStore({store_id}){
     // console.log("storeId",storeId);
     const store = await Store.destroy({
       where: {
-        id: storeId
+        id: store_id
       }
     });//where: {id: asdf} 형태가 들어와야함
     return store;

@@ -1,15 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const Effort = require('../database/schemas/effort');
+const EffortController = require('../controllers/effortController');
 
-router.get('/', async (req, res) => {
-  try {
-    const efforts = await Effort.findAll();
-    res.json(efforts);
-  } catch (error) {
-    console.error(error);
-    res.status(500).send('Server Error');
-  }
-});
+router.post('/', EffortController.createEffort);
+router.get('/', EffortController.getAllEffort);
+router.patch('/:effort_id', EffortController.updateEffort);
+router.delete('/:effort_id', EffortController.deleteEffort);
 
 module.exports = router;

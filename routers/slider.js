@@ -1,15 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const Slider = require('../database/schemas/slider');
+const SliderController = require('../controllers/sliderController');
 
-router.get('/', async (req, res) => {
-  try {
-    const result = await Slider.findAll();
-    res.json(result);
-  } catch (error) {
-    console.error('에러.:', error);
-    res.status(500).json({ error: '서버 에러.' });
-  }
-});
+router.post('/', SliderController.createSlider);
+router.get('/', SliderController.getAllSlider);
+router.patch('/:slider_id', SliderController.updateSlider);
+router.delete('/:slider_id', SliderController.deleteSlider);
 
 module.exports = router;

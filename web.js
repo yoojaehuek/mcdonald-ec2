@@ -35,7 +35,7 @@ app.use(cookieParser());
 // URL-encoded방식 사용할수있게 설정 (.urlencoded()은 x-www-form-urlencoded형태의 데이터를 해석  )
 // json형식의 데이터를 처리할 수 있게 설정 (.json()은 JSON형태의 데이터를 해석.)
 // 자세한 설명: https://kirkim.github.io/javascript/2021/10/16/body_parser.html
-app.use(express.urlencoded({extended:false}));  
+app.use(express.urlencoded({extended: false}));  
 app.use(express.json());
 
 

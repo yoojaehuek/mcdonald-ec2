@@ -45,11 +45,6 @@ class SubCategory extends Sequelize.Model {
           allowNull: false,
           comment: "버튼에 들어갈 텍스트",
         },
-        link: {
-          type: Sequelize.STRING,
-          allowNull: false,
-          comment: "클릭시 이동할 주소"
-        },
         seq: {
           type: Sequelize.INTEGER,
           // autoIncrement: true,

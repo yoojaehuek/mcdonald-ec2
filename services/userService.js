@@ -7,7 +7,7 @@ const { makeRefreshToken, makeAccessToken } = require('../utils/token');
 
 class UserService{
 	//유효성 검사 이메일 겹치는지 등등
-	static async addUser({email, pwd, user_name, phone, address, detail_address, selectedYear, selectedMonth, selectedDay}){
+	static async createUser({email, pwd, user_name, phone, address, detail_address, selectedYear, selectedMonth, selectedDay}){
 		// const birth = selectedYear+'-'+selectedMonth+'-'+selectedDay;
 		const birth = selectedYear+'-'+selectedMonth+'-'+selectedDay;
 		console.log("birth: ", birth);
