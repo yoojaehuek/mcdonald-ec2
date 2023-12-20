@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, NavLink } from 'react-router-dom';
 import { API_URL } from "../../../config/contansts";
 import './DetailProduct.scss';
 import axios from 'axios';
@@ -184,7 +184,7 @@ const DetailProduct =()=>{
                             </div>
                             <div id='order-btn'>
                                 <div>
-                                    <button type='button' id='cartBtn' onClick={handleCartButtonClick}>장바구니</button>{/* 로컬스토리지에 저장 */}
+                                    <NavLink to='/mcart' type='button' id='cartBtn' onClick={handleCartButtonClick}>장바구니</NavLink>{/* 로컬스토리지에 저장 */}
                                     <button type='submit' id='orderBtn'>주문하기</button> {/** 로컬 스토리지에 저장될걸 불러와서 post로 보냄 */}
                                 </div>
                             </div>

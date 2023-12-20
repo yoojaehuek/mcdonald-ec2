@@ -4,9 +4,7 @@ const Category = require('./category');
 const Crew = require('./crew');
 const Effort = require('./effort');
 const Faq = require('./faq');
-// const HappyMeal = require('./happymeal');
 const Material = require('./material');
-// const News = require('./news');
 const Option = require('./option');
 const Order = require('./order');
 const OrderOption = require('./orderOption');
@@ -17,7 +15,6 @@ const Store = require('./store')
 const SubCategory = require('./subCategory');
 const User = require('./user'); //user파일을 User로 불러옴 
 const Slider = require('./slider')
-const VisualBackGround = require('./visualBackGround');
 
 const env = process.env.NODE_ENV || 'development'; //상수 env에 NODE_ENV없으면 'development' 넣음
 const config = require('../../config/config.json')[env]; //상수config에 ../config/config파일에서 env(development) 불러옴
@@ -45,10 +42,7 @@ db.Order = Order;
 db.OrderMenu = OrderMenu;
 db.OrderOption = OrderOption;
 db.WhatsNew = WhatsNew;
-// db.HappyMeal = HappyMeal; 
-// db.News = News;
-db.Slider = Slider
-db.VisualBackGround = VisualBackGround;
+db.Slider = Slider;
 
 
 
@@ -67,10 +61,7 @@ Order.initiate(sequelize);
 OrderMenu.initiate(sequelize);
 OrderOption.initiate(sequelize);
 WhatsNew.initiate(sequelize);
-// HappyMeal.initiate(sequelize);
-// News.initiate(sequelize);
 Slider.initiate(sequelize);
-VisualBackGround.initiate(sequelize);
 
 
 Admin.associate(db);
@@ -88,9 +79,6 @@ Order.associate(db);
 OrderMenu.associate(db);
 OrderOption.associate(db);
 WhatsNew.associate(db);
-// News.associate(db);
-// HappyMeal.associate(db);
 Slider.associate(db);
-VisualBackGround.associate(db);
 
 module.exports = db;

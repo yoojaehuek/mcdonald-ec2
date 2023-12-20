@@ -14,8 +14,8 @@ import Recruit from './page/Story/People/Recruit/Recruit';
 import Faq from './page/Story/Competition/Faq/Faq';
 import BrandIntro from './page/Story/BrandIntro/BrandIntro';
 import Find from './page/Store/Main/Find/Find';
-// import Effort from './page/Story/Competition/FarmToRestaurant/Effort';
-// import Safekeeping from './page/Story/Competition/FarmToRestaurant/Safekeeping';
+import Effort from './page/Story/Competition/FarmToRestaurant/Effort';
+import Safekeeping from './page/Story/Competition/FarmToRestaurant/Safekeeping';
 import FarmToRestaurant from './page/Story/Competition/FarmToRestaurant/FarmToRestaurant';
 // import Material from './page/Story/Competition/FarmToRestaurant/Material';
 import News from './page/WhatsNew/News/News.js';
@@ -33,6 +33,7 @@ import McDrive from './page/Store/McDrive/McDrive';
 import Rental from './page/Store/Rental/Rental';
 import McDelivery from './page/Store/McDelivery/McDelivery';
 import Storymain from './page/Story/Main/Main';
+import Mcart from './page/Store/Mcart/Mcart';
 import Buttonmain from "./components/Main/Button";
 import Private from "./page/FooterLink/private";
 import Location from "./page/FooterLink/location"
@@ -40,7 +41,6 @@ import Mypage from "./page/Mypage/Myinfo";
 import Order from "./page/Mypage/Order";
 import Event from './page/Store/Main/Event/Event'
 import AdminMain from './Admin/Adminmain.js';
-
 
 function App() {
   const currentPath = window.location.pathname;
@@ -84,7 +84,8 @@ function App() {
         <Route path='/happyburger' element={<Happyburger />}></Route>
         <Route path='/safetyguard' element={<Safetyguard />}></Route>
         <Route path='/mcdonaldhouse' element={<Mcdonaldhouse />}></Route>
-
+        <Route path='/mcart' element={<Mcart/>}></Route>
+      
         <Route path='/adminmain' element={<AdminMain />}></Route>
         {/* </Route> */}
       </Routes>

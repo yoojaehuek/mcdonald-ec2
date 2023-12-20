@@ -163,7 +163,7 @@
 }
 //a태그 구현, 위치조절
 .mcdel-a{
-  background-color: #ffbc0d;
+  background-color: #da0000;
   line-height: 90px;
   border-radius: 50px;
   display: inline-block;
@@ -171,8 +171,16 @@
   padding: 0 60px;
   margin-bottom: 50px;
   margin-right: 20px;
-  margin-left: -20px;
+  margin-left: -50px;
+  color: white;
+  font-weight: 700;
+  font-size: 18px;
 }
 
+//이미지 
+.mcdel-bottom img{
+  width: 250px;
+  margin-right: 10px;
+}
 
 
