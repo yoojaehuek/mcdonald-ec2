@@ -27,12 +27,12 @@ const BrandIntro = () => {
         <div className="inner">
           <ul className="inner_btn">
             <li>
-              <a to="/brandintro" role="button" className="on">
+              <a to="/story/brandintro" role="button" className="on">
                 맥도날드 소개
               </a>
             </li>
             <li>
-              <NavLink to="/brandhistory" role="button">
+              <NavLink to="/story/brandhistory" role="button">
                 맥도날드 철학 및 역사
               </NavLink>
             </li>

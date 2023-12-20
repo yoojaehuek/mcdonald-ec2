@@ -44,12 +44,12 @@ const BrandHistory = () => {
         <div className="inner">
           <ul className="inner_btn">
             <li>
-              <a href="/brandintro" role="button">
+              <a href="/story/brandintro" role="button">
                 맥도날드 소개
               </a>
             </li>
             <li>
-              <a href="/brandhistory" role="button" className="on">
+              <a href="/story/brandhistory" role="button" className="on">
                 맥도날드 철학 및 역사
               </a>
             </li>
