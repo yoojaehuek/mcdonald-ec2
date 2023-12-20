@@ -2,8 +2,6 @@ const StoreService = require("../services/storeService");
 
 class StoreController {
 
-<<<<<<< HEAD
-=======
 	static async createStore(req, res, next){
 		try {
 			const reqBody = req.body;
@@ -16,7 +14,6 @@ class StoreController {
 		}
 	}
 
->>>>>>> 64f7291fae52f9779fbee32ef3f65595ecceb33e
 	static async getAllStore(req, res, next){
 		try {
 			// const storeId = req.body;
@@ -27,8 +24,6 @@ class StoreController {
 		}
 	}
 
-<<<<<<< HEAD
-=======
 	static async getOneStore(req, res, next){
 		try {
 			const store_id = req.params.store_id;
@@ -39,7 +34,6 @@ class StoreController {
 		}
 	}
 
->>>>>>> 64f7291fae52f9779fbee32ef3f65595ecceb33e
 	static async getMcdelivery(req, res, next){
 		try {
 			const address = req.query.address;
@@ -52,14 +46,6 @@ class StoreController {
 		}
 	}
 
-<<<<<<< HEAD
-	static async createStore(req, res, next){
-		try {
-			// const address = req.query.address;
-			// console.log("dong: ", address);
-			// // const storeId = req.body;
-			// const result = await StoreService.getMcdelivery({address});
-=======
 	static async updateStore(req, res, next){
 		try {
 			const store_id = req.params.store_id;
@@ -78,7 +64,6 @@ class StoreController {
 			const store_id = req.params.store_id;
 
 			const result = await StoreService.deleteStore({store_id});
->>>>>>> 64f7291fae52f9779fbee32ef3f65595ecceb33e
 			res.status(200).json(result);
 		} catch (error) {
 			next(error);

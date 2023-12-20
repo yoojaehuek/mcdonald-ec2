@@ -1,17 +1,4 @@
 const Option = require('../schemas/option'); 
-<<<<<<< HEAD
-Option
-class OptionModel {
-    static async findOneByid({optionId}){
-        const option = await Option.findOne({
-          attributes: ['name', 'price'],
-          where: {
-            id: optionId,
-          }
-        });
-        return option;
-    } 
-=======
 
 
 class OptionModel {
@@ -59,7 +46,6 @@ class OptionModel {
     return result;
   }
 
->>>>>>> 64f7291fae52f9779fbee32ef3f65595ecceb33e
 }
 
 module.exports = OptionModel;

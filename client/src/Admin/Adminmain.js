@@ -1,82 +1,41 @@
 import React, { useEffect, useRef } from 'react';
+import { Routes, Route, NavLink } from 'react-router-dom';
 import AHeader from './Component/AHeader';
 import AMenu from './Component/AMenu';
-import Chart from 'chart.js/auto';
+import AChart from './page/AChart';
+import AProduct from './page/AProduct';
+import AOption from './page/AOption';
+import AOrder from './page/AOrder';
+import ASlider from './page/ASlider';
+import AStore from './page/AStore';
+import ACrew from './page/ACrew';
+import AEffort from './page/AEffort';
+import AMaterial from './page/AMaterial';
+import AVisualbackground from './page/AVisualbackground';
+import AWhatsNew from './page/whatsNew/AWhatsNew';
+import ANews from './page/whatsNew/ANews';
 
 const AdminMain = () => {
-  const chartRef = useRef(null);
-  const chartInstance = useRef(null);
-
-  useEffect(() => {
-    const ctx = chartRef.current.getContext('2d');
-
-    const data = {
-      labels: ['월', '화', '수', '목', '금', '토', '일'],
-      datasets: [
-        {
-          label: '일주일간 실적',
-          data: [65, 59, 80, 81, 56, 55, 40],
-          backgroundColor: 'rgba(75, 192, 192, 0.2)',
-          borderColor: 'rgba(75, 192, 192, 1)',
-          borderWidth: 1,
-        },
-      ],
-    };
-
-    const options = {
-      scales: {
-        x: {
-          title: {
-            display: true,
-            text: '요일',
-          },
-        },
-        y: {
-          title: {
-            display: true,
-            text: '실적',
-          },
-        },
-      },
-    };
-
-    if (chartInstance.current) {
-      chartInstance.current.destroy();
-    }
-
-    chartInstance.current = new Chart(ctx, {
-      type: 'bar',
-      data: data,
-      options: options,
-    });
-    
-    return () => {
-      if (chartInstance.current) {
-        chartInstance.current.destroy();
-      }
-    };
-  }, []);
+  
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <AHeader />
       <AMenu />
-      <div style={{ marginLeft: '240px', padding: '16px', display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
-        <div style={{ flex: '1 0 50%', marginBottom: '16px', textAlign: 'center' }}>
-          <h2>일주일간 실적</h2>
-          <canvas ref={chartRef} width="400" height="200" style={{ margin: 'auto' }}></canvas>
-        </div>
-        <div style={{ flex: '1 0 50%', marginBottom: '16px', textAlign: 'center' }}>
-          <h2>하루 총 판매금액</h2>
-          <p>오늘의 총 판매금액: XXX원</p>
-        </div>
-        <div style={{ flex: '1 0 50%', marginBottom: '16px', textAlign: 'center' }}>
-          <h2>인기 버거 순위</h2>
-        </div>
-        <div style={{ flex: '1 0 50%', marginBottom: '16px', textAlign: 'center' }}>
-          <h2>관리자 목록</h2>
-        </div>
-      </div>
+      <Routes>
+        <Route path='/' element={<AChart />} />
+        <Route path='/menu/:subcategory_id' element={<AProduct />} />
+        <Route path='/store/*' element={<AStore />} />
+        <Route path='/story/crew' element={<ACrew />} />
+        <Route path='/story/effort' element={<AEffort />} />
+        <Route path='/story/material' element={<AMaterial />} />
+        <Route path='/order/*' element={<AOrder />} />
+        <Route path='/visualbackground/*' element={<AVisualbackground />} />
+        <Route path='/option/*' element={<AOption />} />
+        <Route path='/slider/*' element={<ASlider />} />
+        <Route path='/whats-new/*' element={<AWhatsNew />} />
+        <Route path='/whats-new/13' element={<ANews />} />
+      </Routes>
     </div>
   );
 };
