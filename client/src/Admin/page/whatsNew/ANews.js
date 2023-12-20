@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 import { API_URL } from '../../../config/contansts';
+import Table from '../../Component/Table/Table';
 
 
 const ANews = () => {
@@ -22,9 +23,8 @@ const ANews = () => {
   }, [subcategory_id]);
   return (
     <>
-    {items.map((item, index) => (
-      <h1 key={index}>{item.id}</h1>
-    ))}
+      <h1>Your React Table</h1>
+      <Table data={items}></Table>
     </>
   );
 };

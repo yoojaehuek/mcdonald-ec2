@@ -68,7 +68,7 @@ class UserController {
             const userId = req.userId;
             // const userId = 1;
             const {...props} = req.body;
-            const toUpdate = {...props}
+            const toUpdate = {...props};
             // const updateValue = req.body;
             console.log("userController/updateValue: ", toUpdate, userId);
             const user = await UserService.putUser({toUpdate, userId});

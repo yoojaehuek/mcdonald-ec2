@@ -2,24 +2,25 @@ import React, { useState } from 'react';
 import './Table.scss';
 
 const Table = ({ data }) => {
-  const [editingRow, setEditingRow] = useState(null);
   const [inputVal, setInputVal] = useState(null);
 
   // Extract column headers from the first item in the data array
   const columns = data.length > 0 ? Object.keys(data[0]) : [];
 
-  const handleEdit = (rowIndex) => {
-    // Set the editingRow state to the index of the row being edited
-    setEditingRow(rowIndex);
-  };
-
-  const handleSave = (rowIndex) => {
+  const handleSave = (rowId) => {
     const tmp = {};
     const editedData = data.reduce((acc, column, colIndex) => {
-      const input = document.querySelector(`.rowIndex-${colIndex} td input`);
-      if (input.value == rowIndex+1) {  
-        const inputData = document.querySelectorAll(`.rowIndex-${rowIndex} td input`);
+      // console.log(column);
+      // const input = document.querySelector(`.rowIndex-${colIndex} td input`);
+      // console.log("input: ", input);
+      // console.log("rowId: ", rowId);
+      // console.log(rowNum);
+      if (column.id == rowId) {  
+        // console.log(input);
+        const inputData = document.querySelectorAll(`#id-${rowId} td input`);
+        // console.log("inputData: ", inputData);
         inputData.forEach(inputElement => {
+          // console.log("inputElement: ", inputElement);
           const key = inputElement.name;
           const value = inputElement.value;
           tmp[key] = value;
@@ -28,7 +29,6 @@ const Table = ({ data }) => {
       return tmp;
     }, {});
     console.log("editedData: ", editedData);
-    setEditingRow(null);
   };
 
   if (!data || data.length === 0) {
@@ -50,19 +50,15 @@ const Table = ({ data }) => {
       </thead>
       <tbody>
         {data.map((item, rowIndex) => (
-          <tr key={rowIndex} className={editingRow === rowIndex ? `rowIndex-${rowIndex} editing` : `rowIndex-${rowIndex}`}>
+          <tr key={rowIndex} id={`id-${item.id}`} className={ `rowIndex-${rowIndex}`}>
             {columns.map((column, colIndex) => (
               <td key={colIndex}>
-                <input type="text" name={column} className={`colIndex-${colIndex}`} defaultValue={item[column]} />
+                <input type="text" name={column} id={`id-${item.id}`} className={`colIndex-${colIndex}`} defaultValue={item[column]} />
                 {/* {item[column]} */}
               </td>
             ))}
             <td>
-              {editingRow === rowIndex ? (
-                  <button onClick={() => handleSave(rowIndex)}>저장</button>
-                ) : (
-                  <button onClick={() => handleEdit(rowIndex)}>수정</button>
-              )}
+              <button onClick={() => handleSave(item.id)}>수정</button>
             </td>
             <td>
               <button>삭제</button>
