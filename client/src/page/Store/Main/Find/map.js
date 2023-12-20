@@ -12,6 +12,20 @@ function Maps() {
     };
     const map = new kakao.maps.Map(container, options);
 
+    //마커를 생성하고 지도 위에 표시
+    const markerPositions = [
+      new kakao.maps.LatLng(37.365264512305174, 127.10676860117488),
+      new kakao.maps.LatLng(37.360123, 127.105456),
+    ];
+
+     // 각 마커에 대해 반복하여 생성하고 지도 위에 표시
+     markerPositions.forEach((position) => {
+      const marker = new kakao.maps.Marker({
+        position: position,
+      });
+      marker.setMap(map);
+    });
+
     // 필요한 경우 추가적인 설정 또는 이벤트 처리를 진행
   }, []);
 

@@ -118,12 +118,24 @@ const Find = () => {
 
     // stores 배열을 필터링하는 로직
     const filteredStores = stores.filter((store) => {
+      // const services = [];
+      // if (store.yn_24h) services.push('24시간');
+      // if (store.yn_mcmorning) services.push('맥모닝');
+      // if (store.yn_mcdrive) services.push('맥드라이브');
+      // if (store.yn_mcdelivery) services.push('맥딜리버리');
+      // if (store.yn_parking) services.push('주차');
+
+      // const addressIncludesSearchText = store.address.toLowerCase().includes(searchText.toLowerCase());
+      // const servicesIncludeSearchText = services.some(service => service.toLowerCase().includes(searchText.toLowerCase()));
+
       return (
         (yn_24h ? store.yn_24h : false) ||
         (yn_mcmorning ? store.yn_mcmorning : false) ||
         (yn_mcdrive ? store.yn_mcdrive : false) ||
         (yn_mcdelivery ? store.yn_mcdelivery : false) ||
         (yn_parking ? store.yn_parking : false)
+        // (store.store_name.includes(searchText) || store.address.includes(searchText))
+        // addressIncludesSearchText || servicesIncludeSearchText
       );
     });
     setResult(filteredStores);
