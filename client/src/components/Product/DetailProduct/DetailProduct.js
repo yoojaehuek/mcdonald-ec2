@@ -7,7 +7,7 @@ import axios from 'axios';
 
 const DetailProduct =()=>{
     const { id } = useParams();// 주소에서 상품id 가져옴
-    console.log("디테일 파람스 id: ", id);//나옴 1
+    console.log("디테일 파람스 id: ", id);
     //페이지 열때 get으로 상품정보 가져오고 정보중에서 가격이랑 옵션 등 만 수정해서 로컬로 보냄 
     const [number, setNumber] = useState(1); //상품개수 증감변수
     const [isOptionVisible, setOptionVisible] = useState(true); //옵션 보여지는 여부 

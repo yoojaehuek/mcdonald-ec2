@@ -74,6 +74,12 @@
                 p{
                     margin-bottom: 40px;
                 }
+                .message{
+                    color: green; 
+                }
+                .message.error {
+                    color: red; 
+                }
             }
         }
         #join-btn{
