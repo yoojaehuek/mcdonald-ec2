@@ -2,8 +2,6 @@ const StoreModel = require('../database/models/storeModel')
 
 
 class StoreService{
-<<<<<<< HEAD
-=======
 
 	static async createStore({reqBody}){
 		const {store_name, phone, address, start_time, end_time, latitude, longitude, yn_mcmorning, yn_mcdrive, yn_mcdelivery} = reqBody;
@@ -24,20 +22,16 @@ class StoreService{
 		const result = await StoreModel.createStore({newStore});
 		return result;
 	}
->>>>>>> 64f7291fae52f9779fbee32ef3f65595ecceb33e
 	
 	static async getAllStore(){
 		const result = await StoreModel.getAllStore();
 		return result;
 	}
-<<<<<<< HEAD
-=======
 	
 	static async getOneStore({store_id}){
 		const result = await StoreModel.getOneStore({store_id});
 		return result;
 	}
->>>>>>> 64f7291fae52f9779fbee32ef3f65595ecceb33e
 
 	static async getMcdelivery({address}){
 		const elements = address.split(' '); //주소 띄어쓰기 기준으로 나누기
@@ -51,8 +45,6 @@ class StoreService{
 		return result;
 	}
 
-<<<<<<< HEAD
-=======
 	static async updateStore({toUpdate, store_id}){
 		console.log("서비스에서: ",toUpdate);
 		const { store_name, phone, address, start_time, end_time, latitude, longitude, yn_mcmorning, yn_mcdrive, yn_mcdelivery} = toUpdate;
@@ -80,6 +72,5 @@ class StoreService{
     return result;
   }
 
->>>>>>> 64f7291fae52f9779fbee32ef3f65595ecceb33e
 }
 module.exports = StoreService;
