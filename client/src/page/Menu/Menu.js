@@ -14,12 +14,10 @@ function Menu() {
     const [visible, setVisible] = useState();
     const [btn1, setBtn1] = useState("");
     const [btn2, setBtn2] = useState('');
-    console.log(typeof(subcategory_id));
 
     useEffect(()=>{
         axios.get(`${API_URL}/product/subcategory/${subcategory_id}`)
         .then(res => {
-            console.log(res.data);
             setProducts(res.data);
             if(subcategory_id === '1') {setBtn1("단품메뉴"); setVisible(true); setBtn2("세트메뉴"); }
             else if(subcategory_id === '2'){ setBtn1("맥런치세트"); setVisible(false);}
