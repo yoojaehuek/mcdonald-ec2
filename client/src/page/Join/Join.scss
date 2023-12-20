@@ -27,7 +27,7 @@
                     padding: 7px 5px;
                     outline:none;
                     font-size: 20px;
-                    margin-bottom: 40px;
+                    
                     transition: border-color 0.5s;
                     &:focus {
                         border-color: orange; // 클릭시 border 색상 변경
@@ -70,6 +70,9 @@
                         font-size: 15px;
                         font-weight: 800;
                     }
+                }
+                p{
+                    margin-bottom: 40px;
                 }
             }
         }
