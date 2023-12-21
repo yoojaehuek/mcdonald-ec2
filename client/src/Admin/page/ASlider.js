@@ -11,6 +11,12 @@ const ASlider = () => {
   const [editedType, setEditedType] = useState('image'); // 기본값 설정
   const [editedContent, setEditedContent] = useState('');
   const [editedTime, setEditedTime] = useState('');
+  const [isNewSlideModalOpen, setIsNewSlideModalOpen] = useState(false);
+  const [newSlideType, setNewSlideType] = useState('image'); // 기본값 설정
+  const [newSlideContent, setNewSlideContent] = useState('');
+  const [newSlideTime, setNewSlideTime] = useState('');
+  const [editedFile, setEditedFile] = useState(null);
+  const [newSlideFile, setNewSlideFile] = useState(null);
 
   useEffect(() => {
     fetchSliderData();
@@ -41,6 +47,18 @@ const ASlider = () => {
     setIsModalOpen(false);
   };
 
+  const openNewSlideModal = () => {
+    setIsNewSlideModalOpen(true);
+  };
+
+  const closeNewSlideModal = () => {
+    setIsNewSlideModalOpen(false);
+    // 모달 닫을 때 입력값 초기화
+    setNewSlideType('image');
+    setNewSlideContent('');
+    setNewSlideTime('');
+  };
+
   const handleEdit = () => {
     // 수정 로직 구현
     if (selectedItem) {
@@ -69,6 +87,26 @@ const ASlider = () => {
     }
   };
 
+  const handleAddSlide = () => {
+    // 슬라이드 추가 로직 구현
+    const newSlide = {
+      type: newSlideType,
+      content_url: newSlideContent,
+      duration: newSlideTime,
+    };
+
+    axios.post(`${API_URL}/slider`, newSlide)
+      .then(() => {
+        alert("슬라이드가 추가되었습니다.");
+        fetchSliderData(); // 데이터 갱신
+        closeNewSlideModal();
+      })
+      .catch(err => {
+        console.error(err);
+        alert("슬라이드 추가에 실패했습니다.");
+      });
+  };
+
   const handleDelete = (id) => {
     // 삭제 로직 구현
     axios.delete(`${API_URL}/slider/${id}`)
@@ -89,7 +127,7 @@ const ASlider = () => {
         <table>
           <thead>
             <tr>
-              <th>id</th>
+              <th>ID</th>
               <th>유형</th>
               <th>콘텐츠</th>
               <th>시간(1000=1초)</th>
@@ -124,7 +162,7 @@ const ASlider = () => {
         </table>
       </div>
       <div className='add-slider-button'>
-        <button onClick={() => openModal({})}>슬라이더 추가</button>
+        <button onClick={openNewSlideModal}>슬라이더 추가</button>
       </div>
 
       {/* 모달 */}
@@ -169,6 +207,41 @@ const ASlider = () => {
           </form>
         </div>
       )}
+
+    {isNewSlideModalOpen && (
+            <div className="modal">
+              <form>
+                <div className="modal-content">
+                  <span className="close" onClick={closeNewSlideModal}>&times;</span>
+                  <h2>슬라이드 추가</h2>
+                  <label htmlFor="newSlideType">유형:</label>
+                  <select
+                    id="newSlideType"
+                    value={newSlideType}
+                    onChange={(e) => setNewSlideType(e.target.value)}
+                  >
+                    <option value="image">이미지</option>
+                    <option value="video">비디오</option>
+                  </select>
+                  <label className='content' htmlFor="newSlideContent">콘텐츠:</label>
+                  <textarea
+                    id="newSlideContent"
+                    value={newSlideContent}
+                    onChange={(e) => setNewSlideContent(e.target.value)}
+                  ></textarea>
+                  <label htmlFor="newSlideTime">시간(1000=1초):</label>
+                  <input
+                    type="text"
+                    id="newSlideTime"
+                    value={newSlideTime}
+                    onChange={(e) => setNewSlideTime(e.target.value)}
+                  />
+                  <button type="button" onClick={handleAddSlide}>추가</button>
+                  <button type="button" onClick={closeNewSlideModal}>취소</button>
+                </div>
+              </form>
+            </div>
+          )}
     </div>
   );
 };
