@@ -5,7 +5,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 
 const AHeader = () => {
   return (
-    <div style={{position: "fixed", width: '100%'}}>
+    <div style={{width: '100%'}}>
       <CssBaseline />
       <AppBar position="static" sx={{ backgroundColor: '#ffffff', boxShadow: 'none' }}>
         <Toolbar>

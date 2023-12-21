@@ -2,21 +2,23 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { API_URL } from '../../config/contansts';
 import "./scss/ASlider.scss";
+import {Upload} from "antd";
 
 const ASlider = () => {
   const [axiosResult, setAxiosResult] = useState([]);
   const [selectedItem, setSelectedItem] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editedId, setEditedId] = useState('');
-  const [editedType, setEditedType] = useState('image'); // 기본값 설정
+  const [editedType, setEditedType] = useState('image');
   const [editedContent, setEditedContent] = useState('');
   const [editedTime, setEditedTime] = useState('');
   const [isNewSlideModalOpen, setIsNewSlideModalOpen] = useState(false);
-  const [newSlideType, setNewSlideType] = useState('image'); // 기본값 설정
+  const [newSlideType, setNewSlideType] = useState('image');
   const [newSlideContent, setNewSlideContent] = useState('');
   const [newSlideTime, setNewSlideTime] = useState('');
-  const [editedFile, setEditedFile] = useState(null);
-  const [newSlideFile, setNewSlideFile] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(5);
+  const [imageUrl, setImageUrl] = useState("");
 
   useEffect(() => {
     fetchSliderData();
@@ -40,6 +42,8 @@ const ASlider = () => {
     setEditedContent(item.content_url);
     setEditedTime(item.duration);
     setIsModalOpen(true);
+    setImageUrl("");
+    setIsModalOpen(true);
   };
 
   const closeModal = () => {
@@ -49,6 +53,7 @@ const ASlider = () => {
 
   const openNewSlideModal = () => {
     setIsNewSlideModalOpen(true);
+    setImageUrl("");
   };
 
   const closeNewSlideModal = () => {
@@ -64,7 +69,7 @@ const ASlider = () => {
     if (selectedItem) {
       const updatedItem = {
         type: editedType,
-        content_url: editedContent,
+        content_url: `/upload/${imageUrl}`,
         duration: editedTime,
       };
       console.log(updatedItem);
@@ -91,7 +96,7 @@ const ASlider = () => {
     // 슬라이드 추가 로직 구현
     const newSlide = {
       type: newSlideType,
-      content_url: newSlideContent,
+      content_url: `/upload/${imageUrl}`,
       duration: newSlideTime,
     };
 
@@ -120,9 +125,35 @@ const ASlider = () => {
       });
   };
 
+  const onChangeImage = (info) => {
+    // 파일이 업로드 중일 때
+    console.log("new", info.file);
+    if (info.file.status === "uploading") {
+      console.log("업로드중");
+      return;
+    }
+    // 파일이 업로드 완료 되었을 때
+    if (info.file.status === "done") {
+      console.log("성공");
+      const response = info.file.response;
+      const imageUrl = response.imageUrl;
+      // 받은 이미지경로를 imageUrl에 넣어줌
+      setImageUrl(imageUrl);
+    }
+  };
+
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = axiosResult.slice(indexOfFirstItem, indexOfLastItem);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   return (
     <div className='admin-slider-container'>
-      <h1>Slider</h1>
+      <h1>Slider</h1> 
+      <div className='add-slider-button'>
+        <button onClick={openNewSlideModal}>슬라이더 추가</button>
+      </div>
       <div className='admin-slider'>
         <table>
           <thead>
@@ -135,7 +166,7 @@ const ASlider = () => {
             </tr>
           </thead>
           <tbody>
-            {axiosResult.map((item, index) => (
+            {currentItems.map((item, index) => (
               <tr key={index}>
                 {Object.keys(axiosResult[0]).map((column, colIndex) => (
                   <td key={colIndex}>
@@ -161,8 +192,13 @@ const ASlider = () => {
           </tbody>
         </table>
       </div>
-      <div className='add-slider-button'>
-        <button onClick={openNewSlideModal}>슬라이더 추가</button>
+      {/* 페이징 */}
+      <div className="pagination">
+        {Array.from({ length: Math.ceil(axiosResult.length / itemsPerPage) }).map((_, index) => (
+          <button key={index} onClick={() => paginate(index + 1)}>
+            {index + 1}
+          </button>
+        ))}
       </div>
 
       {/* 모달 */}
@@ -189,11 +225,28 @@ const ASlider = () => {
                 <option value="video">비디오</option>
               </select>
               <label className='content' htmlFor="editedContent">콘텐츠:</label>
-              <textarea
+              {/* <textarea
                 id="editedContent"
                 value={editedContent}
                 onChange={(e) => setEditedContent(e.target.value)}
-              ></textarea>
+              ></textarea> */}
+              <Upload
+                name="image"
+                action={`${API_URL}/image`}
+                listType="picture"
+                showUploadList={false}
+                onChange={onChangeImage}
+              >
+                {imageUrl ? (
+                  <p>업로드된 이미지: {imageUrl}</p>
+                  ) : (
+                  <div id="upload-img-placeholder">
+                    <i className="fa-regular fa-file-image"></i>
+                    <br />
+                    <span>클릭하거나 드래그하여 업로드하세요.</span>
+                  </div>
+                )}
+              </Upload>
               <label htmlFor="editedTime">시간(1000=1초):</label>
               <input
                 type="text"
@@ -208,40 +261,57 @@ const ASlider = () => {
         </div>
       )}
 
-    {isNewSlideModalOpen && (
-            <div className="modal">
-              <form>
-                <div className="modal-content">
-                  <span className="close" onClick={closeNewSlideModal}>&times;</span>
-                  <h2>슬라이드 추가</h2>
-                  <label htmlFor="newSlideType">유형:</label>
-                  <select
-                    id="newSlideType"
-                    value={newSlideType}
-                    onChange={(e) => setNewSlideType(e.target.value)}
-                  >
-                    <option value="image">이미지</option>
-                    <option value="video">비디오</option>
-                  </select>
-                  <label className='content' htmlFor="newSlideContent">콘텐츠:</label>
-                  <textarea
-                    id="newSlideContent"
-                    value={newSlideContent}
-                    onChange={(e) => setNewSlideContent(e.target.value)}
-                  ></textarea>
-                  <label htmlFor="newSlideTime">시간(1000=1초):</label>
-                  <input
-                    type="text"
-                    id="newSlideTime"
-                    value={newSlideTime}
-                    onChange={(e) => setNewSlideTime(e.target.value)}
-                  />
-                  <button type="button" onClick={handleAddSlide}>추가</button>
-                  <button type="button" onClick={closeNewSlideModal}>취소</button>
-                </div>
-              </form>
+      {isNewSlideModalOpen && (
+        <div className="modal">
+          <form>
+            <div className="modal-content">
+              <span className="close" onClick={closeNewSlideModal}>&times;</span>
+              <h2>슬라이드 추가</h2>
+              <label htmlFor="newSlideType">유형:</label>
+              <select
+                id="newSlideType"
+                value={newSlideType}
+                onChange={(e) => setNewSlideType(e.target.value)}
+              >
+                <option value="image">이미지</option>
+                <option value="video">비디오</option>
+              </select>
+              <label className='content' htmlFor="newSlideContent">콘텐츠:</label>
+              {/* <textarea
+                id="newSlideContent"
+                value={newSlideContent}
+                onChange={(e) => setNewSlideContent(e.target.value)}
+              ></textarea> */}
+              <Upload
+                name="image"
+                action={`${API_URL}/image`}
+                listType="picture"
+                showUploadList={false}
+                onChange={onChangeImage}
+              >
+                {imageUrl ? (
+                  <p>업로드된 이미지: {imageUrl}</p>
+                  ) : (
+                  <div id="upload-img-placeholder">
+                    <i className="fa-regular fa-file-image"></i>
+                    <br />
+                    <span>클릭하거나 드래그하여 업로드하세요.</span>
+                  </div>
+                )}
+              </Upload>
+              <label htmlFor="newSlideTime">시간(1000=1초):</label>
+              <input
+                type="text"
+                id="newSlideTime"
+                value={newSlideTime}
+                onChange={(e) => setNewSlideTime(e.target.value)}
+              />
+              <button type="button" onClick={handleAddSlide}>추가</button>
+              <button type="button" onClick={closeNewSlideModal}>취소</button>
             </div>
-          )}
+          </form>
+        </div>
+      )}
     </div>
   );
 };

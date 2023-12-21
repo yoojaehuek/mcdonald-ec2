@@ -4,7 +4,6 @@ import { API_URL } from "../../../config/contansts";
 import axios from "axios";
 import {NavLink} from 'react-router-dom'
 const Mcart = () => {
-  const [number, setNumber] = useState(1); //상품개수 증감변수
   const [cart, setCart] = useState([]); /** 장바구니에 담은 상품목록 */
   const [user, setUser] = useState({});/** 로그인한 사용자정보 */
   const [store, setStore] = useState([]);/** 매장 목록 */
@@ -23,7 +22,7 @@ const Mcart = () => {
         setUser(res.data);
       })
       .catch((err) => {
-        console.error(err);
+          console.error(err);
       });
     /** 매장 전부 불러오기 */
     axios
@@ -35,8 +34,8 @@ const Mcart = () => {
       .catch((err) => {
           console.error(err);
       });
-
   }, []);
+  console.log("ccc",cart);
   useEffect(() => {
     if (cart.length > 0) {
       setProdQuantities( //상품각각에 넣기
@@ -63,7 +62,7 @@ const Mcart = () => {
           id: prod.id,
           name: prod.name,
           price: prod.price,
-          quantity: 1,
+          quantity: prod.quantity,
         }))
       );
     }
@@ -191,7 +190,6 @@ const Mcart = () => {
                     <div>-</div>
                   </button>
                   <button type="button">
-                    {" "}
                     {prodQuantities[index] && prodQuantities[index].quantity}
                   </button>
                   <button type="button" onClick={() => prodIncrease(index)}>
@@ -200,9 +198,10 @@ const Mcart = () => {
                 </div>
                 <div>
                   <p>
-                    {prod.totalOptionPrice +
-                      (prodQuantities[index]?.quantity || 0) * prod.price}
-                    원
+                    {(
+                      prod.totalOptionPrice +
+                      (prodQuantities[index]?.quantity || 0) * prod.price
+                    ).toLocaleString()} 원
                   </p>
                 </div>
               </div>
@@ -212,12 +211,12 @@ const Mcart = () => {
           <p>상품이 없습니다.</p>
         }
         <div class="Mcart-bottom">
-          총 상품 금액 <span> {totalProdPrice} 원</span>
+          총 상품 금액 <span> {totalProdPrice.toLocaleString()} 원</span>
         </div>
       </div>
       <div class="Mcart-botbotton">
-        <NavLink to={'/menu/1'} class="botbutton1">메뉴추가</NavLink>
-        <button class="botbutton2">주문하기</button>
+        <NavLink to={'/menu/1'} className="botbutton1">메뉴추가</NavLink>
+        <button className="botbutton2">주문하기</button>
       </div>
     </div>
   );

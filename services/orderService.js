@@ -3,7 +3,7 @@ const OrderModel = require('../database/models/orderModel');
 
 class OrderService{
 
-  static async addOrder({store_id, menu_items, userId}){
+  static async addOrder({userId, store_id, menu_items, total_price}){
     // console.log("userId: ", userId);
     // console.log("store_id: ", store_id);
     // console.log("menu_items: ", menu_items);
@@ -16,7 +16,7 @@ class OrderService{
     //   return { errorMessage };      
     // }
 
-    const newOrder = {store_id, menu_items, userId};
+    const newOrder = {userId, store_id, menu_items, total_price};
 		
     //예약테이블에 INSERT INTO
 		const createNewOrder = await OrderModel.createOrder({newOrder});
