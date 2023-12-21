@@ -11,6 +11,7 @@ class OrderModel {
     const createNewOrder = await Order.create({
       user_id: newOrder.userId,
       store_id: newOrder.store_id,
+      total_price: newOrder.total_price,
     });
     return createNewOrder;
   }
@@ -94,7 +95,7 @@ class OrderModel {
           [Op.between]: [date, new Date()],
         }
       },
-      attributes: ['id', 'status', 'created_at'],
+      attributes: ['id', 'total_price', 'status', 'created_at'],
       include: [
         { 
           model: OrderMenu,
