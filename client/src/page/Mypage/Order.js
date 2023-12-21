@@ -185,11 +185,11 @@ const Order = () => {
               <li className='state'>주문상태</li>
               <li className='price'>결제금액</li>
             </ul>
-            {axiosResult.map((item) => (
+            {axiosResult && axiosResult.map((item) => (
               <div key={item.id} className='orderItem'>
                 <li className='num'>{item.id}</li>
-                <li className='day'>{item.created_at}</li>
-                <li className='txt2'>{item.OrderMenus.map((menu,index) => (<span key={index}>{menu.Product.k_name}</span>))}</li>
+                <li className='day'>{item.format_date}</li>
+                <li className='txt2'>{item && item.OrderMenus.map((menu,index) => (<span key={index}>{menu.Product.k_name}</span>))}</li>
                 <li className='store'>{item.Store.store_name}</li>
                 <li className='state'>{item.status}</li>
                 <li className='price'>{item.total_price}</li>
