@@ -83,6 +83,10 @@ class OrderService{
       return errorMessage;
     }
     const result = await OrderModel.findAllOrderDate({userId, date});
+    // console.log(result);
+    result.map((order, index)=> {
+      console.log(order.OrderMenus);
+    })
     return result;
   }
 
