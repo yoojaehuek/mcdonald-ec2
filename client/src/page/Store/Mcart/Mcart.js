@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Mcart.scss";
 import { API_URL } from "../../../config/contansts";
 import axios from "axios";
-
+import {NavLink} from 'react-router-dom'
 const Mcart = () => {
   const [number, setNumber] = useState(1); //상품개수 증감변수
   const [cart, setCart] = useState([]); /** 장바구니에 담은 상품목록 */
@@ -188,7 +188,7 @@ const Mcart = () => {
         </div>
       </div>
       <div class="Mcart-botbotton">
-        <button class="botbutton1">메뉴추가</button>
+        <NavLink to={'/menu/1'} class="botbutton1">메뉴추가</NavLink>
         <button class="botbutton2">주문하기</button>
       </div>
     </div>
