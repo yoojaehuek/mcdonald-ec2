@@ -1,15 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const Crew = require('../database/schemas/crew');
+const CrewController = require('../controllers/crewController');
 
-router.get('/', async (req, res) => {
-  try {
-    const crews = await Crew.findAll();
-    res.json(crews);
-  } catch (error) {
-    console.error('Error:', error);
-    res.status(500).send('서버에러.');
-  }
-});
+
+router.post('/', CrewController.createCrew);
+router.get('/', CrewController.getAllCrew);
+router.patch('/:crew_id', CrewController.updateCrew);
+router.delete('/:crew_id', CrewController.deleteCrew);
 
 module.exports = router;

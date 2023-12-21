@@ -15,6 +15,8 @@
         float: left;
         font-size: 30px;
         font-weight: 500;
+        font-size: 30px;
+        font-weight: 500;
       }
   
       .deptarar{
@@ -112,6 +114,8 @@
         .box{
           width: calc(100% - 160px);
           float: right;
+          display: flex;
+          align-items: center; /* 수직 가운데 정렬을 위해 추가 */
 
           input{
             width: 100%;
@@ -122,6 +126,18 @@
             font-weight: 900;
             color: black;
             font-size: 16px;
+          }
+
+          button{
+            width: 120px;
+            border-radius: 0;
+            height: 42px;
+            border: 1px solid rgba(112, 112, 112, 0.575);
+            padding: 0 20px;
+            font-size: 13px;
+            font-weight: 900;
+            color: black;
+            cursor: pointer;
           }
         }
 
@@ -333,6 +349,17 @@
 
           .txt2{
             flex-grow: 1;
+
+            span{
+
+              &::after{
+                content: ',';
+              }
+
+              &:last-child::after {
+                content: none;
+              }
+            }
           }
         }
 

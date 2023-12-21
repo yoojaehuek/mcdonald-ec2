@@ -1,0 +1,17 @@
+.visualBackGround{
+  border: 1px solid #000;
+  // background-image: url('image/visualBackGround/bg_visual_whats02.jpg');
+}
+
+.promotion-happymeal-contArea{
+  padding: 10px;
+  // border: 1px solid #000;
+  #cardList {
+    display: grid;
+    place-items: center;
+    grid-template-columns: repeat(3,  minmax(366px, auto));
+    // grid-template-rows: repeat(2,  minmax(200px, auto));
+    row-gap: 40px;
+    // column-gap: 20px;
+  }
+}

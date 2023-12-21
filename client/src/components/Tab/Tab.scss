@@ -3,6 +3,8 @@
   margin: 0 auto;
   position: relative;
   .Tabinput{
+    width: 100%;
+    position: relative;
     p{
       white-space: pre;
       font-size: 16px;
@@ -11,7 +13,23 @@
       line-height: 1.9;
     }
     .maincont{
-      width: 100%;
+      width: 247px;
+      display: inline-block;
+      position: relative;
+      text-align: center;
+      vertical-align: top;
+      margin-right: 45px;
+    }
+    .btdesc{
+      width: 970px;
+      margin: 70px 99px 0px;
+      background: #da0000;
+      border-radius: 30px;
+      text-align: center;
+      color: #fff;
+      line-height: 60px;
+      font-size: 16px;
+      margin-bottom: 50px;
     }
   }
 }
