@@ -3,6 +3,17 @@ const router = express.Router();
 const SubCategory = require('../database/schemas/subCategory');
 const { Op } = require('sequelize');
 
+router.get('/', async (req, res, next) => {
+  try {
+    const result = await SubCategory.findAll({
+      attributes: ['h_title', 'h_content', 'h_background_img_url', 'h_link'],
+    });
+    res.status(200).json(result);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 router.get('/:subcategory', async (req, res, next) => {
   try {
     console.log("req.params", req.params);
