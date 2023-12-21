@@ -96,6 +96,7 @@ class OrderModel {
         }
       },
       attributes: ['id', 'total_price', 'status', 'created_at'],
+      // raw: true,
       include: [
         { 
           model: OrderMenu,

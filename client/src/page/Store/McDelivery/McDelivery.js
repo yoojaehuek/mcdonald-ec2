@@ -1,6 +1,12 @@
 
-import React from "react";
+import React, { useState } from "react";
+/** 우편번호 창   */
+import PopupDom from '../../../components/AddressPopup/PopupDom';
+import PopupPostCode from '../../../components/AddressPopup/PopupPostCode';
+/** 우편번호 창  */
 import './McDelivery.scss';
+import axios from "axios";
+import { API_URL } from "../../../config/contansts";
 
 
 
@@ -12,108 +18,164 @@ const temp = [
 
 
 const McDelivery = () => {
+  const [mcDelivery_yn, setMcDelivery_yn] = useState(null);
+  const [selectedAddress, setSelectedAddress] = useState(null);// 우편번호
+  
+  /** 우편번호 창  */
+	// 팝업창 상태 관리
+	const [isPopupOpen, setIsPopupOpen] = useState(false)
+	// 팝업창 열기
+	const openPostCode = () => { setIsPopupOpen(true) }
+	// 팝업창 닫기
+	const closePostCode = () => {	setIsPopupOpen(false)	}
+	// 선택된 주소를 업데이트하는 콜백 함수
+	const handleSelectedAddress = (address) => { setSelectedAddress(address); };
+	/** 우편검색 결과가 인풋창에 업데이트 되지않아서 이함수로 업데이트 시켜줌 */
+	const handleAddressChange = (e) => { setSelectedAddress(e.target.value); };
+	/** 우편번호 창  */
 
-  return (<div class="mcdrive-main">
-    <div div class="mcdrive-mcd1" >
-      {
-        temp.map(tmp =>
+  const handleSearch = () => {
+    if(selectedAddress == null){
+      alert('주소를 입력해 주세요');
+      return;
+    };
+
+    axios.get(`${API_URL}/store/mcdelivery?address=${selectedAddress}`)
+    .then(res => {
+      console.log(res.data);
+      setMcDelivery_yn(res.data)
+    }).catch(err => {
+      console.error(err);
+    })
+  }
+
+  const McDelivery_yn = () => {
+    let content = (
+      <div class="mcdel-fieldset2">
+        <p role="text" class="mcdel-p1" id="mcdel-p1"></p>
+        {temp.map(tmp =>
+          <strong>{tmp.mcdelstrong}</strong>
+        )}
+      </div>
+    );    
+
+    if (mcDelivery_yn == true) {
+      content = (
+        <div class="mcdel-fieldset3 ">
+          <p role="text" class="result ok" id="ok">
+            <strong>맥딜리버리<br/>배달이<br/>가능합니다</strong>
+            <span>전화 또는 온라인으로<br/>주문할 수 있습니다.</span>
+          </p>
+        </div>
+      );
+    }else if (mcDelivery_yn == false) {
+      content = (
+        <div class="mcdel-fieldset4 ">
+          <p role="text" class="result fail" id="fail">
+            <strong>맥딜리버리<br/>배달이<br/>불가능합니다</strong>
+            <span>빠른 시일 내에 고객님이 계신 곳에<br/>서비스가 가능하도록 노력하겠습니다.</span>
+          </p>
+        </div>
+      );
+    }
+    return(
+      <>
+        {content}
+      </>
+    )
+  }
+
+  return (
+  
+    <div class="mcdrive-main">
+      <div div class="mcdrive-mcd1" >
+        {temp.map(tmp =>
           <div id="mcdrive-text">
             <h2>{tmp.mcdh2}</h2>
           </div>
-        )
-      }
-      <div class="mcdel-main">
-      <div>
-        <fieldset class="mcdel-fieldset1">
-          <div class="mcdel-top">
-            <span >
-              <input type="text" class="mcdel-input1" id="mcdel-input1" placeholder="주소를 선택해주세요."></input>
-              <button type="button" class="mcdel-button1">주소찾기</button>
-            </span>
-          </div>
-          <div class="mcdel-maininput">
-            <input type="text" class="mcdel-input2" id="mcdel-input2" placeholder="상세주소를 입력하세요"></input>
-              <input type="text" class="mcdel-input3" id="dong"></input>
-              {
-                temp.map(tmp =>
-            <span class="mcdel-span1">{tmp.dong}</span>
-                   )
-                   }
-              <input type="text" class="mcdel-input3" id="ho"></input>
-              {
-                temp.map(tmp =>
-                  <span class="mcdel-span1">{tmp.ho}</span>
-                  )
-                  }
-            </div>
-            {
-              temp.map(tmp =>
-          <p class="mcdel-p">{tmp.mcdelp}</p>
-                )
-                }
+        )}
+        <div class="mcdel-main">
           <div>
-            <button type="button" class="mcdel-button1">검색하기</button>
+            <fieldset class="mcdel-fieldset1">
+              <div class="mcdel-top">
+                <span >
+                  <input type="text" class="mcdel-input1" id="mcdel-input1" placeholder="주소를 선택해주세요." value={selectedAddress}></input>
+                  <button type="button" class="mcdel-button1" onClick={openPostCode}>주소찾기</button>
+                </span>
+              </div>
+              <div class="mcdel-maininput">
+                <input type="text" class="mcdel-input2" id="mcdel-input2" placeholder="상세주소를 입력하세요"></input>
+                  <input type="text" class="mcdel-input3" id="dong"></input>
+                  {temp.map(tmp =>
+                    <span class="mcdel-span1">{tmp.dong}</span>
+                  )}
+                  <input type="text" class="mcdel-input3" id="ho"></input>
+                  {temp.map(tmp =>
+                    <span class="mcdel-span1">{tmp.ho}</span>
+                  )}
+              </div>
+              {temp.map(tmp =>
+                <p class="mcdel-p">{tmp.mcdelp}</p>
+              )}
+              <div>
+                <button type="button" class="mcdel-button1" onClick={handleSearch}>검색하기</button>
+              </div>
+            </fieldset>
           </div>
-        </fieldset>
-      </div>
-      <div class="mcdel-fieldset2">
-          <p role="text" class="mcdel-p1" id="mcdel-p1"></p>
-          {
-            temp.map(tmp =>
+          {/* <div class="mcdel-fieldset2">
+            <p role="text" class="mcdel-p1" id="mcdel-p1"></p>
+            {temp.map(tmp =>
               <strong>{tmp.mcdelstrong}</strong>
-              )
-              }
+            )}
+          </div> */}
+          <McDelivery_yn />
         </div>
-      </div>
-      {
-        temp.map(tmp =>
-      <div class="mcdel-middle">
-      <ul>
-        <li>{tmp.mcdelli1}</li>
-        <li>{tmp.mcdelli2}</li>
-        <li>{tmp.mcdelli3}</li>
-        <li>{tmp.mcdelli4}</li>
-        <li>{tmp.mcdelli5}</li>
-        <li>{tmp.mcdelli6}</li>
-      </ul>
-      </div>
-          )
-            }
-      <div class="mcdel-bottom">
-        <div>
-          {
-            temp.map(tmp =>
-          <a href="#" class="mcdel-a">{tmp.mcdela}</a>
-          )
-          }
-        </div>
-        <div>
-          
+        {temp.map(tmp =>
+          <div class="mcdel-middle">
+            <ul>
+              <li>{tmp.mcdelli1}</li>
+              <li>{tmp.mcdelli2}</li>
+              <li>{tmp.mcdelli3}</li>
+              <li>{tmp.mcdelli4}</li>
+              <li>{tmp.mcdelli5}</li>
+              <li>{tmp.mcdelli6}</li>
+            </ul>
+          </div>
+        )}
+        <div class="mcdel-bottom">
+          <div>
+            {temp.map(tmp =>
+              <a href="#" class="mcdel-a">{tmp.mcdela}</a>
+            )}
+          </div>
+          <div>
             <a href="#">
-              <img src="/image/mcdelivery/img_app_android.png"></img>
-            <br></br>
-            {
-              temp.map(tmp =>
+              <img src="/images/mcdelivery/img_app_android.png"></img>
+              <br></br>
+              {temp.map(tmp =>
                 <strong>{tmp.mcdelimg1}</strong>
-                )
-                }
-          </a>
-          
+              )}
+            </a>   
           </div>
-        <div>
-          
+          <div>
             <a href="#">
-              <img src="/image/mcdelivery/img_app_ios.png"></img>
-            <br></br>
-            {
-              temp.map(tmp =>
+              <img src="/images/mcdelivery/img_app_ios.png"></img>
+              <br></br>
+              {temp.map(tmp =>
                 <strong>{tmp.mcdelimg2}</strong>
-                 )
-                 }
-              </a>
-             
+              )}
+            </a>
           </div>
+        </div>
       </div>
+      {/* 우편번호 창 팝업 생성 기준 div */}
+      <div id='popupDom'>
+        {isPopupOpen && (
+          <PopupDom>
+            {/* onSelectAddress prop을 전달 */}
+            <PopupPostCode onSelectAddress={handleSelectedAddress} onClose={closePostCode} />
+          </PopupDom>
+        )}
       </div>
     </div>
   );
