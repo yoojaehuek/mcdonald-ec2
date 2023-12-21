@@ -19,8 +19,9 @@ const AVisualbackground = () => {
   }, []);
   return (
     <>
-      {axiosResult.map(() => (
-        <div>
+      {axiosResult.map((item, index) => (
+        <div key={index}>
+          {item.id}
         </div>
       ))}
     </>
