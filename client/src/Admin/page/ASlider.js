@@ -149,6 +149,7 @@ const ASlider = () => {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
+    <>
     <div className='admin-slider-container'>
       <h1>Slider</h1> 
       <div className='add-slider-button'>
@@ -192,7 +193,6 @@ const ASlider = () => {
           </tbody>
         </table>
       </div>
-
       {/* 페이징 */}
       <div className="pagination">
         {Array.from({ length: Math.ceil(axiosResult.length / itemsPerPage) }).map((_, index) => (
@@ -314,6 +314,7 @@ const ASlider = () => {
         </div>
       )}
     </div>
+    </>
   );
 };
 

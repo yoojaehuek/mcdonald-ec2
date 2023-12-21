@@ -4,17 +4,6 @@ const OrderModel = require('../database/models/orderModel');
 class OrderService{
 
   static async addOrder({userId, store_id, menu_items, total_price}){
-    // console.log("userId: ", userId);
-    // console.log("store_id: ", store_id);
-    // console.log("menu_items: ", menu_items);
-    
-    // //이미 예약한 유저면 막기
-    // const order = await OrderModel.findOneOrderUserId({ id: userId });
-    // // console.log(order);
-    // if (order != null) {
-    //   const errorMessage = "이미 예약하신 내역이 있습니다.";
-    //   return { errorMessage };      
-    // }
 
     const newOrder = {userId, store_id, menu_items, total_price};
 		
@@ -24,7 +13,8 @@ class OrderService{
     console.log("createNewOrder: ", createNewOrder.get({ plain: true }));
     // console.log("order_id: ", order_id);
     
-    menu_items.map( (item, index) => { //장바구니에 담은 존류만큼 반복 
+    let totalPrice = 0;
+    menu_items.map( (item, index) => { //장바구니에 담은 종류만큼 반복 
       // console.log('item: ', item);
       // const createNewOrderMenu = await OrderModel.createOrderMenu({order_id, newOrder});
       OrderModel.createOrderMenu({order_id, item})
@@ -83,6 +73,10 @@ class OrderService{
       return errorMessage;
     }
     const result = await OrderModel.findAllOrderDate({userId, date});
+    // console.log(result);
+    result.map((order, index)=> {
+      console.log(order.OrderMenus);
+    })
     return result;
   }
 
