@@ -10,7 +10,7 @@ class OrderController {
     try {
         const tmp = req.body;
         // tmp.userId = req.userId;
-        tmp.userId = 2;
+        tmp.userId = 1;
         // console.log("tmp: ",tmp);
         const newOrder = await OrderService.addOrder(tmp);
         
@@ -39,7 +39,7 @@ class OrderController {
   static async findAllOrderDate(req, res, next){
     try {
       // const userId = req.userId;
-      const userId = 2;
+      const userId = 1;
       const dateType = req.query;
       const result = await OrderService.findAllOrderDate({userId, dateType});
       // console.log("orderController.js/getOrderByUserId()/result: ", result);

@@ -4,10 +4,11 @@ import { API_URL } from "../../../config/contansts";
 import axios from "axios";
 import {NavLink} from 'react-router-dom'
 const Mcart = () => {
-  const [number, setNumber] = useState(1); //상품개수 증감변수
   const [cart, setCart] = useState([]); /** 장바구니에 담은 상품목록 */
   const [user, setUser] = useState({});/** 로그인한 사용자정보 */
   const [store, setStore] = useState([]);/** 매장 목록 */
+  const [isPopupOpen, setPopupOpen] = useState(false); // 팝업창
+  const [selectedStore, setSelectedStore] = useState(null); // 팝업창에서 선택한 매장
   useEffect(() => {
     const storedCart = JSON.parse(sessionStorage.getItem("cart"));
     if (storedCart && storedCart.length > 0) {
@@ -21,7 +22,7 @@ const Mcart = () => {
         setUser(res.data);
       })
       .catch((err) => {
-        console.error(err);
+          console.error(err);
       });
     /** 매장 전부 불러오기 */
     axios
@@ -33,8 +34,8 @@ const Mcart = () => {
       .catch((err) => {
           console.error(err);
       });
-
   }, []);
+  console.log("ccc",cart);
   useEffect(() => {
     if (cart.length > 0) {
       setProdQuantities( //상품각각에 넣기
@@ -61,7 +62,7 @@ const Mcart = () => {
           id: prod.id,
           name: prod.name,
           price: prod.price,
-          quantity: 1,
+          quantity: prod.quantity,
         }))
       );
     }
@@ -92,9 +93,21 @@ const Mcart = () => {
       );
     }, 0)
   : 0;
-
+  // 팝업 열기 함수
+  const openPopup = () => {
+    setPopupOpen(true);
+  };
+  // 팝업 닫기 함수
+  const closePopup = () => {
+    setPopupOpen(false);
+  };
+  // 매장 선택 함수
+  const handleStoreSelection = (selectedStore) => {
+    setSelectedStore(selectedStore);
+    closePopup(); // 팝업 닫기
+  };
   return (
-    <div class="Mcart-top">
+    <div className="Mcart-top">
       <div class="Mcart-h2">
         <h2>장바구니</h2>
       </div>
@@ -114,9 +127,23 @@ const Mcart = () => {
               </div>
             </li>
             <li class="Mcart-li2">
-              <div>서울점</div>
+              <div>{selectedStore ? selectedStore.store_name : '매장 선택'}</div>
               <div>
-                <button>주소변경</button>
+              <button onClick={openPopup}>주소변경</button>
+                {isPopupOpen && (
+                  <div className="store-popup">
+                    <h3>매장 선택</h3>
+                    <ul>
+                      {store.map((storeItem) => (
+                        <li key={storeItem.id} onClick={() => handleStoreSelection(storeItem)}>
+                          <h1>{storeItem.store_name} </h1>
+                          <p>{storeItem.phone}</p>
+                          <p>{storeItem.address}</p>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </div>
             </li>
             <li class="Mcart-li3">
@@ -163,7 +190,6 @@ const Mcart = () => {
                     <div>-</div>
                   </button>
                   <button type="button">
-                    {" "}
                     {prodQuantities[index] && prodQuantities[index].quantity}
                   </button>
                   <button type="button" onClick={() => prodIncrease(index)}>
@@ -172,9 +198,10 @@ const Mcart = () => {
                 </div>
                 <div>
                   <p>
-                    {prod.totalOptionPrice +
-                      (prodQuantities[index]?.quantity || 0) * prod.price}
-                    원
+                    {(
+                      prod.totalOptionPrice +
+                      (prodQuantities[index]?.quantity || 0) * prod.price
+                    ).toLocaleString()} 원
                   </p>
                 </div>
               </div>
@@ -184,12 +211,12 @@ const Mcart = () => {
           <p>상품이 없습니다.</p>
         }
         <div class="Mcart-bottom">
-          총 상품 금액 <span> {totalProdPrice} 원</span>
+          총 상품 금액 <span> {totalProdPrice.toLocaleString()} 원</span>
         </div>
       </div>
       <div class="Mcart-botbotton">
-        <NavLink to={'/menu/1'} class="botbutton1">메뉴추가</NavLink>
-        <button class="botbutton2">주문하기</button>
+        <NavLink to={'/menu/1'} className="botbutton1">메뉴추가</NavLink>
+        <button className="botbutton2">주문하기</button>
       </div>
     </div>
   );

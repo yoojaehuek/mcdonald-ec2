@@ -169,7 +169,6 @@
   width: 100px;
   background-color: #fafafa;
   height: 100px;
-  padding: 10px;
   margin-right: 30px;
 }
 
@@ -205,21 +204,21 @@
 //middle2안에 마이너스 플러스 박스
 .Mcart-plusb{
   margin-right: 50px;
- margin-left: 50px;
- display: flex;
- border: 1px solid #D1D1D1;
- border-radius: 50px;
- 
- //middle2안에 마이너스 플러스 버튼
- button{
- padding-bottom: 5px;
- width: 40px;
- border: 0px;
- font-size: 30px;
- font-weight: bold;
- background: rgba(0,0,0,0);
- cursor: pointer;
- }
+  margin-left: 50px;
+  display: flex;
+  border: 1px solid #D1D1D1;
+  border-radius: 50px;
+  
+  //middle2안에 마이너스 플러스 버튼
+  button{
+  padding-bottom: 5px;
+  width: 40px;
+  border: 0px;
+  font-size: 30px;
+  font-weight: bold;
+  background: rgba(0,0,0,0);
+  cursor: pointer;
+  }
 }
 
 
@@ -258,8 +257,12 @@
 
 //botbottom 첫번째 버튼
 .botbutton1{
-  background-color: white;
+  background-color: gray;
   border: 1px solid #e3e3e3;
+  color: white;
+  padding: 10px 15px ;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 //botbottom 두번째 버튼
@@ -268,4 +271,30 @@
   background-color: #000;
   color: #ffffff;
   border: none;
+}
+// 유재혁이 추가한거
+.Mcart-top{
+  .store-popup{
+    position: absolute;
+    z-index: 1;
+    background-color: white;
+    border: 0px solid #000;
+    width: 400px;
+    height: 500px;
+    overflow-y: scroll;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    li{
+      margin: 10px 0px;
+      text-align: left;
+      border: 0px solid #000;
+      border-radius: 10px;
+      background-color: #f8f8f8;
+      p{
+        font-weight: bold;
+      }
+    }
+  }
 }
