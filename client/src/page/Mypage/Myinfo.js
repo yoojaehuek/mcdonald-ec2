@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate} from 'react-router-dom';
 import Order from './Order';
 import "./Myinfo.scss";
 import axios from 'axios';
 import { API_URL } from '../../config/contansts';
+import { useRecoilState } from "recoil";
+import { loginState } from "../../recoil/atoms/State";
+import PopupDom from '../Join/PopupDom';
+import PopupPostCode from '../Join/PopupPostCode';
 
 const Myinfo = () => {
+  const navigate = useNavigate();
   const [selectedEmail, setSelectedEmail] = useState('');
   const [selectPhone, setSelectedPhone] = useState('');
   const [selectedAddress, setSelectedAddress] = useState('');
@@ -19,6 +24,8 @@ const Myinfo = () => {
   const [selectedDay, setSelectedDay] = useState('');
 
   const [selectedTab, setSelectedTab] = useState('info'); // 'info' 또는 'order'로 상태 관리
+
+  const [isLogin, setIsLogin] = useRecoilState(loginState); //useState와 거의 비슷한 사용법
   
 
   const currentYear = new Date().getFullYear();
@@ -38,6 +45,7 @@ const Myinfo = () => {
     setSelectedDay(e.target.value);
   };
 
+  
 
   useEffect(() => {
     axios.get(`${API_URL}/user/one`)
@@ -47,11 +55,11 @@ const Myinfo = () => {
       setSelectedEmail(res.data.user_email);
       setSelectedAddress(res.data.address);
       setSelectedDetailAddress(res.data.detail_address);
-      setSelectedPhone(res.data.phone1);
-      setSelectedPhoneNumber(res.data.phone);
-      setSelectedYear(res.data.birth)
-      setSelectedMonth(res.data.birth)
-      setSelectedDay(res.data.birth)
+      setSelectedPhone(res.data.phone_number_prefix);
+      setSelectedPhoneNumber(res.data.phone_number_suffix);
+      setSelectedYear(res.data.year)
+      setSelectedMonth(res.data.month)
+      setSelectedDay(res.data.day)
     }).catch((err) =>{
       console.error(err);
     });
@@ -61,6 +69,65 @@ const Myinfo = () => {
     setSelectedMonth(currentDate.getMonth() + 1);
     setSelectedDay(currentDate.getDate());
   }, []); // 빈 배열을 두어 한 번만 실행되도록 설정
+
+  const updateUser = () => {
+    axios.patch(`${API_URL}/user`, 
+    { 
+      "address":selectedAddress,
+      "detail_address": selectedDetailAddress,
+      "phone_number_prefix": selectPhone,
+      "phone_number_suffix": selectedPhoneNumber,
+      "selected_year": selectedYear,
+      "selected_month": selectedMonth,
+      "selected_day": selectedDay
+    })
+    .then(res => {
+      console.log(res.data);
+      alert("사용자 정보가 수정되었습니다.")
+    }).catch(err => {
+      console.log(err);
+    }); 
+  }
+
+  
+  const deleteUser = () => {
+    const userConfirmed = window.confirm('정말로 탈퇴하시겠습니까?');
+
+    if(userConfirmed){
+      axios.delete(`${API_URL}/user`)
+      .then(res => {
+        alert("탈퇴되었습니다.");
+        navigate('/');
+        axios.get(`${API_URL}/logout`, { withCredentials: true })
+        .then(()=>{
+          setIsLogin(false);
+        })
+        .catch((err) => {
+          console.log("logout/err: ", err);
+        })
+        })
+    }else{
+      return;
+    }
+  }
+
+
+  // 팝업창 상태 관리
+	const [isPopupOpen, setIsPopupOpen] = useState(false)
+	// 팝업창 열기
+	const openPostCode = () => {
+		setIsPopupOpen(true)
+	}
+	// 팝업창 닫기
+	const closePostCode = () => {
+		setIsPopupOpen(false)
+	}
+	// 선택된 주소를 업데이트하는 콜백 함수
+	const handleSelectedAddress = (address) => {
+		setSelectedAddress(address);
+	};
+	/** 우편번호 창  */
+
 
   return (
     <div className='container'>
@@ -104,7 +171,10 @@ const Myinfo = () => {
                 </li> */}
                 <li>
                   <div className='tit'><span>주소</span></div>
-                  <div className='box'><input type='text' disabled='disabled' value={selectedAddress} id='adress' onChange={(e) => setSelectedAddress(e.target.value)}></input></div>
+                  <div className='box'>
+                    <input type='text' disabled='disabled' value={selectedAddress} id='adress' onChange={(e) => setSelectedAddress(e.target.value)}></input>
+                    <button type='button' onClick={openPostCode}>우편번호 검색</button>
+                  </div>
                 </li>
                 <li>
                   <div className='tit'><span>상세주소</span></div>
@@ -156,8 +226,8 @@ const Myinfo = () => {
                 </li>
               </ul>
               <div className='btnwarp'>
-                <button className='cola'>수정하기</button>
-                <button className='colb'><span>회원탈퇴{'>'}</span></button>
+                <button className='cola' onClick={updateUser}>수정하기</button>
+                <button className='colb' onClick={deleteUser}><span>회원탈퇴{'>'}</span></button>
               </div>
             </>
           )}
@@ -166,6 +236,17 @@ const Myinfo = () => {
             <Order />
           )}
         </div>
+          <div>
+            {/* 우편번호 창 팝업 생성 기준 div */}
+            <div id='popupDom'>
+              {isPopupOpen && (
+                <PopupDom>
+                  {/* onSelectAddress prop을 전달 */}
+                  <PopupPostCode onSelectAddress={handleSelectedAddress} onClose={closePostCode} />
+                </PopupDom>
+              )}
+            </div>
+          </div>
       </div>
     </div>
   );
