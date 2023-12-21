@@ -1,42 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Crew.scss';
 import Modal from '../Component/Modal';
-import Menubar from '../Component/Menubar'
+import axios from 'axios';
+import { API_URL } from '../../../../config/contansts';
+import BottomMenu from '../Component/BottomMenu';
+import Buttonmain from "../../../../components/Main/Button";
 
 const Crew = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedCrew, setSelectedCrew] = useState(null);
+  const [crewData, setCrewData] = useState([]);
 
-  const crewData = [
-    {
-      id: 1,
-      name: '크루1',
-      image: './images/Story/people.jpg',
-      region: '서울',
-      description: '크루1에 대한 설명입니다.',
-    },
-    {
-      id: 2,
-      name: '크루2',
-      image: './images/Story/people.jpg',
-      region: '부산',
-      description: '크루2에 대한 설명입니다.',
-    },
-    {
-      id: 3,
-      name: '크루3',
-      image: './images/Story/people.jpg',
-      region: '대구',
-      description: '크루3에 대한 설명입니다.',
-    },
-    {
-      id: 4,
-      name: '크루4',
-      image: './images/Story/people.jpg',
-      region: '인천',
-      description: '크루4에 대한 설명입니다.',
-    },
-  ];
+  //try catch > promise가 아닌 것 에러처리용
+  //그렇기 때문에(막기 위해) async await.
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`${API_URL}/crew`);
+        setCrewData(response.data);
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    };
+    fetchData();
+  }, []);
 
   const openModal = (crew) => {
     setSelectedCrew(crew);
@@ -49,24 +36,25 @@ const Crew = () => {
 
   return (
     <>
-    <Menubar/>
+      <BottomMenu />
       <div className="crew-container">
         <h1>크루들이 만들어가는 맥도날드의 변화 이야기</h1>
         <div className="crew-list">
           {crewData.map((crew) => (
             <div key={crew.id} className="crew-item" onClick={() => openModal(crew)}>
-              <img className="crew-image" src={crew.image} alt={`이미지 - ${crew.name}`} />
+              <img className="crew-image" src={crew.img_url} alt={`이미지 - ${crew.name}`} />
               <div className="crew-details">
-                <h2>{crew.name}</h2>
-                <p>{crew.region}</p>
+                <h2>{crew.title}</h2>
+                <p>{crew.name} {crew.position}</p>
               </div>
             </div>
           ))}
         </div>
-        {modalOpen && selectedCrew && (
-          <Modal crew={selectedCrew} closeModal={closeModal} />
-        )}
+        {modalOpen && selectedCrew && <Modal crew={selectedCrew} closeModal={closeModal} />}
       </div>
+      <>
+        <Buttonmain />
+      </>
     </>
   );
 };

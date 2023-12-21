@@ -6,7 +6,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: url('../../../../../public/images/Story/competition.jpg') center/cover;
+  // background: url('../../../../../public/images/Story/competition.jpg') center/cover;
   padding-left: 7vw;
 
   .competition-title1 {
@@ -51,6 +51,8 @@
     padding: 10px;
     color: gray;
     text-decoration: none;
+    font-size: 1.3rem;
+    font-weight: bold;
   
     &:not(:last-child) {
       margin-right: 20px;
@@ -62,6 +64,7 @@
   
     &.active {
       border-bottom: 2px solid #ff0000;
+      color: #ff0000;
     }
   }
 }

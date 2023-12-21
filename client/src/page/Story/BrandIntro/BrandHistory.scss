@@ -1,0 +1,211 @@
+.BrandHistory {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  margin: 0 auto;
+  padding: 0;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.9;
+  display: block;
+  color: #808080;
+
+  * {
+    box-sizing: border-box;
+    text-align: initial;
+  }
+
+  ul {
+    list-style: none outside;
+  }
+  li {
+    list-style: none outside;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  img {
+    margin: 0;
+    padding: 0;
+    line-height: 0;
+    vertical-align: top;
+  }
+  em {
+    font-style: normal;
+  }
+
+
+  .contents {
+    padding: 30px 0 60px;
+    .inner {
+      position: static;
+      width: 1168px;
+      margin: 0 auto;
+    }
+  }
+  .contents:first-child{
+    margin-top: 0;
+  }
+
+  .inner_btn{
+    margin: 0 -40px 60px;
+    text-align: center;
+  }
+  .inner_btn li {
+    display: inline-block;
+    margin: 0 40px;
+    vertical-align: top;
+  }
+  .inner_btn li a {
+    display: block;
+    height: 40px;
+    font-size: 20px;
+    line-height: 39px;
+  }
+  .inner_btn li a.on {
+    color: #db0007;
+    font-weight: 600;
+    border-bottom: 1px solid #db0007;
+  }
+
+
+  .brandCont01{
+    padding-bottom: 100px;
+    border-bottom: 1px solid #d1d1d1;
+  }
+  .brandCont01 .img {
+    margin-bottom: 45px;
+  }
+  .brandCont01 .titDep2 {
+    line-height: 1.3;
+  }
+  .titDep2 {
+    display: block;
+    color: #292929;
+    margin: 30px 0 30px;
+    font-size: 30px;
+    line-height: 1;
+  }
+
+
+  .brandCont03, .brandCont03_1{
+    padding-top: 100px;
+  }
+  .brandCont03 .cont3_img, .brandCont03_1 .cont3_img {
+    padding-right: 25px;
+  }
+  .cont3_img {
+    float: left;
+    width: 50%;
+  }
+  .brandCont03_1 .cont3_img {
+    float: right;
+  }
+  .brandCont03 .tit, .brandCont03_1 .tit {
+    padding-bottom: 5px;
+    font-size: 21px;
+    line-height: 1.5;
+    color: #292929;
+  }
+  .brandCont03 .txt, .brandCont03_1 .txt {
+    font-size: 15.8px;
+    letter-spacing: -.9px;
+  }
+  .col2:after {
+    display: block;
+    content: '';
+    clear: both;
+  }
+
+
+  .brandCont004{
+    margin-top: 100px;
+    padding-top: 90px;
+    border-top: 1px solid #d1d1d1;
+  }
+  .brandQscv .titDep2 {
+    margin-bottom: 40px;
+    font-size: 50px;
+    line-height: 1.4;
+    color: #ffbc0d;
+  }
+  .titDep2 {
+    display: block;
+    // margin: 0 0 30px;
+  }
+  .brandQscv .titDep2 span:first-child {
+    margin-bottom: 10px;
+  }
+  .brandQscv .titDep2 span {
+    display: inline-block;
+    padding: 0 10px;
+    background-color: #323232;
+  }
+  .brandQscv .philosophy blockquote {
+    width: 539px;
+    border-right: 1px solid #d1d1d1;
+    font-size: 27px;
+    color: #292929;
+    line-height: 1.5;
+  }
+  .brandQscv .philosophy > * {
+    float: left;
+  }
+  .brandQscv .philosophy blockquote em {
+    display: inline-block;
+    padding: 15px 0 5px;
+    font-size: 20px;
+    border-bottom: 1px solid #292929;
+  }
+  .brandQscv .philosophy p {
+    padding-left: 70px;
+  }
+  .brandQscv .philosophy:after {
+    display: block;
+    content: '';
+    clear: both;
+  }
+  .brandQscv .qscvInfo {
+    margin-top: 80px;
+    padding: 32px 0;
+    background: #f8f8f8;
+    border-radius: 60px;
+    text-align: center;
+  }
+  .color1 {
+    color: #da0000;
+  }
+
+
+  .sociallist {
+    border-top: 1px solid #d1d1d1;
+    margin-top: 100px;
+    padding-top: 100px;
+    height: 85vw;
+  }
+  .sociallist ul {
+    margin: -80px 0 0 -50px;
+  }
+  .sociallist ul li {
+    float: left;
+    width: 559px;
+    margin: 80px 0 0 50px;
+  }
+  .sociallist ul li .cont4_img {
+    display: block;
+  }
+  .brandCont04 .titmain {
+    font-size: 30px;
+    color: #292929;
+    margin: 30px 0 3px;
+  }
+  .brandCont04 .txtmain {
+    letter-spacing: -1.3px;
+  }
+  .socialList ul:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}

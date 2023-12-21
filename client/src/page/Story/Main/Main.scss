@@ -1,0 +1,90 @@
+.story-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.story-item {
+  width: 60vw;
+  display: flex;
+  margin: 3vw 0;
+}
+
+.text-content {
+  flex: 1;
+  width: 40%;
+
+  > h2 {
+    padding-bottom: 1vw;
+    font-size: 1.6rem;
+  }
+
+  > p {
+    line-height: 1.7rem;
+    color: gray;
+    font-size: 1rem;
+  }
+
+  .custom-button {
+    margin-top: 3vw;
+    background-color: yellow;
+    border: none;
+    padding: 20px 30px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-radius: 5vw;
+  
+    &:hover {
+      background-color: orange;
+    }
+  }
+}
+
+> img {
+  max-width: 100%;
+  height: auto;
+  width: 50%;
+}
+
+.story-item:nth-child(odd) {
+  justify-content: flex-start;
+
+  .text-content {
+    margin-right: 3vw;
+
+    > h3 {
+      padding-top: 1.5vw;
+      padding-bottom: 1.5vw;
+    }
+  }
+}
+
+.story-item:nth-child(even) {
+  justify-content: flex-start;
+
+  .text-content {
+    margin-left: 3vw;
+
+    > h3 {
+      padding-top: 1.5vw;
+      padding-bottom: 1.5vw;
+    }
+  }
+}
+
+.story-item:nth-child(1) {
+  .text-content {
+    max-width: 40%;
+    order: 2;
+  }
+}
+
+.story-item:nth-child(odd) {
+  img {
+    order: 1;
+  }
+}

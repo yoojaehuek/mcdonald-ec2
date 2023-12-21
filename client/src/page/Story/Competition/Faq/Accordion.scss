@@ -1,0 +1,44 @@
+.AccordionContainer {
+  display: flex;
+  flex-direction: column;
+  border-top: solid 2px black;
+  width: 60vw;
+}
+
+.AccordionContainer2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 7vh;
+  p{
+    text-align: left;
+    flex:2; 
+    width: 100%;
+  }
+}
+
+.category {
+  margin-right: 3vw;
+}
+
+.title{
+  position: relative;
+  right: 400px;
+  p{
+    width: 100%;
+  }
+}
+
+.dectption {
+  overflow: auto;
+  background-color: rgb(233, 233, 233);
+}
+
+.description {
+  max-width: 40vw;
+  padding: 20px;
+  text-align: left;
+  position: relative;
+  right: -8vw;
+}

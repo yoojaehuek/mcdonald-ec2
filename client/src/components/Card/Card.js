@@ -1,19 +1,19 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { API_URL } from '../../config/contansts';
 import "./Card.scss";
 
 const Card = ({props}) => {
-  //props = {prodNum: 1, prodImg: "/asd/asd/asd.jpg", prodContent: "신선한 토마토와 매콤한 소스의 만남!"}
-  console.log("Card/props: ", props);
+  const { pathname } = useLocation();
+  const table = pathname.split('/')[1];
 
   return(
     <div className='card'>
-      <NavLink to={`/promotion/detail/${props.prodNum}`}>
+      <NavLink to={`/whats-new/${props.sub_category_id}/${props.id}`}>
         <div className="cardImg">
-          <img src={API_URL+props.prodImg} alt="카드이미지" />
+          <img src={API_URL+props.thumbnail_img_url} alt="카드이미지" />
         </div>
         <div className="cardName">
-          <strong>{props.prodContent}</strong>
+          <strong>{props.title}</strong>
         </div>
       </NavLink>
     </div>

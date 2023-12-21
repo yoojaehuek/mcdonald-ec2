@@ -1,13 +1,14 @@
 import React from 'react';
 import './Work.scss';
-import Menubar from '../Component/Menubar'
+import BottomMenu from '../Component/BottomMenu';
+import Buttonmain from "../../../../components/Main/Button";
 
 const Work = () => {
   return (
     <>
-    <Menubar/>
+    <BottomMenu/>
       <div className="work-container">
-        <h1>Restaurant Department Management</h1>
+        <h1>업무소개(Restaurant Department Management)</h1>
         <h2>맥도날드에서는 각 레스토랑에서 근무하는 정규 직원을 Manager 라고 부릅니다.<br />Manager는 업무와 교육 과정 수료 여부에 따라 다양한 단계로 나누어집니다.</h2>
         <div className="table-container">
           <div className="table-row">
@@ -33,23 +34,26 @@ const Work = () => {
         </div>
         <h1>맥도날드 교육의 힘</h1>
         <div className="image-container">
-          <img src="./images/Story/work.jpg" alt="맥도날드 Work" />
-          <h4>햄버거. 철학을 배우다</h4>
+          <img src="../images/Story/work.jpg" alt="맥도날드 Work" />
+          <h4>햄버거 철학을 배우다.</h4>
         </div>
         <div className="work-span">
           <span>
             맥도날드 Learning & Development 센터는 각 직무와 직급에 맞는 교육을 현장 경험이
-            풍부한 강사진을 토대로 실무 중심의 교육을 실현하고 있습니다.
-            교육 과정은 각 직무 및 직급에 맞도록 다양한 커리큘럼으로 구성되어 있습니다.
+            풍부한 강사진을 토대로 실무 중심의 교육을 실현하고 있습니다.<br></br>
+            교육 과정은 각 직무 및 직급에 맞도록 다양한 커리큘럼으로 구성되어 있습니다.<br></br>
             특히 개인의 성장과 팀 발전을 도울 수 있도록 글로벌과 동일한 커리큘럼을 통해 동일한
             교육 과정으로 진행되고 있습니다.
           </span>
           <span>
-            맥도날드 정직원의 50% 이상이 크루(파트타이머) 출신이라는 사실만 봐도 맥도날드 교육의 힘을 느낄 수 있습니다. 맥도날드에 첫발을 디딘 여러분들은 크루 시절부터 레스토랑 매니저가 되기까지 매장 운영 방식, QSC&V의 서비스 정신, 그리고 장비 관리 기술은 물론 리더십, 경영 기획에 이르기까지 각 단계별로 다양하고 완벽한 교육을 받게 됩니다.
+            맥도날드 정직원의 50% 이상이 크루(파트타이머) 출신이라는 사실만 봐도 맥도날드 교육의 힘을 느낄 수 있습니다. 맥도날드에 첫발을 디딘 여러분들은 크루 시절부터 레스토랑 매니저가 되기까지 매장 운영 방식, QSC&V의 서비스 정신, 그리고 장비 관리 기술은 물론 리더십, 경영 기획에 이르기까지 각 단계별로 다양하고 완벽한 교육을 받게 됩니다.<br></br>
             세계 어디서나 똑같은 맥도날드의 음식과 서비스를 제공할 수 있는 것, 그리고 세계 어디서나 똑같이 직원 한 사람, 한 사람에게 무한한 자기 성장의 기회를 제공할 수 있는 것,
             이것이 바로 맥도날드 교육의 힘입니다.
           </span>
         </div>
+        <>
+          <Buttonmain />
+        </>
       </div>
     </>
   );

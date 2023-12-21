@@ -1,0 +1,39 @@
+.SocietyContainer{
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  .inner{
+    width: 70%;
+    position: relative;
+    .title{
+      font-size: 30px;
+      color: #292929;
+      margin-top: 30px;
+      margin-bottom: 30px;
+      text-align: left;
+      left: 50px;
+    }
+    .social{
+      display: grid;
+      place-items: center;
+      grid-template-columns: repeat(2,  minmax(366px, auto));
+      // grid-template-rows: repeat(2,  minmax(200px, auto));
+      row-gap: 40px;
+      margin-bottom: 400px;
+      // column-gap: 20px;
+      h2{
+        text-align: left;
+        line-height: 50px;
+        font-size: 24px;
+        color: #292929;
+      }
+      p{
+        text-align: left;
+        line-height: 30px;
+        font-size: 16px;
+        color: #808080;
+        white-space: pre;
+      }
+    }
+  }
+}

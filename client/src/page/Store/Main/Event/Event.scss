@@ -1,0 +1,67 @@
+.topInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 5vw;
+  background-color: pink;
+  width: 30vw;
+  margin: 0 auto;
+  padding: 1.5vw;
+
+  > h2, p {
+    text-align: center;
+  }
+}
+
+
+.FindStore1 {
+  width: 60vw;
+  margin: 0 auto;
+}
+
+.storeList {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 2vw;
+  border-top: 2px solid #000;
+}
+
+.storeListRow {
+  box-sizing: border-box;
+  padding: 1.5vw;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #ddd;
+}
+
+.locationItem {
+  width: calc(25% - 20px);
+  margin: 10px 0;
+  padding: 10px;
+}
+
+
+.storeListRow::after {
+  content: '';
+  flex: 1;
+  width: calc(25% - 20px);
+}
+
+.storeListRow:last-child .locationItem:nth-child(n+5) {
+  visibility: hidden;
+}
+
+.btnMore > button {
+  border: none;
+  border-radius: 50%;
+  margin-bottom: 2vw;
+  width: 5.5vw;
+  background-color: orange;
+
+  > span {
+    position: relative;
+    font-size: 5rem;
+    bottom: 10px;
+  }
+}

@@ -7,9 +7,10 @@ const { makeRefreshToken, makeAccessToken } = require('../utils/token');
 
 class UserService{
 	//유효성 검사 이메일 겹치는지 등등
-	static async addUser({name, id, pwd, phone, birth, gender, companionName, companionPhone}){
-		console.log("id: ",id);
-
+	static async createUser({email, pwd, user_name, phone, address, detail_address, selectedYear, selectedMonth, selectedDay}){
+		// const birth = selectedYear+'-'+selectedMonth+'-'+selectedDay;
+		const birth = selectedYear+'-'+selectedMonth+'-'+selectedDay;
+		console.log("birth: ", birth);
 		//crypto.randomBytes(128): 길이가 128인 임의의 바이트 시퀀스를 생성
 		//.toString('base64'): 임의의 바이트를 base64로 인코딩된 문자열로 변환
 		const salt = crypto.randomBytes(128).toString('base64'); 
@@ -22,32 +23,33 @@ class UserService{
 			.update(pwd + salt)
 			.digest('hex'); 
 
-		const newUser = {name, id, pwd: hashPassword, salt, phone, birth, gender, companionName, companionPhone}
-		
+		const newUser = { email, pwd: hashPassword, salt, user_name, phone, address, detail_address, birth }
+
 		const createNewUser = await UserModel.createUser({newUser});
 		return createNewUser
 	}
 
-	static async loginUser({id, pwd}){
+	static async loginUser({email, pwd}){
+		console.log("서비스에서: ",email);
 		// console.log("id: ",id);
 		// console.log("pwd: ",pwd);
 
-		const user = await UserModel.findOneUserId({ id });
+		const user = await UserModel.findOneUserEmail({ email });
 		if (!user) {
 			const errorMessage = "해당 id는 가입 내역이 없습니다. 다시 한 번 확인해 주세요.";
 			return errorMessage;
 		}
 
-		// Combine entered password with stored salt
+		// 입력한 비밀번호와 조회해온 암호화 난수 함침
 		const combinedPassword = pwd + user.salt;
 
-		// Hash the combined password and salt
+		// 함친 combinedPassword 암호화
 		const hashedPassword = crypto
 			.createHash('sha512')
 			.update(combinedPassword)
 			.digest('hex');
 
-		// Compare the generated hash with the stored hashed password
+		// hashedPassword와 DB의 비밀번호 비교
 		if (hashedPassword === user.pwd) {
 			console.log('Login successful!');
 			// console.log("userService.js/loginUser()/user: ", user);
@@ -55,44 +57,81 @@ class UserService{
 			const refreshToken = makeRefreshToken();
 
 			// userId를 키값으로 refresh token을 redis server에 저장
-			
 			await redisClient.set(user.id, refreshToken);
 			// await redisClient.get(user.id, (err, value) => {
 			// 	console.log("redis.value: ", value); 
 			// });
 			
-			const name = user.name; 
-			const id = user.id;			
-			const newUser = {name, id, accessToken, refreshToken};
+			const name = user.user_name; 
+			const email = user.email;			
+			const newUser = {name, email, accessToken, refreshToken};
 
 			return newUser
 		}else {
 			console.log('Invalid login credentials.');
 		}
-
 	}
 
 	static async detailUser({id}){
 		const user = await UserModel.findOneUserId({id});
 		// console.log({myId});
-		const name = user.name;
-		const user_id = user.id;
-		const phone = user.phone;
-		const companionName = user.companionName;
-		const companionPhone = user.companionPhone;
-		const birth = user.birth;
+		const name = user.user_name;
+		const user_email = user.email;
+		const address = user.address;
+		const detail_address = user.detail_address;
+		// const phone = user.phone;
+		const phone_number_prefix = user.phone.substring(0, 3);
+		const phone_number_suffix = user.phone.substring(3);
+		// const birth = user.birth;
+		const date = new Date(user.birth);
+		const year = date.getFullYear();
+		const month = date.getMonth()+1;
+		const day = date.getDate();
 
 		const userInfo = {
-			user_id,
 			name,
-			phone,
-			companionName,
-			companionPhone,
-			birth,
+			user_email,
+			address,
+			detail_address,
+			phone_number_prefix,
+			phone_number_suffix,
+			year,
+			month,
+			day,
 		};
 
 		return userInfo;
 	}
 
+	static async putUser({toUpdate, userId}){
+		console.log("서비스에서: ",toUpdate, userId);
+		// const email = toUpdate.user_name;
+		// const phone = toUpdate.phoneNumberPrefix + toUpdate.phoneNumberSuffix;
+		// const address = toUpdate.address;
+		// const detail_address = toUpdate.detail_address;
+		// const birth = toUpdate.selectedYear+'-'+toUpdate.selectedMonth+'-'+toUpdate.selectedDay;
+		const update = {
+			user_name: toUpdate.user_name,
+			phone: toUpdate.phone_number_prefix + toUpdate.phone_number_suffix,
+			address: toUpdate.address,
+			detail_address: toUpdate.detail_address,
+			birth: toUpdate.selected_year+'-'+toUpdate.selected_month+'-'+toUpdate.selected_day,
+		};
+		// update.user_name = toUpdate.user_name;
+		// update.phone = toUpdate.phone_number_prefix + toUpdate.phone_number_suffix;
+		// update.address = toUpdate.address;
+		// update.detail_address = toUpdate.detail_address;
+		// update.birth = toUpdate.selectedYear+'-'+toUpdate.selectedMonth+'-'+toUpdate.selectedDay;
+		console.log(update);
+
+		const user = await UserModel.putUser({update, userId});
+		return user;
+	}
+
+	static async deleteUser({userId}){
+		console.log("서비스에서: ", userId);
+		const user = await UserModel.destroyUser({userId});
+		return user;
+	}
 }
 module.exports = UserService;

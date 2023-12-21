@@ -1,11 +1,20 @@
-const Sequelize = require('sequelize'); 
+const Sequelize = require('sequelize');
+const Admin = require('./admin');
+const Category = require('./category');
+const Crew = require('./crew');
+const Effort = require('./effort');
+const Faq = require('./faq');
+const Material = require('./material');
+const Option = require('./option');
+const Order = require('./order');
+const OrderOption = require('./orderOption');
+const OrderMenu = require('./orderMenu');
+const Product = require('./product');
+const WhatsNew = require('./whatsNew');
+const Store = require('./store')
+const SubCategory = require('./subCategory');
 const User = require('./user'); //user파일을 User로 불러옴 
-// const FAQ = require('./faq');
-// const Product = require('./product');
-// const Planner = require('./planner')//planner 파일을 Planner로 불러옴
-// const Point = require('./point')//point.js 파일을 Point로 불러옴
-// const Reservation = require('./reservation')//point.js 파일을 Point로 불러옴
-// const Hall = require('./hall')
+const Slider = require('./slider')
 
 const env = process.env.NODE_ENV || 'development'; //상수 env에 NODE_ENV없으면 'development' 넣음
 const config = require('../../config/config.json')[env]; //상수config에 ../config/config파일에서 env(development) 불러옴
@@ -18,29 +27,58 @@ const sequelize = new Sequelize(config.database, config.username, config.passwor
 db.sequelize = sequelize;
 
 //만든 모델들 추가
+db.Admin = Admin;
+db.Category = Category;
+db.SubCategory = SubCategory;
+db.Store = Store;
 db.User = User;
-// db.FAQ = FAQ;
-// db.Product = Product;
-// db.Planner = Planner;
-// db.Point = Point;
-// db.Reservation = Reservation;
-// db.Hall = Hall;
+db.Effort = Material;
+db.Faq = Faq;
+db.Material = Material;   
+db.Crew = Crew;
+db.Option = Option;
+db.Product = Product;
+db.Order = Order;
+db.OrderMenu = OrderMenu;
+db.OrderOption = OrderOption;
+db.WhatsNew = WhatsNew;
+db.Slider = Slider;
 
 
+
+Admin.initiate(sequelize);
+Category.initiate(sequelize);
+SubCategory.initiate(sequelize);
+Store.initiate(sequelize);
 User.initiate(sequelize);
-// FAQ.initiate(sequelize);
-// Product.initiate(sequelize);
-// Planner.initiate(sequelize);
-// Point.initiate(sequelize);
-// Reservation.initiate(sequelize);
-// Hall.initiate(sequelize);
+Effort.initiate(sequelize);
+Faq.initiate(sequelize);
+Material.initiate(sequelize);
+Crew.initiate(sequelize);
+Option.initiate(sequelize);
+Product.initiate(sequelize);
+Order.initiate(sequelize);
+OrderMenu.initiate(sequelize);
+OrderOption.initiate(sequelize);
+WhatsNew.initiate(sequelize);
+Slider.initiate(sequelize);
 
 
+Admin.associate(db);
+Category.associate(db);
+SubCategory.associate(db);
+Store.associate(db);
 User.associate(db);
-// FAQ.associate(db);
-// Planner.associate(db);
-// Point.associate(db);
-// Reservation.associate(db);
-// Hall.associate(db);
+Effort.associate(db);
+Faq.associate(db);
+Material.associate(db);
+Crew.associate(db);
+Option.associate(db);
+Product.associate(db);
+Order.associate(db);
+OrderMenu.associate(db);
+OrderOption.associate(db);
+WhatsNew.associate(db);
+Slider.associate(db);
 
 module.exports = db;

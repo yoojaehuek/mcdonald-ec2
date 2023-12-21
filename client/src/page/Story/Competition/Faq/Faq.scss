@@ -1,0 +1,82 @@
+.customer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 2vw auto;
+  max-width: 100vw;
+
+  .search-container {
+    display: flex;
+    background-color: rgb(228, 228, 228);
+    border: none;
+    padding: 30px;
+    margin-top: 40px;
+    max-width: 100vw;
+    width: 100%;
+    box-sizing: border-box;
+    justify-content: center;
+
+    .dropmenu{
+      width: 10vw;
+      margin-right: 1vw;
+    }
+  }
+}
+
+// .center {
+//   font-weight: 400;
+//   font-size: 70px;
+//   text-align: center;
+// }
+
+// .center2 {
+//   font-weight: 10;
+//   font-size: 50px;
+//   text-align: center;
+// }
+
+
+
+.custom-input,
+.dropdown select {
+  height: 50px;
+  border: none;
+  outline: none;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 5vw;
+}
+
+.custom-input {
+  width: 40vw;
+}
+
+.category-buttons {
+  display: flex;
+}
+
+// .category-buttons button {
+//   margin-right: 1vw;
+//   padding: 15px 22px;
+//   cursor: pointer;
+//   border: 1px solid rgb(51, 51, 51);
+//   border-radius: 3vw;
+//   background-color: white;
+// }
+
+// .category-buttons button.active {
+//   background-color: rgb(54, 54, 54);
+//   color: #fff;
+// }
+
+.radio-button-container {
+  margin: 2vw 2vw 2vw 2vw;
+  display: inline-block;
+  font-size: 1.2rem;
+}
+
+.radio-button-container input {
+  margin-right: 0.7vw;
+  font-size: 1.2rem;
+}

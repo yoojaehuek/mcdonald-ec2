@@ -1,0 +1,66 @@
+//렌탈 텍스트 왼쪽,사이즈 (토지 임대 및 매매)
+#rental-h2{
+  float: left;
+  display: block;
+  margin: 70px 0px 30px;
+  line-height: 1;
+}
+//렌탈 테이블 조절 테이블(임차조건 면적)
+.rental-table{
+  width: 100%;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  display: table;
+  border-collapse:collapse;
+  margin-bottom: 40px;
+}
+//td border top
+td{
+  border-top: 1px solid #808080;
+}
+
+//렌탈 ul 텍스트 왼쪽 
+#rental-ul{
+  border-left: 1px solid;
+  text-align: left;
+}
+
+
+//렌탈 li 위치 조절
+#rental-ul li{
+  text-align: left;
+  padding-left: 30px;
+  color: #808080;
+}
+
+
+//테이블 th1 텍스트 위치
+#rental-th1{
+  vertical-align: top;
+  text-align: left;
+  line-height: 4;
+}
+
+//테이블 th2 텍스트 위치
+#rental-th2{
+  border-top: 1px solid #808080;
+ vertical-align: top;
+  text-align: left;
+  line-height: 4;
+}
+
+
+//텍스트 위치조절
+#rental-email{
+  margin-top: 35px;
+}
+//렌탈 a태그 버튼 조절 (제안서 양식 다운로드)
+.rental-a{
+  background-color: #ffbc0d;
+  line-height: 90px;
+  border-radius: 50px;
+  display: inline-block;
+  font-weight: 600;
+  padding: 0 50px;
+  margin-top: 100px;
+}

@@ -1,0 +1,23 @@
+#btnMore-box{
+    width: 100%;
+    margin: 50px 0px;
+    .btnMore{
+        border-radius: 50%;
+        width: 100px;
+        height: 100px;
+        position: relative;
+        background-color: #f5bd43;
+        border: #f5bd43;
+        display: block;
+        margin: auto;
+        
+        &::before{
+            content: "\002B";//+기호 유니코드
+            position: absolute;
+            left: 15%;
+            top: -25px;
+            font-size: 10px;
+            font-weight: 100;
+        }
+    }
+}
