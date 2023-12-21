@@ -1,8 +1,8 @@
 import './Promotion_HappyMeal.scss'
 import Card from '../../../components/Card/Card';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 import { useLocation, useParams } from 'react-router-dom';
+import axios from 'axios';
 import { API_URL } from '../../../config/contansts';
 
 

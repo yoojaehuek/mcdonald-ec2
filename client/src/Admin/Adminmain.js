@@ -14,28 +14,32 @@ import AMaterial from './page/AMaterial';
 import AVisualbackground from './page/AVisualbackground';
 import AWhatsNew from './page/whatsNew/AWhatsNew';
 import ANews from './page/whatsNew/ANews';
+import StoreDetail from './Component/StoreTable/StoreDetail';
+import './Adminmain.scss';
 
 const AdminMain = () => {
   
-
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+    <div style={{ display: 'flex', flexDirection: 'column'}}>
       <AHeader />
       <AMenu />
-      <Routes>
-        <Route path='/' element={<AChart />} />
-        <Route path='/menu/:subcategory_id' element={<AProduct />} />
-        <Route path='/store/*' element={<AStore />} />
-        <Route path='/story/crew' element={<ACrew />} />
-        <Route path='/story/effort' element={<AEffort />} />
-        <Route path='/story/material' element={<AMaterial />} />
-        <Route path='/order/*' element={<AOrder />} />
-        <Route path='/visualbackground/*' element={<AVisualbackground />} />
-        <Route path='/option/*' element={<AOption />} />
-        <Route path='/slider/*' element={<ASlider />} />
-        <Route path='/whats-new/*' element={<AWhatsNew />} />
-        <Route path='/whats-new/13' element={<ANews />} />
-      </Routes>
+      <div className='AdminMain'>
+        <Routes>
+          <Route path='/' element={<AChart />} />
+          <Route path='/menu/:subcategory_id' element={<AProduct />} />
+          <Route path='/store/*' element={<AStore />} />
+          <Route path='/store/edit' element={<StoreDetail />} />
+          <Route path='/story/crew' element={<ACrew />} />
+          <Route path='/story/effort' element={<AEffort />} />
+          <Route path='/story/material' element={<AMaterial />} />
+          <Route path='/order/*' element={<AOrder />} />
+          <Route path='/visualbackground/*' element={<AVisualbackground />} />
+          <Route path='/option/*' element={<AOption />} />
+          <Route path='/slider/*' element={<ASlider />} />
+          <Route path='/whats-new/*' element={<AWhatsNew />} />
+          <Route path='/whats-new/13' element={<ANews />} />
+        </Routes>
+      </div>
     </div>
   );
 };

@@ -7,7 +7,6 @@ const refresh = require('./refresh');
 // router.post('/', refresh, OrderController.addOrder);
 router.get('/', refresh, OrderController.getOrderByUserId);
 // router.get('/date', refresh, OrderController.findAllOrderDate);
-router.get('/', refresh, OrderController.getOrderByUserId);
 router.delete('/:order_id', refresh, OrderController.deleteOrder);
 
 //테스트용 로그인 안해도 가능
