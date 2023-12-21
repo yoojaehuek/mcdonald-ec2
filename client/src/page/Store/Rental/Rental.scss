@@ -1,11 +1,11 @@
-//렌탈 텍스트 왼쪽,사이즈
+//렌탈 텍스트 왼쪽,사이즈 (토지 임대 및 매매)
 #rental-h2{
   float: left;
   display: block;
   margin: 70px 0px 30px;
   line-height: 1;
 }
-//렌탈 테이블 조절
+//렌탈 테이블 조절 테이블(임차조건 면적)
 .rental-table{
   width: 100%;
   border-top: 1px solid;
@@ -54,7 +54,7 @@ td{
 #rental-email{
   margin-top: 35px;
 }
-//렌탈 a태그 버튼 조절
+//렌탈 a태그 버튼 조절 (제안서 양식 다운로드)
 .rental-a{
   background-color: #ffbc0d;
   line-height: 90px;

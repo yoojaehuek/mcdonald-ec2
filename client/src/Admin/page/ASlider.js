@@ -192,7 +192,6 @@ const ASlider = () => {
           </tbody>
         </table>
       </div>
-
       {/* 페이징 */}
       <div className="pagination">
         {Array.from({ length: Math.ceil(axiosResult.length / itemsPerPage) }).map((_, index) => (
