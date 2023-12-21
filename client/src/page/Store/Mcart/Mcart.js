@@ -1,117 +1,224 @@
 import React, { useEffect, useState } from "react";
 import "./Mcart.scss";
-
-// const temp = [
-//   { mcart: "장바구니", mcart1: "배달주소", mcart2: "서울 성북구 아리랑로 3 (동소문동6가, 기업은행) ㅇㄴㅇ", mcart3: "변경", mcart4: "주문상품", mcart5: "고구마피자(R)", mcart6: "오리지널", mcart7: "메뉴추가", mcart8: "주문하기" },
-// ]
-
+import { API_URL } from "../../../config/contansts";
+import axios from "axios";
+import {NavLink} from 'react-router-dom'
 const Mcart = () => {
   const [number, setNumber] = useState(1); //상품개수 증감변수
-  const [cart, setCart] = useState([]);
-
+  const [cart, setCart] = useState([]); /** 장바구니에 담은 상품목록 */
+  const [user, setUser] = useState({});/** 로그인한 사용자정보 */
+  const [store, setStore] = useState([]);/** 매장 목록 */
+  const [isPopupOpen, setPopupOpen] = useState(false); // 팝업창
+  const [selectedStore, setSelectedStore] = useState(null); // 팝업창에서 선택한 매장
   useEffect(() => {
-    console.log("aaa", typeof JSON.parse(sessionStorage.getItem("cart")));
-    console.log("aaa", JSON.parse(sessionStorage.getItem("cart")));
-    setCart(JSON.parse(sessionStorage.getItem("cart")));
-    // console.log("bbb", cart);
+    const storedCart = JSON.parse(sessionStorage.getItem("cart"));
+    if (storedCart && storedCart.length > 0) {
+      setCart(storedCart);
+    }
+    /** 로그인중인 사용자 정보 불러오기 */
+    axios
+      .get(`${API_URL}/user/one`)
+      .then((res) => {
+        console.log("로그인한 사용자정보",res.data);
+        setUser(res.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+    /** 매장 전부 불러오기 */
+    axios
+      .get(`${API_URL}/store`)
+      .then((res) => {
+        console.log("매장 목록",res.data);
+        setStore(res.data);
+      })
+      .catch((err) => {
+          console.error(err);
+      });
+
   }, []);
+  useEffect(() => {
+    if (cart.length > 0) {
+      setProdQuantities( //상품각각에 넣기
+        cart.map((prod) => ({
+          id: prod.menu_id,
+          img: prod.img,
+          name: prod.name,
+          totalPrice: prod.totalPrice,
+          price: prod.price,
+          quantity: prod.quantity,
+          options: prod.options,
+          totalOptionPrice: prod.totalOptionPrice,
+        }))
+      );
+    }
+  }, [cart]);
 
-  const increase = () => {
-    setNumber(number + 1);
+  /** 각 옵션의 수량을 관리할 상태 배열 (순서 보기) */
+  const [prodQuantities, setProdQuantities] = useState([]);
+  useEffect(() => {
+    if (cart.length > 0) {
+      setProdQuantities(
+        cart.map((prod) => ({
+          id: prod.id,
+          name: prod.name,
+          price: prod.price,
+          quantity: 1,
+        }))
+      );
+    }
+  }, [cart]);
+  /**  각 메뉴 개수 증감 */
+  const prodDecrease = (index) => {
+    const updatedQuantities = [...prodQuantities];
+    if (updatedQuantities[index].quantity > 0) {
+      updatedQuantities[index].quantity -= 1;
+      setProdQuantities(updatedQuantities);
+    }
   };
-  const decrease = () => {
-    if (number > 1) setNumber(number - 1);
+  const prodIncrease = (index) => {
+    const updatedQuantities = [...prodQuantities];
+    updatedQuantities[index].quantity += 1;
+    setProdQuantities(updatedQuantities);
   };
-
+  /**  각 메뉴의 가격 * 수량 값을 더한 총 가격
+  total 은 누적값 초기값0, prod 현재 순회중인 cart 배열의 요소, index 순회중인 요소의 인덱스
+  reduce는 cart 배열의 요소들을 순회하면서 콜백함수를 호출 최종적으로 옵션들의 총값을 추출
+  cart 배열이 null 이거나 undefined 인 상태에서 reduce를 호출하려 하면 실행 안됨 */
+  const totalProdPrice = cart ? 
+  cart.reduce((total, prod, index) => {
+      return (
+        total +
+        prod.totalOptionPrice +
+        prod.price * ((prodQuantities[index] && prodQuantities[index].quantity) || 0)
+      );
+    }, 0)
+  : 0;
+  // 팝업 열기 함수
+  const openPopup = () => {
+    setPopupOpen(true);
+  };
+  // 팝업 닫기 함수
+  const closePopup = () => {
+    setPopupOpen(false);
+  };
+  // 매장 선택 함수
+  const handleStoreSelection = (selectedStore) => {
+    setSelectedStore(selectedStore);
+    closePopup(); // 팝업 닫기
+  };
   return (
-    <div class="Mcart-top">
-      <form>
-        <div class="Mcart-h2">
-          <h2>장바구니</h2>
-        </div>
-        <div class="Mcart-btn">
-          <button class="Mcart-btn1">배달주문</button>
-          <button>방문포장</button>
-        </div>
-        <div class="midbox">
-         <div class="Mcart-mid">
-            <ul class="Mcart-ul">
-              <li class="Mcart-li1">
-                <div>
-                  <p>배달주소</p>
-                </div>
-                <div class="Mcart-p">
-                  <p>서울 성북구 아리랑로 3 (동소문동6가, 기업은행) ㅇㄴㅇ</p>
-                </div>
-              </li>
-              <li class="Mcart-li2">
-                <div>서울점</div>
-                <div>
-                  <button>주소변경</button>
-                </div>
-              </li>
-              <li class="Mcart-li3">
-                <div>수령인</div>
-                <div>
-                  <input type="text"></input>
-                  <button>
-                    <p>변경</p>
-                  </button>
-                </div>
-              </li>
-            </ul>
-          </div>
-          <div class="Mcart-h3">
-            <h3>주문상품</h3>
-          </div>
-          {cart.map((tmp) => (
-            
-              <li class="Mcart-li4">
-                <button class="Mcart-btn2"></button>
-                <div class="Mcart-middle1">
-                  <div>
-                    <img></img>
+    <div className="Mcart-top">
+      <div class="Mcart-h2">
+        <h2>장바구니</h2>
+      </div>
+      <div class="Mcart-btn">
+        <button class="Mcart-btn1">배달주문</button>
+        <button>방문포장</button>
+      </div>
+      <div class="midbox">
+        <div class="Mcart-mid">
+          <ul class="Mcart-ul">
+            <li class="Mcart-li1">
+              <div>
+                <p>배달주소</p>
+              </div>
+              <div class="Mcart-p">
+                <p>{user.address} {user.detail_address}</p>
+              </div>
+            </li>
+            <li class="Mcart-li2">
+              <div>{selectedStore ? selectedStore.store_name : '매장 선택'}</div>
+              <div>
+              <button onClick={openPopup}>주소변경</button>
+                {isPopupOpen && (
+                  <div className="store-popup">
+                    <h3>매장 선택</h3>
+                    <ul>
+                      {store.map((storeItem) => (
+                        <li key={storeItem.id} onClick={() => handleStoreSelection(storeItem)}>
+                          <h1>{storeItem.store_name} </h1>
+                          <p>{storeItem.phone}</p>
+                          <p>{storeItem.address}</p>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                  <div>
-                    <div class="Mcart-txt">
-                      <div>
-                        <h4>{}</h4>
-                      </div>
-                      <div>
-                        <p>{}</p>
-                      </div>
+                )}
+              </div>
+            </li>
+            <li class="Mcart-li3">
+              <div>수령인</div>
+              <div>
+                <input type="text" value={user.name}></input>
+                <button>
+                  <p>변경</p>
+                </button>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="Mcart-h3">
+          <h3>주문상품</h3>
+        </div>
+        {cart && cart.length > 0 ? (
+          cart.map((prod, index) => (
+            <li key={index} class="Mcart-li4">
+              <button class="Mcart-btn2"></button>
+              {/* 삭제버튼 */}
+              <div class="Mcart-middle1">
+                <div>
+                  <img src={API_URL + prod.img} alt="" />
+                </div>
+                <div>
+                  <div class="Mcart-txt">
+                    <div>
+                      <h4>{prod.name}</h4>
+                    </div>
+                    <div id="options">
+                      {prod.options.map((option, optionIndex) => (
+                        <p key={optionIndex}>
+                          {option.option_name}: {option.quantity}
+                        </p>
+                      ))}
                     </div>
                   </div>
                 </div>
-
-                <div class="Mcart-middle2">
-                  <div class="Mcart-plusb">
-                    {/* 상품개수 증감버튼 type='button'으로해야 새로고침안됨:number값 초기화 안됨 */}
-                    <button type="button" onClick={decrease}>
-                      <div>-</div>
-                    </button>
-                    <button type="button">{number}</button>
-                    <button type="button" onClick={increase}>
-                      <span>+</span>
-                    </button>
-                  </div>
-                  <div>
-                    <p>{17900 * number}원</p>
-                  </div>
+              </div>
+              <div class="Mcart-middle2">
+                <div class="Mcart-plusb">
+                  <button type="button" onClick={() => prodDecrease(index)}>
+                    <div>-</div>
+                  </button>
+                  <button type="button">
+                    {" "}
+                    {prodQuantities[index] && prodQuantities[index].quantity}
+                  </button>
+                  <button type="button" onClick={() => prodIncrease(index)}>
+                    <span>+</span>
+                  </button>
                 </div>
-              </li>
-            
-          ))}
-          <div class="Mcart-bottom">
-            총 상품 금액
-            <span>{17900 * number}원</span>
-          </div>
+                <div>
+                  <p>
+                    {prod.totalOptionPrice +
+                      (prodQuantities[index]?.quantity || 0) * prod.price}
+                    원
+                  </p>
+                </div>
+              </div>
+            </li>
+          ))
+        ) : 
+          <p>상품이 없습니다.</p>
+        }
+        <div class="Mcart-bottom">
+          총 상품 금액 <span> {totalProdPrice} 원</span>
         </div>
-        <div class="Mcart-botbotton">
-          <button class="botbutton1">메뉴추가</button>
-          <button class="botbutton2">주문하기</button>
-          </div>
-        </form>
+      </div>
+      <div class="Mcart-botbotton">
+        <NavLink to={'/menu/1'} class="botbutton1">메뉴추가</NavLink>
+        <button class="botbutton2">주문하기</button>
+      </div>
     </div>
   );
 };

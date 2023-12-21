@@ -71,7 +71,6 @@ const AOption = () => {
             <button>삭제</button>
           </td>
             
-            
         </tr>
         <tr>
           <td>1</td>

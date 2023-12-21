@@ -76,7 +76,7 @@ const DetailProduct = () => {
     return isVisible ? "-" : "+";
   };
 
-  /** 각 옵션의 수량을 관리할 상태 배열 */
+  /** 각 옵션의 수량을 관리할 상태 배열 (순서 보기) */ 
   const [optionQuantities, setOptionQuantities] = useState(
     options.map((option) => ({
       id: option.id,
@@ -180,7 +180,7 @@ const DetailProduct = () => {
                   <img
                     src={
                       isOptionVisible === true ? optionBtn.src1 : optionBtn.src2
-                    }
+                    } 
                     alt=""
                   />
                 </div>

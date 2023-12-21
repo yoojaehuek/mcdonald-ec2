@@ -49,15 +49,14 @@ const BrandIntro = () => {
             )}
           </div>
         </div>
-        <div className="history">
+        {/* <div className="history">
           <div className="inner">
             <h4>맥도날드가 걸어온 길</h4>
             <ul className="tabType01 tabMn totalTabMn">
               <li><a href='#tab02_01'></a></li>
             </ul>
           </div>
-        </div>
-        <div className="history"></div>
+        </div> */}
       </div>
 
 
