@@ -42,6 +42,7 @@ const menuItems = [
       { sub_title: '크루', value: 'crew' },
       { sub_title: '노력', value: 'effort' },
       { sub_title: '품질', value: 'material' },
+      { sub_title: 'faq', value: 'faq' },
     ],
   },
   {
