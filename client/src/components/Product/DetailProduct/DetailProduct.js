@@ -180,7 +180,7 @@ const DetailProduct = () => {
                   <img
                     src={
                       isOptionVisible === true ? optionBtn.src1 : optionBtn.src2
-                    }
+                    } 
                     alt=""
                   />
                 </div>

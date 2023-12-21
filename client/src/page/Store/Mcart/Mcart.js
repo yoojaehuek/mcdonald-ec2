@@ -85,14 +85,9 @@ const Mcart = () => {
 
               <div class="Mcart-middle2">
                 <div class="Mcart-plusb">
-                  {/* 상품개수 증감버튼 type='button'으로해야 새로고침안됨:number값 초기화 안됨 */}
-                  <button type="button" onClick={decrease}>
-                    <div>-</div>
-                  </button>
+                  <button type="button" onClick={decrease}><div>-</div></button>
                   <button type="button">{number}</button>
-                  <button type="button" onClick={increase}>
-                    <span>+</span>
-                  </button>
+                  <button type="button" onClick={increase}><span>+</span></button>
                 </div>
                 <div>
                   <p>{17900 * number}원</p>
