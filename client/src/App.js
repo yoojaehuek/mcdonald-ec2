@@ -10,6 +10,7 @@ import Recruit from './page/Story/People/Recruit/Recruit';
 import HappyMeal from './page/WhatsNew/HappyMeal/HappyMeal';
 import Promotion from './page/WhatsNew/Promotion/Promotion';
 import DetailPromotion from './page/WhatsNew/Promotion/DetailPromotion/DetailPromotion';
+import Society from './page/Story/Society/Society';
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
         {/* <Route path='/test' element={<Test></Test>}></Route> */}
         <Route path='/promotion' element={<Promotion />}></Route>
         <Route path='/promotion/detail/:prodNum' element={<DetailPromotion />}></Route>
+        <Route path='/society' element={<Society />}></Route>
       </Routes>
       <NavLink to={"/promotion"}>프로모션</NavLink>
       <Footer />
