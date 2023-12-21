@@ -149,6 +149,7 @@ const ASlider = () => {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
+    <>
     <div className='admin-slider-container'>
       <h1>Slider</h1> 
       <div className='add-slider-button'>
@@ -313,6 +314,7 @@ const ASlider = () => {
         </div>
       )}
     </div>
+    </>
   );
 };
 
