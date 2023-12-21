@@ -14,7 +14,8 @@ import AMaterial from './page/story/AMaterial';
 import AVisualbackground from './page/AVisualbackground';
 import AWhatsNew from './page/whatsNew/AWhatsNew';
 import ANews from './page/whatsNew/ANews';
-import StoreDetail from './Component/StoreTable/StoreDetail';import AFaq from './page/story/AFaq';
+import StoreDetail from './Component/StoreTable/StoreDetail';
+import AFaq from './page/story/AFaq';
 
 const AdminMain = () => {
   
