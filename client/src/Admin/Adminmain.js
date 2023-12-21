@@ -14,18 +14,19 @@ import AMaterial from './page/AMaterial';
 import AVisualbackground from './page/AVisualbackground';
 import AWhatsNew from './page/whatsNew/AWhatsNew';
 import ANews from './page/whatsNew/ANews';
-
+import StoreDetail from './Component/StoreTable/StoreDetail';
 const AdminMain = () => {
   
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
       <AHeader />
       <AMenu />
       <Routes>
         <Route path='/' element={<AChart />} />
         <Route path='/menu/:subcategory_id' element={<AProduct />} />
         <Route path='/store/*' element={<AStore />} />
+        <Route path='/store/edit' element={<StoreDetail />} />
         <Route path='/story/crew' element={<ACrew />} />
         <Route path='/story/effort' element={<AEffort />} />
         <Route path='/story/material' element={<AMaterial />} />
