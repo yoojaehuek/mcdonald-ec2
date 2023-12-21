@@ -178,6 +178,10 @@
   align-items: center;
   padding: 20px;
   line-height: 2;
+  #options{
+    display: flex;
+    gap: 8px;
+  }
 }
 
 //Mcart 두번째 middle2 박스
