@@ -56,7 +56,9 @@ const upload = multer({
           cb(null, 'upload/') // upload폴더 밑에
       },
       filename: function(req, file, cb){ // 어떤 이름으로 저장할거야?
-          cb(null, file.originalname) // 업로드한 file의 오리지널 이름으로 저장하겠다.
+          // 어떤 이름으로 저장할거야?
+          // 타임스탬프.확장자 형식으로 파일명 저장
+          cb(null, new Date().valueOf() + path.extname(file.originalname));
       }
   })
 })
@@ -65,7 +67,7 @@ app.post('/image', upload.single('image'), (req, res)=>{
   const file = req.file; 
   console.log("post(/image) file:",file);
   res.send({ 
-      imageUrl: file.filename //이미지 여기 저장했다 json형식으로 보냄
+      imageUrl: "/upload/"+file.filename //이미지 여기 저장했다 json형식으로 보냄
   })
 })
 

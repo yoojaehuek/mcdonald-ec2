@@ -192,7 +192,7 @@ const Order = () => {
                 <li className='txt2'>{item.OrderMenus.map((menu,index) => (<span key={index}>{menu.Product.k_name}</span>))}</li>
                 <li className='store'>{item.Store.store_name}</li>
                 <li className='state'>{item.status}</li>
-                {/* <li className='price'>{item.pay}</li> */}
+                <li className='price'>{item.total_price}</li>
               </div>
             ))}
             {axiosResult.length === 0 && (

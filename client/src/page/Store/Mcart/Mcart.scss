@@ -134,7 +134,8 @@
 
 //Mcart 두번째 버튼 (x버튼)
 .Mcart-btn2{
-  background-image: url(../../../../public/image/Mcart/icon_x_g.png);
+  //인라인 css로 변경
+  // background-image: url(../../../../public/images/Mcart/icon_x_g.png); 
   position: absolute;
   right: 0;
   width: 20px;

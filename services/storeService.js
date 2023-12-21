@@ -41,7 +41,9 @@ class StoreService{
 		// console.log(result);
     if (result.length === 0) {
       result = false;
-    }
+    }else{
+			result = true;
+		}
 		return result;
 	}
 

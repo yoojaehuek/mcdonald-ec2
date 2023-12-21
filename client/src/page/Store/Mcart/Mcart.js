@@ -163,7 +163,7 @@ const Mcart = () => {
         {cart && cart.length > 0 ? (
           cart.map((prod, index) => (
             <li key={index} class="Mcart-li4">
-              <button class="Mcart-btn2"></button>
+              <button class="Mcart-btn2" style={{ backgroundImage: 'url(/images/Mcart/icon_x_g.png)'}}></button>
               {/* 삭제버튼 */}
               <div class="Mcart-middle1">
                 <div>
