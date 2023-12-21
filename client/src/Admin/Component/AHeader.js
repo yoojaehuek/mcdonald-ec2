@@ -5,7 +5,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 
 const AHeader = () => {
   return (
-    <>
+    <div style={{width: '100%'}}>
       <CssBaseline />
       <AppBar position="static" sx={{ backgroundColor: '#ffffff', boxShadow: 'none' }}>
         <Toolbar>
@@ -19,13 +19,13 @@ const AHeader = () => {
             {/* <MenuIcon /> */}
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1, color: '#000000' }}>
-            로고
+            <img src='/images/Header/logo1.png'></img>
           </Typography>
           <Button color="inherit" sx={{ color: '#000000' }}>Login</Button>
         </Toolbar>
         <Divider />
       </AppBar>
-    </>
+    </div>
   );
 };
 

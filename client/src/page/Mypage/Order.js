@@ -12,7 +12,7 @@ const Order = () => {
   useEffect(()=>{
     axios.get(`${API_URL}/order/date?day=1`)
     .then(res => {
-      console.log("응답 데이터: ", res.data);
+      console.log(res.data);
       setAxiosResult(res.data);
     }).catch((err) =>{
             console.error(err);
