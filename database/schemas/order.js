@@ -26,6 +26,11 @@ class Order extends Sequelize.Model {
           defaultValue: "주문대기",
           comment: "주문 상태(ENUM은 ()안에 있는 값만 넣을 수 있음)"
         },
+        total_price:{
+          type: Sequelize.INTEGER,
+          allowNull: false,
+          comment: "총 가격",
+        },
         cancel_yn: {
           type: Sequelize.BOOLEAN,
           allowNull: false,

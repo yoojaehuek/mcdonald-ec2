@@ -2,6 +2,7 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const multer = require('multer');
 const cookieParser = require('cookie-parser');
 const { sequelize } = require('./database/schemas');//DB테이블
 const visualBackGroundRouter = require('./routers/visualBackGround')
@@ -19,6 +20,7 @@ const storeRouter = require('./routers/store');
 const whatsNewRouter = require('./routers/whatsNew');
 const orderRouter = require('./routers/order');
 const optionRouter = require('./routers/option');
+
 
 //시퀄라이즈 연결 부분
 sequelize.sync({ force: false }) //force가 true면 킬때마다 DB 새로 만듬
@@ -43,6 +45,29 @@ app.use(express.json());
 // 브라우저 cors 이슈를 막기 위해 사용(모든 브라우저의 요청을 일정하게 받겠다)
 var cors = require('cors');
 app.use(cors());
+
+// '/upload'경로로 뭔가 요청이오면 여기서 걸리고 upload폴더의 정적 파일을 제공하겠다
+// 예: "/upload/image.jpg")에 액세스하면 Express.js는 "upload" 디렉터리에서 정적 파일을 찾아 제공
+app.use("/upload", express.static("upload"));  
+
+const upload = multer({ 
+  storage: multer.diskStorage({ //저장 설정
+      destination: function(req, file, cb) { // 어디에 저장할거냐? upload/
+          cb(null, 'upload/') // upload폴더 밑에
+      },
+      filename: function(req, file, cb){ // 어떤 이름으로 저장할거야?
+          cb(null, file.originalname) // 업로드한 file의 오리지널 이름으로 저장하겠다.
+      }
+  })
+})
+
+app.post('/image', upload.single('image'), (req, res)=>{
+  const file = req.file; 
+  console.log("post(/image) file:",file);
+  res.send({ 
+      imageUrl: file.filename //이미지 여기 저장했다 json형식으로 보냄
+  })
+})
 
 app.use('/user', userRouter);
 app.use('/crew', CrewRouter);
@@ -71,9 +96,7 @@ app.get('/logout', (req, res) => {
   res.status(200).end();
 })
 
-// '/upload'경로로 뭔가 요청이오면 여기서 걸리고 upload폴더의 정적 파일을 제공하겠다
-// 예: "/upload/image.jpg")에 액세스하면 Express.js는 "upload" 디렉터리에서 정적 파일을 찾아 제공
-app.use("/upload", express.static("upload"));  
+
 
 app.use(errorMiddleware);
 

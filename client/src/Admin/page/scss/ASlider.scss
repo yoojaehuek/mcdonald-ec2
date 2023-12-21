@@ -21,8 +21,9 @@
 
 .add-slider-button button {
   cursor: pointer;
-  width: 50%;
-  margin-right: 8px;
+  position: fixed;
+  bottom: 30px;
+  right: 10px;
   font-size: 15px;
   font-weight: 900;
   padding: 15px;
@@ -47,6 +48,7 @@
     background-color: rgb(255, 188, 13);
   }
 
+
   td {
     padding: 8px; /* 셀 내부의 패딩을 조절합니다 */
     border: 1px solid rgb(146, 105, 0);
@@ -57,6 +59,7 @@
     font-size: 16px;
     color: black;
     font-weight: 600;
+    height: 200px;
 
     button {
       background-color: rgb(255, 188, 13);
@@ -143,4 +146,10 @@
   }
 }
 
-
+#upload-img-placeholder{
+  cursor: pointer;
+  text-align: center;
+  padding-bottom: 25px;
+  border-radius: 4px;
+  border: 1px solid #cccccc;
+}

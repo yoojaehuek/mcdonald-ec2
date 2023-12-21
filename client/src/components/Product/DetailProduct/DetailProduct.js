@@ -197,7 +197,7 @@ const DetailProduct = () => {
                           <li key={index}>
                             <span>{option.name}</span>
                             <div>
-                              <span>{option.price} 원</span>
+                              <span>{option.price.toLocaleString()} 원</span>
                               <div id="option-count-btn">
                                 <button
                                   type="button"
@@ -229,7 +229,7 @@ const DetailProduct = () => {
             <div id="order">
               <div id="order-price">
                 <span>상품금액</span>
-                <h2>{totalOptionPrice + totalProductPrice} 원</h2>
+                <h2>{(totalOptionPrice + totalProductPrice).toLocaleString()} 원</h2>
               </div>
               <div id="order-btn">
                 <div>
