@@ -9,53 +9,158 @@ import PopupPostCode from './PopupPostCode';
 /** 우편번호 창  */
 
 function Join() {
-	const [isLabelVisibleId, setIsLabelVisibleId] = useState(false);
-	const [isLabelVisiblePwd, setIsLabelVisiblePwd] = useState(false);
+	/** 유효성 검사  */
+// 초기값 세팅 - 이메일, 비밀번호, 비밀번호확인, 이름, 전화번호, 주소, 상세주소, 생년-월-일
+const [email, setEmail] = useState("");
+const [name, setName] = useState("");
+const [password, setPassword] = useState("");
+const [passwordConfirm, setPasswordConfirm] = useState("");
+const [phone, setPhone] = useState("");
+// 오류메세지 상태 저장
+const [emailMessage, setEmailMessage] = useState("");
+const [nameMessage, setNameMessage] = useState("");
+const [passwordMessage, setPasswordMessage] = useState("");
+const [passwordConfirmMessage, setPasswordConfirmMessage] = useState("");
+const [phoneMessage, setPhoneMessage] = useState("");
+// 유효성 검사
+const [isEmail, setIsEmail] = useState(false);
+const [isName, setIsName] = useState(false);
+const [isPassword, setIsPassword] = useState(false);
+const [isPasswordConfirm, setIsPasswordConfirm] = useState(false);
+const [isPhone, setIsPhone] = useState(false);
+
+const onChangeEmail = (e) => {
+	const currentEmail = e.target.value;
+	setEmail(currentEmail);
+	const emailRegExp = /^[A-Za-z0-9_]+[A-Za-z0-9]*[@]{1}[A-Za-z0-9]+[A-Za-z0-9]*[.]{1}[A-Za-z]{1,3}$/;
+
+	if (!emailRegExp.test(currentEmail)) {
+		setEmailMessage("이메일의 형식이 올바르지 않습니다!");
+		setIsEmail(false);
+	} else {
+		setEmailMessage("사용 가능한 이메일 입니다.");
+		setIsEmail(true);
+	}
+};
+const onChangeName = (e) => {
+	const currentName = e.target.value;
+	setName(currentName);
+
+	if (currentName.length < 2 || currentName.length > 10) {
+		setNameMessage("닉네임은 2글자 이상 10글자 이하로 입력해주세요!");
+		setIsName(false);
+	} else {
+		setNameMessage("사용가능한 닉네임 입니다.");
+		setIsName(true);
+	}
+};
+const onChangePassword = (e) => {
+	const currentPassword = e.target.value;
+	setPassword(currentPassword);
+	const passwordRegExp = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
+	if (!passwordRegExp.test(currentPassword)) {
+		setPasswordMessage("숫자+영문자+특수문자 조합으로 8자리 이상 입력해주세요!");
+		setIsPassword(false);
+	} else {
+		setPasswordMessage("안전한 비밀번호 입니다.");
+		setIsPassword(true);
+	}
+};
+const onChangePasswordConfirm = (e) => {
+	const currentPasswordConfirm = e.target.value;
+	setPasswordConfirm(currentPasswordConfirm);
+	if (password !== currentPasswordConfirm) {
+		setPasswordConfirmMessage("비밀번호가 똑같지 않아요!");
+		setIsPasswordConfirm(false);
+	} else {
+		setPasswordConfirmMessage("똑같은 비밀번호를 입력했습니다.");
+		setIsPasswordConfirm(true);
+	}
+};
+const onChangePhone = (getNumber) => {
+	const currentPhone = getNumber;
+	setPhone(currentPhone);
+	const phoneRegExp = /^01([0|1|6|7|8|9])?([0-9]{3,4})?([0-9]{4})$/;
+
+	if (!phoneRegExp.test(currentPhone)) {
+		setPhoneMessage("올바른 형식이 아닙니다!");
+		setIsPhone(false);
+	} else {
+		setPhoneMessage("사용 가능한 번호입니다:-)");
+		setIsPhone(true);
+	}
+};
+const addHyphen = (e) => {
+	const currentNumber = e.target.value;
+	setPhone(currentNumber);
+	if (currentNumber.length == 3 || currentNumber.length == 8) {
+		setPhone(currentNumber);
+		onChangePhone(currentNumber);
+	} else {
+		onChangePhone(currentNumber);
+	}
+};
+/** 유효성 검사 end  */
+
+	// 각 입력창에 대한 라벨 상태 저장
+	const [isLabelVisible, setIsLabelVisible] = useState({
+		email: false,
+		name: false,
+		password: false,
+		passwordConfirm: false,
+		phone: false,
+		detailAddr: false,
+	});
 	const [selectedAddress, setSelectedAddress] = useState('');// 우편번호
-	const [selectedYear, setSelectedYear] = useState('');
+	const [selectedYear, setSelectedYear] = useState('');//생년월일
 	const [selectedMonth, setSelectedMonth] = useState('');
 	const [selectedDay, setSelectedDay] = useState('');  
-	const inputRefId = useRef(null);
-	const inputRefPwd = useRef(null);
+	// 각 입력창에 대한 라벨 숨김 및 나타내기를 위한 참조 생성
+	const inputRefs = {
+		email: useRef(null),
+		name: useRef(null),
+		password: useRef(null),
+		passwordConfirm: useRef(null),
+		phone: useRef(null),
+		detailAddr: useRef(null),
+	};
 	const navigate = useNavigate();
 
-
+	/** 생년월일 선택 */
 	const currentYear = new Date().getFullYear();
 	const years = Array.from({ length: 100 }, (_, index) => currentYear - index);
 	const months = Array.from({ length: 12 }, (_, index) => index + 1);
-	const days = Array.from({ length: 31 }, (_, index) => index + 1);
-  
-	const handleYearChange = (e) => {
-		setSelectedYear(e.target.value);
-	};
+	const handleDayChange = (e) => { setSelectedDay(e.target.value);};
 	const handleMonthChange = (e) => {
 		setSelectedMonth(e.target.value);
+		// 선택된 월이 변경될 때 선택된 일을 임의로 초기화
+		setSelectedDay('');
 	};
+	const handleYearChange = (e) => {
+		setSelectedYear(e.target.value);
+		// 선택된 연도가 변경될 때 선택된 일을 임의로 초기화
+		setSelectedDay('');
+	};
+	/** 실제 날자 불러오기 */
+	const daysInMonth = (year, month) => new Date(year, month, 0).getDate();
+	const days = Array.from({ length: daysInMonth(selectedYear, selectedMonth) }, (_, index) => index + 1);
 
-	const handleDayChange = (e) => {
-		setSelectedDay(e.target.value);
-	};
+
+
+
+
 
 	/** 우편번호 창  */
-
 	// 팝업창 상태 관리
 	const [isPopupOpen, setIsPopupOpen] = useState(false)
 	// 팝업창 열기
-	const openPostCode = () => {
-		setIsPopupOpen(true)
-	}
+	const openPostCode = () => { setIsPopupOpen(true) }
 	// 팝업창 닫기
-	const closePostCode = () => {
-		setIsPopupOpen(false)
-	}
+	const closePostCode = () => {	setIsPopupOpen(false)	}
 	// 선택된 주소를 업데이트하는 콜백 함수
-	const handleSelectedAddress = (address) => {
-		setSelectedAddress(address);
-	};
+	const handleSelectedAddress = (address) => { setSelectedAddress(address); };
 	/** 우편검색 결과가 인풋창에 업데이트 되지않아서 이함수로 업데이트 시켜줌 */
-	const handleAddressChange = (e) => {
-		setSelectedAddress(e.target.value);
-	};
+	const handleAddressChange = (e) => { setSelectedAddress(e.target.value); };
 	/** 우편번호 창  */
 
 	const onSubmitJoin = async (e) => {
@@ -67,28 +172,23 @@ function Join() {
 		const phone = e.target.phone.value
 		const address = e.target.address.value
 		const detail_address = e.target.detail_address.value
-		// const addZeroMonth= selectedMonth < 10 ? `0`+selectedMonth:selectedMonth 
-		// const addZeroDay= selectedDay < 10 ? `0`+selectedDay:selectedDay 
-		// const birth = `${selectedYear}-${addZeroMonth}-${addZeroDay}`;
-		// const join_value = {
-		// 	email: e.target.email.value,
-		// 	pwd: e.target.pwd.value,
-		// 	user_name: e.target.name.value,
-		// 	phone: e.target.phone.value,
-		// 	address: e.target.address.value,
-		// 	detail_address: e.target.detail_address.value,
-		// }
-		if(pwd === confirmPwd 
-			&& email !== "" 
-			&& pwd !== "" 
-			&& confirmPwd !== "" 
-			&& user_name !== "" 
-			&& phone !== "" 
-			&& address !== ""
-			&& detail_address !== "" 
-			&& selectedYear !== "" 
-			&& selectedMonth !== ""
-			&& selectedDay !== ""){
+
+		if(pwd === confirmPwd &&
+			email !== "" && 
+			pwd !== "" && 
+			confirmPwd !== "" && 
+			user_name !== "" &&
+			phone !== "" && 
+			address !== "" && 
+			detail_address !== "" && 
+			selectedYear !== "" && 
+			selectedMonth !== "" && 
+			selectedDay !== "" &&
+			isEmail &&
+			isName && 
+			isPassword &&
+			isPasswordConfirm &&
+			isPhone){
 			axios.post(`${API_URL}/user/join`,{email, pwd, user_name, phone, address, detail_address, selectedYear, selectedMonth, selectedDay})
 			.then(() =>{
 				alert("가입성공!");
@@ -98,121 +198,97 @@ function Join() {
 				console.error(err);
 			})
 		}else{
-			return alert("전부 입력해주세요");
+			return alert("입력하지 않은 부분이 있거나 입력형식이 올바르지않은 곳이 있습니다.");
+		}
+	};
+  const handleInputFocus = (inputType) => {
+    setIsLabelVisible((prev) => ({ ...prev, [inputType]: true }));
+  };
+	const handleInputBlur = (inputType) => {
+		const inputValue = inputRefs[inputType].current.value.trim();
+		if (!inputValue) {
+			setIsLabelVisible((prev) => ({ ...prev, [inputType]: false }));
 		}
 	};
 
-	useEffect(() => {
-		const handleClickOutside = (event) => {
-			// 입력 필드 외부를 클릭하면 라벨을 숨깁니다.
-			if (
-				inputRefId.current &&
-				!inputRefId.current.contains(event.target) &&
-				inputRefPwd.current &&
-				!inputRefPwd.current.contains(event.target)
-			) {
-				const inputValueId = inputRefId.current.value.trim();
-				const inputValuePwd = inputRefPwd.current.value.trim();
-		
-				// 입력 필드에 값이 있는 경우 라벨을 보이게 합니다.
-				setIsLabelVisibleId(!!inputValueId);
-				setIsLabelVisiblePwd(!!inputValuePwd);
-			}
-		};
-		// 이벤트 리스너 등록
-		document.addEventListener('mousedown', handleClickOutside);
-		// 컴포넌트가 언마운트될 때 이벤트 리스너 제거
-		return () => {
-			document.removeEventListener('mousedown', handleClickOutside);
-		};
-	}, [inputRefId, inputRefPwd]);
-		const handleInputFocus = (inputType) => {
-			if (inputType === 'id') {
-				setIsLabelVisibleId(true);
-			} else if (inputType == 'pwd') {
-				setIsLabelVisiblePwd(true);
-			}
-		};
-
-
-		const handleInputBlur = (inputType) => {
-			const inputValue = inputType === 'id' ? inputRefId.current.value : inputRefPwd.current.value;
-		
-			// 만약 입력 필드가 비어있다면, 다시 라벨을 숨길 수 있습니다.
-			if (!inputValue.trim()) {
-				if(inputType === 'id') {
-					setIsLabelVisibleId(false);
-				}else if(inputType === 'pwd') {
-					setIsLabelVisiblePwd(false);
-				}
-			}
-		};
-	
 	return (
 	<div className="Join">
 		<form id='Join-form' onSubmit={onSubmitJoin}>
 			<h1>회원가입</h1>
 			<ul id='join-input'>
 				<li className="input-li">
-					<label className={isLabelVisibleId ? '' : 'hidden'}>아이디(이메일주소)</label>
+					<label className={isLabelVisible.email  ? '' : 'hidden'}>아이디(이메일주소)</label>
 					<input
-						ref={inputRefId}
-						type="text"
 						id="email"
+						value={email}
+						onChange={onChangeEmail}
+						ref={inputRefs.email}
+						type="text"
 						placeholder="아이디(이메일주소)"
-						onFocus={() => handleInputFocus('id')}
-						onBlur={() => handleInputBlur('id')}
+						onFocus={() => handleInputFocus('email')}
+						onBlur={() => handleInputBlur('email')}
 					/>
+					<p className={`message ${!isEmail ? 'error' : ''}`}>{emailMessage}</p>
 				</li>
 				<li className="input-li">
-					<label className={isLabelVisiblePwd ? '' : 'hidden'}>비밀번호</label>
+					<label className={isLabelVisible.password ? '' : 'hidden'}>비밀번호</label>
 					<input
-						ref={inputRefPwd}
-						type="password"
 						id="pwd"
-						placeholder="비밀번호"
-						onFocus={() => handleInputFocus('pwd')}
-						onBlur={() => handleInputBlur('pwd')}
-					/>
-				</li>
-				<li className="input-li">
-					<label className={isLabelVisiblePwd ? '' : 'hidden'}>비밀번호</label>
-					<input
-						ref={inputRefPwd}
+						value={password}
+						onChange={onChangePassword}
+						ref={inputRefs.password}
 						type="password"
+						placeholder="비밀번호"
+						onFocus={() => handleInputFocus('password')}
+						onBlur={() => handleInputBlur('password')}
+					/>
+					<p className={`message ${!isPassword ? 'error' : ''}`}>{passwordMessage}</p>
+				</li>
+				<li className="input-li">
+					<label className={isLabelVisible.passwordConfirm ? '' : 'hidden'}>비밀번호 확인</label>
+					<input
 						id="confirmPwd"
+						value={passwordConfirm}
+						onChange={onChangePasswordConfirm}
+						ref={inputRefs.passwordConfirm}
+						type="password"
 						placeholder="비밀번호 확인"
-						onFocus={() => handleInputFocus('pwd')}
-						onBlur={() => handleInputBlur('pwd')}
+						onFocus={() => handleInputFocus('passwordConfirm')}
+            onBlur={() => handleInputBlur('passwordConfirm')}
 					/>
+					<p className={`message ${!isPasswordConfirm ? 'error' : ''}`}>{passwordConfirmMessage}</p>
 				</li>
 				<li className="input-li">
-					<label className={isLabelVisiblePwd ? '' : 'hidden'}>이름</label>
+					<label className={isLabelVisible.name ? '' : 'hidden'}>이름</label>
 					<input
-						ref={inputRefPwd}
-						type="text"
 						id="name"
+						value={name} 
+						onChange={onChangeName}
+						ref={inputRefs.name}
+						type="text"
 						placeholder="이름"
-						onFocus={() => handleInputFocus('pwd')}
-						onBlur={() => handleInputBlur('pwd')}
+						onFocus={() => handleInputFocus('name')}
+            onBlur={() => handleInputBlur('name')}
 					/>
+					<p className={`message ${!isName ? 'error' : ''}`}>{nameMessage}</p>
 				</li>
 				<li className="input-li">
-					<label className={isLabelVisiblePwd ? '' : 'hidden'}>전화번호</label>
+					<label className={isLabelVisible.phone ? '' : 'hidden'}>전화번호</label>
 					<input
-						ref={inputRefPwd}
-						type="text"
 						id="phone"
-						placeholder="전화번호(010-1234-5678)"
-						onFocus={() => handleInputFocus('pwd')}
-						onBlur={() => handleInputBlur('pwd')}
+						value={phone} 
+						onChange={addHyphen}
+						ref={inputRefs.phone}
+						type="text"
+						placeholder="전화번호(01012345678)"
+						onFocus={() => handleInputFocus('phone')}
+            onBlur={() => handleInputBlur('phone')}
 					/>
+					<p className={`message ${!isPhone ? 'error' : ''}`}>{phoneMessage}</p>
 				</li>
-
 				<li className="input-li">
 					<label id='birth-label'>생년월일</label>
 					<div className='boxecal'>
-						
 						<select className='chyear' id='chyearjoin' value={selectedYear} onChange={handleYearChange}>
 						<option value="">선택</option>
 						{years.map((year) => (
@@ -221,7 +297,6 @@ function Join() {
 							</option>
 						))}
 						</select>
-
 						<select className='chmonth' id='chmonthjoin' value={selectedMonth} onChange={handleMonthChange}>
 						<option value="">선택</option>
 						{months.map((month) => (
@@ -230,7 +305,6 @@ function Join() {
 							</option>
 						))}
 						</select>
-
 						<select className='chday' id='chdayjoin' value={selectedDay} onChange={handleDayChange}>
 						<option value="">선택</option>
 							{days.map((day) => (
@@ -239,16 +313,11 @@ function Join() {
 								</option>
 							))}
 						</select>
-
 					</div>
 				</li>
-
-				
 				<li className="input-li">
-					<label className={isLabelVisiblePwd ? '' : 'hidden'}>주소</label>
 					<div id='input-li-addr'>
 						<input
-							ref={inputRefPwd}
 							type="text"
 							id="address"
 							placeholder="주소"
@@ -259,14 +328,14 @@ function Join() {
 						{/* 버튼 클릭 시 팝업 생성 */}
 						<button type='button' onClick={openPostCode}>우편번호 검색</button>
 					</div>
-					<label className={isLabelVisiblePwd ? '' : 'hidden'}>상세주소</label>
+					<label className={isLabelVisible.detailAddr ? '' : 'hidden'} >상세주소</label>
 					<input
-						ref={inputRefPwd}
-						type="text"
 						id="detail_address"
+						type="text"
+						ref={inputRefs.detailAddr}
 						placeholder="상세주소"
-						onFocus={() => handleInputFocus('pwd')}
-						onBlur={() => handleInputBlur('pwd')}
+						onFocus={() => handleInputFocus('detailAddr')}
+						onBlur={() => handleInputBlur('detailAddr')}
 					/>
 					<div>
 						{/* 우편번호 창 팝업 생성 기준 div */}

@@ -86,7 +86,7 @@ function App() {
         <Route path='/mcdonaldhouse' element={<Mcdonaldhouse />}></Route>
         <Route path='/mcart' element={<Mcart/>}></Route>
       
-        <Route path='/adminmain' element={<AdminMain />}></Route>
+        <Route path='/adminmain/*' element={<AdminMain />}></Route>
         {/* </Route> */}
       </Routes>
       {!currentPath.includes('/adminmain') && <Footer />}
