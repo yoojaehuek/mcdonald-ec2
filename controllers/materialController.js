@@ -2,15 +2,15 @@ const MaterialService = require("../services/materialService");
 
 class MaterialController {
 
-	static async createMaterial(req, res, next){
-		try {
-			const newMaterial = req.body;
-			const result = await MaterialService.createMaterial({newMaterial});
-			res.status(201).json(result);
-		} catch (error) {
-			next(error);
-		}
-	}
+	static async createMaterial(req, res, next) {
+    try {
+      const { image, backgroundImage, ...newMaterial } = req.body;
+      const result = await MaterialService.createMaterial({ newMaterial, image, backgroundImage });
+      res.status(201).json(result);
+    } catch (error) {
+      next(error);
+    }
+  }
 
 	static async getAllMaterial(req, res, next){
 		try {

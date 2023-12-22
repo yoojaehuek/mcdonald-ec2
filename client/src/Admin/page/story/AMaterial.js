@@ -9,19 +9,39 @@ import {
   TableRow,
   Paper,
   TablePagination,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  Button,
+  TextField,
+  Input,
 } from '@mui/material';
 import { API_URL } from '../../../config/contansts';
 
-const AMaterial = () => {
+const Material = () => {
   const [axiosResult, setAxiosResult] = useState([]);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(3);
+  const [openModal, setOpenModal] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(null);
+  const [editedData, setEditedData] = useState({
+    id: '',
+    admin_id: '',
+    title: '',
+    description: '',
+    additional_info: '',
+    img_url: '',
+    background_img_url: '',
+  });
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedBackgroundImage, setSelectedBackgroundImage] = useState(null);
 
   useEffect(() => {
     axios
       .get(`${API_URL}/material`)
       .then((res) => {
-        console.log(res.data);
+        console.log(res);
         setAxiosResult(res.data);
       })
       .catch((err) => {
@@ -38,11 +58,183 @@ const AMaterial = () => {
     setPage(0);
   };
 
+  const handleEditClick = (item) => {
+    setSelectedItem(item);
+    setEditedData(item);
+    setOpenModal(true);
+  };
+
+  const handleModalClose = () => {
+    setOpenModal(false);
+    setEditedData({
+      id: '',
+      admin_id: '',
+      title: '',
+      description: '',
+      additional_info: '',
+      img_url: '',
+      background_img_url: '',
+    });
+    setSelectedImage(null);
+    setSelectedBackgroundImage(null);
+  };
+
+  const handleCreate = () => {
+    const { id, ...dataWithoutId } = editedData;
+    const formData = new FormData();
+    formData.append('image', selectedImage);
+
+    axios
+      .post(`${API_URL}/image`, formData)
+      .then((response) => {
+        const imageUrl = response.data.imageUrl;
+        const newData = { ...dataWithoutId, img_url: imageUrl };
+
+        if (selectedBackgroundImage) {
+          const backgroundFormData = new FormData();
+          backgroundFormData.append('image', selectedBackgroundImage);
+
+          axios
+            .post(`${API_URL}/image`, backgroundFormData)
+            .then((backgroundResponse) => {
+              const backgroundImageUrl = backgroundResponse.data.imageUrl;
+              newData.background_img_url = backgroundImageUrl;
+
+              axios
+                .post(`${API_URL}/material`, newData)
+                .then((response) => {
+                  console.log('Create:', response.data);
+                  setAxiosResult((prevResult) => [...prevResult, response.data]);
+                  setOpenModal(false);
+                })
+                .catch((error) => {
+                  console.error('Error:', error);
+                });
+            })
+            .catch((error) => {
+              console.error('Error backgroundimage:', error);
+            });
+        } else {
+          axios
+            .post(`${API_URL}/material`, newData)
+            .then((response) => {
+              console.log('Create:', response.data);
+              setAxiosResult((prevResult) => [...prevResult, response.data]);
+              setOpenModal(false);
+            })
+            .catch((error) => {
+              console.error('Error:', error);
+            });
+        }
+      })
+      .catch((error) => {
+        console.error('Error image:', error);
+      });
+  };
+
+  const handleUpdate = () => {
+    if (selectedItem) {
+      const formData = new FormData();
+      formData.append('image', selectedImage);
+
+      axios
+        .post(`${API_URL}/image`, formData)
+        .then((response) => {
+          const imageUrl = response.data.imageUrl;
+          const updatedData = { ...editedData, img_url: imageUrl };
+
+          if (selectedBackgroundImage) {
+            const backgroundFormData = new FormData();
+            backgroundFormData.append('image', selectedBackgroundImage);
+
+            axios
+              .post(`${API_URL}/image`, backgroundFormData)
+              .then((backgroundResponse) => {
+                const backgroundImageUrl = backgroundResponse.data.imageUrl;
+                updatedData.background_img_url = backgroundImageUrl;
+
+                axios
+                  .patch(`${API_URL}/material/${selectedItem.id}`, updatedData)
+                  .then((response) => {
+                    console.log('Update:', response.data);
+                    setAxiosResult((prevResult) => {
+                      const updatedResult = prevResult.map((item) =>
+                        item.id === selectedItem.id ? updatedData : item
+                      );
+                      return updatedResult;
+                    });
+                    setOpenModal(false);
+                  })
+                  .catch((error) => {
+                    console.error('error:', error);
+                  });
+              })
+              .catch((error) => {
+                console.error('Error backgroundimage:', error);
+              });
+          } else {
+            axios
+              .patch(`${API_URL}/material/${selectedItem.id}`, updatedData)
+              .then((response) => {
+                console.log('Update:', response.data);
+                setAxiosResult((prevResult) => {
+                  const updatedResult = prevResult.map((item) =>
+                    item.id === selectedItem.id ? updatedData : item
+                  );
+                  return updatedResult;
+                });
+                setOpenModal(false);
+              })
+              .catch((error) => {
+                console.error('error:', error);
+              });
+          }
+        })
+        .catch((error) => {
+          console.error('Error image:', error);
+        });
+    }
+  };
+
+  const handleImageChange = (e) => {
+    setSelectedImage(e.target.files[0]);
+  };
+
+  const handleBackgroundImageChange = (e) => {
+    setSelectedBackgroundImage(e.target.files[0]);
+  };
+
+  const handleDelete = (id) => {
+    const confirmDelete = window.confirm("혼또 삭제하시겠습니까?");
+    if (confirmDelete) {
+      axios
+        .delete(`${API_URL}/material/${id}`)
+        .then((response) => {
+          console.log('Delete:', response.data);
+          setAxiosResult((prevResult) => prevResult.filter((item) => item.id !== id));
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+    }
+  };
+
   return (
     <>
       <h1 style={{ marginLeft: '16vw', marginBottom: '1vw', marginTop: '1vw' }}>
         Material
       </h1>
+      <Button
+        variant="contained"
+        color="primary"
+        style={{ marginLeft: '16vw', marginBottom: '1vw' }}
+        onClick={() => {
+          setSelectedItem(null);
+          setOpenModal(true);
+        }}
+      >
+        추가하기
+      </Button>
       <TableContainer component={Paper} style={{ width: '80%', marginLeft: '16vw' }}>
         <Table>
           <TableHead>
@@ -54,7 +246,9 @@ const AMaterial = () => {
               <TableCell align="center">세부정보</TableCell>
               <TableCell align="center">이미지</TableCell>
               <TableCell align="center">백그라운드이미지</TableCell>
-              <TableCell style={{ width: "10%" }} align="center">관리</TableCell>
+              <TableCell style={{ width: '10%' }} align="center">
+                관리
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -82,9 +276,34 @@ const AMaterial = () => {
                     />
                   </TableCell>
                   <TableCell align="center">
-                  <button style={{ marginRight: "5px", padding: "5px 10px", backgroundColor: "rgb(255, 188, 13)", color: "white", border: "none", borderRadius: "5px", cursor: "pointer" }}>수정</button>
-                  <button style={{ padding: "5px 10px", backgroundColor: "#f44336", color: "white", border: "none", borderRadius: "5px", cursor: "pointer" }}>삭제</button>
-                </TableCell>
+                    <button
+                      style={{
+                        marginRight: '5px',
+                        padding: '5px 10px',
+                        backgroundColor: 'rgb(255, 188, 13)',
+                        color: 'white',
+                        border: 'none',
+                        borderRadius: '5px',
+                        cursor: 'pointer',
+                      }}
+                      onClick={() => handleEditClick(item)}
+                    >
+                      수정
+                    </button>
+                    <button
+                      style={{
+                        padding: '5px 10px',
+                        backgroundColor: '#f44336',
+                        color: 'white',
+                        border: 'none',
+                        borderRadius: '5px',
+                        cursor: 'pointer',
+                      }}
+                      onClick={() => handleDelete(item.id)}
+                    >
+                      삭제
+                    </button>
+                  </TableCell>
                 </TableRow>
               ))}
           </TableBody>
@@ -99,8 +318,48 @@ const AMaterial = () => {
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
       </TableContainer>
+
+      <Dialog open={openModal} onClose={handleModalClose}>
+        <DialogTitle>{selectedItem ? '수정' : '추가'}</DialogTitle>
+        <DialogContent>
+          <TextField
+            margin="dense"
+            label="Admin ID"
+            fullWidth
+            value={editedData.admin_id}
+            onChange={(e) => setEditedData({ ...editedData, admin_id: e.target.value })}
+          />
+          <TextField
+            margin="dense"
+            label="타이틀"
+            fullWidth
+            value={editedData.title}
+            onChange={(e) => setEditedData({ ...editedData, title: e.target.value })}
+          />
+          <TextField
+            margin="dense"
+            label="설명"
+            fullWidth
+            value={editedData.description}
+            onChange={(e) => setEditedData({ ...editedData, description: e.target.value })}
+          />
+          <TextField
+            margin="dense"
+            label="세부정보"
+            fullWidth
+            value={editedData.additional_info}
+            onChange={(e) => setEditedData({ ...editedData, additional_info: e.target.value })}
+          />
+          <Input type="file" accept="image/*" onChange={handleImageChange} />
+          <Input type="file" accept="image/*" onChange={handleBackgroundImageChange} />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleModalClose}>취소</Button>
+          <Button onClick={selectedItem ? handleUpdate : handleCreate}>저장</Button>
+        </DialogActions>
+      </Dialog>
     </>
   );
 };
 
-export default AMaterial;
+export default Material;
