@@ -31,7 +31,7 @@ const VisualBackGround = () => {
   
   
   const visualBackGroundStyle = {
-    background: `url(${axiosResult.h_background_img_url}) 50% 50% no-repeat`,
+    background: `url(${API_URL + axiosResult.h_background_img_url}) 50% 50% no-repeat`,
   }
   
   return(
