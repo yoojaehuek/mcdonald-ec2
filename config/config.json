@@ -1,14 +1,15 @@
 {
   "development": {
     "username": "root",
-    "password": "1234",
+    "password": "rlawlghks51",
     "database": "mcdonaldDB",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "timezone": "+09:00"
   },
   "test": {
     "username": "i1004902",
-    "password": "rlawlghks51!",
+    "password": "1234",
     "database": "i1004902",
     "host": "mcdonald.cafe24app.com",
     "dialect": "mysql"

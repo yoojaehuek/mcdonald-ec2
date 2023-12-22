@@ -4,8 +4,8 @@ import axios from 'axios';
 import './Join.scss'
 import { API_URL } from '../../config/contansts'
 /** 우편번호 창   */
-import PopupDom from './PopupDom';
-import PopupPostCode from './PopupPostCode';
+import PopupDom from '../../components/AddressPopup/PopupDom';
+import PopupPostCode from '../../components/AddressPopup/PopupPostCode';
 /** 우편번호 창  */
 
 function Join() {

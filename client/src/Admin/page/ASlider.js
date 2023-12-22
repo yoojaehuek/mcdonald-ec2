@@ -69,7 +69,7 @@ const ASlider = () => {
     if (selectedItem) {
       const updatedItem = {
         type: editedType,
-        content_url: `/upload/${imageUrl}`,
+        content_url: `${imageUrl}`,
         duration: editedTime,
       };
       console.log(updatedItem);
@@ -96,7 +96,7 @@ const ASlider = () => {
     // 슬라이드 추가 로직 구현
     const newSlide = {
       type: newSlideType,
-      content_url: `/upload/${imageUrl}`,
+      content_url: `${imageUrl}`,
       duration: newSlideTime,
     };
 
@@ -149,6 +149,7 @@ const ASlider = () => {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
+    <>
     <div className='admin-slider-container'>
       <h1>Slider</h1> 
       <div className='add-slider-button'>
@@ -192,7 +193,6 @@ const ASlider = () => {
           </tbody>
         </table>
       </div>
-
       {/* 페이징 */}
       <div className="pagination">
         {Array.from({ length: Math.ceil(axiosResult.length / itemsPerPage) }).map((_, index) => (
@@ -314,6 +314,7 @@ const ASlider = () => {
         </div>
       )}
     </div>
+    </>
   );
 };
 

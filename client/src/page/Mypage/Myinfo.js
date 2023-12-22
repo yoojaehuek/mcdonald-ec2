@@ -6,8 +6,8 @@ import axios from 'axios';
 import { API_URL } from '../../config/contansts';
 import { useRecoilState } from "recoil";
 import { loginState } from "../../recoil/atoms/State";
-import PopupDom from '../Join/PopupDom';
-import PopupPostCode from '../Join/PopupPostCode';
+import PopupDom from '../../components/AddressPopup/PopupDom';
+import PopupPostCode from '../../components/AddressPopup/PopupPostCode';
 
 const Myinfo = () => {
   const navigate = useNavigate();

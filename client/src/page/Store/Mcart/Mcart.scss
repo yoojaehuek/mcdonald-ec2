@@ -4,13 +4,13 @@
   width: 1200px;
   margin: 0 auto;
 }
-//메인로고
+//메인로고 (장바구니)
 .Mcart-h2{
   padding-top: 30px;
   padding-bottom: 20px;
 }
 
-//로고버튼
+//로고버튼 (배달주문)
 .Mcart-btn button{
   // float: left;
   width: 135px;
@@ -33,7 +33,7 @@
 //   margin: 0 auto;
 // }
 
-//배달주소, 수령인 박스
+//배달주소, 주소변경, 수령인 div박스
 .Mcart-mid{
   border-top: 1px solid;
   border-bottom: 1px solid;
@@ -50,33 +50,33 @@
   border-right: none; 
 }
 
-// ul
+//배달주소, 주소변경, 수령인 ul박스 
 .Mcart-ul{
   display: flex;
   padding: 20px 0;
 }
 
 
-//Mcart 첫번째 li
+//Mcart 첫번째 li 박스
 .Mcart-li1{
   width: 650px;
 }
 
-//Mcart p태그
+//Mcart p태그 (배달주소)
 .Mcart-p{
   margin-top: 10px;
   font-weight: 600;
 }
 
 
-//Mcart 두번째 li
+//Mcart 두번째 li 박스(주소변경)
 .Mcart-li2{
   text-align: center;
   width: 200px;
 }
 
 
-//Mcart-li2 안에 버튼 조절
+//Mcart-li2 안에 버튼 조절 (주소변경)
 .Mcart-li2 button{
   background-color: #f2f2f2;
   border: none;
@@ -94,7 +94,7 @@
 }
 
 
-//Mcart 세번째 li
+//Mcart 세번째 li박스 안에 (수령인 밑에 input)
 .Mcart-li3 input{
   background-color: #f2f2f2;
   border: 1px solid #e3e3e3;
@@ -104,7 +104,7 @@
   margin-right: 10px;
 }
 
-//Mcart-li3 버튼
+//Mcart-li3 버튼 (변경)
 .Mcart-li3 button{
   border: 1px solid #e3e3e3;
   height: 30px;
@@ -125,14 +125,7 @@
 }
 
 
-//Mcart-ul1박스 (주문상품 박스)
-// .Mcart-ul1{
-//   border-bottom: 1px solid #dbdbdb;
-//   border-top: 1px solid #dbdbdb;
-// }
-
-
-//Mcart 네번째 li
+//Mcart 네번째 li (주문상품 박스)
 .Mcart-li4{
   border-bottom: 1px solid #dbdbdb;
   position: relative;
@@ -141,7 +134,8 @@
 
 //Mcart 두번째 버튼 (x버튼)
 .Mcart-btn2{
-  background-image: url(../../../../public/image/Mcart/icon_x_g.png);
+  //인라인 css로 변경
+  // background-image: url(../../../../public/images/Mcart/icon_x_g.png); 
   position: absolute;
   right: 0;
   width: 20px;
@@ -156,7 +150,7 @@
 }
 
 
-//middle1 첫번째 박스
+//middle1 첫번째 박스 (이미지div)
 .Mcart-middle1{
     float: left;
     width: 700px;
@@ -169,11 +163,10 @@
   width: 100px;
   background-color: #fafafa;
   height: 100px;
-  padding: 10px;
   margin-right: 30px;
 }
 
-//middle1안에 텍스트
+//middle1안에 텍스트 (이미지옆에 텍스트)
 .Mcart-txt{
   align-items: center;
   padding: 20px;
@@ -184,7 +177,7 @@
   }
 }
 
-//Mcart 두번째 middle2 박스
+//Mcart 두번째 middle2 박스 (-,+ ~원까지 박스)
 .Mcart-middle2{
   // float: right;
     display: flex;
@@ -194,7 +187,7 @@
     // padding-right: 70px;
 }
 
-//middle2 p태그 위치조절
+//middle2 p태그 위치조절 (~원)
 .Mcart-middle2 p{
     font-size: 18px;
     font-weight: 600;
@@ -205,25 +198,25 @@
 //middle2안에 마이너스 플러스 박스
 .Mcart-plusb{
   margin-right: 50px;
- margin-left: 50px;
- display: flex;
- border: 1px solid #D1D1D1;
- border-radius: 50px;
- 
- //middle2안에 마이너스 플러스 버튼
- button{
- padding-bottom: 5px;
- width: 40px;
- border: 0px;
- font-size: 30px;
- font-weight: bold;
- background: rgba(0,0,0,0);
- cursor: pointer;
- }
+  margin-left: 50px;
+  display: flex;
+  border: 1px solid #D1D1D1;
+  border-radius: 50px;
+  
+  //middle2안에 마이너스 플러스 버튼
+  button{
+  padding-bottom: 5px;
+  width: 40px;
+  border: 0px;
+  font-size: 30px;
+  font-weight: bold;
+  background: rgba(0,0,0,0);
+  cursor: pointer;
+  }
 }
 
 
-//Mcart bottom박스
+//Mcart bottom박스 (총삼풍금액)
 .Mcart-bottom{
   border-bottom: 1px solid ;
   line-height: 80px;
@@ -231,7 +224,7 @@
   
 }
 
-//Mcart-bottom span태그 사이즈 색변경
+//Mcart-bottom span태그 사이즈 색변경 (총상품금액 ~원)
 .Mcart-bottom span{
     font-size: 25px;
     font-weight: 700;
@@ -240,7 +233,7 @@
 }
 
 
-//Mcart-botbottom 박스 margin주기
+//Mcart-botbottom 박스 margin주기 (메뉴추가,주문하기 박스)
 .Mcart-botbotton{
   margin-top: 50px;
   margin-bottom: 150px;
@@ -256,16 +249,46 @@
   cursor: pointer;
 }
 
-//botbottom 첫번째 버튼
+//botbottom 첫번째 버튼 (메뉴추가)
 .botbutton1{
-  background-color: white;
+  background-color: gray;
   border: 1px solid #e3e3e3;
+  color: white;
+  padding: 10px 15px ;
+  font-size: 20px;
+  font-weight: bold;
 }
 
-//botbottom 두번째 버튼
+//botbottom 두번째 버튼 (주문하기)
 .botbutton2{
   float: right;
   background-color: #000;
   color: #ffffff;
   border: none;
+}
+// 유재혁이 추가한거
+.Mcart-top{
+  .store-popup{
+    position: absolute;
+    z-index: 1;
+    background-color: white;
+    border: 0px solid #000;
+    width: 400px;
+    height: 500px;
+    overflow-y: scroll;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    li{
+      margin: 10px 0px;
+      text-align: left;
+      border: 0px solid #000;
+      border-radius: 10px;
+      background-color: #f8f8f8;
+      p{
+        font-weight: bold;
+      }
+    }
+  }
 }
