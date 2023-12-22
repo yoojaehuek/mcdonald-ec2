@@ -1,31 +1,14 @@
 import React, { useEffect, useState} from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import './StoreDetail.scss';
+import './ProductDetail.scss';
 
-const StoreDetail = () => {
+const ProductDetail = () => {
   const item = useLocation().state;
   const navigate = useNavigate();
   const [editedType, setEditedType] = useState('');
   const setEditedContent = useState('');
-  console.log("매장 디테일 item: ",item);
+  console.log("상품 디테일 item: ",item);
 
-  useEffect(() => {
-    let radioTrue = document.getElementById("true");
-    let radioFalse = document.getElementById("false");
-    if(item.yn_24h === true) radioTrue.checked = true;
-    else radioFalse.checked = true;
-  }, []);
-
-  const handleRadioChange = (value) => {
-    console.log('라디오 변경:', value);
-    setEditedType(value);
-  };
-  const handleClose = () => {
-    navigate(-1);
-  }
-  const handleEdit = () => {
-    // navigate(-1);
-  }
 
   return(
     <div className="storedetail">
@@ -126,4 +109,4 @@ const StoreDetail = () => {
   )
 }
 
-export default StoreDetail;
+export default ProductDetail;
