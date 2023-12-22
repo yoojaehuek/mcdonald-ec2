@@ -161,6 +161,7 @@ const filteredStores = stores.filter((store) => {
     // }
   };
   console.log(result);
+
   // 현재페이지 첫 번째랑 마지막 인덱스 계산
   const laststore = currentpage * storepage;
   const firststore = laststore - storepage;
