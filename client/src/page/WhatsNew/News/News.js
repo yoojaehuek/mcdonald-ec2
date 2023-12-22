@@ -18,7 +18,7 @@ const News = () => {
 
   console.log("Promotion/subcategory_id: ", subcategory_id);
   useEffect(()=>{
-    axios.get(`${API_URL}/whats-new/subcategory/${subcategory_id}`)
+    axios.get(`${API_URL}/whats-new/${subcategory_id}`)
     .then(res => {
       console.log(res.data);
       setItems(res.data);

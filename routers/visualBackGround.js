@@ -1,22 +1,31 @@
 const express = require('express');
 const router = express.Router();
-const VisualBackGround = require('../database/schemas/visualBackGround');
-// const UserController = require('../controllers/userController');
-// const refresh = require('./refresh');
-// const { Product, ProductDetail, ProductSubImage } = require('./models');
+const SubCategory = require('../database/schemas/subCategory');
+const { Op } = require('sequelize');
 
-// router.post('/login', UserController.loginUser);
-// router.get('/mypage', refresh, UserController.detailUser);
-// router.get('/mypage', authJWT, UserController.)
-// router.get('/*', UserController.addUser);
-router.get('/:location', async (req, res, next) => {
+router.get('/', async (req, res, next) => {
+  try {
+    const result = await SubCategory.findAll({
+      attributes: ['h_title', 'h_content', 'h_background_img_url', 'h_link'],
+    });
+    res.status(200).json(result);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+router.get('/:subcategory', async (req, res, next) => {
   try {
     console.log("req.params", req.params);
-    const location = req.params.location;
-    console.log("진입: ", location);
-    const result = await VisualBackGround.findOne({
+    const subcategory = req.params.subcategory;
+    console.log("진입: ", subcategory);
+    const result = await SubCategory.findOne({
+      attributes: ['h_title', 'h_content', 'h_background_img_url', 'h_link'],
       where: {
-        id: location,
+        [Op.or]: [
+          {id: subcategory},
+          {type: subcategory},
+        ]
       }
     })
     res.status(200).json(result);

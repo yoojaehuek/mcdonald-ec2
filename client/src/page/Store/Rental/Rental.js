@@ -1,6 +1,6 @@
 import React from "react";
 import './Rental.scss';
-// import { NavLink } from "react-router-dom";
+
 
 
 const temp = [

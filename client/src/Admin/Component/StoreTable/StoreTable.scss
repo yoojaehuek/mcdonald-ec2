@@ -1,0 +1,54 @@
+.StoreTable{
+  // border: 1px #a39485 solid;
+  border: 1px #a39485 solid;
+  font-size: .9em;
+  box-shadow: 0 2px 5px rgba(0,0,0,.25);
+  border-collapse: collapse;
+  border-radius: 5px;
+  overflow: hidden;
+  // margin: 0 auto;
+  
+  thead {
+    font-weight: bold;
+    color: #fff;
+    background: #73685d;
+  }
+
+  td, th {
+    padding: 1em .5em;
+    vertical-align: middle;
+  }
+
+  th {
+    text-align: left;
+  }
+
+  td {
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    background: #fff;
+  }
+
+  input[type=text]{
+    // border: 0;
+    padding: 10px 0;
+  }
+
+  .colIndex-0{
+    border: 0;
+    pointer-events: none;
+  }
+
+  tbody{
+    tr{
+      &.editing{
+        .colIndex-1,
+        .colIndex-2,
+        .colIndex-3,
+        .colIndex-4,
+        .colIndex-6{
+          border: 1px solid #000;
+        }
+      }
+    }
+  }
+}

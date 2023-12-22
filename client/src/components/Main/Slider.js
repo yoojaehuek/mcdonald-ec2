@@ -4,21 +4,12 @@ import { NavLink } from 'react-router-dom';
 import { API_URL } from '../../config/contansts';
 
 const Slider = () => {
-  // const imagesAndVideos = [
-  //   { type: 'image', src: '/images/Main/1.jpg', path: '/login', duration: 5000 },
-  //   { type: 'image', src: '/images/Main/2.jpg', path: '/', duration: 5000 },
-  //   { type: 'video', src: '/images/Main/1.mp4', path: '/video', duration: 30000 },
-  //   { type: 'image', src: '/images/Main/3.jpg', path: '/slide-3', duration: 5000 },
-  //   { type: 'image', src: '/images/Main/4.jpg', path: '/slide-4', duration: 5000 },
-  //   { type: 'image', src: '/images/Main/5.jpg', path: '/slide-5', duration: 5000 },
-  //   { type: 'image', src: '/images/Main/6.jpg', path: '/slide-6', duration: 5000 },
-  //   { type: 'image', src: '/images/Main/7.jpg', path: '/slide-7', duration: 5000 },
-  //   { type: 'image', src: '/images/Main/8.jpg', path: '/slide-8', duration: 5000 },
-  //   { type: 'image', src: '/images/Main/9.jpg', path: '/slide-9', duration: 5000 },
-  // ];
 
   const [imagesAndVideos, setImagesAndVideos] = useState([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(true);
   const [timers, setTimers] = useState([]);
+  const sliderRef = useRef(null);
   
   useEffect(() => {
     axios.get(`${API_URL}/slider`)
@@ -33,11 +24,8 @@ const Slider = () => {
 
   console.log(imagesAndVideos)
 
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(true);
   
   console.log("timers: ", timers)
-  const sliderRef = useRef(null);
 
 
   useEffect(() => {
@@ -46,7 +34,7 @@ const Slider = () => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % imagesAndVideos.length);
       }
     }, imagesAndVideos[currentIndex]?.duration || 5000);
-
+  
     setTimers((prevTimers) => {
       const newTimers = prevTimers.map((timer, index) => ({
         duration: imagesAndVideos[index].duration,
@@ -54,13 +42,10 @@ const Slider = () => {
       }));
       return newTimers;
     });
-
+  
     return () => clearInterval(interval);
-  }, [currentIndex, isPlaying]);
+  }, [currentIndex, isPlaying, imagesAndVideos]);
 
-  const handlePlayPause = () => {
-    setIsPlaying((prevIsPlaying) => !prevIsPlaying);
-  };
 
   const handleNext = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % imagesAndVideos.length);
@@ -72,10 +57,11 @@ const Slider = () => {
 
   const handleVideoLoaded = (index) => {
     const videoElement = sliderRef.current.children[index].querySelector('video');
-
+  
     if (index === currentIndex && imagesAndVideos[index].type === 'video') {
       videoElement.currentTime = 0;
       videoElement.load();
+      videoElement.play(); // 동영상 로드 후 재생
     }
   };
 

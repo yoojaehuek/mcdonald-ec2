@@ -16,7 +16,6 @@ const Social = [
     desc: '맥도날드가 속한 지역사회에서 받은 사랑을 되돌려주고,\n지역사회의 발전과 행복에 기여하고자 노력하고 있습니다.',
     link: '/Kidssoccer'
     }
-    
 ]
 
 
@@ -30,7 +29,7 @@ const Society = () => {
                 <div className="social">
                     {Social.map(View => (
                         <div key={View.id}>
-                        <NavLink to={View.link} target="_blank" rel="noopener noreferrer">
+                        <NavLink to={View.link}>
                             <img src={View.image} alt={`Image ${View.id}`} />
                             <h2>{View.title}</h2>
                             <p>{View.desc}</p>

@@ -106,31 +106,62 @@ const Find = () => {
     setter((prev) => !prev);
   };
   // console.log(yn_24h);
-  const search = (e) => {
+  const search = async (e) => {
     e.preventDefault();
 
     // 필터가 모두 비활성화면 원래 모든 데이터 다 가져옴
-    if (!yn_24h && !yn_mcmorning && !yn_mcdrive && !yn_mcdelivery && !yn_parking) {
+    if (!yn_24h && !yn_mcmorning && !yn_mcdrive && !yn_mcdelivery && !yn_parking && searchText === "") {
       setResult(stores);
       //console.log(stores);
       return;
     }
 
-    // stores 배열을 필터링하는 로직
-    const filteredStores = stores.filter((store) => {
-      return (
-        (yn_24h ? store.yn_24h : false) ||
-        (yn_mcmorning ? store.yn_mcmorning : false) ||
-        (yn_mcdrive ? store.yn_mcdrive : false) ||
-        (yn_mcdelivery ? store.yn_mcdelivery : false) ||
-        (yn_parking ? store.yn_parking : false)
-      );
-    });
+    // try {
+    //   const response = await axios.get(`${API_URL}/store/search`, {
+    //     params: {
+    //       searchText,
+    //       yn_24h,
+    //       yn_mcmorning,
+    //       yn_mcdrive,
+    //       yn_mcdelivery,
+    //       yn_parking,
+    //     },
+    //   });
+
+    //   setResult(response.data);남극
+
+
+// stores 배열을 필터링하는 로직
+const filteredStores = stores.filter((store) => {
+  const services = [];
+  if (store.yn_24h) services.push('24시간');
+  if (store.yn_mcmorning) services.push('맥모닝');
+  if (store.yn_mcdrive) services.push('맥드라이브');
+  if (store.yn_mcdelivery) services.push('맥딜리버리');
+  if (store.yn_parking) services.push('주차');
+    
+  const addressIncludesSearchText = store.address.toLowerCase().includes(searchText.toLowerCase());
+  const servicesIncludeSearchText = services.every(service => service.toLowerCase().includes(searchText.toLowerCase()));
+  return (
+    (
+      (!yn_24h ? store.yn_24h : true) &&
+      (!yn_mcmorning ? store.yn_mcmorning : true) &&
+      (!yn_mcdrive ? store.yn_mcdrive : true)  &&
+      (!yn_mcdelivery ? store.yn_mcdelivery : true) &&
+      (!yn_parking ? store.yn_parking : true)
+    ) &&
+    (searchText === "" || addressIncludesSearchText || servicesIncludeSearchText)
+  );
+});
     setResult(filteredStores);
     // console.log(filteredStores);
     setcurrentpage(1);
+    // } catch (error) {
+    //   console.error(error);
+    // }
   };
   console.log(result);
+
   // 현재페이지 첫 번째랑 마지막 인덱스 계산
   const laststore = currentpage * storepage;
   const firststore = laststore - storepage;
@@ -174,7 +205,7 @@ const Find = () => {
                   onClick={() => toggleButton(setYnmcdrive)}
                 >
                   <img src={yn_mcdrive ? "../images/Store/btn3-1.png" : "../images/Store/btn3.png"} alt="btn3" />
-                  맥드라이드
+                  맥드라이브
                 </button>
                 <button
                   style={{

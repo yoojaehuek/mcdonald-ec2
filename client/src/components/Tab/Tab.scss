@@ -2,7 +2,12 @@
   width: 100%;
   margin: 0 auto;
   position: relative;
+  #bigone{
+    text-align: center;
+  }
   .Tabinput{
+    width: 100%;
+    position: relative;
     p{
       white-space: pre;
       font-size: 16px;
@@ -10,8 +15,57 @@
       font-weight: 500;
       line-height: 1.9;
     }
-    .maincont{
-      width: 100%;
+
+    
+    .maincont{    
+      width: 247px;
+      display: inline-block;
+      position: relative;
+      text-align: center;
+      vertical-align: top;
+      margin-right: 45px;
+      .mainimg{
+        width: 247px;
+        height: 247px;
+        
+      }
+      // &:nth-child(2) div{
+      //   background-position: -247px 0;
+      // }
+    }
+    .btdesc{
+      width: 970px;
+      margin: 70px 99px 0px;
+      background: #da0000;
+      border-radius: 30px;
+      text-align: center;
+      color: #fff;
+      line-height: 60px;
+      font-size: 16px;
+      margin-bottom: 50px;
     }
   }
+}
+
+// ul:has(li.submenu:nth-child(1)) ~  ul {
+//   .maincont{
+//     &:nth-child(2) div{
+//       background-position: -247px 0;
+//     }
+//   }
+// }
+
+ul:has(li.submenu) ~  ul {
+
+  li:nth-child(1) .mainimg{
+  }      // background-position: -247px 0;
+  li:nth-child(2) .mainimg{
+    background-position: -247px 0;
+  } 
+  li:nth-child(3) .mainimg{
+    background-position: -494px 0;
+  } 
+  li:nth-child(4) .mainimg{
+    background-position: -741px 0;
+  } 
 }

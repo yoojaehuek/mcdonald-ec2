@@ -1,10 +1,10 @@
 
-//맥딜리버리 미들 박스 크기
+//맥딜리버리 메인박스
 .mcdel-main{
   height: 450px;
 }
 
-//맥딜리버리 fieldset 구현
+//맥딜리버리 fieldset 구현 (주소선택 ~검색하기)
 .mcdel-fieldset1{
     float: left;
     width: 564px;
@@ -35,13 +35,23 @@
   position: absolute;
   right: 0;
 }
-//두번째 input 세번째 input 박스
+//두번째 input 세번째 input 박스 (상세주소입력, 동, 호)
 .mcdel-maininput{
   margin-left: 7px;
   margin-top: 20px;
 }
 
-//세번째 input조정
+//첫번째 input 크기 (주소선택)
+.mcdel-input1{
+  width: 100%;
+}
+//두번째 input 위치 (상세주소 입력)
+.mcdel-input2{
+  width: 220px;
+  margin-left: -30px;
+}
+
+//세번째 input조정 (동, 호)
 .mcdel-input3{
   width: 100px;
   margin-left: 7px;
@@ -53,8 +63,24 @@
   margin-bottom: 30px;
 }
 
+//맥딜리버리 첫번째 버튼 구현 (주소찾기, 검색하기 버튼)
+.mcdel-button1{
+  padding: 0 38px;
+    font-size: 15px;
+    line-height: 70px;
+    border-radius: 70px;
+    display: inline-block;
+    color: #292929;
+    font-weight: 600;
+    background: #ffbc0d;
+    border: none;
+    cursor: pointer;
+    
+}
 
-//맥딜리버리 p태그 구현
+
+
+//맥딜리버리 p태그 구현 (맥딜리버리 이미지 감싸는 박스)
 .mcdel-fieldset2{
     position: relative;
     // float: right;
@@ -70,7 +96,7 @@
     border: 6px solid #bd0017;
 }
 
-//fieldset1이랑 fieldset2 사이에 화살표
+//fieldset1이랑 fieldset2 사이에 화살표 (>)
 .mcdel-fieldset2::before{
   content: '';
     position: absolute;
@@ -79,16 +105,16 @@
     width: 7px;
     height: 11px;
     margin: -5px 0 0 0;
-    background: url(../../../../public/image/mcdelivery/bg_arrow.png);
+    background: url(../../../../public/images/mcdelivery/bg_arrow.png);
 }
-//feildset2 안에 strong 텍스트
+//feildset2 안에 strong 텍스트 (검색결과가 나타납니다)
 .mcdel-fieldset2 strong{
- border-bottom: 1px solid;
+  border-bottom: 1px solid;
 }
 
-// fieldset2안에 이미지구현
+// fieldset2안에 이미지구현 (맥딜리버리 이미지)
 .mcdel-p1::before{
-  background: url(../../../../public/image/mcdelivery/bg_delivery_result_new.png);
+  background: url(../../../../public/images/mcdelivery/bg_delivery_result_new.png);
   background-size: cover;
   margin: 0 auto;
 }
@@ -100,35 +126,109 @@
     width: 258px;
     height: 265px;
 }
+//fieldset3 박스,이미지 (맥딜리버리 배달이 가능합니다)
+.mcdel-fieldset3{
+    position: relative;
+    // float: right;
+    float: left;
+    margin-left: 50px;
+    width: 554px;
+    height: 406px;
+    padding: 50px;
+    color: #000;
+    border-radius: 40px;
+    background-color: #264f36;
+    color: #ffc836;
+    text-align: left;
 
-
-//맥딜리버리 첫번째 버튼 구현
-.mcdel-button1{
-  padding: 0 38px;
-    font-size: 15px;
-    line-height: 70px;
-    border-radius: 70px;
-    display: inline-block;
-    color: #292929;
-    font-weight: 600;
-    background: #ffbc0d;
-    border: none;
-    cursor: pointer;
+    ::before{
+      content: '';
+    position: absolute;
+    top: 50%;
+    left: -33px;
+    width: 7px;
+    height: 11px;
+    margin: -5px 0 0 0;
+    background: url(../../../../public/images/mcdelivery/bg_arrow.png);
+    }
     
 }
-//첫번째 input 크기
-.mcdel-input1{
-  width: 100%;
+
+// fieldset3 (맥딜리버리 배달이 가능합니다 텍스트 위치조절)
+.resultok{
+  padding-top: 40px;
+
+  strong{
+    font-size: 40px;
+    line-height: 1;
+  }
 }
-//두번째 input 위치
-.mcdel-input2{
-  width: 220px;
-  margin-left: -30px;
+
+
+//fieldset3 이미지 (O)
+.mcdel-p2{
+  position: absolute;
+  width: 250px;
+  height: 270px;
+  top: 50px;
+  left: 50%;
+  background: url(../../../../public/images/mcdelivery/bg_delivery_result2.png);
+}
+
+//fieldset4 박스,이미지 (맥딜리버리 배달이 가능합니다)
+.mcdel-fieldset4{
+    position: relative;
+    // float: right;
+    float: left;
+    margin-left: 50px;
+    width: 554px;
+    height: 406px;
+    padding: 50px;
+    color: #000;
+    border-radius: 40px;
+    background-color: #bd0017;
+    color: #ffc836;
+    text-align: left;
+
+    ::before{
+      content: '';
+    position: absolute;
+    top: 50%;
+    left: -33px;
+    width: 7px;
+    height: 11px;
+    margin: -5px 0 0 0;
+    background: url(../../../../public/images/mcdelivery/bg_arrow.png);
+    }
+    
+}
+
+// fieldset4 (맥딜리버리 배달이 가능합니다 텍스트 위치조절)
+.resultfail{
+  padding-top: 40px;
+
+  strong{
+    font-size: 40px;
+    line-height: 1;
+  }
+}
+
+
+//fieldset4 이미지 (O)
+.mcdel-p3{
+  position: absolute;
+  width: 250px;
+  height: 270px;
+  top: 50px;
+  left: 50%;
+  background: url(../../../../public/images/mcdelivery/bg_delivery_result3.png);
 }
 
 
 
-//두번째 메인박스
+
+
+//두번째 메인박스 (가운데 텍스트 많은 박스)
 .mcdel-middle{
   text-align: left;
   font-size: 13px;
@@ -151,7 +251,7 @@
 // }
 
 
-//세번째 메인박스
+//세번째 메인박스 (맥딜리버리온라인주문, 구글플레이, 앱스토어)
 .mcdel-bottom{
   width: 100%;
   // text-align: center;
@@ -161,9 +261,9 @@
   
   
 }
-//a태그 구현, 위치조절
+//a태그 구현, 위치조절 (맥딜리버리 온라인 주문하기)
 .mcdel-a{
-  background-color: #ffbc0d;
+  background-color: #da0000;
   line-height: 90px;
   border-radius: 50px;
   display: inline-block;
@@ -171,8 +271,23 @@
   padding: 0 60px;
   margin-bottom: 50px;
   margin-right: 20px;
-  margin-left: -20px;
+  margin-left: -50px;
+  color: white;
+  font-weight: 700;
+  font-size: 18px;
 }
 
+//이미지 (구글플레이, 앱스토어)
+.mcdel-bottom img{
+  width: 250px;
+  margin-right: 10px;
+}
+
+.deliverySrch .rBox .result:before {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-left: 0;
+}
 
 

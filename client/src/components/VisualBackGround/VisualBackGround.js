@@ -23,7 +23,7 @@ const VisualBackGround = () => {
     .then(res => {
       console.log("VBG/res: ", res.data);
       setAxiosResult(res.data);
-      setAxiosResultPath(JSON.parse(res.data.path))
+      setAxiosResultPath(JSON.parse(res.data.h_link))
     }).catch(err => {
       console.log(err);
     })
@@ -31,14 +31,14 @@ const VisualBackGround = () => {
   
   
   const visualBackGroundStyle = {
-    background: `url(${axiosResult.backgroundImage}) 50% 50% no-repeat`,
+    background: `url(${API_URL + axiosResult.h_background_img_url}) 50% 50% no-repeat`,
   }
   
   return(
       <div className="visualBackGround" style={visualBackGroundStyle}>
         <div className="visualBackGround_TextArea">
           <h1>{axiosResult.title}</h1>
-          {axiosResult.subCopy?<p>{axiosResult.subCopy}</p>:<></>}
+          {axiosResult.h_content?<p>{axiosResult.h_content}</p>:<></>}
           <ul>
             {axiosResultPath.map((path, index) => 
               <li key={index}>

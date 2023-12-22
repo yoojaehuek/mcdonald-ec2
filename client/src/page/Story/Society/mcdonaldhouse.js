@@ -29,7 +29,7 @@ const mcdonaldhouse = () => {
                     </li>
                 </ul>
                 <div className="top">
-                    <img src="/"></img>
+                    <img src="/images/Story/mh1.jpg"></img>
                     <h2>
                         '재단법인 로날드맥도날드하우스'는 무엇인가요?
                     </h2>
@@ -45,7 +45,12 @@ const mcdonaldhouse = () => {
                         <br/>
                         아픈 어린이들이 가족의 돌봄과 지지를 받으며 건강한 사회의 일원으로 성장하도록 동행하고 있습니다.
                     </p>
-                </div>                
+                </div> 
+                <div className='bottom'>
+                    <a className='btnrmhc'>
+                        RMHC 바로가기    
+                    </a>               
+                </div>
             </div>
         </div>
         

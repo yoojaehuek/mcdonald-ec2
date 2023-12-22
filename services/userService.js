@@ -7,9 +7,10 @@ const { makeRefreshToken, makeAccessToken } = require('../utils/token');
 
 class UserService{
 	//유효성 검사 이메일 겹치는지 등등
-	static async addUser({email, pwd, user_name, phone, address, detail_address, birth }){
-		console.log("email: ",email);
-
+	static async createUser({email, pwd, user_name, phone, address, detail_address, selectedYear, selectedMonth, selectedDay}){
+		// const birth = selectedYear+'-'+selectedMonth+'-'+selectedDay;
+		const birth = selectedYear+'-'+selectedMonth+'-'+selectedDay;
+		console.log("birth: ", birth);
 		//crypto.randomBytes(128): 길이가 128인 임의의 바이트 시퀀스를 생성
 		//.toString('base64'): 임의의 바이트를 base64로 인코딩된 문자열로 변환
 		const salt = crypto.randomBytes(128).toString('base64'); 
@@ -78,38 +79,52 @@ class UserService{
 		const user_email = user.email;
 		const address = user.address;
 		const detail_address = user.detail_address;
-		const phone = user.phone;
+		// const phone = user.phone;
+		const phone_number_prefix = user.phone.substring(0, 3);
+		const phone_number_suffix = user.phone.substring(3);
 		// const birth = user.birth;
-		const birth = "test";
+		const date = new Date(user.birth);
+		const year = date.getFullYear();
+		const month = date.getMonth()+1;
+		const day = date.getDate();
 
 		const userInfo = {
 			name,
 			user_email,
 			address,
 			detail_address,
-			phone,
-			birth
+			phone_number_prefix,
+			phone_number_suffix,
+			year,
+			month,
+			day,
 		};
 
 		return userInfo;
 	}
 
-	static async putUser({updateValue}, {userId}){
-		console.log("서비스에서: ",updateValue, userId);
-		// const email = updateValue.user_name;
-		// const phone = updateValue.phoneNumberPrefix + updateValue.phoneNumberSuffix;
-		// const address = updateValue.address;
-		// const detail_address = updateValue.detail_address;
-		// const birth = updateValue.selectedYear+'-'+updateValue.selectedMonth+'-'+updateValue.selectedDay;
-		const update = {};
-		update.user_name = updateValue.user_name;
-		update.phone = updateValue.phoneNumberPrefix + updateValue.phoneNumberSuffix;
-		update.address = updateValue.address;
-		update.detail_address = updateValue.detail_address;
-		// update.birth = updateValue.selectedYear+'-'+updateValue.selectedMonth+'-'+updateValue.selectedDay;
+	static async putUser({toUpdate, userId}){
+		console.log("서비스에서: ",toUpdate, userId);
+		// const email = toUpdate.user_name;
+		// const phone = toUpdate.phoneNumberPrefix + toUpdate.phoneNumberSuffix;
+		// const address = toUpdate.address;
+		// const detail_address = toUpdate.detail_address;
+		// const birth = toUpdate.selectedYear+'-'+toUpdate.selectedMonth+'-'+toUpdate.selectedDay;
+		const update = {
+			user_name: toUpdate.user_name,
+			phone: toUpdate.phone_number_prefix + toUpdate.phone_number_suffix,
+			address: toUpdate.address,
+			detail_address: toUpdate.detail_address,
+			birth: toUpdate.selected_year+'-'+toUpdate.selected_month+'-'+toUpdate.selected_day,
+		};
+		// update.user_name = toUpdate.user_name;
+		// update.phone = toUpdate.phone_number_prefix + toUpdate.phone_number_suffix;
+		// update.address = toUpdate.address;
+		// update.detail_address = toUpdate.detail_address;
+		// update.birth = toUpdate.selectedYear+'-'+toUpdate.selectedMonth+'-'+toUpdate.selectedDay;
 		console.log(update);
 
-		const user = await UserModel.putUser({update}, {userId});
+		const user = await UserModel.putUser({update, userId});
 		return user;
 	}
 
