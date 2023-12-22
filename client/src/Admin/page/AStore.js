@@ -6,7 +6,6 @@ import StoreTable from '../Component/StoreTable/StoreTable';
 
 
 const AStore = () => {
-
   const [items, setItems] = useState([]);
 
   useEffect(() => {

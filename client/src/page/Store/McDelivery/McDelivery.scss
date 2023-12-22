@@ -105,16 +105,16 @@
     width: 7px;
     height: 11px;
     margin: -5px 0 0 0;
-    background: url(../../../../public/image/mcdelivery/bg_arrow.png);
+    background: url(../../../../public/images/mcdelivery/bg_arrow.png);
 }
 //feildset2 안에 strong 텍스트 (검색결과가 나타납니다)
 .mcdel-fieldset2 strong{
- border-bottom: 1px solid;
+  border-bottom: 1px solid;
 }
 
 // fieldset2안에 이미지구현 (맥딜리버리 이미지)
 .mcdel-p1::before{
-  background: url(../../../../public/image/mcdelivery/bg_delivery_result_new.png);
+  background: url(../../../../public/images/mcdelivery/bg_delivery_result_new.png);
   background-size: cover;
   margin: 0 auto;
 }
@@ -181,6 +181,13 @@
 .mcdel-bottom img{
   width: 250px;
   margin-right: 10px;
+}
+
+.deliverySrch .rBox .result:before {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-left: 0;
 }
 
 

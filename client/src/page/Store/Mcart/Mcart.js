@@ -104,8 +104,7 @@ const Mcart = () => {
   const totalProdPrice = cart ? 
   cart.reduce((total, prod, index) => {
       return (
-        total +
-        prod.totalOptionPrice +
+        total + prod.totalOptionPrice +
         prod.price * ((prodQuantities[index] && prodQuantities[index].quantity) || 0)
       );
     }, 0)
@@ -185,8 +184,8 @@ const Mcart = () => {
         </div>
         {cart && cart.length > 0 ? (
           cart.map((prod, index) => (
-            <li key={index} className="Mcart-li4">
-              <button className="Mcart-btn2" onClick={() => removeItemFromCart(index)} ></button>
+            <li key={index} class="Mcart-li4">
+              <button class="Mcart-btn2" style={{ backgroundImage: 'url(/images/Mcart/icon_x_g.png)'}} onClick={() => removeItemFromCart(index)} ></button>
               {/* 삭제버튼 */}
               <div className="Mcart-middle1">
                 <div>

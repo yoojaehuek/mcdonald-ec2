@@ -69,7 +69,7 @@ const ASlider = () => {
     if (selectedItem) {
       const updatedItem = {
         type: editedType,
-        content_url: `/upload/${imageUrl}`,
+        content_url: `${imageUrl}`,
         duration: editedTime,
       };
       console.log(updatedItem);
@@ -96,7 +96,7 @@ const ASlider = () => {
     // 슬라이드 추가 로직 구현
     const newSlide = {
       type: newSlideType,
-      content_url: `/upload/${imageUrl}`,
+      content_url: `${imageUrl}`,
       duration: newSlideTime,
     };
 
