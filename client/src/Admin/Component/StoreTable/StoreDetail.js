@@ -72,7 +72,6 @@ const StoreDetail = () => {
     console.log('라디오 변경:', value);
     setEditedTime(value);
   };
-  
   const handleClose = () => {
     setSelectedItem(null);
     // setIsModalOpen(false);
@@ -148,6 +147,7 @@ const StoreDetail = () => {
         <h2>매장 정보 수정</h2>
         <div className="container">
           <label className="box" htmlFor="editedId">ID:</label>
+          <h1>{item.yn_24h}</h1>
           <input
             type="text"
             id="editedId"

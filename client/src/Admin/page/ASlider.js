@@ -116,7 +116,7 @@ const ASlider = () => {
                 ))}
                 <td>
                   <button onClick={() => openModal(item)}>수정</button>
-                  <button onClick={() => handleDelete(item.id)}>삭제</button>
+                  <button style={{backgroundColor:"#f44336"}}onClick={() => handleDelete(item.id)}>삭제</button>
                 </td>
               </tr>
             ))}

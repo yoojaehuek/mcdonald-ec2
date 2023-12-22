@@ -126,6 +126,106 @@
     width: 258px;
     height: 265px;
 }
+//fieldset3 박스,이미지 (맥딜리버리 배달이 가능합니다)
+.mcdel-fieldset3{
+    position: relative;
+    // float: right;
+    float: left;
+    margin-left: 50px;
+    width: 554px;
+    height: 406px;
+    padding: 50px;
+    color: #000;
+    border-radius: 40px;
+    background-color: #264f36;
+    color: #ffc836;
+    text-align: left;
+
+    ::before{
+      content: '';
+    position: absolute;
+    top: 50%;
+    left: -33px;
+    width: 7px;
+    height: 11px;
+    margin: -5px 0 0 0;
+    background: url(../../../../public/images/mcdelivery/bg_arrow.png);
+    }
+    
+}
+
+// fieldset3 (맥딜리버리 배달이 가능합니다 텍스트 위치조절)
+.resultok{
+  padding-top: 40px;
+
+  strong{
+    font-size: 40px;
+    line-height: 1;
+  }
+}
+
+
+//fieldset3 이미지 (O)
+.mcdel-p2{
+  position: absolute;
+  width: 250px;
+  height: 270px;
+  top: 50px;
+  left: 50%;
+  background: url(../../../../public/images/mcdelivery/bg_delivery_result2.png);
+}
+
+//fieldset4 박스,이미지 (맥딜리버리 배달이 가능합니다)
+.mcdel-fieldset4{
+    position: relative;
+    // float: right;
+    float: left;
+    margin-left: 50px;
+    width: 554px;
+    height: 406px;
+    padding: 50px;
+    color: #000;
+    border-radius: 40px;
+    background-color: #bd0017;
+    color: #ffc836;
+    text-align: left;
+
+    ::before{
+      content: '';
+    position: absolute;
+    top: 50%;
+    left: -33px;
+    width: 7px;
+    height: 11px;
+    margin: -5px 0 0 0;
+    background: url(../../../../public/images/mcdelivery/bg_arrow.png);
+    }
+    
+}
+
+// fieldset4 (맥딜리버리 배달이 가능합니다 텍스트 위치조절)
+.resultfail{
+  padding-top: 40px;
+
+  strong{
+    font-size: 40px;
+    line-height: 1;
+  }
+}
+
+
+//fieldset4 이미지 (O)
+.mcdel-p3{
+  position: absolute;
+  width: 250px;
+  height: 270px;
+  top: 50px;
+  left: 50%;
+  background: url(../../../../public/images/mcdelivery/bg_delivery_result3.png);
+}
+
+
+
 
 
 //두번째 메인박스 (가운데 텍스트 많은 박스)

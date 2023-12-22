@@ -39,7 +39,6 @@ function Menu() {
         setProductCount((prevCount) => prevCount + 6);
     };
 
-
     return (
     <> 
         <div id='menu-form'>

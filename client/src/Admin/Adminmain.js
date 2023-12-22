@@ -16,6 +16,8 @@ import AWhatsNew from './page/whatsNew/AWhatsNew';
 import ANews from './page/whatsNew/ANews';
 import StoreDetail from './Component/StoreTable/StoreDetail';
 import AFaq from './page/story/AFaq';
+import Asu from './page/Asu';
+
 
 import './Adminmain.scss';
 
@@ -41,6 +43,7 @@ const AdminMain = () => {
           <Route path='/slider/*' element={<ASlider />} />
           <Route path='/whats-new/*' element={<AWhatsNew />} />
           <Route path='/whats-new/13' element={<ANews />} />
+           <Route path='/asu' element={<Asu/>} />
         </Routes>
       </div>
     </div>
