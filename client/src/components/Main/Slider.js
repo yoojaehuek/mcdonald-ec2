@@ -58,9 +58,7 @@ const Slider = () => {
     return () => clearInterval(interval);
   }, [currentIndex, isPlaying]);
 
-  const handlePlayPause = () => {
-    setIsPlaying((prevIsPlaying) => !prevIsPlaying);
-  };
+
 
   const handleNext = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % imagesAndVideos.length);
