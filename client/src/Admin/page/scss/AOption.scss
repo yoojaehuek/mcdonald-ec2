@@ -1,0 +1,63 @@
+//로고 박스(상품리스트)
+.option1-list{
+  width: 1920px;
+  display:flex;
+  margin-top: 70px;
+  h2{
+    flex-grow: 0.805;
+  }
+ // +상품추가 버튼
+  button{
+    cursor: pointer;
+    margin-bottom: 10px;
+    width: 150px;
+    height: 50px;
+    background-color: #000;
+    color: white;
+  }
+}
+
+
+//테이블(상품리스트 박스)
+.option1-table{ 
+  font-weight: 600;
+  border-collapse : collapse; 
+th,td{
+      width: 150px;
+      height: 100px;
+      text-align: center;
+      border: 1px solid #000;
+    } 
+    //수정, 삭제 버튼
+    button{
+      cursor: pointer;
+      width: 50px;
+      height: 30px;
+      margin-right: 8px;
+      color: white;
+      border: 1px solid white;
+    }
+    //수정버튼
+    button:nth-child(1){
+      background-color: rgb(59, 59, 59);
+    }
+    //삭제버튼
+    button:nth-child(2){
+      background-color: red;
+  }  
+}
+
+//첫번째줄 색변경
+.option1-tr{
+  background-color: gray;
+}
+
+// 내용 박스 크기늘림
+.col3{width: 400px;}
+
+//박스별 색변경
+  // .col1{ background-color: yellow; }
+  // .col2{ background-color: aquamarine; }
+  
+  // .col4{ background-color: rgb(14, 236, 132); }
+  // .col5{ background-color: rgb(216, 49, 152);}
