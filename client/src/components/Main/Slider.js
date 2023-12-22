@@ -34,7 +34,7 @@ const Slider = () => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % imagesAndVideos.length);
       }
     }, imagesAndVideos[currentIndex]?.duration || 5000);
-
+  
     setTimers((prevTimers) => {
       const newTimers = prevTimers.map((timer, index) => ({
         duration: imagesAndVideos[index].duration,
@@ -42,13 +42,10 @@ const Slider = () => {
       }));
       return newTimers;
     });
-
+  
     return () => clearInterval(interval);
-  }, [currentIndex, isPlaying]);
+  }, [currentIndex, isPlaying, imagesAndVideos]);
 
-  const handlePlayPause = () => {
-    setIsPlaying((prevIsPlaying) => !prevIsPlaying);
-  };
 
   const handleNext = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % imagesAndVideos.length);
@@ -60,10 +57,11 @@ const Slider = () => {
 
   const handleVideoLoaded = (index) => {
     const videoElement = sliderRef.current.children[index].querySelector('video');
-
+  
     if (index === currentIndex && imagesAndVideos[index].type === 'video') {
       videoElement.currentTime = 0;
       videoElement.load();
+      videoElement.play(); // 동영상 로드 후 재생
     }
   };
 
