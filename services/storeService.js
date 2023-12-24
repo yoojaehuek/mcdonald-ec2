@@ -23,8 +23,24 @@ class StoreService{
 		return result;
 	}
 	
-	static async getAllStore(){
-		const result = await StoreModel.getAllStore();
+	static async getAllStore(query){
+		const keys = Object.keys(query) 
+
+		const yn_qs = {}; 
+		let searchText = ''; 
+		for (let i = 0; i < keys.length; i++) {
+			const key = keys[i] // 각각의 키
+			const value = query[key] // 각각의 키에 해당하는 각각의 값
+
+			if (value === "true") {
+				yn_qs[key] = true;
+			}else {
+				searchText = value;
+			}
+		}
+		console.log(yn_qs, searchText);
+
+		const result = await StoreModel.getAllStore(yn_qs, searchText);
 		return result;
 	}
 	

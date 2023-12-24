@@ -44,33 +44,35 @@ const Find = () => {
 
   const search = async (e) => {
     e.preventDefault();
-
-    if (searchText === "") {
-      setResult(stores);
-      setcurrentpage(1);
-      return;
+    
+    const qs = {};
+    if (yn_24h) {
+      qs.yn_24h = yn_24h;
     }
+    if (yn_mcmorning) {
+      qs.yn_mcmorning = yn_mcmorning;
+    }
+    if (yn_mcdrive) {
+      qs.yn_mcdrive = yn_mcdrive;
+    }
+    if (yn_mcdelivery) {
+      qs.yn_mcdelivery = yn_mcdelivery;
+    }
+    if (yn_parking) {
+      qs.yn_parking = yn_parking;
+    }
+    if (searchText.length != 0) {
+      qs.searchText = searchText;
+    }
+    console.log("qs: ", qs);
 
-    const filteredStores = stores.filter((store) => {
-      const services = [];
-      if (store.yn_24h) services.push('24시간');
-      if (store.yn_mcmorning) services.push('맥모닝');
-      if (store.yn_mcdrive) services.push('맥드라이브');
-      if (store.yn_mcdelivery) services.push('맥딜리버리');
-      if (store.yn_parking) services.push('주차');
-
-      const lowerCase = searchText.toLowerCase();
-      const addressIncludes = store.address.toLowerCase().includes(lowerCase);
-      const servicesInclude = services.some(service => service.toLowerCase().includes(lowerCase));
-      const storeNameIncludes = store.store_name.toLowerCase().includes(lowerCase);
-      console.log(lowerCase,addressIncludes,servicesInclude);
-      return (
-        (addressIncludes || servicesInclude || storeNameIncludes)
-      );
-    });
-
-    setResult(filteredStores);
-    setcurrentpage(1);
+    axios.get(`${API_URL}/store`, { params: qs })
+    .then(res => {
+      setResult(res.data);
+      setcurrentpage(1);
+    }).catch(err => {
+      console.error(err);
+    })
   };
 
   const laststore = currentpage * storepage;
@@ -199,11 +201,11 @@ const Find = () => {
                     <td>{store.phone}</td>
                     <td>{`${store.start_time} - ${store.end_time}`}</td>
                     <td>
-                      {store.yn_24h && <span>24시간 </span>}
-                      {store.yn_mcmorning && <span>맥모닝 </span>}
-                      {store.yn_mcdrive && <span>맥드라이브 </span>}
-                      {store.yn_mcdelivery && <span>맥딜리버리 </span>}
-                      {store.yn_parking && <span>주차 가능</span>}
+                      {store.yn_24h == 1 && <span>24시간 </span>}
+                      {store.yn_mcmorning == 1 && <span>맥모닝 </span>}
+                      {store.yn_mcdrive == 1 && <span>맥드라이브 </span>}
+                      {store.yn_mcdelivery == 1 && <span>맥딜리버리 </span>}
+                      {store.yn_parking == 1 && <span>주차 가능</span>}
                     </td>
                   </tr>
                 ))}
