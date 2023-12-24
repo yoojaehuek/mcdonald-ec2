@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import { Outlet, useParams } from 'react-router-dom'
-import VisualBackGround from '../components/VisualBackGround/VisualBackGround';
+import Banner from '../components/Banner/Banner.js';
 
 
 const Test = () => {  
   return(
     <>
-      <VisualBackGround />
+      <Banner />
       <Outlet />
     </>
   )

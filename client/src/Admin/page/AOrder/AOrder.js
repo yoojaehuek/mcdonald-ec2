@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect } from 'react';
-import { API_URL } from '../../config/contansts';
+import { API_URL } from '../../../config/contansts';
 
 
 const AOrder = () => {

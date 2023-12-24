@@ -5,7 +5,7 @@ const path = require('path');
 const multer = require('multer');
 const cookieParser = require('cookie-parser');
 const { sequelize } = require('./database/schemas');//DB테이블
-const visualBackGroundRouter = require('./routers/visualBackGround')
+const bannerRouter = require('./routers/banner')
 const port = 8003;
 require('dotenv').config();
 const errorMiddleware = require('./utils/errorMiddleware');
@@ -76,7 +76,7 @@ app.use('/crew', CrewRouter);
 app.use('/faq', FaqRouter);
 app.use('/material', MaterialRouter);
 app.use('/effort', EffortRouter);
-app.use("/visualbackground", visualBackGroundRouter);
+app.use("/banner", bannerRouter);
 app.use('/product', productRouter);
 app.use('/slider', sliderRouter);
 app.use('/store', storeRouter);

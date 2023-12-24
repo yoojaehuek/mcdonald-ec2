@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { API_URL } from '../../config/contansts';
-import "./scss/ASlider.scss";
+import { API_URL } from '../../../config/contansts';
+import "./ASlider.scss";
 
 const ASlider = () => {
   const [axiosResult, setAxiosResult] = useState([]);

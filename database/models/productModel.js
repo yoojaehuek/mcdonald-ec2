@@ -23,6 +23,7 @@ class ProductModel {
         sub_category_id: category_id,
       },
       order: [ ['seq', 'ASC'] ],
+      raw:true,
     });
     return result;
   }
