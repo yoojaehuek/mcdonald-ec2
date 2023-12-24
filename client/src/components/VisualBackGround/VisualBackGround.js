@@ -30,14 +30,18 @@ const VisualBackGround = () => {
   }, [ pathname ])
   
   
-  const visualBackGroundStyle = {
-    background: `url(${API_URL + axiosResult.h_background_img_url}) 50% 50% no-repeat`,
+  let visualBackGroundStyle = {}
+  if (axiosResult) {
+    visualBackGroundStyle = {
+      background: `url(${API_URL + axiosResult.h_background_img_url}) 50% 50% no-repeat`,
+    }
   }
   
   return(
-      <div className="visualBackGround" style={visualBackGroundStyle}>
+    <>
+      {axiosResult!=null?<div className="visualBackGround" style={visualBackGroundStyle}>
         <div className="visualBackGround_TextArea">
-          <h1>{axiosResult.title}</h1>
+          <h1>{axiosResult.h_title}</h1>
           {axiosResult.h_content?<p>{axiosResult.h_content}</p>:<></>}
           <ul>
             {axiosResultPath.map((path, index) => 
@@ -48,6 +52,9 @@ const VisualBackGround = () => {
           </ul>
         </div>
       </div>
+      :
+      <div>DB에 없음</div>}
+    </>
   )
 }
 
