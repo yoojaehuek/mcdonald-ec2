@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
-import { API_URL } from "../../config/contansts";
+import { API_URL } from "../../../config/contansts";
 import axios from "axios";
-import ProductTable from "../Component/ProductTable/ProductTable";
+import ProductTable from "../../Component/ProductTable/ProductTable";
 
 const AProduct = () => {
   const { subcategory_id } = useParams();// 주소창에서 subcategory_id 를 가져옴

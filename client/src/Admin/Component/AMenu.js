@@ -53,10 +53,10 @@ const menuItems = [
     ],
   },
   {
-    title: 'VisualBackGround',
-    value: 'visualBackground',
+    title: 'Banner',
+    value: 'banner',
     sub_title: [
-      { sub_title: 'VisualBackGround 관리', value: 'visualbackground' },
+      { sub_title: 'Banner 관리', value: 'banner' },
     ],
   },
   {

@@ -1,4 +1,3 @@
-import VisualBackGround from '../../../components/VisualBackGround/VisualBackGround';
 import './Society.scss'
 import { NavLink } from 'react-router-dom';
 

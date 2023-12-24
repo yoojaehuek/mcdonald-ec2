@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { API_URL } from '../../config/contansts';
-import './scss/Asu.scss';
+import { API_URL } from '../../../config/contansts';
+import './Asu.scss';
 
 
 const Asu = () => {

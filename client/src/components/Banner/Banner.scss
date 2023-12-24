@@ -1,4 +1,4 @@
-.visualBackGround{
+.banner{
   display: flex;
   position: relative;
   align-items: center;
@@ -6,8 +6,9 @@
   min-height: 220px;
   // max-width: 1680px;
   margin: 0 auto;
+  white-space: pre-wrap;
 
-  .visualBackGround_TextArea{
+  .banner_TextArea{
     width: 1280px;
     margin: 0 auto;
     z-index: 1;
