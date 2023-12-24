@@ -24,9 +24,10 @@ import './Adminmain.scss';
 const AdminMain = () => {
   
   return (
-    <div style={{ display: 'flex', flexDirection: 'column'}}>
-      <AHeader />
-      <AMenu />
+    // <div id='Admin' style={{ display: 'flex', flexDirection: 'column'}}>
+    <div id='Admin' >
+      <AHeader id='header' />
+      <AMenu id='menu' />
       <div className='AdminMain'>
         <Routes>
           <Route path='/' element={<AChart />} />
