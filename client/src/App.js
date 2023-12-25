@@ -41,6 +41,9 @@ import Mypage from "./page/Mypage/Myinfo";
 import Order from "./page/Mypage/Order";
 import Event from './page/Store/Main/Event/Event'
 import AdminMain from './Admin/Adminmain.js';
+import Payment from './page/Payment/Payment.tsx';
+import Success from './page/Payment/Success.js';
+import Fail from './page/Payment/Fail.js';
 
 function App() {
   const currentPath = window.location.pathname;
@@ -61,6 +64,10 @@ function App() {
         <Route path='/private' element={<Private />}></Route>
         <Route path='/location' element={<Location />}></Route>
         <Route path='/slider' element={<Slider />}></Route>
+        <Route path='/payment' element={<Payment />}></Route>
+        <Route path='/success' element={<Success />}></Route>
+        <Route path='/fail' element={<Fail />}></Route>
+        <Route path='/payment/:order_id' element={<Payment />}></Route>
         <Route element={<Test/>}>
           <Route path='/story/society' element={<Society />} />
           <Route path='/story/mcdonaldhouse' element={<Mcdonaldhouse />}></Route>
