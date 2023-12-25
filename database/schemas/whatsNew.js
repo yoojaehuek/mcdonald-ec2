@@ -42,16 +42,21 @@ class WhatsNew extends Sequelize.Model {
           allowNull: false,
           comment: "내용의 이미지 주소"
         },
+        // created_at: {
+        //   type: Sequelize.DATEONLY,
+        //   allowNull: false,
+        //   defaultValue: Sequelize.literal('CURRENT_DATE'),
+        //   comment: "글 생성일(YYYY-MM-DD)",
+        // }
         created_at: {
           type: Sequelize.DATEONLY,
           allowNull: false,
-          defaultValue: Sequelize.literal('CURRENT_DATE'), // 현재 날짜를 기본값으로 사용
           comment: "글 생성일(YYYY-MM-DD)",
         }
       },
       {
         sequelize,
-        timestamps: false,
+        timestamps: false,  
         modelName: 'WhatsNew',
         tableName: 'WhatsNew',
         paranoid: false,
@@ -59,12 +64,17 @@ class WhatsNew extends Sequelize.Model {
         collate: 'utf8_general_ci',
       }
     )
+    WhatsNew.beforeCreate((whatsNew, options) => {
+      whatsNew.created_at = new Date().toISOString().split('T')[0];
+    });
   }
+  // }
+
   static associate(db) {
     //참조키로 SubCategory모델의 id(targetKey)를 sub_category_id(foreignKey)라는 이름으로 가져옴
     db.WhatsNew.belongsTo(db.SubCategory, {foreignKey: 'sub_category_id', targetKey: 'id'});
   }
-
 }
+// }
 
 module.exports = WhatsNew;

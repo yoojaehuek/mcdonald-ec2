@@ -38,12 +38,17 @@ class OrderService{
   }
 
   static async getOrderByUserId({id}){
-    const orderData = await OrderModel.findOneOrderUserId2({id});
+    const orderData = await OrderModel.findOneOrderUserId({id});
     // if (orderData.length === 0) {
     //   return [];
     // }
     return orderData;
   }
+
+  static async getOrderByOrderId({order_id}){
+		const result = await OrderModel.getOrderByOrderId({order_id});
+		return result;
+	}
 
   static async findAllOrderDate({userId, dateType}){
 
@@ -91,6 +96,15 @@ class OrderService{
 
     return result;
   }
+
+  
+	static async updateOrder({order_id, state}){
+    if(state == 'success'){
+      state = '조리중';
+    }
+		const result = await OrderModel.updateOrder({order_id, state});
+		return result;
+	}
 
   static async deleteOrder({order_id}){
     const result = await OrderModel.deleteOrder({order_id});

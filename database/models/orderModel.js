@@ -37,30 +37,24 @@ class OrderModel {
   }
 
 
-//조회 쿼리
+ //조회 쿼리
   static async findOneOrderUserId({id}){
-    console.log("orderId: ",id);
-    const order = await Order.findOne({
+    // console.log("orderId",id);
+    const order = await Order.findAll({
       where: {
-        userId: id
-      }
+        user_id: id,
+      },
     }); //where: {id: asdf} 형태가 들어와야함
-    // console.log(order);
     return order;
   }
 
-  static async findOneOrderUserId2({id}){
-    // console.log("orderId",id);
-    const order = await Order.findOne({
+  static async getOrderByOrderId({order_id}){
+    const result = await Order.findAll({
       where: {
-        userId: id,
+        id: order_id,
       },
-      include: [{
-        model: Planner,
-        attributes: ['name', 'phone'],
-      }],
-    }); //where: {id: asdf} 형태가 들어와야함
-    return order;
+    });
+    return result;
   }
   
   static async findAllOrderMenuByOrderId({orderId}){
@@ -83,11 +77,7 @@ class OrderModel {
 
   static async findAllOrderDate({userId, date}){
     
-    // // 서비스에서 날짜 정해서 넘겨주기 
-    // const oneMonthAgo = new Date();
-    // oneMonthAgo.setMonth(oneMonthAgo.getMonth()-1);
-    // console.log(oneMonthAgo);
-
+    console.log(userId, date);
     const result = await Order.findAll({
       where: {
         user_id: userId,
@@ -151,6 +141,18 @@ class OrderModel {
       WHERE `Order`.`user_id` = 1 AND `Order`.`created_at` BETWEEN '2023-12-15 09:26:08' AND '2023-12-17 09:26:08';
       */
     });
+    return result;
+  }
+
+  static async updateOrder({order_id, state}){
+    console.log("update: ",state);
+    const result = await Order.update({
+      "status": state, 
+    }, {
+      where: {
+        id: order_id
+      }
+    });//where: {id: asdf} 형태가 들어와야함
     return result;
   }
 

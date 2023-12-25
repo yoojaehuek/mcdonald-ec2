@@ -1,11 +1,11 @@
-// AVisualbackground.js
+// ABanner.js
 import { Button, Modal, TextField, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { API_URL } from '../../config/contansts';
-import "./scss/AVisualbackground.scss";
+import { API_URL } from '../../../config/contansts';
+import "./ABanner.scss";
 
-const AVisualbackground = () => {
+const ABanner = () => {
   const [visualBackgroundData, setVisualBackgroundData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(12); // 페이지당 아이템 수
@@ -13,16 +13,16 @@ const AVisualbackground = () => {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
   const [editedData, setEditedData] = useState({
-    h_title: '',
-    h_content: '',
-    h_background_img_url: '',
-    h_link: '',
+    title: '',
+    content: '',
+    background_img_url: '',
+    link: '',
   });
 
   useEffect(() => {
     const fetchVisualBackgroundData = async () => {
       try {
-        const response = await axios.get(`${API_URL}/visualbackground`);
+        const response = await axios.get(`${API_URL}/banner`);
         setVisualBackgroundData(response.data);
       } catch (error) {
         console.error('Error fetching Visual Background data:', error);
@@ -46,10 +46,10 @@ const AVisualbackground = () => {
   const openEditModal = (item) => {
     setSelectedItem(item);
     setEditedData({
-      h_title: item.h_title,
-      h_content: item.h_content,
-      h_background_img_url: item.h_background_img_url,
-      h_link: item.h_link,
+      title: item.title,
+      content: item.content,
+      background_img_url: item.background_img_url,
+      link: item.link,
     });
   };
 
@@ -57,10 +57,10 @@ const AVisualbackground = () => {
     setIsEditModalOpen(false);
     // setSelectedItem(null); // 이 부분을 주석 처리 또는 삭제합니다.
     setEditedData({
-      h_title: '',
-      h_content: '',
-      h_background_img_url: '',
-      h_link: '',
+      title: '',
+      content: '',
+      background_img_url: '',
+      link: '',
     });
   };
 
@@ -71,9 +71,9 @@ const AVisualbackground = () => {
 
   const handleEditSubmit = async () => {
     try {
-      await axios.patch(`${API_URL}/visualbackground/${selectedItem.id}`, editedData);
+      await axios.patch(`${API_URL}/banner/${selectedItem.id}`, editedData);
       closeEditModal();
-      const response = await axios.get(`${API_URL}/visualbackground`);
+      const response = await axios.get(`${API_URL}/banner`);
       setVisualBackgroundData(response.data);
     } catch (error) {
       console.error('Error editing Visual Background data:', error);
@@ -82,8 +82,8 @@ const AVisualbackground = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`${API_URL}/visualbackground/${id}`);
-      const response = await axios.get(`${API_URL}/visualbackground`);
+      await axios.delete(`${API_URL}/banner/${id}`);
+      const response = await axios.get(`${API_URL}/banner`);
       setVisualBackgroundData(response.data);
     } catch (error) {
       console.error('Error deleting Visual Background data:', error);
@@ -102,7 +102,7 @@ const AVisualbackground = () => {
             }}
             className={activeButton === index + 1 ? 'active' : ''}
           >
-            {item.h_title}
+            {item.title}
           </button>
         ))}
         <div className='pagination2'>
@@ -120,14 +120,14 @@ const AVisualbackground = () => {
 
       {selectedItem && (
         <div className='selected-item-details'>
-          <h2>{selectedItem.h_title}</h2>
+          <h2>{selectedItem.title}</h2>
           <p>
             이미지:
-            <img src={API_URL + selectedItem.h_background_img_url} alt={`Background ${selectedItem.id}`} />
+            <img src={API_URL + selectedItem.background_img_url} alt={`Background ${selectedItem.id}`} />
           </p>
-          <p>제목: {selectedItem.h_title}</p>
-          <p>내용: {selectedItem.h_content}</p>
-          <p>경로 지정: {selectedItem.h_link}</p>
+          <p>제목: {selectedItem.title}</p>
+          <p>내용: {selectedItem.content}</p>
+          <p>경로 지정: {selectedItem.link}</p>
           <div className='action-buttons'>
             <button onClick={() => setIsEditModalOpen(true)}>수정</button>
             <button onClick={() => handleDelete(selectedItem.id)}>삭제</button>
@@ -143,44 +143,44 @@ const AVisualbackground = () => {
               수정
             </Typography>
             <TextField
-              id="h_title"
-              name="h_title"
+              id="title"
+              name="title"
               label="제목"
               variant="outlined"
               fullWidth
-              value={editedData.h_title}
+              value={editedData.title}
               onChange={handleEditDataChange}
               style={{marginBottom:'30px'}}
             />
             <TextField
-              id="h_content"
-              name="h_content"
+              id="content"
+              name="content"
               label="내용"
               variant="outlined"
               fullWidth
               multiline
               rows={4}
-              value={editedData.h_content}
+              value={editedData.content}
               onChange={handleEditDataChange}
               style={{marginBottom:'30px'}}
             />
             <TextField
-              id="h_background_img_url"
-              name="h_background_img_url"
+              id="background_img_url"
+              name="background_img_url"
               label="이미지"
               variant="outlined"
               fullWidth
-              value={editedData.h_background_img_url}
+              value={editedData.background_img_url}
               onChange={handleEditDataChange}
               style={{marginBottom:'30px'}}
             />
             <TextField
-              id="h_link"
-              name="h_link"
+              id="link"
+              name="link"
               label="경로지정"
               variant="outlined"
               fullWidth
-              value={editedData.h_link}
+              value={editedData.link}
               onChange={handleEditDataChange}
               style={{marginBottom:'30px'}}
             />
@@ -198,4 +198,4 @@ const AVisualbackground = () => {
 };
 
 
-export default AVisualbackground;
+export default ABanner;
