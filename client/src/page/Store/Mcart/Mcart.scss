@@ -73,6 +73,18 @@
 .Mcart-li2{
   text-align: center;
   width: 200px;
+  #bg{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color:gray;
+    border:1px solid red;
+    left: 0;
+    top: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9998;
+  }
+  
 }
 
 
@@ -270,7 +282,7 @@
 .Mcart-top{
   .store-popup{
     position: absolute;
-    z-index: 1;
+    z-index: 9999;
     background-color: white;
     border: 0px solid #000;
     width: 400px;

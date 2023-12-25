@@ -32,33 +32,34 @@ const Mcart = () => {
   useEffect(() => {
     const storedCart = JSON.parse(sessionStorage.getItem("cart"));
     if (storedCart && storedCart.length > 0) setCart(storedCart);
-    
+
+  }, []);
+
+  
+  useEffect(() => {
+
     /** 로그인중인 사용자 정보 불러오기 */
-    axios
-    .get(`${API_URL}/user/one`)
+    axios.get(`${API_URL}/user/one`)
       .then((res) => {
-        console.log("로그인한 사용자정보",res.data);
         setUser(res.data);
       })
       .catch((err) => {
           console.error(err);
       });
+  }, []);
+  useEffect(() => {
     /** 매장 전부 불러오기 */
-    axios
-      .get(`${API_URL}/store`)
+    axios.get(`${API_URL}/store`)
       .then((res) => {
         setStore(res.data);
       })
       .catch((err) => {
           console.error(err);
       });
-    }, []);
 
-  // useEffect(()=> {
-  //   const storedCart = JSON.parse(sessionStorage.getItem("cart"));
-  //   if (storedCart && storedCart.length > 0) setCart(storedCart);
-  // }, [prodQuantities]);
-    
+  },[]);
+
+
   useEffect(() => {
     if (cart.length > 0) {
       setProdQuantities( //상품각각에 넣기
@@ -72,8 +73,8 @@ const Mcart = () => {
           options: prod.options,
           totalOptionPrice: prod.totalOptionPrice,
         }))
-        );
-      }
+      );
+    }
   }, [cart]);
   
   /**  각 메뉴 개수 증감 */
@@ -155,6 +156,9 @@ const Mcart = () => {
               <div>
               <button onClick={openPopup}>매장선택</button>
                 {isPopupOpen && (
+                <p>
+                  <div id='bg'></div>
+                  
                   <div className="store-popup">
                     <h3>매장 선택</h3>
                     <ul>
@@ -167,6 +171,7 @@ const Mcart = () => {
                       ))}
                     </ul>
                   </div>
+                </p>
                 )}
               </div>
             </li>
