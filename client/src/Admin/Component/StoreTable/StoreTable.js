@@ -66,7 +66,7 @@ const StoreTable = ({ data }) => {
                   }}>수정</NavLink>
               </td>
               <td>
-                <NavLink to={`delete`} state={item}
+                <button state={item}
                 style={{
                   padding: "5px 10px",
                   backgroundColor: "rgb(244, 67, 54)",
@@ -75,7 +75,7 @@ const StoreTable = ({ data }) => {
                   borderRadius: "5px",
                   cursor: "pointer",
                 }}
-                >삭제</NavLink>
+                >삭제</button>
               </td>
             </tr>
           ))}
