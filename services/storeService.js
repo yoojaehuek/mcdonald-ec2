@@ -4,7 +4,7 @@ const StoreModel = require('../database/models/storeModel')
 class StoreService{
 
 	static async createStore({reqBody}){
-		const {store_name, phone, address, start_time, end_time, latitude, longitude, yn_mcmorning, yn_mcdrive, yn_mcdelivery} = reqBody;
+		const {store_name, phone, address, start_time, end_time, latitude, longitude, yn_mcmorning, yn_mcdrive, yn_mcdelivery, yn_parking} = reqBody;
 
 		const newStore = {
 			"store_name": store_name, //매장 이름
@@ -17,7 +17,8 @@ class StoreService{
     	"yn_24h": start_time==="00:00" && end_time==="24:00" ? 1 : 0, //24시간 여부
     	"yn_mcmorning": yn_mcmorning, //맥모닝 여부
     	"yn_mcdrive": yn_mcdrive, //맥드라이브 여부
-    	"yn_mcdelivery": yn_mcdelivery //맥딜리버리 여부	
+    	"yn_mcdelivery": yn_mcdelivery, //맥딜리버리 여부	
+    	"yn_parking": yn_parking //맥딜리버리 여부	
 		};
 		const result = await StoreModel.createStore({newStore});
 		return result;
@@ -65,7 +66,7 @@ class StoreService{
 
 	static async updateStore({toUpdate, store_id}){
 		console.log("서비스에서: ",toUpdate);
-		const { store_name, phone, address, start_time, end_time, latitude, longitude, yn_mcmorning, yn_mcdrive, yn_mcdelivery} = toUpdate;
+		const { store_name, phone, address, start_time, end_time, latitude, longitude, yn_mcmorning, yn_mcdrive, yn_mcdelivery, yn_parking} = toUpdate;
 		const update = {
 			"store_name": store_name,
 			"phone": phone,
@@ -78,6 +79,7 @@ class StoreService{
 			"yn_mcmorning": yn_mcmorning,
 			"yn_mcdrive": yn_mcdrive,
 			"yn_mcdelivery": yn_mcdelivery,
+			"yn_parking": yn_parking,
 		};
 		console.log("Service/update: ", update);
 
