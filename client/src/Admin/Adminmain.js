@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from 'react';
-import { Routes, Route, NavLink } from 'react-router-dom';
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
 import AHeader from './Component/AHeader';
 import AMenu from './Component/AMenu';
 import AChart from './page/AChart/AChart';
@@ -16,7 +16,7 @@ import AWhatsNew from './page/whatsNew/AWhatsNew';
 import ANews from './page/whatsNew/ANews';
 import StoreDetail from './Component/StoreTable/StoreDetail';
 import AFaq from './page/story/AFaq';
-import Asu from './page/Asu/Asu';
+
 
 
 import './Adminmain.scss';
