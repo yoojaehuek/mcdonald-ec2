@@ -20,6 +20,7 @@ const storeRouter = require('./routers/store');
 const whatsNewRouter = require('./routers/whatsNew');
 const orderRouter = require('./routers/order');
 const optionRouter = require('./routers/option');
+const adminRouter = require('./routers/admin');
 
 
 //시퀄라이즈 연결 부분
@@ -83,6 +84,7 @@ app.use('/store', storeRouter);
 app.use('/whats-new', whatsNewRouter);
 app.use('/order', orderRouter);
 app.use('/option', optionRouter);
+app.use('/admin', adminRouter);
 app.get('/logout', (req, res) => {
   console.log("logout");
   res.cookie('accessToken',{},{

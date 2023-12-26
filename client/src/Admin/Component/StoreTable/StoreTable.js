@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import './StoreTable.scss';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { Pagination } from 'antd';
 import axios from 'axios';
 import { API_URL } from '../../../config/contansts';
+import StoreAdd from './StoreAdd';
 // import Pagination from "react-js-pagination";
 
 const StoreTable = ({ data }) => {
+  const navigate = useNavigate();
   const [inputVal, setInputVal] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
@@ -24,11 +26,6 @@ const StoreTable = ({ data }) => {
 
   // const columns = data.length > 0 ? Object.keys(data[0]) : [];
   const columns = ['id', 'store_name', 'phone', 'address']; // 원하는 열의 이름을 추가
-
-  const handleSave = (item) => {
-    console.log(item);
-    
-  };
 
   const handleDelete = (item) => {
     let yn_delete = window.confirm("정말 삭제하시겠습니까?");
@@ -61,7 +58,11 @@ const StoreTable = ({ data }) => {
 
   return (
     <div>
-      <button onClick={handleSave}>추가</button>
+      {/* 추가 페이지로 이동하는 링크 */}
+      <NavLink to="/adminmain/store/add">매장 추가</NavLink>
+
+      {/* 추가 페이지 라우트 */}
+      {/* <StoreAdd /> */}
       <table className='StoreTable'>
         <thead>
           <tr>

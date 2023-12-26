@@ -37,6 +37,11 @@ class OrderService{
 		return createNewOrder
   }
 
+  static async getAllOrder(){
+    const orderData = await OrderModel.getAllOrder();
+    return orderData;
+  }
+
   static async getOrderByUserId({id}){
     const orderData = await OrderModel.findOneOrderUserId({id});
     // if (orderData.length === 0) {
