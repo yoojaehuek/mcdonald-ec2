@@ -2,9 +2,8 @@
 .option1-list{
   width: 1920px;
   display:flex;
-  margin-top: 70px;
   h2{
-    flex-grow: 0.805;
+    flex-grow: 0.743;
   }
  // +상품추가 버튼
   button{
@@ -22,11 +21,13 @@
 .option1-table{ 
   font-weight: 600;
   border-collapse : collapse; 
+  
 th,td{
       width: 150px;
       height: 100px;
       text-align: center;
       border: 1px solid #000;
+      word-break:break-all
     } 
     //수정, 삭제 버튼
     button{
@@ -36,6 +37,9 @@ th,td{
       margin-right: 8px;
       color: white;
       border: 1px solid white;
+      a{
+        color: white;
+      }
     }
     //수정버튼
     button:nth-child(1){
@@ -53,7 +57,7 @@ th,td{
 }
 
 // 내용 박스 크기늘림
-.col3{width: 400px;}
+.col3{width: 300px;}
 
 //박스별 색변경
   // .col1{ background-color: yellow; }

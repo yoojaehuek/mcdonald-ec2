@@ -75,11 +75,16 @@ th,td{
   }
 }
 
-//aus bottom 크기조절, 버튼 위치 사이즈 조절(상품수정, 취소버튼 )
+//aus bottom 크기조절, 버튼 위치 사이즈 조절(상품수정, 취소버튼)
 .asu-bottom{
-  width: 650px;
-  margin: 30px auto;
-  button{
+  width: 1400px;
+  margin: 30px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+
+button{
+    cursor: pointer;
     margin-right: 10px;
     width: 85px;
     background-color: #000;
@@ -94,3 +99,5 @@ th,td{
   background-color: white;
   margin-bottom: 5px;
 }
+
+

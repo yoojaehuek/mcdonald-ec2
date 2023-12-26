@@ -61,9 +61,7 @@ const Asu = () => {
             <th scope="col">상품명(영어)</th>
             <th>
               <input type='text'></input>
-
             </th>
-            
         </tr>
 
         <tr className='asu-tr2'>
@@ -139,9 +137,11 @@ const Asu = () => {
             </td>
         </tr>
         </table>
-        <div class="asu-bottom">
+          <div class="asu-bottom">
+            <div class="asu-bottom1">
         <button>상품수정</button>
-        <button>취소</button>
+              <button>취소</button>
+              </div>
         </div>
       </div>
       </div>

@@ -27,8 +27,8 @@ const AOption = () => {
       ))} */}
         <div class="option1-main1">
      <div className='option1-list'>
-         <h2>상품리스트()</h2>
-         <button>+상품추가</button>
+            <h2>상품리스트()</h2>
+            <button>+상품추가</button>
      </div>
       <table className="option1-table">
         <colgroup>
@@ -59,7 +59,7 @@ const AOption = () => {
           <td>30</td>
           <td>20원</td>
           <td>
-            <button>수정</button>
+            <button><a href='asu'>수정</a></button>
             <button>삭제</button>
           </td>
         </tr>
@@ -73,8 +73,8 @@ const AOption = () => {
           <td>20</td>
           <td>30</td>
           <td>20원</td>
-          <td>
-            <button>수정</button>
+              <td>
+            <button><a href='asu'>수정</a></button>
             <button>삭제</button>
           </td>
             
@@ -89,7 +89,7 @@ const AOption = () => {
           <td>20</td>
           <td>30원</td>
           <td>
-            <button>수정</button>
+            <button><a href='asu'>수정</a></button>
             <button>삭제</button>
           </td>
         </tr>
