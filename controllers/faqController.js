@@ -5,6 +5,7 @@ class FaqController {
 	static async createFaq(req, res, next){
 		try {
 			const newFaq = req.body;
+			console.log(newFaq);
 			const result = await FaqService.createFaq({newFaq});
 			res.status(201).json(result);
 		} catch (error) {
