@@ -66,7 +66,6 @@ const ACrew = () => {
       .then((response) => {
         const imageUrl = response.data.imageUrl;
         const newData = { ...dataWithoutId, img_url: imageUrl };
-
         axios.post(`${API_URL}/crew`, newData)
           .then((response) => {
             console.log("Create:", response.data);
@@ -92,7 +91,6 @@ const ACrew = () => {
         .then((response) => {
           const imageUrl = response.data.imageUrl;
           const updatedData = { ...editedData, img_url: imageUrl };
-
           axios.patch(`${API_URL}/crew/${selectedItem.id}`, updatedData)
             .then((response) => {
               console.log("Update:", response.data);
@@ -103,6 +101,7 @@ const ACrew = () => {
                 return updatedResult;
               });
               setOpenModal(false);
+              alert('수정되었습니다.');
             })
             .catch((error) => {
               console.error("error:", error);
@@ -185,7 +184,7 @@ const ACrew = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {axiosResult.map((item, index) => (
+            {axiosResult && axiosResult.map((item, index) => (
               <TableRow key={index}>
                 <TableCell align="center">{item.id}</TableCell>
                 <TableCell align="center">{item.admin_id}</TableCell>
