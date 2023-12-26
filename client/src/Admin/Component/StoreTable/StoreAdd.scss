@@ -1,0 +1,32 @@
+.storeadd {
+  background: #fff;
+  margin: 0 auto;
+  padding: 0;
+  // width: 50%;
+
+  * {
+    box-sizing: border-box;
+  }
+
+  // textarea {
+  //   resize: none;
+  // }
+  // h2 {
+  //   text-align: center;
+  // }
+  .container {
+    display: grid;
+    grid-template-columns: 200px 400px;
+    margin: 0 auto;
+  }
+  .radio {
+    display: flex;
+    justify-content: center;
+    float: left;
+    padding: 10px 20px;
+    width: 100px;
+  }
+  .button_detail {
+    margin: 5px;
+  }
+}
