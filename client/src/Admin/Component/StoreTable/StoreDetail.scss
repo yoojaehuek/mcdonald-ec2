@@ -2,12 +2,15 @@
   background: #fff;
   margin: 0 auto;
   padding: 0;
-  width: 50%;
+  // width: 50%;
 
   * {
     box-sizing: border-box;
   }
 
+  textarea {
+    resize: none;
+  }
   // h2 {
   //   text-align: center;
   // }

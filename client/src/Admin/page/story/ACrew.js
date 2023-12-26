@@ -184,7 +184,7 @@ const ACrew = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {axiosResult.map((item, index) => (
+            {axiosResult && axiosResult.map((item, index) => (
               <TableRow key={index}>
                 <TableCell align="center">{item.id}</TableCell>
                 <TableCell align="center">{item.admin_id}</TableCell>
