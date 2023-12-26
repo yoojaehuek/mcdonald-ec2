@@ -28,7 +28,7 @@ const AdminMain = () => {
     <div id='Admin' >
       <AHeader id='header' />
       <AMenu id='menu' />
-      <div className='AdminMain'>
+      <div className='AdminMain' style={{padding: ' 0 100px'}}>
         <Routes>
           <Route path='/' element={<AChart />} />
           <Route path='/menu/:subcategory_id' element={<AProduct />} />

@@ -37,7 +37,7 @@ class Banner extends Sequelize.Model {
         },
         link: {
           type: Sequelize.STRING,
-          allowNull: false,
+          allowNull: true,
           comment: "서브메뉴별 비쥬얼 백그라운드 url들 배열형태",
         },
       },

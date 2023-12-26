@@ -221,13 +221,13 @@ const Material = () => {
 
   return (
     <>
-      <h1 style={{ marginLeft: '16vw', marginBottom: '1vw', marginTop: '1vw' }}>
+      <h1>
         Material
       </h1>
       <Button
         variant="contained"
         color="primary"
-        style={{ marginLeft: '16vw', marginBottom: '1vw' }}
+        style={{ marginBottom: '1vw', float: 'right'  }}
         onClick={() => {
           setSelectedItem(null);
           setOpenModal(true);
@@ -235,7 +235,7 @@ const Material = () => {
       >
         추가하기
       </Button>
-      <TableContainer component={Paper} style={{ width: '80%', marginLeft: '16vw' }}>
+      <TableContainer component={Paper}>
         <Table>
           <TableHead>
             <TableRow style={{ backgroundColor: 'rgb(255, 188, 13)' }}>
@@ -318,7 +318,6 @@ const Material = () => {
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
       </TableContainer>
-
       <Dialog open={openModal} onClose={handleModalClose}>
         <DialogTitle>{selectedItem ? '수정' : '추가'}</DialogTitle>
         <DialogContent>

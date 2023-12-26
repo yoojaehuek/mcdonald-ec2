@@ -2,6 +2,7 @@ import React from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import { AppBar, Toolbar, Typography, IconButton, Button, Divider } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
+import { NavLink } from 'react-router-dom';
 
 const AHeader = () => {
   return (
@@ -20,11 +21,11 @@ const AHeader = () => {
             {/* <MenuIcon /> */}
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1, color: '#000000' }}>
-            <img
+            <NavLink to='/adminmain'><img
               src="/images/Header/logo1.png"
               alt="Logo"
               style={{ maxWidth: '102px', padding: '1vw', width: '100%', height: 'auto' }}
-            />
+            /></NavLink>
           </Typography>
           <Button color="inherit" sx={{ color: '#000000' }}>
             Login
