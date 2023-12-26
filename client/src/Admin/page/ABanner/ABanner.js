@@ -9,7 +9,7 @@ const ABanner = () => {
   const [visualBackgroundData, setVisualBackgroundData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(12); // 페이지당 아이템 수
-  const [activeButton, setActiveButton] = useState(null);
+  const [activeButton, setActiveButton] = useState(1);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
   const [editedData, setEditedData] = useState({
@@ -19,16 +19,32 @@ const ABanner = () => {
     link: '',
   });
 
+  // useEffect(() => {
+  //   const fetchVisualBackgroundData = async () => {
+  //     try {
+  //       const response = await axios.get(`${API_URL}/banner`);
+  //       setVisualBackgroundData(response.data);
+  //     } catch (error) {
+  //       console.error('Error fetching Visual Background data:', error);
+  //     }
+  //   };
+  //   fetchVisualBackgroundData();
+  //   setActiveButton(1);
+  // }, []);
+
   useEffect(() => {
     const fetchVisualBackgroundData = async () => {
       try {
         const response = await axios.get(`${API_URL}/banner`);
         setVisualBackgroundData(response.data);
+        // 초기에 1번이 클릭된 상태로 설정
+        setActiveButton(1);
+        // 초기에 1번 아이템을 selected로 설정
+        setSelectedItem(response.data[0]);
       } catch (error) {
         console.error('Error fetching Visual Background data:', error);
       }
     };
-
     fetchVisualBackgroundData();
   }, []);
 
