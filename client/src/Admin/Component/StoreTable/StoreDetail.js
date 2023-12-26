@@ -124,34 +124,6 @@ const StoreDetail = () => {
     }
   }
 
-  // const closeNewSlideModal = () => {
-  //   setIsNewSlideModalOpen(false);
-  //   // 모달 닫을 때 입력값 초기화
-  //   setNewSlideType('image');
-  //   setNewSlideContent('');
-  //   setNewSlideTime('');
-  // };
-  // const handleDelete = (id) => {
-  //   // 삭제 로직 구현
-  //   axios.delete(`${API_URL}/slider/${id}`)
-  //     .then(res => {
-  //       alert("삭제되었습니다.");
-  //       fetchSliderData(); // 데이터 갱신
-  //     })
-  //     .catch(err => {
-  //       console.error(err);
-  //       alert("삭제에 실패했습니다.");
-  //     });
-  // };
-  // const indexOfLastItem = currentPage * itemsPerPage;
-  // const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  // const currentItems = axiosResult.slice(indexOfFirstItem, indexOfLastItem);
-
-  // const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
-
-
-
   return(
     <div className="storedetail">
       <form>
