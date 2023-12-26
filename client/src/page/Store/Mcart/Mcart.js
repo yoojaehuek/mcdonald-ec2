@@ -12,6 +12,7 @@ const Mcart = () => {
   const [selectedStore, setSelectedStore] = useState(null); // 팝업창에서 선택한 매장
   const [prodQuantities, setProdQuantities] = useState([]);
   const navigate = useNavigate();
+  
   /** 주문하기 */
   const handleOrder = () => {
     if(selectedStore == null ) { 
@@ -25,39 +26,40 @@ const Mcart = () => {
     orderObject.store_id  = selectedStore.id;
     orderObject.menu_items = cart;
     orderObject.total_price = totalProdPrice;
-    axios.post( `${API_URL}/order`, orderObject )
-    .then(res => {
-      console.log("주문성공: ",res.data);
-      alert("주문성공했습니다!!");
-      sessionStorage.clear(); // 세션 스토리지 전체를 비우는 부분
-      navigate('/')
-    }).catch(err => {
-      console.error(err);
-    })
+    navigate(`/payment`, { state: orderObject });
   }
+
   useEffect(() => {
     const storedCart = JSON.parse(sessionStorage.getItem("cart"));
     if (storedCart && storedCart.length > 0) setCart(storedCart);
+
+  }, []);
+
+  
+  useEffect(() => {
+
     /** 로그인중인 사용자 정보 불러오기 */
-    axios
-    .get(`${API_URL}/user/one`)
+    axios.get(`${API_URL}/user/one`)
       .then((res) => {
-        console.log("로그인한 사용자정보",res.data);
         setUser(res.data);
       })
       .catch((err) => {
           console.error(err);
       });
+  }, []);
+  useEffect(() => {
     /** 매장 전부 불러오기 */
-    axios
-      .get(`${API_URL}/store`)
+    axios.get(`${API_URL}/store`)
       .then((res) => {
         setStore(res.data);
       })
       .catch((err) => {
           console.error(err);
       });
-    }, [cart]);
+
+  },[]);
+
+
   useEffect(() => {
     if (cart.length > 0) {
       setProdQuantities( //상품각각에 넣기
@@ -71,9 +73,10 @@ const Mcart = () => {
           options: prod.options,
           totalOptionPrice: prod.totalOptionPrice,
         }))
-        );
-      }
+      );
+    }
   }, [cart]);
+  
   /**  각 메뉴 개수 증감 */
   const prodDecrease = (index) => {
     const updatedQuantities = [...prodQuantities];
@@ -153,6 +156,9 @@ const Mcart = () => {
               <div>
               <button onClick={openPopup}>매장선택</button>
                 {isPopupOpen && (
+                <p>
+                  <div id='bg'></div>
+                  
                   <div className="store-popup">
                     <h3>매장 선택</h3>
                     <ul>
@@ -165,6 +171,7 @@ const Mcart = () => {
                       ))}
                     </ul>
                   </div>
+                </p>
                 )}
               </div>
             </li>
@@ -184,8 +191,8 @@ const Mcart = () => {
         </div>
         {cart && cart.length > 0 ? (
           cart.map((prod, index) => (
-            <li key={index} class="Mcart-li4">
-              <button class="Mcart-btn2" style={{ backgroundImage: 'url(/images/Mcart/icon_x_g.png)'}} onClick={() => removeItemFromCart(index)} ></button>
+            <li key={index} className="Mcart-li4">
+              <button className="Mcart-btn2" style={{ backgroundImage: 'url(/images/Mcart/icon_x_g.png)'}} onClick={() => removeItemFromCart(index)} ></button>
               {/* 삭제버튼 */}
               <div className="Mcart-middle1">
                 <div>

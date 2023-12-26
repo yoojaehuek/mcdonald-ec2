@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { Outlet, useParams } from 'react-router-dom'
+import React from 'react';
+import { Outlet } from 'react-router-dom'
 import Banner from '../components/Banner/Banner.js';
 
 
