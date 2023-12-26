@@ -24,10 +24,10 @@ const StoreDetail = () => {
   // const [currentPage, setCurrentPage] = useState(1);
   console.log("매장정보: ", item);
   useEffect(() => {
-    let timeTrue = document.getElementById("time_true");
-    let timeFalse = document.getElementById("time_false");
-    if(item.yn_24h === true) timeTrue.checked = true;
-    else timeFalse.checked = true;
+    // let timeTrue = document.getElementById("time_true");
+    // let timeFalse = document.getElementById("time_false");
+    // if(item.yn_24h === true) timeTrue.checked = true;
+    // else timeFalse.checked = true;
     // -----------------------------------------------------------
     let morningTrue = document.getElementById("morning_true");
     let morningFalse = document.getElementById("morning_false");
@@ -97,6 +97,7 @@ const StoreDetail = () => {
       const userConfirmed = window.confirm('수정하시겠습니까?');
 
       if (userConfirmed) {//selectedItem.id 는 item.id 암
+        console.log("업데이트아이템: ", updatedItem);
         axios.patch(`${API_URL}/store/${selectedItem.id}`, updatedItem)
           .then(() => {
             alert("수정되었습니다.");
@@ -147,7 +148,7 @@ const StoreDetail = () => {
         <h2>매장 정보 수정</h2>
         <div className="container">
           <label className="box" htmlFor="editedId">ID:</label>
-          <h1>{item.yn_24h}</h1>
+          {/* <h1>{item.yn_24h}</h1> */}
           <input
             type="text"
             id="editedId"
@@ -172,7 +173,7 @@ const StoreDetail = () => {
             value={editedAddress}
             onChange={(e) => setEditedAddress(e.target.value)}
           ></textarea>
-          <label className="box" htmlFor="yn_24h">24시간:</label>
+          {/* <label className="box" htmlFor="yn_24h">24시간:</label>
           <div>
             <label className='radio'>
               <input
@@ -180,7 +181,7 @@ const StoreDetail = () => {
                 id="time_true"
                 value="true"
                 name='time'
-                onChange={(e) => handleRadioChange('true')}
+                onChange={() => setEditedTime(true)}
               />
               True
             </label>
@@ -190,11 +191,11 @@ const StoreDetail = () => {
                 id="time_false"
                 value="false"
                 name='time'
-                onChange={(e) => handleRadioChange('false')}
+                onChange={() => setEditedTime(false)}
               />
               False
             </label>
-          </div>
+          </div> */}
           <label className="box" htmlFor="yn_mcmorning">맥모닝:</label>
           <div>
             <label className='radio'>
@@ -203,7 +204,7 @@ const StoreDetail = () => {
                 id="morning_true"
                 value="true"
                 name='morning'
-                onChange={(e) => handleRadioChange('true')}
+                onChange={() => setEditedMmorning(true)}
               />
               True
             </label>
@@ -213,7 +214,7 @@ const StoreDetail = () => {
                 id="morning_false"
                 value="false"
                 name='morning'
-                onChange={(e) => handleRadioChange('false')}
+                onChange={() => setEditedMmorning(false)}
               />
               False
             </label>
@@ -227,7 +228,7 @@ const StoreDetail = () => {
                 id="drive_true"
                 value="true"
                 name='drive'
-                onChange={(e) => handleRadioChange('true')}
+                onChange={() => setEditedMdrive(true)}
               />
               True
             </label>
@@ -237,7 +238,7 @@ const StoreDetail = () => {
                 id="drive_false"
                 value="false"
                 name='drive'
-                onChange={(e) => handleRadioChange('false')}
+                onChange={() => setEditedMdrive(false)}
               />
               False
             </label>
@@ -251,7 +252,7 @@ const StoreDetail = () => {
                 id="delivery_true"
                 value="true"
                 name='delivery'
-                onChange={(e) => handleRadioChange('true')}
+                onChange={() => setEditedMdelivery(true)}
               />
               True
             </label>
@@ -261,7 +262,7 @@ const StoreDetail = () => {
                 id="delivery_false"
                 value="false"
                 name='delivery'
-                onChange={(e) => handleRadioChange('false')}
+                onChange={() => setEditedMdelivery(false)}
               />
               False
             </label>
@@ -275,7 +276,7 @@ const StoreDetail = () => {
                 id="parking_true"
                 value="true"
                 name='park'
-                onChange={(e) => handleRadioChange('true')}
+                onChange={() => setEditedParking(true)}
               />
               True
             </label>
@@ -285,7 +286,7 @@ const StoreDetail = () => {
                 id="parking_false"
                 value="false"
                 name='park'
-                onChange={(e) => handleRadioChange('false')}
+                onChange={() => setEditedParking(false)}
               />
               False
             </label>
@@ -293,7 +294,7 @@ const StoreDetail = () => {
           
           
 
-          <button className="button_detail" type="button" onClick={() => handleEdit}>저장</button>
+          <button className="button_detail" type="button" onClick={handleEdit}>저장</button>
           <button className="button_detail" type="button" onClick={() => handleClose(item.id)}>취소</button>
         </div>
       </form>
