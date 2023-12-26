@@ -96,9 +96,9 @@
     border: 6px solid #bd0017;
 }
 
-//fieldset1이랑 fieldset2 사이에 화살표 (>)
-.mcdel-fieldset2::before{
-  content: '';
+// 사이에 화살표 (>)
+.mcdel-fieldset2::before ,.mcdel-fieldset3::before , .mcdel-fieldset4::before{
+    content: '';
     position: absolute;
     top: 50%;
     left: -33px;
@@ -141,16 +141,6 @@
     color: #ffc836;
     text-align: left;
 
-    ::before{
-      content: '';
-    position: absolute;
-    top: 50%;
-    left: -33px;
-    width: 7px;
-    height: 11px;
-    margin: -5px 0 0 0;
-    background: url(../../../../public/images/mcdelivery/bg_arrow.png);
-    }
     
 }
 
@@ -189,19 +179,9 @@
     background-color: #bd0017;
     color: #ffc836;
     text-align: left;
-
-    ::before{
-      content: '';
-    position: absolute;
-    top: 50%;
-    left: -33px;
-    width: 7px;
-    height: 11px;
-    margin: -5px 0 0 0;
-    background: url(../../../../public/images/mcdelivery/bg_arrow.png);
-    }
     
 }
+
 
 // fieldset4 (맥딜리버리 배달이 가능합니다 텍스트 위치조절)
 .resultfail{
@@ -214,14 +194,16 @@
 }
 
 
-//fieldset4 이미지 (O)
+//fieldset4 이미지 (x)
 .mcdel-p3{
   position: absolute;
   width: 250px;
-  height: 270px;
+  height: 250px;
   top: 50px;
   left: 50%;
   background: url(../../../../public/images/mcdelivery/bg_delivery_result3.png);
+
+  
 }
 
 

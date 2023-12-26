@@ -1,5 +1,5 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import {
   Table,
   TableBody,
@@ -16,8 +16,8 @@ import {
   Button,
   TextField,
   Input,
-} from '@mui/material';
-import { API_URL } from '../../../config/contansts';
+} from "@mui/material";
+import { API_URL } from "../../../config/contansts";
 
 const AEffort = () => {
   const [axiosResult, setAxiosResult] = useState([]);
@@ -26,13 +26,13 @@ const AEffort = () => {
   const [openModal, setOpenModal] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
   const [editedData, setEditedData] = useState({
-    id: '',
-    admin_id: '',
-    title: '',
-    title_description: '',
-    img_url: '',
-    sub_title: '',
-    sub_title_description: '',
+    id: "",
+    admin_id: "",
+    title: "",
+    title_description: "",
+    img_url: "",
+    sub_title: "",
+    sub_title_description: "",
   });
   const [selectedImage, setSelectedImage] = useState(null);
 
@@ -66,13 +66,13 @@ const AEffort = () => {
   const handleModalClose = () => {
     setOpenModal(false);
     setEditedData({
-      id: '',
-      admin_id: '',
-      title: '',
-      title_description: '',
-      img_url: '',
-      sub_title: '',
-      sub_title_description: '',
+      id: "",
+      admin_id: "",
+      title: "",
+      title_description: "",
+      img_url: "",
+      sub_title: "",
+      sub_title_description: "",
     });
     setSelectedImage(null);
   };
@@ -80,45 +80,41 @@ const AEffort = () => {
   const handleCreate = () => {
     const { id, ...dataWithoutId } = editedData;
     const formData = new FormData();
-    formData.append('image', selectedImage);
-
+    formData.append("image", selectedImage);
     axios
       .post(`${API_URL}/image`, formData)
       .then((response) => {
         const imageUrl = response.data.imageUrl;
         const newData = { ...dataWithoutId, img_url: imageUrl };
-
         axios
           .post(`${API_URL}/effort`, newData)
           .then((response) => {
-            console.log('Create:', response.data);
+            console.log("Create:", response.data);
             setAxiosResult((prevResult) => [...prevResult, response.data]);
             setOpenModal(false);
           })
           .catch((error) => {
-            console.error('Error:', error);
+            console.error("Error:", error);
           });
       })
       .catch((error) => {
-        console.error('Error image:', error);
+        console.error("Error image:", error);
       });
   };
 
   const handleUpdate = () => {
     if (selectedItem) {
       const formData = new FormData();
-      formData.append('image', selectedImage);
-
+      formData.append("image", selectedImage);
       axios
         .post(`${API_URL}/image`, formData)
         .then((response) => {
           const imageUrl = response.data.imageUrl;
           const updatedData = { ...editedData, img_url: imageUrl };
-
           axios
             .patch(`${API_URL}/effort/${selectedItem.id}`, updatedData)
             .then((response) => {
-              console.log('Update:', response.data);
+              console.log("Update:", response.data);
               setAxiosResult((prevResult) => {
                 const updatedResult = prevResult.map((item) =>
                   item.id === selectedItem.id ? updatedData : item
@@ -126,13 +122,14 @@ const AEffort = () => {
                 return updatedResult;
               });
               setOpenModal(false);
+              alert('수정되었습니다.');
             })
             .catch((error) => {
-              console.error('error:', error);
+              console.error("error:", error);
             });
         })
         .catch((error) => {
-          console.error('Error image:', error);
+          console.error("Error image:", error);
         });
     }
   };
@@ -143,11 +140,13 @@ const AEffort = () => {
       axios
         .delete(`${API_URL}/effort/${id}`)
         .then((response) => {
-          console.log('Delete:', response.data);
-          setAxiosResult((prevResult) => prevResult.filter((item) => item.id !== id));
+          console.log("Delete:", response.data);
+          setAxiosResult((prevResult) =>
+            prevResult.filter((item) => item.id !== id)
+          );
         })
         .catch((error) => {
-          console.error('Error:', error);
+          console.error("Error:", error);
         });
     }
   };
@@ -166,11 +165,11 @@ const AEffort = () => {
 
   return (
     <>
-      <h1 style={{ marginLeft: '16vw', marginBottom: '1vw', marginTop: '1vw' }}>Effort</h1>
+      <h1>Effort</h1>
       <Button
         variant="contained"
         color="primary"
-        style={{ marginLeft: '16vw', marginBottom: '1vw' }}
+        style={{ marginBottom: "1vw", float: "right" }}
         onClick={() => {
           setSelectedItem(null);
           setOpenModal(true);
@@ -178,10 +177,10 @@ const AEffort = () => {
       >
         추가하기
       </Button>
-      <TableContainer component={Paper} style={{ width: '80%', marginLeft: '16vw' }}>
+      <TableContainer component={Paper}>
         <Table>
           <TableHead>
-            <TableRow style={{ backgroundColor: 'rgb(255, 188, 13)' }}>
+            <TableRow style={{ backgroundColor: "rgb(255, 188, 13)" }}>
               <TableCell align="center">ID</TableCell>
               <TableCell align="center">AdminId</TableCell>
               <TableCell align="center">타이틀</TableCell>
@@ -189,40 +188,87 @@ const AEffort = () => {
               <TableCell align="center">이미지</TableCell>
               <TableCell align="center">서브타이틀</TableCell>
               <TableCell align="center">서브타이틀설명</TableCell>
-              <TableCell style={{ width: '10%' }} align="center">
+              <TableCell style={{ width: "10%" }} align="center">
                 관리
               </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {(rowsPerPage > 0
-              ? axiosResult.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              ? axiosResult.slice(
+                  page * rowsPerPage,
+                  page * rowsPerPage + rowsPerPage
+                )
               : axiosResult
             ).map((item, index) => (
               <TableRow key={index}>
                 <TableCell align="center">{item.id}</TableCell>
                 <TableCell align="center">{item.admin_id}</TableCell>
-                <TableCell align="center">{item.title}</TableCell>
-                <TableCell align="center">{item.title_description}</TableCell>
+                <TableCell
+                  style={{
+                    maxWidth: "200px",
+                    height: "20px",
+                    textOverflow: "ellipsis",
+                    overflow: "hidden",
+                    whiteSpace: "nowrap",
+                  }}
+                  align="center"
+                >
+                  {item.title}
+                </TableCell>
+                <TableCell
+                  style={{
+                    maxWidth: "200px",
+                    height: "20px",
+                    textOverflow: "ellipsis",
+                    overflow: "hidden",
+                    whiteSpace: "nowrap",
+                  }}
+                  align="center"
+                >
+                  {item.title_description}
+                </TableCell>
                 <TableCell align="center">
                   <img
                     src={API_URL + item.img_url}
                     alt={`Image-${index}`}
-                    style={{ maxWidth: '100%', height: 'auto' }}
+                    style={{ maxWidth: "30%", height: "auto" }}
                   />
                 </TableCell>
-                <TableCell align="center">{item.sub_title}</TableCell>
-                <TableCell align="center">{item.sub_title_description}</TableCell>
+                <TableCell
+                  style={{
+                    maxWidth: "200px",
+                    height: "20px",
+                    textOverflow: "ellipsis",
+                    overflow: "hidden",
+                    whiteSpace: "nowrap",
+                  }}
+                  align="center"
+                >
+                  {item.sub_title}
+                </TableCell>
+                <TableCell
+                  style={{
+                    maxWidth: "200px",
+                    height: "20px",
+                    textOverflow: "ellipsis",
+                    overflow: "hidden",
+                    whiteSpace: "nowrap",
+                  }}
+                  align="center"
+                >
+                  {item.sub_title_description}
+                </TableCell>
                 <TableCell align="center">
                   <button
                     style={{
-                      marginRight: '5px',
-                      padding: '5px 10px',
-                      backgroundColor: 'rgb(255, 188, 13)',
-                      color: 'white',
-                      border: 'none',
-                      borderRadius: '5px',
-                      cursor: 'pointer',
+                      marginRight: "5px",
+                      padding: "5px 10px",
+                      backgroundColor: "rgb(255, 188, 13)",
+                      color: "white",
+                      border: "none",
+                      borderRadius: "5px",
+                      cursor: "pointer",
                     }}
                     onClick={() => handleEditClick(item)}
                   >
@@ -230,12 +276,12 @@ const AEffort = () => {
                   </button>
                   <button
                     style={{
-                      padding: '5px 10px',
-                      backgroundColor: '#f44336',
-                      color: 'white',
-                      border: 'none',
-                      borderRadius: '5px',
-                      cursor: 'pointer',
+                      padding: "5px 10px",
+                      backgroundColor: "#f44336",
+                      color: "white",
+                      border: "none",
+                      borderRadius: "5px",
+                      cursor: "pointer",
                     }}
                     onClick={() => handleDelete(item.id)}
                   >
@@ -247,7 +293,7 @@ const AEffort = () => {
           </TableBody>
         </Table>
         <TablePagination
-          rowsPerPageOptions={[4, 8, 12, { label: 'All', value: -1 }]}
+          rowsPerPageOptions={[4, 8, 12, { label: "All", value: -1 }]}
           component="div"
           count={axiosResult.length}
           rowsPerPage={rowsPerPage}
@@ -257,7 +303,7 @@ const AEffort = () => {
         />
       </TableContainer>
       <Dialog open={openModal} onClose={handleModalClose}>
-        <DialogTitle>{selectedItem ? '수정' : '추가하기'}</DialogTitle>
+        <DialogTitle>{selectedItem ? "수정" : "추가하기"}</DialogTitle>
         <DialogContent>
           {selectedItem && (
             <TextField
@@ -298,7 +344,7 @@ const AEffort = () => {
             type="file"
             onChange={handleImageChange}
             accept="image/*"
-            style={{ marginTop: '1rem' }}
+            style={{ marginTop: "1rem" }}
           />
           <TextField
             label="서브타이틀"
@@ -319,8 +365,11 @@ const AEffort = () => {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleModalClose}>취소</Button>
-          <Button onClick={selectedItem ? handleUpdate : handleCreate} color="primary">
-            {selectedItem ? '수정' : '등록'}
+          <Button
+            onClick={selectedItem ? handleUpdate : handleCreate}
+            color="primary"
+          >
+            {selectedItem ? "수정" : "등록"}
           </Button>
         </DialogActions>
       </Dialog>
