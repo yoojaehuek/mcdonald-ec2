@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { API_URL } from '../../config/contansts';
-import './OO.scss';
+import { API_URL } from '../../../config/contansts';
+import './AOption.scss';
 
 
 const AOption = () => {
@@ -19,10 +19,17 @@ const AOption = () => {
   }, []);
   return (
     <>
-      <h1>option</h1>
+      
+      <div className='option1-main'>
+      {/* <h1>option</h1>
       {items.map((item, index) => (
         <p>{item.name}</p>
-      ))}
+      ))} */}
+        <div class="option1-main1">
+     <div className='option1-list'>
+         <h2>상품리스트()</h2>
+         <button>+상품추가</button>
+     </div>
       <table className="option1-table">
         <colgroup>
                 <col span="1" class="col1" />
@@ -31,7 +38,7 @@ const AOption = () => {
                 <col span="3" class="col4" />
                 <col span="3" class="col5" />
           </colgroup>
-        <tr>
+        <tr class="option1-tr">
             <th scope="col">번호</th>
             <th scope="col">이미지</th>
             <th scope="col" colspan="2">상품명</th>
@@ -86,7 +93,9 @@ const AOption = () => {
             <button>삭제</button>
           </td>
         </tr>
-</table>
+        </table>
+        </div>
+        </div>
     </>
   );
 };

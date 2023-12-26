@@ -14,7 +14,8 @@ const WhatsNew = require('./whatsNew');
 const Store = require('./store')
 const SubCategory = require('./subCategory');
 const User = require('./user'); //user파일을 User로 불러옴 
-const Slider = require('./slider')
+const Slider = require('./slider');
+const Banner = require('./banner');
 
 const env = process.env.NODE_ENV || 'development'; //상수 env에 NODE_ENV없으면 'development' 넣음
 const config = require('../../config/config.json')[env]; //상수config에 ../config/config파일에서 env(development) 불러옴
@@ -30,6 +31,7 @@ db.sequelize = sequelize;
 db.Admin = Admin;
 db.Category = Category;
 db.SubCategory = SubCategory;
+db.Banner = Banner;
 db.Store = Store;
 db.User = User;
 db.Effort = Material;
@@ -49,6 +51,7 @@ db.Slider = Slider;
 Admin.initiate(sequelize);
 Category.initiate(sequelize);
 SubCategory.initiate(sequelize);
+Banner.initiate(sequelize);
 Store.initiate(sequelize);
 User.initiate(sequelize);
 Effort.initiate(sequelize);
@@ -67,6 +70,7 @@ Slider.initiate(sequelize);
 Admin.associate(db);
 Category.associate(db);
 SubCategory.associate(db);
+Banner.associate(db);
 Store.associate(db);
 User.associate(db);
 Effort.associate(db);

@@ -16,8 +16,9 @@ class StoreController {
 
 	static async getAllStore(req, res, next){
 		try {
-			// const storeId = req.body;
-			const result = await StoreService.getAllStore();
+			const query = req.query;
+			console.log("query: ", query);
+			const result = await StoreService.getAllStore(query);
 			res.status(200).json(result);
 		} catch (error) {
 			next(error);
