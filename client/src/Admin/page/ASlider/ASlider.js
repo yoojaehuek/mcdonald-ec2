@@ -113,8 +113,11 @@ const ASlider = () => {
   };
 
   const handleDelete = (id) => {
+
+    const userConfirmed = window.confirm('삭제하시겠습니까?');
     // 삭제 로직 구현
-    axios.delete(`${API_URL}/slider/${id}`)
+    if(userConfirmed){
+      axios.delete(`${API_URL}/slider/${id}`)
       .then(res => {
         alert("삭제되었습니다.");
         fetchSliderData(); // 데이터 갱신
@@ -123,6 +126,7 @@ const ASlider = () => {
         console.error(err);
         alert("삭제에 실패했습니다.");
       });
+    }
   };
 
   const onChangeImage = (info) => {
