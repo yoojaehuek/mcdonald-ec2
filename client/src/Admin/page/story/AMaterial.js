@@ -302,14 +302,14 @@ const Material = () => {
                     <img
                       src={API_URL + item.img_url}
                       alt={`Image-${index}`}
-                      style={{ maxWidth: "50%", height: "auto" }}
+                      style={{ maxWidth: "100%", height: "auto" }}
                     />
                   </TableCell>
                   <TableCell align="center">
                     <img
                       src={API_URL + item.background_img_url}
                       alt={`Background Image-${index}`}
-                      style={{ maxWidth: "50%", height: "auto" }}
+                      style={{ maxWidth: "30%", height: "auto" }}
                     />
                   </TableCell>
                   <TableCell align="center">

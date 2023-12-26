@@ -169,11 +169,13 @@ const AFaq = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {(rowsPerPage > 0
-              ? axiosResult.slice(
-                  page * rowsPerPage,
-                  page * rowsPerPage + rowsPerPage
-                )
+          {(rowsPerPage > 0
+              ? axiosResult
+                  .filter((item) => item.id !== 1)
+                  .slice(
+                    page * rowsPerPage,
+                    page * rowsPerPage + rowsPerPage
+                  )
               : axiosResult
             ).map((item, index) => (
               <TableRow key={index}>
