@@ -84,7 +84,7 @@ const Find = () => {
   const centerOnMyLocation = () => {
     console.log("내 위치 중심으로 보기 버튼 클릭.");
     if (navigator.geolocation) {
-      navigator.geolocation.watchPosition(
+      navigator.geolocation.getCurrentPosition(
         (position) => {
           const { latitude, longitude } = position.coords;
           setMyLocation({ latitude, longitude });

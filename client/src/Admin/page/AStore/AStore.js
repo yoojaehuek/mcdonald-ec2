@@ -18,10 +18,11 @@ const AStore = () => {
       console.error(err);
     })
   }, []);
+
   return (
     <>
       <h1>store</h1>
-      <StoreTable data={items}></StoreTable>
+      <StoreTable data={{items, setItems}}></StoreTable>
     </>
   );
 };

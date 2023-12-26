@@ -24,10 +24,10 @@ const StoreDetail = () => {
   // const [currentPage, setCurrentPage] = useState(1);
   console.log("매장정보: ", item);
   useEffect(() => {
-    let timeTrue = document.getElementById("time_true");
-    let timeFalse = document.getElementById("time_false");
-    if(item.yn_24h === true) timeTrue.checked = true;
-    else timeFalse.checked = true;
+    // let timeTrue = document.getElementById("time_true");
+    // let timeFalse = document.getElementById("time_false");
+    // if(item.yn_24h === true) timeTrue.checked = true;
+    // else timeFalse.checked = true;
     // -----------------------------------------------------------
     let morningTrue = document.getElementById("morning_true");
     let morningFalse = document.getElementById("morning_false");
@@ -49,19 +49,29 @@ const StoreDetail = () => {
     if(item.yn_parking === true) parkingTrue.checked = true;
     else parkingFalse.checked = true;
     // -----------------------------------------------------------
-    fetchSliderData();
     setSelectedItem(item);
     setEditedId(item.id);
     setEditedStore(item.store_name);
     setEditedPhone(item.phone);
     setEditedAddress(item.address);
-  }, []);
+    setEditedSTime(item.start_time);
+    setEditedETime(item.end_time);
+
+    // 라디오 버튼 초기 상태 설정
+    setEditedTime(item.yn_24h);
+    setEditedMmorning(item.yn_mcmorning);
+    setEditedMdrive(item.yn_mcdrive);
+    setEditedMdelivery(item.yn_mcdelivery);
+    setEditedParking(item.yn_parking);
+
+    fetchSliderData();
+  }, [item]);
 
   const fetchSliderData = () => {
     axios.get(`${API_URL}/item`)
       .then(res => {
         console.log("dddddggg",res.data);
-        setAxiosResult(res.data);//업데이트 
+        // setAxiosResult(res.data);//업데이트 
       })
       .catch(err => {
         console.error(err);
@@ -97,11 +107,12 @@ const StoreDetail = () => {
       const userConfirmed = window.confirm('수정하시겠습니까?');
 
       if (userConfirmed) {//selectedItem.id 는 item.id 암
+        console.log("업데이트아이템: ", updatedItem);
         axios.patch(`${API_URL}/store/${selectedItem.id}`, updatedItem)
           .then(() => {
             alert("수정되었습니다.");
             fetchSliderData(); // 데이터 갱신
-            // handleClose();
+            handleClose();
           })
           .catch(err => {
             console.error(err);
@@ -113,41 +124,13 @@ const StoreDetail = () => {
     }
   }
 
-  // const closeNewSlideModal = () => {
-  //   setIsNewSlideModalOpen(false);
-  //   // 모달 닫을 때 입력값 초기화
-  //   setNewSlideType('image');
-  //   setNewSlideContent('');
-  //   setNewSlideTime('');
-  // };
-  // const handleDelete = (id) => {
-  //   // 삭제 로직 구현
-  //   axios.delete(`${API_URL}/slider/${id}`)
-  //     .then(res => {
-  //       alert("삭제되었습니다.");
-  //       fetchSliderData(); // 데이터 갱신
-  //     })
-  //     .catch(err => {
-  //       console.error(err);
-  //       alert("삭제에 실패했습니다.");
-  //     });
-  // };
-  // const indexOfLastItem = currentPage * itemsPerPage;
-  // const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  // const currentItems = axiosResult.slice(indexOfFirstItem, indexOfLastItem);
-
-  // const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
-
-
-
   return(
     <div className="storedetail">
       <form>
         <h2>매장 정보 수정</h2>
         <div className="container">
           <label className="box" htmlFor="editedId">ID:</label>
-          <h1>{item.yn_24h}</h1>
+          {/* <h1>{item.yn_24h}</h1> */}
           <input
             type="text"
             id="editedId"
@@ -172,7 +155,19 @@ const StoreDetail = () => {
             value={editedAddress}
             onChange={(e) => setEditedAddress(e.target.value)}
           ></textarea>
-          <label className="box" htmlFor="yn_24h">24시간:</label>
+          <label className="box" htmlFor="start_time">시작 시간:</label>
+          <textarea
+            id="start_time"
+            value={editedSTime}
+            onChange={(e) => setEditedSTime(e.target.value)}
+          ></textarea>
+          <label className="box" htmlFor="end_time">종료 시간:</label>
+          <textarea
+            id="end_time"
+            value={editedETime}
+            onChange={(e) => setEditedETime(e.target.value)}
+          ></textarea>
+          {/* <label className="box" htmlFor="yn_24h">24시간:</label>
           <div>
             <label className='radio'>
               <input
@@ -180,7 +175,7 @@ const StoreDetail = () => {
                 id="time_true"
                 value="true"
                 name='time'
-                onChange={(e) => handleRadioChange('true')}
+                onChange={() => setEditedTime(true)}
               />
               True
             </label>
@@ -190,11 +185,11 @@ const StoreDetail = () => {
                 id="time_false"
                 value="false"
                 name='time'
-                onChange={(e) => handleRadioChange('false')}
+                onChange={() => setEditedTime(false)}
               />
               False
             </label>
-          </div>
+          </div> */}
           <label className="box" htmlFor="yn_mcmorning">맥모닝:</label>
           <div>
             <label className='radio'>
@@ -203,7 +198,8 @@ const StoreDetail = () => {
                 id="morning_true"
                 value="true"
                 name='morning'
-                onChange={(e) => handleRadioChange('true')}
+                checked={editedMmorning === 1}
+                onChange={() => setEditedMmorning(1)}
               />
               True
             </label>
@@ -213,7 +209,8 @@ const StoreDetail = () => {
                 id="morning_false"
                 value="false"
                 name='morning'
-                onChange={(e) => handleRadioChange('false')}
+                checked={editedMmorning === 0}
+                onChange={() => setEditedMmorning(0)}
               />
               False
             </label>
@@ -227,7 +224,8 @@ const StoreDetail = () => {
                 id="drive_true"
                 value="true"
                 name='drive'
-                onChange={(e) => handleRadioChange('true')}
+                checked={editedMdrive === 1}
+                onChange={() => setEditedMdrive(1)}
               />
               True
             </label>
@@ -237,7 +235,8 @@ const StoreDetail = () => {
                 id="drive_false"
                 value="false"
                 name='drive'
-                onChange={(e) => handleRadioChange('false')}
+                checked={editedMdrive === 0}
+                onChange={() => setEditedMdrive(0)}
               />
               False
             </label>
@@ -251,7 +250,8 @@ const StoreDetail = () => {
                 id="delivery_true"
                 value="true"
                 name='delivery'
-                onChange={(e) => handleRadioChange('true')}
+                checked={editedMdelivery === 1}
+                onChange={() => setEditedMdelivery(1)}
               />
               True
             </label>
@@ -261,7 +261,8 @@ const StoreDetail = () => {
                 id="delivery_false"
                 value="false"
                 name='delivery'
-                onChange={(e) => handleRadioChange('false')}
+                checked={editedMdelivery === 0}
+                onChange={() => setEditedMdelivery(0)}
               />
               False
             </label>
@@ -275,7 +276,8 @@ const StoreDetail = () => {
                 id="parking_true"
                 value="true"
                 name='park'
-                onChange={(e) => handleRadioChange('true')}
+                checked={editedParking === 1}
+                onChange={() => setEditedParking(1)}
               />
               True
             </label>
@@ -285,7 +287,8 @@ const StoreDetail = () => {
                 id="parking_false"
                 value="false"
                 name='park'
-                onChange={(e) => handleRadioChange('false')}
+                checked={editedParking === 0}
+                onChange={() => setEditedParking(0)}
               />
               False
             </label>
@@ -293,8 +296,8 @@ const StoreDetail = () => {
           
           
 
-          <button className="button_detail" type="button" onClick={() => handleEdit}>저장</button>
-          <button className="button_detail" type="button" onClick={() => handleClose(item.id)}>취소</button>
+          <button className="button_detail" type="button" onClick={handleEdit}>저장</button>
+          <button className="button_detail" type="button" onClick={handleClose}>취소</button>
         </div>
       </form>
     </div>

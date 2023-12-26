@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from 'react';
-import { Routes, Route, NavLink } from 'react-router-dom';
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
 import AHeader from './Component/AHeader';
 import AMenu from './Component/AMenu';
 import AChart from './page/AChart/AChart';
@@ -17,7 +17,7 @@ import AWhatsNew from './page/whatsNew/AWhatsNew';
 import ANews from './page/whatsNew/ANews';
 import StoreDetail from './Component/StoreTable/StoreDetail';
 import AFaq from './page/story/AFaq';
-import Asu from './page/Asu/Asu';
+
 
 
 import './Adminmain.scss';
@@ -29,7 +29,7 @@ const AdminMain = () => {
     <div id='Admin' >
       <AHeader id='header' />
       <AMenu id='menu' />
-      <div className='AdminMain' style={{padding: ' 50px 100px'}}>
+      <div className='AdminMain' style={{padding: ' 0 100px'}}>
         <Routes>
           <Route path='/' element={<AChart />} />
           <Route path='/menu/:subcategory_id' element={<AProduct />} />
@@ -46,7 +46,6 @@ const AdminMain = () => {
           <Route path='/slider/*' element={<ASlider />} />
           <Route path='/whats-new/*' element={<AWhatsNew />} />
           <Route path='/whats-new/13' element={<ANews />} />
-          <Route path='/asu' element={<Asu/>} />
         </Routes>
       </div>
     </div>
