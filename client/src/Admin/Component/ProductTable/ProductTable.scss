@@ -1,58 +1,99 @@
-.StoreTable{
-  // border: 1px #a39485 solid;
-  border: 1px #a39485 solid;
-  font-size: .9em;
-  box-shadow: 0 2px 5px rgba(0,0,0,.25);
-  border-collapse: collapse;
-  border-radius: 5px;
-  overflow: hidden;
-  
-  thead {
-    font-weight: bold;
-    color: #fff;
-    background: #73685d;
-    th{
+#adminProd{
+  #adminProd_header{
+    display: flex;
+    justify-content: space-between;
+    #uploadBtn{
+      display: block;
+      border-radius: 5px;
+      min-width: 80px;
       text-align: center;
-      min-width: 50px;
+      background-color: blue;
+      font-size: 15px;
+      font-weight: bold;
+      color: white;
+      place-items: center;
+      display: grid;
+      margin: 2px;
     }
   }
-
-  td, th {
-    padding: 1em .5em;
-    vertical-align: middle;
-  }
-
-  th {
-    text-align: left;
-  }
-
-  td {
-    border-bottom: 1px solid rgba(0,0,0,.1);
-    background: #fff;
-  }
-
-  input[type=text]{
-    padding: 10px 0;
-  }
-
-  .colIndex-0{
-    border: 0;
-    pointer-events: none;
-  }
-
-  tbody{
-    img{
-      width: 90%;
-      height: 90%;
+  .ProdTable{
+    border: 1px #a39485 solid;
+    font-size: .9em;
+    // box-shadow: 0 2px 5px rgba(0,0,0,.25);
+    border-collapse: collapse;
+    border-radius: 5px;
+    overflow: hidden;
+    
+    thead {
+      font-weight: bold;
+      color: #fff;
+      background: #ffbc0d;
+      th{
+        text-align: center;
+        min-width: 50px;
+      }
     }
-    tr{
-      &.editing{
-        .colIndex-1,
-        .colIndex-2,
-        .colIndex-3,
-        .colIndex-4,
-        .colIndex-6{
-          border: 1px solid #000;
+
+    td, th {
+      padding: 1em .5em;
+      vertical-align: middle;
+    }
+
+    th {
+      text-align: left;
+    }
+
+    td {
+      border-bottom: 1px solid rgba(0,0,0,.1);
+      background: #fff;
+    }
+
+    input[type=text]{
+      padding: 10px 0;
+    }
+
+    .colIndex-0{
+      border: 0;
+      pointer-events: none;
+    }
+
+    tbody{
+      img{
+        width: 90%;
+        height: 90%;
+      }
+      tr{
+        &.editing{
+          .colIndex-1,
+          .colIndex-2,
+          .colIndex-3,
+          .colIndex-4,
+          .colIndex-6{
+            border: 1px solid #000;
+          }
+        }
+        #editLink{
+          display: block;
+          border-radius: 5px;
+          min-width: 60px;
+          padding: 5px 0px;
+          text-align: center;
+          background-color: #ffbc0d;
+          font-size: 15px;
+          font-weight: bold;
+          color: white;
+        }
+        #tableDeletebtn{
+          border: 0px;
+          display: block;
+          border-radius: 5px;
+          min-width: 60px;
+          padding: 5px 0px;
+          height: 32px;
+          background-color: #f44336;
+          font-size: 15px;
+          font-weight: bold;
+          color: white;
         }
       }
     }

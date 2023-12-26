@@ -49,6 +49,7 @@ const ProductDetail = () => {
       axios.patch(`${API_URL}/product/${item.id}`, updatedItem)
         .then(() => {
           alert("수정되었습니다.");
+          handleGoBack();
         })
         .catch(err => {
           console.error(err);
