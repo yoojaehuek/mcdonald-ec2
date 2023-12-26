@@ -18,7 +18,7 @@ import AWhatsNewModal from './AWhatsNewModal';
 
 const AWhatsNew = () => {
   const { pathname } = useLocation();
-  const subcategory_id = pathname.split('/')[3];
+  const subcategory_id = pathname.split("/")[3];
 
   const [axiosResult, setAxiosResult] = useState([]);
   const [page, setPage] = useState(0);
@@ -37,18 +37,20 @@ const AWhatsNew = () => {
   });
 
   useEffect(() => {
-    axios.get(`${API_URL}/whats-new/${subcategory_id}`)
-    .then(res => {
-      console.log(res.data);
-      setAxiosResult(res.data);
-    })
-    .catch(err => {
-      console.error(err);
-    })
+    axios
+      .get(`${API_URL}/whats-new/${subcategory_id}`)
+      .then((res) => {
+        console.log(res.data);
+        setAxiosResult(res.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   }, [subcategory_id]);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
+    console.log("New Page:", newPage);
   };
 
   const handleChangeRowsPerPage = (event) => {
@@ -82,11 +84,13 @@ const AWhatsNew = () => {
       axios
         .delete(`${API_URL}/whats-new/${id}`)
         .then((response) => {
-          console.log('Delete:', response.data);
-          setAxiosResult((prevResult) => prevResult.filter((item) => item.id !== id));
+          console.log("Delete:", response.data);
+          setAxiosResult((prevResult) =>
+            prevResult.filter((item) => item.id !== id)
+          );
         })
         .catch((error) => {
-          console.error('Error:', error);
+          console.error("Error:", error);
         });
     }
   };

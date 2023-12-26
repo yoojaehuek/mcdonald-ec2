@@ -21,7 +21,7 @@ const AProduct = () => {
   return (
     <>
       <h1>product</h1>
-      <ProductTable data={products}/>
+      <ProductTable data={products} setData={setProducts}/>
     </>
   );
 };

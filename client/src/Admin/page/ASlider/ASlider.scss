@@ -1,8 +1,6 @@
 /* ASlider.scss */
-
 .admin-slider-container {
   max-width: 1200px;
-  // margin-left: 25vw;
 }
 
 .admin-slider {
@@ -16,7 +14,6 @@
 
 .add-slider-button {
   text-align: center;
-  padding: 8px 12px;
 }
 
 .add-slider-button button {
@@ -44,7 +41,7 @@
   th{
     font-size: 25px;
     font-weight: 800;
-    border: 1px solid rgb(146, 105, 0);
+    // border: 1px solid rgb(146, 105, 0);
     background-color: rgb(255, 188, 13);
   }
 
@@ -65,16 +62,21 @@
       background-color: rgb(255, 188, 13);
       color: white;
       padding: 8px 12px;
-      border: 1px solid rgb(146, 105, 0);
+      // border: 1px solid rgb(146, 105, 0);
       border-radius: 4px;
       cursor: pointer;
       margin-right: 4px;
+
+      &:hover {
+        background-color: rgb(253, 219, 134);
+      }
+
+      &:last-child{
+        background-color: #f44336;
+      }
     }
 
-    button:hover {
-      background-color: rgb(253, 219, 134);
-    }
-
+  
     video,
     img {
       width: 100%; /* 이미지 및 비디오의 너비를 100%로 설정하여 가로로 늘립니다 */
@@ -135,14 +137,14 @@
       border: none;
       border-radius: 4px;
       cursor: pointer;
-    }
-    
-    button.close-btn {
-      background-color: #d9534f; /* 닫기 버튼 색상 */
-    }
-    
-    button:hover {
-      background-color: rgb(253, 219, 134);
+
+      &:hover {
+        background-color: rgb(253, 219, 134);
+      }
+
+      &:last-child{
+        background-color: #f44336;
+      }
     }
   }
 }
@@ -154,3 +156,28 @@
   border-radius: 4px;
   border: 1px solid #cccccc;
 }
+
+.pagination-container {
+  position: relative;
+  left: 52vw;
+  margin-top: 20px;
+
+  span {
+    margin: 0 8px;
+    padding: 8px 12px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #f0f0f0;
+    }
+
+    &.active {
+      background-color: rgb(255, 188, 13);
+      color: white;
+    }
+  }
+}
+

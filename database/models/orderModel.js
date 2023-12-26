@@ -38,6 +38,12 @@ class OrderModel {
 
 
  //조회 쿼리
+  static async getAllOrder(){
+    // console.log("orderId",id);
+    const order = await Order.findAll();
+    return order;
+  }
+
   static async findOneOrderUserId({id}){
     // console.log("orderId",id);
     const order = await Order.findAll({
