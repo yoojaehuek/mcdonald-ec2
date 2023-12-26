@@ -1,27 +1,63 @@
-.storedetail {
-  background: #fff;
+.prod-detail {
   margin: 0 auto;
-  padding: 0;
-
-  * {
-    box-sizing: border-box;
-  }
-
-  h2 {
+  h1{
     text-align: center;
   }
-  .container {
-    display: grid;
-    grid-template-columns: 200px 400px;
-  }
-  .radio {
+  #prod-information{
     display: flex;
-    justify-content: center;
-    float: left;
-    padding: 10px 20px;
-    width: 100px;
+    #img{
+      margin-right: 20px;
+      place-items: center;
+      display: grid;
+    }
+    ul{
+      width: 700px;
+      li{
+        display: flex;
+        margin: 15px 0px;
+        label{
+          width: 120px;
+        }
+        input{
+          width: 500px;
+          padding: 5px;
+        }
+        textarea{
+          padding: 5px;
+          width: 500px;
+        }
+      }
+      #sale-time{
+        span{
+          margin: 0px 10px;
+        }
+        input{
+          width: 100px;
+          border: 1px solid #000;
+          text-align: center;
+        }
+      }
+    }
   }
-  .button_detail {
-    margin: 5px;
+  #button{
+    display: flex;
+    justify-content: right;
+    width: 950px;
+    .button_detail{
+      text-align: center;
+      width: 100px;
+      padding: 5px;
+      font-size: 20px;
+      font-weight: bold;
+      margin: 10px;
+      border: 0px;
+      color: white;
+    }
+    #save-button{
+      background-color: #000;
+    }
+    #cancel-button{
+      background-color: blue;
+    }
   }
 }
