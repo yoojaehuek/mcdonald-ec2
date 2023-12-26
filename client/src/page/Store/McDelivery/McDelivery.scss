@@ -141,8 +141,11 @@
     color: #ffc836;
     text-align: left;
 
-    ::before{
-      content: '';
+    
+}
+
+.mcdel-fieldset3::before{
+    content: '';
     position: absolute;
     top: 50%;
     left: -33px;
@@ -150,7 +153,6 @@
     height: 11px;
     margin: -5px 0 0 0;
     background: url(../../../../public/images/mcdelivery/bg_arrow.png);
-    }
     
 }
 
@@ -189,9 +191,11 @@
     background-color: #bd0017;
     color: #ffc836;
     text-align: left;
+    
+}
 
-    ::before{
-      content: '';
+.mcdel-fieldset4::before{
+    content: '';
     position: absolute;
     top: 50%;
     left: -33px;
@@ -199,8 +203,6 @@
     height: 11px;
     margin: -5px 0 0 0;
     background: url(../../../../public/images/mcdelivery/bg_arrow.png);
-    }
-    
 }
 
 // fieldset4 (맥딜리버리 배달이 가능합니다 텍스트 위치조절)
@@ -214,14 +216,16 @@
 }
 
 
-//fieldset4 이미지 (O)
+//fieldset4 이미지 (x)
 .mcdel-p3{
   position: absolute;
   width: 250px;
-  height: 270px;
+  height: 250px;
   top: 50px;
   left: 50%;
   background: url(../../../../public/images/mcdelivery/bg_delivery_result3.png);
+
+  
 }
 
 
