@@ -2,21 +2,41 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { API_URL } from '../../../config/contansts';
 import './AOption.scss';
-
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Button,
+  Paper,
+} from '@mui/material';
 
 const AOption = () => {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
     axios.get(`${API_URL}/option`)
-    .then(res => {
-      console.log(res.data);
-      setItems(res.data)
-    })
-    .catch(err => {
-      console.error(err);
-    })
+      .then(res => {
+        console.log(res.data);
+        setItems(res.data);
+      })
+      .catch(err => {
+        console.error(err);
+      });
   }, []);
+
+  const handleEdit = (id) => {
+    // 수정 로직 구현
+    console.log(`Edit item with ID ${id}`);
+  };
+
+  const handleDelete = (id) => {
+    // 삭제 로직 구현
+    console.log(`Delete item with ID ${id}`);
+  };
+
   return (
     <>
       
@@ -59,7 +79,7 @@ const AOption = () => {
           <td>30</td>
           <td>20원</td>
           <td>
-            <button><a href='asu'>수정</a></button>
+            <button></button>
             <button>삭제</button>
           </td>
         </tr>
@@ -74,7 +94,7 @@ const AOption = () => {
           <td>30</td>
           <td>20원</td>
               <td>
-            <button><a href='asu'>수정</a></button>
+            <button></button>
             <button>삭제</button>
           </td>
             
@@ -89,7 +109,7 @@ const AOption = () => {
           <td>20</td>
           <td>30원</td>
           <td>
-            <button><a href='asu'>수정</a></button>
+            <button></button>
             <button>삭제</button>
           </td>
         </tr>

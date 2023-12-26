@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-import { useLocation } from 'react-router-dom';
-import { API_URL } from '../../../config/contansts';
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { useLocation } from "react-router-dom";
+import { API_URL } from "../../../config/contansts";
 // import Table from '../../Component/Table/Table';
 import {
   Table,
@@ -19,42 +19,43 @@ import {
   Button,
   TextField,
   Input,
-} from '@mui/material';
-
+} from "@mui/material";
 
 const AWhatsNew = () => {
   const { pathname } = useLocation();
-  const subcategory_id = pathname.split('/')[3];
+  const subcategory_id = pathname.split("/")[3];
 
   const [axiosResult, setAxiosResult] = useState([]);
   const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(4);
+  const [rowsPerPage, setRowsPerPage] = useState(2);
   const [openModal, setOpenModal] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
   const [editedData, setEditedData] = useState({
-    id: '',
-    admin_id: '',
-    title: '',
-    title_description: '',
-    img_url: '',
-    sub_title: '',
-    sub_title_description: '',
+    id: "",
+    admin_id: "",
+    title: "",
+    title_description: "",
+    img_url: "",
+    sub_title: "",
+    sub_title_description: "",
   });
   const [selectedImage, setSelectedImage] = useState(null);
 
   useEffect(() => {
-    axios.get(`${API_URL}/whats-new/${subcategory_id}`)
-    .then(res => {
-      console.log(res.data);
-      setAxiosResult(res.data);
-    })
-    .catch(err => {
-      console.error(err);
-    })
+    axios
+      .get(`${API_URL}/whats-new/${subcategory_id}`)
+      .then((res) => {
+        console.log(res.data);
+        setAxiosResult(res.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   }, [subcategory_id]);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
+    console.log("New Page:", newPage);
   };
 
   const handleChangeRowsPerPage = (event) => {
@@ -71,13 +72,13 @@ const AWhatsNew = () => {
   const handleModalClose = () => {
     setOpenModal(false);
     setEditedData({
-      id: '',
-      admin_id: '',
-      title: '',
-      title_description: '',
-      img_url: '',
-      sub_title: '',
-      sub_title_description: '',
+      id: "",
+      admin_id: "",
+      title: "",
+      title_description: "",
+      img_url: "",
+      sub_title: "",
+      sub_title_description: "",
     });
     setSelectedImage(null);
   };
@@ -85,7 +86,7 @@ const AWhatsNew = () => {
   const handleCreate = () => {
     const { id, ...dataWithoutId } = editedData;
     const formData = new FormData();
-    formData.append('image', selectedImage);
+    formData.append("image", selectedImage);
 
     axios
       .post(`${API_URL}/image`, formData)
@@ -96,23 +97,23 @@ const AWhatsNew = () => {
         axios
           .post(`${API_URL}/effort`, newData)
           .then((response) => {
-            console.log('Create:', response.data);
+            console.log("Create:", response.data);
             setAxiosResult((prevResult) => [...prevResult, response.data]);
             setOpenModal(false);
           })
           .catch((error) => {
-            console.error('Error:', error);
+            console.error("Error:", error);
           });
       })
       .catch((error) => {
-        console.error('Error image:', error);
+        console.error("Error image:", error);
       });
   };
 
   const handleUpdate = () => {
     if (selectedItem) {
       const formData = new FormData();
-      formData.append('image', selectedImage);
+      formData.append("image", selectedImage);
 
       axios
         .post(`${API_URL}/image`, formData)
@@ -123,7 +124,7 @@ const AWhatsNew = () => {
           axios
             .patch(`${API_URL}/effort/${selectedItem.id}`, updatedData)
             .then((response) => {
-              console.log('Update:', response.data);
+              console.log("Update:", response.data);
               setAxiosResult((prevResult) => {
                 const updatedResult = prevResult.map((item) =>
                   item.id === selectedItem.id ? updatedData : item
@@ -133,11 +134,11 @@ const AWhatsNew = () => {
               setOpenModal(false);
             })
             .catch((error) => {
-              console.error('error:', error);
+              console.error("error:", error);
             });
         })
         .catch((error) => {
-          console.error('Error image:', error);
+          console.error("Error image:", error);
         });
     }
   };
@@ -148,11 +149,13 @@ const AWhatsNew = () => {
       axios
         .delete(`${API_URL}/effort/${id}`)
         .then((response) => {
-          console.log('Delete:', response.data);
-          setAxiosResult((prevResult) => prevResult.filter((item) => item.id !== id));
+          console.log("Delete:", response.data);
+          setAxiosResult((prevResult) =>
+            prevResult.filter((item) => item.id !== id)
+          );
         })
         .catch((error) => {
-          console.error('Error:', error);
+          console.error("Error:", error);
         });
     }
   };
@@ -169,11 +172,18 @@ const AWhatsNew = () => {
     setSelectedImage(e.target.files[0]);
   };
 
+  const startIndex = page * rowsPerPage;
+  const endIndex = startIndex + rowsPerPage;
+  const displayedData = axiosResult.slice(startIndex, endIndex);
+
   return (
     <>
       {/* <h1>Your React Table</h1> */}
       {/* <Table data={items}></Table> */}
-      <TableContainer component={Paper} style={{ width: "80%", marginLeft: "16vw" }}>
+      <TableContainer
+        component={Paper}
+        style={{ width: "80%", marginLeft: "16vw" }}
+      >
         <Table>
           <TableHead>
             <TableRow style={{ backgroundColor: "rgb(255, 188, 13)" }}>
@@ -207,7 +217,7 @@ const AWhatsNew = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {axiosResult.map((item, index) => (
+            {displayedData.map((item, index) => (
               <TableRow key={index}>
                 <TableCell align="center">{item.id}</TableCell>
                 <TableCell align="center">{item.sub_category_id}</TableCell>
@@ -257,7 +267,8 @@ const AWhatsNew = () => {
                   </button>
                   <button
                     onClick={() => {
-                      const userConfirmed = window.confirm("정말 삭제하시겠습니까?");
+                      const userConfirmed =
+                        window.confirm("정말 삭제하시겠습니까?");
                       if (userConfirmed) {
                         axios
                           .delete(`${API_URL}/crew/${item.id}`)
@@ -289,7 +300,7 @@ const AWhatsNew = () => {
           </TableBody>
         </Table>
         <TablePagination
-          rowsPerPageOptions={[4, 8, 12, { label: 'All', value: -1 }]}
+          rowsPerPageOptions={[2, 4, 6, { label: "All", value: -1 }]}
           component="div"
           count={axiosResult.length}
           rowsPerPage={rowsPerPage}
