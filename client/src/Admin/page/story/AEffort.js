@@ -166,11 +166,11 @@ const AEffort = () => {
 
   return (
     <>
-      <h1 style={{ marginLeft: '16vw', marginBottom: '1vw', marginTop: '1vw' }}>Effort</h1>
+      <h1>Effort</h1>
       <Button
         variant="contained"
         color="primary"
-        style={{ marginLeft: '16vw', marginBottom: '1vw' }}
+        style={{ marginBottom: '1vw', float: 'right'  }}
         onClick={() => {
           setSelectedItem(null);
           setOpenModal(true);
@@ -178,7 +178,7 @@ const AEffort = () => {
       >
         추가하기
       </Button>
-      <TableContainer component={Paper} style={{ width: '80%', marginLeft: '16vw' }}>
+      <TableContainer component={Paper}>
         <Table>
           <TableHead>
             <TableRow style={{ backgroundColor: 'rgb(255, 188, 13)' }}>

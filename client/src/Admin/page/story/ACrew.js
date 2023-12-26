@@ -128,11 +128,11 @@ const ACrew = () => {
 
   return (
     <>
-      <h1 style={{ marginLeft: "16vw", marginBottom: "1vw", marginTop: "1vw" }}>Crew</h1>
+      <h1>Crew</h1>
       <Button
         variant="contained"
         color="primary"
-        style={{ marginLeft: "16vw", marginBottom: "1vw" }}
+        style={{ marginBottom: "1vw", float: 'right' }}
         onClick={() => {
           setSelectedItem(null);
           setEditedData({
@@ -151,35 +151,35 @@ const ACrew = () => {
       >
         추가하기
       </Button>
-      <TableContainer component={Paper} style={{ width: "80%", marginLeft: "16vw" }}>
+      <TableContainer component={Paper}>
         <Table>
           <TableHead>
             <TableRow style={{ backgroundColor: "rgb(255, 188, 13)" }}>
-              <TableCell style={{ width: "1%" }} align="center">
+              <TableCell style={{ width: "0.5%" }} align="center">
                 ID
               </TableCell>
-              <TableCell style={{ width: "1%" }} align="center">
+              <TableCell style={{ width: "0.5%" }} align="center">
                 AdminID
               </TableCell>
-              <TableCell style={{ width: "1%" }} align="center">
+              <TableCell style={{ width: "0.5%" }} align="center">
                 StoreID
               </TableCell>
-              <TableCell style={{ width: "6%" }} align="center">
+              <TableCell style={{ width: "10%" }} align="center">
                 타이틀
               </TableCell>
-              <TableCell style={{ width: "2%" }} align="center">
+              <TableCell style={{ width: "4%" }} align="center">
                 이름
               </TableCell>
-              <TableCell style={{ width: "5%" }} align="center">
+              <TableCell style={{ width: "3%" }} align="center">
                 이미지
               </TableCell>
               <TableCell style={{ width: "2%" }} align="center">
                 직무
               </TableCell>
-              <TableCell style={{ width: "10%" }} align="center">
+              <TableCell style={{ width: "5%" }} align="center">
                 설명
               </TableCell>
-              <TableCell style={{ width: "10%" }} align="center">
+              <TableCell style={{ width: "5%" }} align="center">
                 관리
               </TableCell>
             </TableRow>
