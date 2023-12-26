@@ -81,6 +81,8 @@ const Mcart = () => {
       setProdQuantities(updatedQuantities);
       updateSessionStorage(updatedQuantities);// 세션
     }
+    const storedCart = JSON.parse(sessionStorage.getItem("cart"));
+    if (storedCart && storedCart.length > 0) setCart(storedCart);
   };
   const prodIncrease = (index) => {
     const updatedQuantities = [...prodQuantities];
@@ -89,6 +91,8 @@ const Mcart = () => {
       setProdQuantities(updatedQuantities);
       updateSessionStorage(updatedQuantities); // 세션
     }
+    const storedCart = JSON.parse(sessionStorage.getItem("cart"));
+    if (storedCart && storedCart.length > 0) setCart(storedCart);
   };
   const updateSessionStorage = (updatedQuantities) => {
     // 세션 스토리지에 현재 cart 상태를 업데이트
