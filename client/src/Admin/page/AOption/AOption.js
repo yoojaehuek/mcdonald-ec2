@@ -27,7 +27,7 @@ const AOption = () => {
       ))} */}
         <div class="option1-main1">
      <div className='option1-list'>
-         <h2>상품리스트()</h2>
+         <h2>상품리스트</h2>
          <button>+상품추가</button>
      </div>
       <table className="option1-table">
