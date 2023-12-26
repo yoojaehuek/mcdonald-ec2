@@ -73,9 +73,10 @@ const McDelivery = () => {
         } else if (mcDelivery_yn == false) {
       content = (
         <div class="mcdel-fieldset4 ">
-          <p role="text" class="result fail" id="fail">
+          <p role="text" class="resultfail" id="fail">
             <p class="mcdel-p3"></p>
-            <strong>맥딜리버리<br/>배달이<br/>불가능합니다</strong>
+            <strong>맥딜리버리<br />배달이<br />불가능합니다</strong>
+            <br></br>
             <span>빠른 시일 내에 고객님이 계신 곳에<br/>서비스가 가능하도록 노력하겠습니다.</span>
           </p>
         </div>
