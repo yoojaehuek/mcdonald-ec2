@@ -1,76 +1,191 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Chart from 'chart.js/auto';
-import './AChart.scss';
+import { AttachMoney as AttachMoneyIcon } from '@mui/icons-material';
+import { API_URL } from '../../../config/contansts';
 
 const AChart = () => {
+  // useRef를 사용해 차트 컨텍스트, 차트 인스턴스를 저장
   const chartRef = useRef(null);
   const chartInstance = useRef(null);
+  const [salesData, setSalesData] = useState([]);
+  const [todayIndex, setTodayIndex] = useState(0);
+  const [showDailySales, setShowDailySales] = useState(true);
 
   useEffect(() => {
-    const ctx = chartRef.current.getContext('2d');
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`${API_URL}/order/all`);
+        const data = await response.json();
+        setSalesData(data);
 
-    const data = {
-      labels: ['월', '화', '수', '목', '금', '토', '일'],
+        // 현재 요일을 계산하여 설정
+        const todayDate = new Date();
+        const todayIndex = todayDate.getDay();
+        setTodayIndex(todayIndex);
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    };
+
+    // 컴포넌트가 마운트될 때 데이터를 가져오고, 5분마다 업데이트
+    fetchData();
+    const intervalId = setInterval(fetchData, 5 * 60 * 1000);
+
+    // 컴포넌트가 언마운트될 때 인터벌을 정리
+    return () => clearInterval(intervalId);
+  }, []);
+
+  // 차트 데이터를 업데이트, 차트를 생성, 업데이트하는 효과 생성
+  useEffect(() => {
+    if (chartRef.current) {
+      const ctx = chartRef.current.getContext('2d');
+
+      // 일간 or 월간 차트 데이터를 가져오는 함수 호출
+      const chartData = showDailySales
+        ? getDailyChartData(salesData)
+        : getMonthlyChartData(salesData);
+
+      // 차트 옵션 설정
+      const options = {
+        scales: {
+          x: {
+            title: {
+              display: true,
+              text: showDailySales ? '요일' : '월',
+            },
+          },
+          y: {
+            title: {
+              display: true,
+              text: '실적',
+            },
+          },
+        },
+      };
+
+      // 이전에 생성된 차트가 있다면 파괴.
+      if (chartInstance.current) {
+        chartInstance.current.destroy();
+      }
+
+      // 새로운 차트를 생성
+      chartInstance.current = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: chartData.labels,
+          datasets: chartData.datasets,
+        },
+        options: options,
+      });
+    }
+  }, [salesData, chartRef, todayIndex, showDailySales]);
+
+  // 일간 차트 데이터 계산 함수
+  const getDailyChartData = (data) => {
+    const today = (todayIndex + 6) % 7;
+
+    // 요일별 총 판매 실적을 계산
+    const dailyTotal = data.reduce((acc, item) => {
+      const date = new Date(item.created_at);
+      const day = (date.getDay() + 6) % 7;
+      acc[day] = (acc[day] || 0) + item.total_price;
+      return acc;
+    }, []);
+
+    // 요일정렬
+    const reorderedDays = ['월', '화', '수', '목', '금', '토', '일'].slice(today).concat(['월', '화', '수', '목', '금', '토', '일'].slice(0, today));
+
+    // 차트 데이터를 반환
+    return {
+      labels: reorderedDays,
       datasets: [
         {
-          label: '일주일간 실적',
-          data: [65, 59, 80, 81, 56, 55, 40],
-          backgroundColor: 'rgba(75, 192, 192, 0.2)',
-          borderColor: 'rgba(75, 192, 192, 1)',
+          label: '일주일 실적',
+          data: dailyTotal,
+          backgroundColor: 'rgba(255, 99, 132, 0.2)',
+          borderColor: 'rgba(255, 99, 132, 1)',
           borderWidth: 1,
         },
       ],
     };
+  };
 
-    const options = {
-      scales: {
-        x: {
-          title: {
-            display: true,
-            text: '요일',
-          },
+  // 월간 차트 데이터 계산하는 함수
+  const getMonthlyChartData = (data) => {
+    // 월별 총 판매 실적을 계산
+    const monthlyTotal = data.reduce((acc, item) => {
+      const date = new Date(item.created_at);
+      const month = date.getMonth();
+      acc[month] = (acc[month] || 0) + item.total_price;
+      return acc;
+    }, []);
+
+    // 차트 데이터를 반환
+    return {
+      labels: [
+        '1월',
+        '2월',
+        '3월',
+        '4월',
+        '5월',
+        '6월',
+        '7월',
+        '8월',
+        '9월',
+        '10월',
+        '11월',
+        '12월',
+      ],
+      datasets: [
+        {
+          label: '월간 실적',
+          data: monthlyTotal,
+          backgroundColor: 'rgba(255, 99, 132, 0.2)',
+          borderColor: 'rgba(255, 99, 132, 1)',
+          borderWidth: 1,
         },
-        y: {
-          title: {
-            display: true,
-            text: '실적',
-          },
-        },
-      },
+      ],
     };
+  };
 
-    if (chartInstance.current) {
-      chartInstance.current.destroy();
-    }
-
-    chartInstance.current = new Chart(ctx, {
-      type: 'bar',
-      data: data,
-      options: options,
-    });
-    
-    return () => {
-      if (chartInstance.current) {
-        chartInstance.current.destroy();
-      }
-    };
-  }, []);
   return (
     <>
-      <div style={{ marginLeft: '240px', padding: '16px', display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
-        <div style={{ flex: '1 0 50%', marginBottom: '16px', textAlign: 'center' }}>
-          <h2>일주일간 실적</h2>
-          <canvas ref={chartRef} width="400" height="200" style={{ margin: 'auto' }}></canvas>
+      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '16px', margin: '0 -8px' }}>
+        <div style={{ flex: '1 0 48%', margin: '0 8px', textAlign: 'center', padding: '20px', border: '1px solid #ddd', borderRadius: '8px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' }}>
+          <h2 style={{ fontSize: '1.5rem', marginBottom: '10px' }}>{showDailySales ? '일주일간 실적' : '월간 실적'}</h2>
+          <canvas ref={chartRef} style={{ width: '300px', height: '200px', margin: 'auto', display: 'block' }}></canvas>
         </div>
-        <div style={{ flex: '1 0 50%', marginBottom: '16px', textAlign: 'center' }}>
-          <h2>하루 총 판매금액</h2>
-          <p>오늘의 총 판매금액: XXX원</p>
+        <div style={{ flex: '1 0 48%', margin: '0 8px', textAlign: 'center', padding: '20px', border: '1px solid #ddd', borderRadius: '8px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' }}>
+          <h2 style={{ fontSize: '1.5rem', marginBottom: '10px' }}>{showDailySales ? '하루 총 판매금액' : '월 총 판매금액'}</h2>
+          <AttachMoneyIcon style={{ fontSize: '3rem', color: '#4CAF50', marginBottom: '10px' }} />
+          <p style={{ fontSize: '1.2rem', color: '#4CAF50', fontWeight: 'bold' }}>
+            {showDailySales
+              ? `오늘의 총 판매금액: ${salesData.length > 0 ? salesData.reduce((acc, item) => acc + item.total_price, 0).toLocaleString() : 0}원`
+              : `이번 달의 총 판매금액: ${salesData.length > 0 ? salesData.reduce((acc, item) => acc + item.total_price, 0).toLocaleString() : 0}원`}
+          </p>
+          <button
+            onClick={() => setShowDailySales(!showDailySales)}
+            style={{
+              padding: '10px 15px',
+              fontSize: '16px',
+              backgroundColor: '#4CAF50',
+              color: '#fff',
+              border: 'none',
+              borderRadius: '5px',
+              cursor: 'pointer',
+              transition: 'background-color 0.3s',
+            }}
+          >
+            {showDailySales ? '월간 보기' : '일간 보기'}
+          </button>
         </div>
-        <div style={{ flex: '1 0 50%', marginBottom: '16px', textAlign: 'center' }}>
-          <h2>인기 버거 순위</h2>
+      </div>
+      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '16px' }}>
+        <div style={{ flex: '1 0 48%', textAlign: 'center', padding: '20px', border: '1px solid #ddd', borderRadius: '8px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' }}>
+          <h2 style={{ fontSize: '1.5rem', marginBottom: '10px' }}>인기 버거 순위</h2>
         </div>
-        <div style={{ flex: '1 0 50%', marginBottom: '16px', textAlign: 'center' }}>
-          <h2>관리자 목록</h2>
+        <div style={{ flex: '1 0 48%', textAlign: 'center', padding: '20px', border: '1px solid #ddd', borderRadius: '8px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' }}>
+          <h2 style={{ fontSize: '1.5rem', marginBottom: '10px' }}>관리자 목록</h2>
         </div>
       </div>
     </>

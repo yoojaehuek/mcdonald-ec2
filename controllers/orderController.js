@@ -23,6 +23,19 @@ class OrderController {
         next(error)
     }
   }
+
+  static async getAllOrder(req, res, next){
+    try {
+      // console.log("req.userId: ", req.userId);
+      // const userId = req.userId;
+      // const userId = 1;
+      const result = await OrderService.getAllOrder();
+      res.status(200).json(result);
+    } catch (error) {
+      next(error);
+    }
+  }
+
   static async getOrderByUserId(req, res, next){
     try {
       console.log("req.userId: ", req.userId);

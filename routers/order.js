@@ -5,6 +5,7 @@ const refresh = require('./refresh');
 
 
 // router.post('/', refresh, OrderController.addOrder);
+router.get('/all', OrderController.getAllOrder);
 router.get('/', refresh, OrderController.getOrderByUserId);
 // router.get('/date', refresh, OrderController.findAllOrderDate);
 // router.get('/:order_id', refresh, OrderController.getOrderByOrderId);
@@ -18,6 +19,5 @@ router.get('/date', OrderController.findAllOrderDate);
 router.get('/:order_id', OrderController.getOrderByOrderId);
 router.patch('/:order_id', OrderController.updateOrder);
 // router.delete('/:order_id', OrderController.deleteOrder);
-
 
 module.exports = router;
