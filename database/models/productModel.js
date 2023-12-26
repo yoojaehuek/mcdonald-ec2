@@ -22,7 +22,7 @@ class ProductModel {
       where: {
         sub_category_id: category_id,
       },
-      order: [ ['seq', 'ASC'] ],
+      order: [ ['id', 'ASC'] ],
       raw:true,
     });
     return result;

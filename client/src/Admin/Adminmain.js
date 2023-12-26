@@ -4,6 +4,7 @@ import AHeader from './Component/AHeader';
 import AMenu from './Component/AMenu';
 import AChart from './page/AChart/AChart';
 import AProduct from './page/AProduct/AProduct';
+import AProductDetail from './Component/ProductTable/ProductDetail';
 import AOption from './page/AOption/AOption';
 import AOrder from './page/AOrder/AOrder';
 import ASlider from './page/ASlider/ASlider';
@@ -32,6 +33,7 @@ const AdminMain = () => {
         <Routes>
           <Route path='/' element={<AChart />} />
           <Route path='/menu/:subcategory_id' element={<AProduct />} />
+          <Route path='/menu/:subcategory_id/edit' element={<AProductDetail />} />
           <Route path='/store/*' element={<AStore />} />
           <Route path='/store/edit' element={<StoreDetail />} />
           <Route path='/story/crew' element={<ACrew />} />
