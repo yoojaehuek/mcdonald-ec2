@@ -49,19 +49,29 @@ const StoreDetail = () => {
     if(item.yn_parking === true) parkingTrue.checked = true;
     else parkingFalse.checked = true;
     // -----------------------------------------------------------
-    fetchSliderData();
     setSelectedItem(item);
     setEditedId(item.id);
     setEditedStore(item.store_name);
     setEditedPhone(item.phone);
     setEditedAddress(item.address);
-  }, []);
+    setEditedSTime(item.start_time);
+    setEditedETime(item.end_time);
+
+    // 라디오 버튼 초기 상태 설정
+    setEditedTime(item.yn_24h);
+    setEditedMmorning(item.yn_mcmorning);
+    setEditedMdrive(item.yn_mcdrive);
+    setEditedMdelivery(item.yn_mcdelivery);
+    setEditedParking(item.yn_parking);
+
+    fetchSliderData();
+  }, [item]);
 
   const fetchSliderData = () => {
     axios.get(`${API_URL}/item`)
       .then(res => {
         console.log("dddddggg",res.data);
-        setAxiosResult(res.data);//업데이트 
+        // setAxiosResult(res.data);//업데이트 
       })
       .catch(err => {
         console.error(err);
@@ -102,7 +112,7 @@ const StoreDetail = () => {
           .then(() => {
             alert("수정되었습니다.");
             fetchSliderData(); // 데이터 갱신
-            // handleClose();
+            handleClose();
           })
           .catch(err => {
             console.error(err);
@@ -173,6 +183,18 @@ const StoreDetail = () => {
             value={editedAddress}
             onChange={(e) => setEditedAddress(e.target.value)}
           ></textarea>
+          <label className="box" htmlFor="start_time">시작 시간:</label>
+          <textarea
+            id="start_time"
+            value={editedSTime}
+            onChange={(e) => setEditedSTime(e.target.value)}
+          ></textarea>
+          <label className="box" htmlFor="end_time">종료 시간:</label>
+          <textarea
+            id="end_time"
+            value={editedETime}
+            onChange={(e) => setEditedETime(e.target.value)}
+          ></textarea>
           {/* <label className="box" htmlFor="yn_24h">24시간:</label>
           <div>
             <label className='radio'>
@@ -204,7 +226,8 @@ const StoreDetail = () => {
                 id="morning_true"
                 value="true"
                 name='morning'
-                onChange={() => setEditedMmorning(true)}
+                checked={editedMmorning === 1}
+                onChange={() => setEditedMmorning(1)}
               />
               True
             </label>
@@ -214,7 +237,8 @@ const StoreDetail = () => {
                 id="morning_false"
                 value="false"
                 name='morning'
-                onChange={() => setEditedMmorning(false)}
+                checked={editedMmorning === 0}
+                onChange={() => setEditedMmorning(0)}
               />
               False
             </label>
@@ -228,7 +252,8 @@ const StoreDetail = () => {
                 id="drive_true"
                 value="true"
                 name='drive'
-                onChange={() => setEditedMdrive(true)}
+                checked={editedMdrive === 1}
+                onChange={() => setEditedMdrive(1)}
               />
               True
             </label>
@@ -238,7 +263,8 @@ const StoreDetail = () => {
                 id="drive_false"
                 value="false"
                 name='drive'
-                onChange={() => setEditedMdrive(false)}
+                checked={editedMdrive === 0}
+                onChange={() => setEditedMdrive(0)}
               />
               False
             </label>
@@ -252,7 +278,8 @@ const StoreDetail = () => {
                 id="delivery_true"
                 value="true"
                 name='delivery'
-                onChange={() => setEditedMdelivery(true)}
+                checked={editedMdelivery === 1}
+                onChange={() => setEditedMdelivery(1)}
               />
               True
             </label>
@@ -262,7 +289,8 @@ const StoreDetail = () => {
                 id="delivery_false"
                 value="false"
                 name='delivery'
-                onChange={() => setEditedMdelivery(false)}
+                checked={editedMdelivery === 0}
+                onChange={() => setEditedMdelivery(0)}
               />
               False
             </label>
@@ -276,7 +304,8 @@ const StoreDetail = () => {
                 id="parking_true"
                 value="true"
                 name='park'
-                onChange={() => setEditedParking(true)}
+                checked={editedParking === 1}
+                onChange={() => setEditedParking(1)}
               />
               True
             </label>
@@ -286,7 +315,8 @@ const StoreDetail = () => {
                 id="parking_false"
                 value="false"
                 name='park'
-                onChange={() => setEditedParking(false)}
+                checked={editedParking === 0}
+                onChange={() => setEditedParking(0)}
               />
               False
             </label>
@@ -295,7 +325,7 @@ const StoreDetail = () => {
           
 
           <button className="button_detail" type="button" onClick={handleEdit}>저장</button>
-          <button className="button_detail" type="button" onClick={() => handleClose(item.id)}>취소</button>
+          <button className="button_detail" type="button" onClick={handleClose}>취소</button>
         </div>
       </form>
     </div>

@@ -54,10 +54,28 @@ const StoreTable = ({ data }) => {
                 </td>
               ))}
               <td>
-                <NavLink to={`edit`} state={item}>수정</NavLink>
+                <NavLink to={`edit`} state={item} 
+                style={{
+                  marginRight: "5px",
+                  padding: "5px 10px",
+                  backgroundColor: "rgb(255, 188, 13)",
+                  color: "white",
+                  border: "none",
+                  borderRadius: "5px",
+                  cursor: "pointer",
+                  }}>수정</NavLink>
               </td>
               <td>
-                <button>삭제</button>
+                <NavLink to={`delete`} state={item}
+                style={{
+                  padding: "5px 10px",
+                  backgroundColor: "rgb(244, 67, 54)",
+                  color: "white",
+                  border: "none",
+                  borderRadius: "5px",
+                  cursor: "pointer",
+                }}
+                >삭제</NavLink>
               </td>
             </tr>
           ))}
