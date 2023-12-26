@@ -9,6 +9,7 @@ import AOption from './page/AOption/AOption';
 import AOrder from './page/AOrder/AOrder';
 import ASlider from './page/ASlider/ASlider';
 import AStore from './page/AStore/AStore';
+import StoreAdd from './Component/StoreTable/StoreAdd';
 import ACrew from './page/story/ACrew';
 import AEffort from './page/story/AEffort';
 import AMaterial from './page/story/AMaterial';
@@ -36,6 +37,7 @@ const AdminMain = () => {
           <Route path='/menu/:subcategory_id/edit' element={<AProductDetail />} />
           <Route path='/store/*' element={<AStore />} />
           <Route path='/store/edit' element={<StoreDetail />} />
+          <Route path='/store/add' element={<StoreAdd />} />
           <Route path='/story/crew' element={<ACrew />} />
           <Route path='/story/faq' element={<AFaq />} />
           <Route path='/story/effort' element={<AEffort />} />
