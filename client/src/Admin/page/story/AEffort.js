@@ -173,6 +173,15 @@ const AEffort = () => {
         onClick={() => {
           setSelectedItem(null);
           setOpenModal(true);
+          setEditedData({
+            id: "",
+            admin_id: "",
+            title: "",
+            title_description: "",
+            img_url: "",
+            sub_title: "",
+            sub_title_description: "",
+          });
         }}
       >
         추가하기

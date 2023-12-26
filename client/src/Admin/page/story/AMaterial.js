@@ -235,6 +235,15 @@ const Material = () => {
         onClick={() => {
           setSelectedItem(null);
           setOpenModal(true);
+          setEditedData({
+            id: "",
+            admin_id: "",
+            title: "",
+            description: "",
+            additional_info: "",
+            img_url: "",
+            background_img_url: "",
+          });
         }}
       >
         추가하기
