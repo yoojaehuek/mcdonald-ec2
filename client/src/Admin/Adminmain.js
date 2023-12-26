@@ -44,7 +44,6 @@ const AdminMain = () => {
           <Route path='/slider/*' element={<ASlider />} />
           <Route path='/whats-new/*' element={<AWhatsNew />} />
           <Route path='/whats-new/13' element={<ANews />} />
-          <Route path='/option/asu' element={<Asu/>} />
         </Routes>
       </div>
     </div>
