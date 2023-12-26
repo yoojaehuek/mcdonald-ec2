@@ -42,17 +42,17 @@ class WhatsNew extends Sequelize.Model {
           allowNull: false,
           comment: "내용의 이미지 주소"
         },
-        // created_at: {
-        //   type: Sequelize.DATEONLY,
-        //   allowNull: false,
-        //   defaultValue: Sequelize.literal('CURRENT_DATE'),
-        //   comment: "글 생성일(YYYY-MM-DD)",
-        // }
         created_at: {
           type: Sequelize.DATEONLY,
           allowNull: false,
+          defaultValue: Sequelize.literal('CURRENT_DATE'),
           comment: "글 생성일(YYYY-MM-DD)",
         }
+        // created_at: {
+        //   type: Sequelize.DATEONLY,
+        //   allowNull: false,
+        //   comment: "글 생성일(YYYY-MM-DD)",
+        // }
       },
       {
         sequelize,
@@ -64,9 +64,9 @@ class WhatsNew extends Sequelize.Model {
         collate: 'utf8_general_ci',
       }
     )
-    WhatsNew.beforeCreate((whatsNew, options) => {
-      whatsNew.created_at = new Date().toISOString().split('T')[0];
-    });
+    // WhatsNew.beforeCreate((whatsNew, options) => {
+    //   whatsNew.created_at = new Date().toISOString().split('T')[0];
+    // });
   }
   // }
 
