@@ -1,7 +1,22 @@
-.AdminMain{
-  position: relative;
-  top: 100px;
-  // left: 240px;
 
-  // align-items: start;
+#Admin{
+  display: grid;
+  grid-template-areas:
+  "header header header"
+  "menu main main"
+  "menu main main"
+  "menu main main";
+  
+  #AdminMain{
+    grid-area: main;
+  }
+  
+  #AHeader{
+    grid-area: header;
+  }
+  
+  #AMenu{
+    grid-area: menu;
+  }
+  
 }

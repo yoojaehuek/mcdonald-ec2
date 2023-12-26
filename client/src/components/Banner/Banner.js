@@ -2,43 +2,47 @@ import React, { useEffect, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { API_URL } from '../../config/contansts';
-import "./VisualBackGround.scss"
+import "./Banner.scss"
 
-const VisualBackGround = () => {
+const Banner = () => {
   const { pathname } = useLocation();
   const [currentUrl, setCurrentUrl] = useState(null);
   const [axiosResult, setAxiosResult] = useState({});
   const [axiosResultPath, setAxiosResultPath] = useState([]);
 
   //props = {title: 맥도날드 프로모션, path: [{url: "/", name: "HOME"}, {url: "/promotion", name: "What's New"}, {url: "/promotion", name: "맥도날드 프로모션"}]}
-  // console.log("VisualBackGround/props: ", props);
+  // console.log("Banner/props: ", props);
 
   useEffect(() => {
     const splitUrl = pathname?.split('/') ?? null;
     console.log("splitUrl: ", splitUrl);
     const location = splitUrl?.length > 1 ? splitUrl[2] : null;
     setCurrentUrl(location);
-    console.log("VisualBackGround/location: ",location);
-    axios.get(`${API_URL}/visualbackground/${location}`)
+    console.log("Banner/location: ",location);
+    axios.get(`${API_URL}/banner/${location}`)
     .then(res => {
       console.log("VBG/res: ", res.data);
       setAxiosResult(res.data);
-      setAxiosResultPath(JSON.parse(res.data.h_link))
+      setAxiosResultPath(JSON.parse(res.data.link))
     }).catch(err => {
       console.log(err);
     })
   }, [ pathname ])
   
   
-  const visualBackGroundStyle = {
-    background: `url(${API_URL + axiosResult.h_background_img_url}) 50% 50% no-repeat`,
+  let bannerStyle = {}
+  if (axiosResult) {
+    bannerStyle = {
+      background: `url(${API_URL + axiosResult.background_img_url}) 50% 50% no-repeat`,
+    }
   }
   
   return(
-      <div className="visualBackGround" style={visualBackGroundStyle}>
-        <div className="visualBackGround_TextArea">
+    <>
+      {axiosResult && <div className="banner" style={bannerStyle}>
+        <div className="banner_TextArea">
           <h1>{axiosResult.title}</h1>
-          {axiosResult.h_content?<p>{axiosResult.h_content}</p>:<></>}
+          {axiosResult.content && <p>{axiosResult.content}</p>}
           <ul>
             {axiosResultPath.map((path, index) => 
               <li key={index}>
@@ -48,7 +52,9 @@ const VisualBackGround = () => {
           </ul>
         </div>
       </div>
+      }
+    </>
   )
 }
 
-export default VisualBackGround; 
+export default Banner; 

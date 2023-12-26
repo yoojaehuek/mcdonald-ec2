@@ -9,9 +9,18 @@ class StoreModel {
     return result;
   }
 
-  static async getAllStore(){
-    // console.log("storeId: ",storeId);
-    const result = await Store.findAll();
+  static async getAllStore(yn_qs, searchText){
+    const result = await Store.findAll({
+        where: {
+          ...yn_qs,
+          [Op.or]: [
+            { store_name: {[Op.like]: `%${searchText}%`}}, 
+            { address: {[Op.like]: `%${searchText}%`} },
+          ],
+        },
+        raw:true
+      });
+      console.log("result: ", result);
     return result;
   }
 

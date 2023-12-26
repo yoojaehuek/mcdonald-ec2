@@ -13,6 +13,7 @@ import {
   DialogActions,
   Button,
   TextField,
+  Input,
 } from "@mui/material";
 import axios from "axios";
 import { API_URL } from "../../../config/contansts";
@@ -21,7 +22,7 @@ const ACrew = () => {
   const [axiosResult, setAxiosResult] = useState([]);
   const [selectedItem, setSelectedItem] = useState(null);
   const [openModal, setOpenModal] = useState(false);
-  const [updatedData, setUpdatedData] = useState({
+  const [editedData, setEditedData] = useState({
     id: "",
     admin_id: "",
     store_id: "",
@@ -31,6 +32,7 @@ const ACrew = () => {
     position: "",
     description: "",
   });
+  const [selectedImage, setSelectedImage] = useState(null);
 
   useEffect(() => {
     axios
@@ -46,7 +48,7 @@ const ACrew = () => {
 
   const handleEditClick = (item) => {
     setSelectedItem(item);
-    setUpdatedData(item);
+    setEditedData(item);
     setOpenModal(true);
   };
 
@@ -54,51 +56,101 @@ const ACrew = () => {
     setOpenModal(false);
   };
 
+  const handleCreate = () => {
+    const { id, ...dataWithoutId } = editedData;
+    const formData = new FormData();
+    formData.append("image", selectedImage);
+
+    axios
+      .post(`${API_URL}/image`, formData)
+      .then((response) => {
+        const imageUrl = response.data.imageUrl;
+        const newData = { ...dataWithoutId, img_url: imageUrl };
+
+        axios.post(`${API_URL}/crew`, newData)
+          .then((response) => {
+            console.log("Create:", response.data);
+            setAxiosResult((prevResult) => [...prevResult, response.data]);
+            setOpenModal(false);
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      })
+      .catch((error) => {
+        console.error("Error image:", error);
+      });
+  };
+
   const handleUpdate = () => {
     if (selectedItem) {
-      axios
-        .patch(`${API_URL}/crew/${selectedItem.id}`, updatedData)
-        .then((response) => {
-          console.log("Update :", response.data);
-          setAxiosResult((prevResult) => {
-            const updatedResult = prevResult.map((item) => (item.id === selectedItem.id ? updatedData : item));
-            return updatedResult;
-          });
-          setOpenModal(false);
-        })
-        .catch((error) => {
-          console.error("error:", error);
-        });
-    }
-  };
-  
+      const formData = new FormData();
+      formData.append("image", selectedImage);
 
-  const handleDelete = (id) => {
-    const userConfirmed = window.confirm("정말 삭제하시겠습니까?");
-    if (userConfirmed) {
       axios
-        .delete(`${API_URL}/crew/${id}`)
+        .post(`${API_URL}/image`, formData)
         .then((response) => {
-          console.log("Delete:", response.data);
-          setAxiosResult((prevResult) => prevResult.filter((item) => item.id !== id));
+          const imageUrl = response.data.imageUrl;
+          const updatedData = { ...editedData, img_url: imageUrl };
+
+          axios.patch(`${API_URL}/crew/${selectedItem.id}`, updatedData)
+            .then((response) => {
+              console.log("Update:", response.data);
+              setAxiosResult((prevResult) => {
+                const updatedResult = prevResult.map((item) =>
+                  item.id === selectedItem.id ? updatedData : item
+                );
+                return updatedResult;
+              });
+              setOpenModal(false);
+            })
+            .catch((error) => {
+              console.error("error:", error);
+            });
         })
         .catch((error) => {
-          console.error("error:", error);
+          console.error("Error image:", error);
         });
     }
   };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setUpdatedData((prevData) => ({
+    setEditedData((prevData) => ({
       ...prevData,
       [name]: value,
     }));
   };
 
+  const handleImageChange = (e) => {
+    setSelectedImage(e.target.files[0]);
+  };
+
   return (
     <>
       <h1 style={{ marginLeft: "16vw", marginBottom: "1vw", marginTop: "1vw" }}>Crew</h1>
+      <Button
+        variant="contained"
+        color="primary"
+        style={{ marginLeft: "16vw", marginBottom: "1vw" }}
+        onClick={() => {
+          setSelectedItem(null);
+          setEditedData({
+            id: "",
+            admin_id: "",
+            store_id: "",
+            title: "",
+            name: "",
+            img_url: "",
+            position: "",
+            description: "",
+          });
+          setSelectedImage(null);
+          setOpenModal(true);
+        }}
+      >
+        추가하기
+      </Button>
       <TableContainer component={Paper} style={{ width: "80%", marginLeft: "16vw" }}>
         <Table>
           <TableHead>
@@ -141,15 +193,29 @@ const ACrew = () => {
                 <TableCell align="center">{item.title}</TableCell>
                 <TableCell align="center">{item.name}</TableCell>
                 <TableCell align="center">
-                  {item.img_url.startsWith("http") ? (
-                    <img src={item.img_url} alt="Crew" style={{ width: "100px", height: "100px" }} />
+                  {item.img_url && item.img_url.startsWith("http") ? (
+                    <img
+                      src={item.img_url}
+                      alt="Crew"
+                      style={{ width: "100px", height: "100px" }}
+                    />
                   ) : (
-                    <img src={API_URL + item.img_url} alt="Crew" style={{ width: "100px", height: "100px" }} />
+                    <img
+                      src={API_URL + item.img_url}
+                      alt="Crew"
+                      style={{ width: "100px", height: "100px" }}
+                    />
                   )}
                 </TableCell>
                 <TableCell align="center">{item.position}</TableCell>
                 <TableCell
-                  style={{ maxWidth: "200px", height: "100px", textOverflow: "ellipsis", overflow: "hidden", whiteSpace: "nowrap" }}
+                  style={{
+                    maxWidth: "200px",
+                    height: "100px",
+                    textOverflow: "ellipsis",
+                    overflow: "hidden",
+                    whiteSpace: "nowrap",
+                  }}
                   align="center"
                 >
                   {item.description}
@@ -170,7 +236,22 @@ const ACrew = () => {
                     수정
                   </button>
                   <button
-                    onClick={() => handleDelete(item.id)}
+                    onClick={() => {
+                      const userConfirmed = window.confirm("정말 삭제하시겠습니까?");
+                      if (userConfirmed) {
+                        axios
+                          .delete(`${API_URL}/crew/${item.id}`)
+                          .then((response) => {
+                            console.log("Delete:", response.data);
+                            setAxiosResult((prevResult) =>
+                              prevResult.filter((entry) => entry.id !== item.id)
+                            );
+                          })
+                          .catch((error) => {
+                            console.error("error:", error);
+                          });
+                      }
+                    }}
                     style={{
                       padding: "5px 10px",
                       backgroundColor: "#f44336",
@@ -189,13 +270,23 @@ const ACrew = () => {
         </Table>
       </TableContainer>
       <Dialog open={openModal} onClose={handleModalClose}>
-        <DialogTitle>수정</DialogTitle>
+        <DialogTitle>{selectedItem ? "수정" : "추가하기"}</DialogTitle>
         <DialogContent>
-          <TextField label="ID" name="id" value={updatedData.id} onChange={handleInputChange} fullWidth margin="normal" disabled />
+          {selectedItem && (
+            <TextField
+              label="ID"
+              name="id"
+              value={editedData.id}
+              onChange={handleInputChange}
+              fullWidth
+              margin="normal"
+              disabled
+            />
+          )}
           <TextField
             label="AdminID"
             name="admin_id"
-            value={updatedData.admin_id}
+            value={editedData.admin_id}
             onChange={handleInputChange}
             fullWidth
             margin="normal"
@@ -203,7 +294,7 @@ const ACrew = () => {
           <TextField
             label="StoreID"
             name="store_id"
-            value={updatedData.store_id}
+            value={editedData.store_id}
             onChange={handleInputChange}
             fullWidth
             margin="normal"
@@ -211,24 +302,29 @@ const ACrew = () => {
           <TextField
             label="타이틀"
             name="title"
-            value={updatedData.title}
+            value={editedData.title}
             onChange={handleInputChange}
             fullWidth
             margin="normal"
           />
-          <TextField label="이름" name="name" value={updatedData.name} onChange={handleInputChange} fullWidth margin="normal" />
           <TextField
-            label="이미지 URL"
-            name="img_url"
-            value={updatedData.img_url}
+            label="이름"
+            name="name"
+            value={editedData.name}
             onChange={handleInputChange}
             fullWidth
             margin="normal"
+          />
+          <Input
+            type="file"
+            onChange={handleImageChange}
+            accept="image/*"
+            style={{ marginTop: "1rem" }}
           />
           <TextField
             label="직무"
             name="position"
-            value={updatedData.position}
+            value={editedData.position}
             onChange={handleInputChange}
             fullWidth
             margin="normal"
@@ -236,7 +332,7 @@ const ACrew = () => {
           <TextField
             label="설명"
             name="description"
-            value={updatedData.description}
+            value={editedData.description}
             onChange={handleInputChange}
             fullWidth
             margin="normal"
@@ -246,14 +342,13 @@ const ACrew = () => {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleModalClose}>취소</Button>
-          <Button onClick={handleUpdate} color="primary">
-            수정
+          <Button onClick={selectedItem ? handleUpdate : handleCreate} color="primary">
+            {selectedItem ? "수정" : "등록"}
           </Button>
         </DialogActions>
       </Dialog>
     </>
   );
 };
-
 
 export default ACrew;

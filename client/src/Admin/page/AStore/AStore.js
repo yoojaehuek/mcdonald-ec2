@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 // import { useLocation } from 'react-router-dom';
-import { API_URL } from '../../config/contansts';
-import StoreTable from '../Component/StoreTable/StoreTable';
+import { API_URL } from '../../../config/contansts';
+import StoreTable from '../../Component/StoreTable/StoreTable';
 
 
 const AStore = () => {
-
   const [items, setItems] = useState([]);
 
   useEffect(() => {
