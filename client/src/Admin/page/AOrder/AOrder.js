@@ -30,7 +30,7 @@ const AOrder = () => {
     status: "",
     total_price: "",
     cancel_yn: "",
-    created_at: "",
+    format_date: "",
   });
 
   useEffect(() => {
@@ -56,9 +56,11 @@ const AOrder = () => {
   };
 
   const handleUpdate = () => {
+    console.log("Updated Data:", editedData);
     if (selectedItem) {
-      axios
-        .patch(`${API_URL}/order/${selectedItem.id}`, editedData)
+      const updatedData = { ...editedData, status: editedData.status, cancel_yn: editedData.cancel_yn };
+    axios
+      .patch(`${API_URL}/order/${selectedItem.id}`, updatedData)
         .then((response) => {
           console.log("Update:", response.data);
           setAxiosResult((prevResult) => {
