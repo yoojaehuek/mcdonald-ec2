@@ -1,11 +1,7 @@
 {
   "development": {
     "username": "root",
-<<<<<<< HEAD
     "password": "qwer1234",
-=======
-    "password": "1234",
->>>>>>> 2b86f683cad015381db5c63c1022d1344e95a98e
     "database": "mcdonaldDB",
     "host": "127.0.0.1",
     "dialect": "mysql",

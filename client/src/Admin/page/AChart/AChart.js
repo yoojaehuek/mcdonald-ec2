@@ -97,6 +97,7 @@ const AChart = () => {
   // 일간 차트 데이터 계산 함수
   const getDailyChartData = (data) => {
     const today = (todayIndex + 6) % 7;
+    console.log('today',today);
 
     // 요일별 총 판매 실적을 계산
     const dailyTotal = data.reduce((acc, item) => {
@@ -107,7 +108,7 @@ const AChart = () => {
     }, []);
 
     // 요일정렬
-    const reorderedDays = ['일', '월', '화', '수', '목', '금', '토'].slice(today).concat(['일', '월', '화', '수', '목', '금', '토'].slice(0, today));
+    const reorderedDays = ['토', '일', '월', '회', '수', '목', '금'].slice(today).concat(['토', '일', '월', '회', '수', '목', '금'].slice(0, today));
 
     // 차트 데이터를 반환
     return {
@@ -164,15 +165,15 @@ const AChart = () => {
 
   return (
     <>
-      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '16px', margin: '0 -8px' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '16px', margin: '0 -8px', height: '45vh', marginTop: '3vw', width: '60vw'}}>
         <div style={{ flex: '1 0 48%', margin: '0 8px', textAlign: 'center', padding: '20px', border: '1px solid #ddd', borderRadius: '8px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' }}>
           <h2 style={{ fontSize: '1.5rem', marginBottom: '10px' }}>{showDailySales ? '일주일간 실적' : '월간 실적'}</h2>
-          <canvas ref={chartRef} style={{ width: '300px', height: '200px', margin: 'auto', display: 'block' }}></canvas>
+          <canvas ref={chartRef} style={{ width: '500px', height: '200px', margin: 'auto', display: 'block' }}></canvas>
         </div>
         <div style={{ flex: '1 0 48%', margin: '0 8px', textAlign: 'center', padding: '20px', border: '1px solid #ddd', borderRadius: '8px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' }}>
           <h2 style={{ fontSize: '1.5rem', marginBottom: '10px' }}>{showDailySales ? '하루 총 판매금액' : '월 총 판매금액'}</h2>
-          <AttachMoneyIcon style={{ fontSize: '3rem', color: '#4CAF50', marginBottom: '10px' }} />
-          <p style={{ fontSize: '1.2rem', color: '#4CAF50', fontWeight: 'bold' }}>
+          <AttachMoneyIcon style={{ fontSize: '3rem', color: '#4CAF50', marginBottom: '10px', marginTop: '2vw' }} />
+          <p style={{ fontSize: '2rem', color: '#4CAF50', fontWeight: 'bold', marginTop: '1vw' }}>
             {showDailySales
               ? `오늘의 총 판매금액: ${salesData.length > 0 ? salesData.reduce((acc, item) => acc + item.total_price, 0).toLocaleString() : 0}원`
               : `이번 달의 총 판매금액: ${salesData.length > 0 ? salesData.reduce((acc, item) => acc + item.total_price, 0).toLocaleString() : 0}원`}
@@ -188,13 +189,14 @@ const AChart = () => {
               borderRadius: '5px',
               cursor: 'pointer',
               transition: 'background-color 0.3s',
+              marginTop: '3vw'
             }}
           >
             {showDailySales ? '월간 보기' : '일간 보기'}
           </button>
         </div>
       </div>
-      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '16px' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '16px', margin: '0 -8px', height: '45vh', marginTop: '3vw', width: '60vw'}}>
         <div style={{ flex: '1 0 48%', textAlign: 'center', padding: '20px', border: '1px solid #ddd', borderRadius: '8px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' }}>
           <h2 style={{ fontSize: '1.5rem', marginBottom: '10px' }}>인기 버거 순위</h2>
         </div>

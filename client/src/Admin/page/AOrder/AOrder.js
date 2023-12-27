@@ -95,7 +95,7 @@ const AOrder = () => {
               <TableCell align="center">상태</TableCell>
               <TableCell align="center">금액</TableCell>
               <TableCell align="center">유/무</TableCell>
-              <TableCell align="center">주문시간</TableCell>
+              <TableCell align="center">주문날짜</TableCell>
               <TableCell align="center">관리</TableCell>
             </TableRow>
           </TableHead>
@@ -108,7 +108,7 @@ const AOrder = () => {
                 <TableCell align="center">{item.status}</TableCell>
                 <TableCell align="center">{item.total_price.toLocaleString()}</TableCell>
                 <TableCell style={{ textAlign: 'center' }}>{item.cancel_yn === 1 ? 'true' : 'false'}</TableCell>
-                <TableCell align="center">{item.created_at}</TableCell>
+                <TableCell align="center">{item.format_date}</TableCell>
                 <TableCell align="center">
                   <Button style={{
                       marginRight: "5px",
@@ -146,7 +146,7 @@ const AOrder = () => {
           <TextField label="상태" name="status" value={editedData.status} onChange={handleInputChange} fullWidth margin="normal" />
           <TextField label="금액" name="total_price" value={editedData.total_price.toLocaleString()} onChange={handleInputChange} fullWidth margin="normal" disabled />
           <TextField label="유/무" name="cancel_yn" value={editedData.cancel_yn} onChange={handleInputChange} fullWidth margin="normal" />
-          <TextField label="주문시간" name="created_at" value={editedData.created_at} onChange={handleInputChange} fullWidth margin="normal" disabled/>
+          <TextField label="주문날짜" name="format_date" value={editedData.format_date} onChange={handleInputChange} fullWidth margin="normal" disabled/>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleModalClose}>취소</Button>
