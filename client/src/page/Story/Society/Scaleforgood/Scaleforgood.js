@@ -1,3 +1,9 @@
+/* 작성자 : 백승준
+ 최종수정 : 2023-12-27
+ 내용 : 사회적 책임과 지원 > 스케일 포 굿
+*/
+
+
 import styled from 'styled-components';
 import Tab from '../../../../components/Tab/Tab';
 import './Scaleforgood.scss'

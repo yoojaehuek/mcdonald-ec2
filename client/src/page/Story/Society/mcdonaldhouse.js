@@ -1,3 +1,9 @@
+/* 작성자 : 백승준
+ 최종수정 : 2023-12-27
+ 내용 : 사회적 책임과 지원 > 지역사회 공헌 > 재단법인 로날드맥도날드하우스
+*/
+
+
 import './mcdonaldhouse.scss'
 import { NavLink } from 'react-router-dom';
 

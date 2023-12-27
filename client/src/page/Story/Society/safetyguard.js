@@ -1,3 +1,9 @@
+/* 작성자 : 백승준
+ 최종수정 : 2023-12-27
+ 내용 : 사회적 책임과 지원 > 지역사회 공헌 > 맥도날드 안전지킴 캠페인
+*/
+
+
 import './safetyguard.scss'
 import { NavLink } from 'react-router-dom';
 
