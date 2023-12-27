@@ -173,10 +173,11 @@ class OrderModel {
   }
 
 
-  static async updateOrder({order_id, state}){
+  static async updateOrder({order_id, state, cancel}){
     console.log("update: ",state);
     const result = await Order.update({
       "status": state, 
+      "cancel_yn": cancel, 
     }, {
       where: {
         id: order_id

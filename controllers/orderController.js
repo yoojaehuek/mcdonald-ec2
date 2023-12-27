@@ -89,11 +89,11 @@ class OrderController {
   static async updateOrder(req, res, next){
 		try {
 			const order_id = req.params.order_id;
-			const { state } = req.query;
+			const { state, cancel } = req.query;
       console.log(state);
       // const toUpdate = {...props}
 
-			const result = await OrderService.updateOrder({order_id, state});
+			const result = await OrderService.updateOrder({order_id, state, cancel});
 			res.status(200).json(result);
 		} catch (error) {
 			next(error);
