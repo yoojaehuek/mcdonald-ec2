@@ -44,20 +44,20 @@ import AdminMain from './Admin/Adminmain.js';
 import Payment from './page/Payment/Payment.tsx';
 import Success from './page/Payment/Success.js';
 import Fail from './page/Payment/Fail.js';
+import ALogin from './Admin/page/ALogin/ALogin.js';
 
 function App() {
   const currentPath = window.location.pathname;
 
   return (
     <div className="App">
-      {!currentPath.includes('/adminmain') && <Header />}
-      {!currentPath.includes('/adminmain') &&  <Buttonmain />}
+      {!currentPath.includes('/admin') && <Header />}
+      {!currentPath.includes('/admin') &&  <Buttonmain />}
       <Routes>
         <Route path='/' element={<Main></Main>}></Route>
         <Route path='/login' element={<Login />} />
         <Route path='/join' element={<Join />} />
         <Route path='/mypage' element={<Mypage />}></Route>
-        <Route path='/adminmain/*' element={<AdminMain />}></Route>
         <Route path='/mcart' element={<Mcart/>}></Route>
         <Route path='/order' element={<Order />}></Route>
         <Route path='/story' element={<Storymain />}></Route>
@@ -68,6 +68,8 @@ function App() {
         <Route path='/success' element={<Success />}></Route>
         <Route path='/fail' element={<Fail />}></Route>
         <Route path='/payment/:order_id' element={<Payment />}></Route>
+        <Route path='/admin/login' element={<ALogin />} />
+        <Route path='/admin/*' element={<AdminMain />}></Route>
         <Route element={<Test/>}>
           <Route path='/story/society' element={<Society />} />
           <Route path='/story/mcdonaldhouse' element={<Mcdonaldhouse />}></Route>
@@ -95,7 +97,7 @@ function App() {
           <Route path='/store/mcdelivery' element={<McDelivery />}></Route>
         </Route>
       </Routes>
-      {!currentPath.includes('/adminmain') && <Footer />}
+      {!currentPath.includes('/admin') && <Footer />}
     </div>
   );
 }
