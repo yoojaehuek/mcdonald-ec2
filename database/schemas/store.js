@@ -36,7 +36,7 @@ class Store extends Sequelize.Model {
           comment: "판매 종료 시간",
         },
         latitude: {
-          type: Sequelize.FLOAT,
+          type: Sequelize.FLOAT(11),
           allowNull: false,
           comment: "위도 좌표"
         },
