@@ -1,5 +1,5 @@
-import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import AHeader from './Component/AHeader';
 import AMenu from './Component/AMenu';
 import AChart from './page/AChart/AChart';
@@ -22,9 +22,19 @@ import AFaq from './page/story/AFaq';
 import ALogin from './page/ALogin/ALogin.js';
 
 import './Adminmain.scss';
+import { getCookie } from '../cookie.js';
 
 const AdminMain = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
   
+  useEffect(() => {
+    console.log("location: ", location);
+    if(!getCookie('login')){
+      alert('다시 로그인 해주세요');
+      navigate('/admin/login');
+    }
+  }, [location]);
   return (
     // <div id='Admin' style={{ display: 'flex', flexDirection: 'column'}}>
     <div id='Admin' >
@@ -34,7 +44,7 @@ const AdminMain = () => {
         <Routes>
           
           <Route path='/' element={<AChart />} />
-          <Route path='/login' element={<ALogin />} />
+          {/* <Route path='/admin/login' element={<ALogin />} /> */}
           <Route path='/menu/:subcategory_id' element={<AProduct />} />
           <Route path='/menu/:subcategory_id/upload' element={<AProductUpload />} />
           <Route path='/menu/:subcategory_id/edit' element={<AProductDetail />} />
