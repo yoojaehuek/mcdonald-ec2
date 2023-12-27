@@ -73,15 +73,27 @@ class OrderController {
       next(error);
     }
   }
+  
+  static async rankMenu(req, res, next){
+    try {
+      const result = await OrderService.rankMenu();
+      if (result.errorMessage) {
+        throw new Error(result.errorMessage);
+      }
+      res.status(200).json(result);
+    } catch (error) {
+      next(error);
+    }
+  }
 
   static async updateOrder(req, res, next){
 		try {
 			const order_id = req.params.order_id;
-			const { state } = req.query;
+			const { state, cancel } = req.query;
       console.log(state);
       // const toUpdate = {...props}
 
-			const result = await OrderService.updateOrder({order_id, state});
+			const result = await OrderService.updateOrder({order_id, state, cancel});
 			res.status(200).json(result);
 		} catch (error) {
 			next(error);
