@@ -65,7 +65,6 @@ const StoreTable = ({ data, setData }) => {
               <th>삭제</th>
             </tr>
           </thead>
-
           <tbody>
             {currentItems.map((prod, rowIndex) => (
               <tr
@@ -76,10 +75,12 @@ const StoreTable = ({ data, setData }) => {
                 {columns.map((column, colIndex) => (
                   <>
                     {colIndex === 1 ? (
-                      <img
-                        src={API_URL + prod[column]}
-                        alt={`thumbnail-${prod.id}`}
-                      />
+                      <td>
+                        <img
+                          src={API_URL + prod[column]}
+                          alt={`thumbnail-${prod.id}`}
+                        />
+                      </td>
                     ) : (
                       <td key={colIndex}>{prod[column]}</td>
                     )}

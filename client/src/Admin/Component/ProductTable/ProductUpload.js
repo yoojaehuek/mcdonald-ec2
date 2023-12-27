@@ -90,13 +90,10 @@ const ProductUpload = () => {
             onChange={onChangeImage}
           >
             {imageUrl ? (
-              // <p>업로드된 이미지: {imageUrl}</p>
               <img src={API_URL+imageUrl} alt="" />
               ) : (
               <div id="upload-img-placeholder">
                 <h3>클릭하거나 드래그하여 이미지를 업로드하세요.</h3>
-                {/* <br /> */}
-                {/* <i className="fa-regular fa-file-image"></i> */}
               </div>
             )}
           </Upload>
@@ -141,6 +138,7 @@ const ProductUpload = () => {
               id="editDescription"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
+              placeholder="예) 09:30"
             />
           </li>
           <li>
@@ -150,6 +148,7 @@ const ProductUpload = () => {
               id="editOrigin"
               value={origin}
               onChange={(e) => setOrigin(e.target.value)}
+              placeholder="예) 22:00"
             />
           </li>
           <li>

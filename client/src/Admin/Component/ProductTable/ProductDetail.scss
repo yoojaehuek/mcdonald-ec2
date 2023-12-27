@@ -9,6 +9,17 @@
       margin-right: 20px;
       place-items: center;
       display: grid;
+      #upload-img-placeholder{
+        cursor: pointer;
+        text-align: center;
+        padding-bottom: 25px;
+        border-radius: 4px;
+        border: 1px solid #cccccc;
+        width: 400px;
+        height: 400px;
+        place-items: center;
+        display: grid;
+      }
     }
     ul{
       width: 700px;
