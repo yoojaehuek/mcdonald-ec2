@@ -1,12 +1,21 @@
+/* 작성자 : 백승준
+ 최종수정 : 2023-12-27
+ 내용 : 사회적 책임과 지원 > 지역사회 공헌 > 맥도날드 안전지킴 캠페인
+*/
+
+
 import './safetyguard.scss'
 import { NavLink } from 'react-router-dom';
 
+// http://localhost:3000/story/safetyguard
+
+// 하단 내용 id, image, 소제목, 설명 등록
 const guard = [
     {
         id: 1,
         image: "/images/Story/sg2.jpg",
         title: '서울지방경찰청과 안전 지킴 캠페인 업무협약',
-        desc: '맥도날드는 2016년 11월 15일 서울지방경찰청과 안전문화 확립 협약식을\n체결했습니다.\n맥도날드는 안전 지킴 캠페인 출범 이후 서울지방경찰청 및 서울 강남경찰서,\n부산 진경찰서 및 부산 산업안전공단과 함께 지역 라이더 대상 안전 교육을 실시해\n왔습니다.\n2016년 11월 15일에는 보다 전문적이고 체계적인 안전 교육을 위해 서울지방경찰청과\n안전문화 확립 협약식을 체결했습니다. 협약에 따라 맥도날드는 맥딜리버리,\n맥드라이브\n플랫폼의 안전성을 널리 알리고 서울지방경찰청과 연계한 라이더 교육, 안전 문화\n확산을 위한 다양한 활동을 전개해오고 있습니다.'
+        desc: '맥도날드는 2016년 11월 15일 서울지방경찰청과 안전문화 확립 협약식을\n체결했습니다.\n맥도날드는 안전 지킴 캠페인 출범 이후 서울지방경찰청 및 서울 강남경찰서,\n부산 진경찰서 및 부산 산업안전공단과 함께 지역 라이더 대상 안전 교육을 실시해\n왔습니다.\n2016년 11월 15일에는 보다 전문적이고 체계적인 안전 교육을 위해\n서울지방경찰청과 안전문화 확립 협약식을 체결했습니다. 협약에 따라 맥도날드는\n맥딜리버리,맥드라이브\n플랫폼의 안전성을 널리 알리고 서울지방경찰청과 연계한 라이더 교육, 안전 문화\n확산을 위한 다양한 활동을 전개해오고 있습니다.'
     },
     {
         id: 2,
@@ -21,6 +30,7 @@ const safetyguard = () => {
         <>
         <div className="sgcontainer">
             <div className="inner">
+                {/* 각 상세 페이지로 이동하기 위한 버튼 */}
             <ul className="inner_btn">
                     <li>
                         <NavLink to="/story/kidssoccer" role="button">
@@ -43,6 +53,7 @@ const safetyguard = () => {
                         </NavLink>
                     </li>
                 </ul>
+                {/* 상단 큰 이미지와 내용 */}
                 <div className="top">
                     <img src="/images/Story/sg1.jpg"></img>
                     <h2>
@@ -63,6 +74,7 @@ const safetyguard = () => {
                         안전한 교통 문화를 함께 만들어 나가기 위한 시민참여 활동을 펼쳤습니다.
                     </p>
                 </div>
+                {/* 하단 내용 불러오기 */}
                 <div className="guard">
                     {guard.map(View => (
                         <div key={View.id}>                        

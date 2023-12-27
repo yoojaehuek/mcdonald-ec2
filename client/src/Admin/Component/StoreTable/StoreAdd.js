@@ -87,6 +87,11 @@ const StoreAdd = () => {
       });
   };
 
+  const handleClose = () => {
+    // setIsModalOpen(false);
+    navigate(-1);
+  }
+
 
 
 
@@ -129,7 +134,7 @@ const StoreAdd = () => {
             onChange={handleInputChange} 
             disabled
           />
-          <button type="button" className="mcdel-button1" onClick={openPostCode}>주소찾기</button>
+          <button type="button" className="mcdel-button2" onClick={openPostCode}>주소찾기</button>
         </span>
         <label htmlFor="start_time">시작:</label>
         <input
@@ -138,6 +143,7 @@ const StoreAdd = () => {
           name="start_time"
           value={newStore.start_time}
           onChange={handleInputChange}
+          placeholder='00:00'
         />
         <label htmlFor="end_time">종료:</label>
         <input
@@ -146,6 +152,7 @@ const StoreAdd = () => {
           name="end_time"
           value={newStore.end_time}
           onChange={handleInputChange}
+          placeholder='24:00'
         />
         <label className="box" htmlFor="yn_mcmorning">맥모닝:</label>
         <div>
@@ -248,9 +255,8 @@ const StoreAdd = () => {
           </label>
         </div>
   
-        <button type="button" onClick={handleAdd}>
-          추가
-        </button>
+        <button className="jh_button" type="button" onClick={handleAdd}>추가</button>
+        <button className="jh_button" type="button" onClick={handleClose}>취소</button>
       </div>
 
       {/* 우편번호 창 팝업 생성 기준 div */}
