@@ -95,7 +95,10 @@ const ProductDetail = () => {
             onChange={onChangeImage}
           >
             {imageUrl ? (
-              <img src={API_URL + imageUrl} alt="" />
+              <div id="upload-img-placeholder">
+                <img src={API_URL + imageUrl} alt="" />
+                <span> 클릭하거나 드래그하여 이미지를 업로드하세요.</span>
+              </div>
             ) : (
               <div id="upload-img-placeholder">
                 <h3>클릭하거나 드래그하여 이미지를 업로드하세요.</h3>
