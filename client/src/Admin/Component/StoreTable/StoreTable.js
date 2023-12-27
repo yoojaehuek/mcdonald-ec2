@@ -58,8 +58,10 @@ const StoreTable = ({ data }) => {
 
   return (
     <div className='jh_main'>
-      {/* 추가 페이지로 이동하는 링크 */}
-      <NavLink to="add">매장 추가</NavLink>
+      <div className='navbtn'>
+        {/* 추가 페이지로 이동하는 링크 */}
+        <NavLink to="add" id='jh_button'>추가하기</NavLink>
+      </div>
 
       {/* 추가 페이지 라우트 */}
       {/* <StoreAdd /> */}
