@@ -1,14 +1,21 @@
 import React, { useState } from 'react';
 import { Drawer, List, ListItem, ListItemIcon, ListItemText, Collapse } from '@mui/material';
 import { ExpandLess, ExpandMore } from '@mui/icons-material';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import DraftsIcon from '@mui/icons-material/Drafts';
 import { NavLink } from 'react-router-dom';
+import BurgerIcon from '@mui/icons-material/Fastfood';
+import StoreIcon from '@mui/icons-material/Store';
+import NewsIcon from '@mui/icons-material/NewReleases';
+import StoryIcon from '@mui/icons-material/Book';
+import OrderIcon from '@mui/icons-material/ShoppingCart';
+import BannerIcon from '@mui/icons-material/Collections';
+import OptionIcon from '@mui/icons-material/Settings';
+import SliderIcon from '@mui/icons-material/Slideshow';
 
 const menuItems = [
   {
     title: 'Menu',
     value: 'menu',
+    icon: <BurgerIcon />,
     sub_title: [
       { sub_title: '버거', value: '1'},
       { sub_title: '맥런치', value: '2' },
@@ -22,6 +29,7 @@ const menuItems = [
   {
     title: 'Store',
     value: 'store',
+    icon: <StoreIcon />,
     sub_title: [
       { sub_title: '매장', value: 'list' },
     ],
@@ -29,6 +37,7 @@ const menuItems = [
   {
     title: 'What\'s New',
     value: 'whats-new',
+    icon: <NewsIcon />,
     sub_title: [
       { sub_title: '프로모션', value: '12' },
       { sub_title: '새로운소식', value: '13' },
@@ -38,6 +47,7 @@ const menuItems = [
   {
     title: 'Story',
     value: 'story',
+    icon: <StoryIcon />,
     sub_title: [
       { sub_title: '크루', value: 'crew' },
       { sub_title: '노력', value: 'effort' },
@@ -48,6 +58,7 @@ const menuItems = [
   {
     title: 'Order',
     value: 'order',
+    icon: <OrderIcon />,
     sub_title: [
       { sub_title: '주문관리', value: 'order' },
     ],
@@ -55,6 +66,7 @@ const menuItems = [
   {
     title: 'Banner',
     value: 'banner',
+    icon: <BannerIcon />,
     sub_title: [
       { sub_title: 'Banner 관리', value: 'banner' },
     ],
@@ -62,6 +74,7 @@ const menuItems = [
   {
     title: 'Option',
     value: 'option',
+    icon: <OptionIcon />,
     sub_title: [
       { sub_title: 'Option 관리', value: 'option' },
     ],
@@ -69,6 +82,7 @@ const menuItems = [
   {
     title: 'Slider',
     value: 'slider',
+    icon: <SliderIcon />,
     sub_title: [
       { sub_title: 'Slider 관리', value: 'slider' },
     ],
@@ -91,9 +105,18 @@ const AMenu = () => {
   const renderMenuItems = (items) => {
     return items.map((item, index) => (
       <div key={index}>
-        <ListItem button onClick={() => handleClick(index)} sx={{ pl: item.sub_title ? 0 : 4 }}>
-          <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <DraftsIcon />}</ListItemIcon>
-          <ListItemText primary={item.title} />
+        <ListItem
+          button
+          onClick={() => handleClick(index)}
+          sx={{
+            pl: item.sub_title ? 0 : 4,
+            '&:hover': {
+              backgroundColor: 'transparent',
+            },
+          }}
+        >
+          <ListItemIcon sx={{ color: '#FFD700'}}>{item.icon}</ListItemIcon>
+          <ListItemText primary={item.title} sx={{ color: '#000', fontFamily: 'Arial, sans-serif'}} />
           {item.sub_title && (openStates[index] ? <ExpandLess /> : <ExpandMore />)}
         </ListItem>
         {item.sub_title && (
@@ -103,14 +126,17 @@ const AMenu = () => {
                 <ListItem
                   button
                   key={subIndex}
-                  sx={{ pl: 4 }}
+                  sx={{
+                    pl: 4,
+                    '&:hover': {
+                      backgroundColor: 'transparent',
+                    },
+                  }}
                   onClick={(event) => handleSubtitleClick(event, index, subIndex)}
                 >
-                  <ListItemIcon>
-                    {subIndex % 2 === 0 ? <InboxIcon /> : <DraftsIcon />}
-                  </ListItemIcon>
+                  <ListItemIcon></ListItemIcon>
                   <NavLink to={`/admin/${item.value}/${subItem.value}`}>
-                    <ListItemText primary={subItem.sub_title} />
+                    <ListItemText primary={subItem.sub_title} sx={{ color: '#000', fontFamily: 'Arial, sans-serif'}} />
                   </NavLink>
                 </ListItem>
               ))}
@@ -126,13 +152,13 @@ const AMenu = () => {
       <Drawer
         variant="permanent"
         sx={{
-          width: 240,
+          width: 260,
           flexShrink: 0,
           '& .MuiDrawer-paper': {
-            width: 240,
+            width: 260,
             boxSizing: 'border-box',
             marginTop: 13,
-          
+            backgroundColor: 'transparent',
           },
         }}
       >
