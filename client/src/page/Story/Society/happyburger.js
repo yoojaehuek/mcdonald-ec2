@@ -1,6 +1,15 @@
+/* 작성자 : 백승준
+ 최종수정 : 2023-12-27
+ 내용 : 사회적 책임과 지원 > 지역사회 공헌 > 행복의 버거 캠페인
+*/
+
+
 import './happyburger.scss'
 import { NavLink } from 'react-router-dom';
 
+// http://localhost:3000/story/happyburger
+
+// 하단 내용 id, image, 소제목, 설명 등록
 const burger = [
     {
         id: 1,
@@ -27,6 +36,7 @@ const happyburger = () => {
         <>
         <div className="hbcontainer">
             <div className="inner">
+                {/* 각 상세 페이지로 이동하기 위한 버튼 */}
             <ul className="inner_btn">
                     <li>
                         <NavLink to="/story/kidssoccer" role="button">
@@ -49,6 +59,7 @@ const happyburger = () => {
                         </NavLink>
                     </li>
                 </ul>
+                {/* 상단 큰 이미지와 내용 */}
                 <div className="top">
                     <img src="/images/Story/hb1.jpg"></img>
                     <h2>
@@ -60,6 +71,7 @@ const happyburger = () => {
                         우리 주변 이웃들에게 햄버거를 전달하는 캠페인입니다.
                     </p>
                 </div>
+                {/* 하단 내용 불러오기 */}
                 <div className="burger">
                     {burger.map(View => (
                         <div key={View.id}>                        
