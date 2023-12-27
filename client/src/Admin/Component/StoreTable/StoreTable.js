@@ -57,7 +57,7 @@ const StoreTable = ({ data }) => {
   };
 
   return (
-    <div>
+    <div className='jh_main'>
       {/* 추가 페이지로 이동하는 링크 */}
       <NavLink to="add">매장 추가</NavLink>
 
