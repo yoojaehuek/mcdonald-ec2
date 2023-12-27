@@ -16,7 +16,7 @@ const AHeader = () => {
     // <div style={{ position: 'fixed', width: '100%', backgroundColor: '#fff', zIndex: '3' }}>
     <div id='AHeader'>
       <CssBaseline />
-      <AppBar position="static" sx={{ backgroundColor: '#ffffff', boxShadow: 'none' }}>
+      <AppBar position="static" sx={{ backgroundColor: '#ffffff', boxShadow: 'none', borderBottom: '1px solid rgb(255, 188, 13)' }}>
         <Toolbar>
           <IconButton
             size="large"

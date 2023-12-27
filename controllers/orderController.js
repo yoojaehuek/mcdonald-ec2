@@ -91,6 +91,7 @@ class OrderController {
 			const order_id = req.params.order_id;
 			const { state, cancel } = req.query;
       console.log(state);
+      console.log(cancel);
       // const toUpdate = {...props}
 
 			const result = await OrderService.updateOrder({order_id, state, cancel});

@@ -1,8 +1,8 @@
-const { Product, Store, Option } = require('../schemas');
+const { Product, Store, Option, sequelize } = require('../schemas');
 const Order = require('../schemas/order'); 
 const OrderMenu = require('../schemas/orderMenu'); 
 const OrderOption = require('../schemas/orderOption'); 
-const { Op } = require('sequelize');
+const { Op, QueryTypes } = require('sequelize');
 
 class OrderModel {
 
@@ -150,14 +150,25 @@ class OrderModel {
     return result;
   }
 
-  static async rankMenu(){
-    const result = await OrderMenu.count({
-      group: 'product_id',
-      limt: 5,
-      // where: {
-      //   orderMenu_id: orderMenuId,
-      // }
+  static async rankMenu() {
+    const query = `
+      SELECT
+        ordermenu.product_id,
+        prod.k_name,
+        prod.thumbnail_img_url,
+        COUNT(ordermenu.product_id) AS product_count
+      FROM
+        mcdonalddb.ordermenu
+      LEFT JOIN
+        mcdonalddb.product AS prod ON prod.id = ordermenu.product_id
+      GROUP BY
+        ordermenu.product_id
+      LIMIT 3;
+    `;
+    const result = await sequelize.query(query, {
+      type: QueryTypes.SELECT,
     });
+    console.log("result: ", result);
     return result;
   }
 
