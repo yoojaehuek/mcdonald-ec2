@@ -1,3 +1,11 @@
+/* Rental.js
+   Rental.css
+   박승균 제작
+
+*/
+
+
+
 import React from "react";
 import './Rental.scss';
 
