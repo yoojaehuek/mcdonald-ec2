@@ -111,8 +111,8 @@ class OrderService{
     return result;
   }
 
-	static async updateOrder({order_id, state}){
-		const result = await OrderModel.updateOrder({order_id, state});
+	static async updateOrder({order_id, state, cancel}){
+		const result = await OrderModel.updateOrder({order_id, state, cancel});
 		return result;
 	}
 
