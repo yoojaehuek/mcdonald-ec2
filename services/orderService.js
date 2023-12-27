@@ -1,5 +1,5 @@
 const OrderModel = require('../database/models/orderModel');
-// const PlannerModel = require('../database/models/plannerModel');
+
 
 class OrderService{
 
@@ -111,15 +111,7 @@ class OrderService{
     return result;
   }
 
-  static async rankMenu(){
-		const result = await OrderModel.rankMenu();
-		return result;
-	}
-  
 	static async updateOrder({order_id, state}){
-    if(state == 'success'){
-      state = '조리중';
-    }
 		const result = await OrderModel.updateOrder({order_id, state});
 		return result;
 	}
