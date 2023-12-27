@@ -39,6 +39,15 @@ class OrderService{
 
   static async getAllOrder(){
     const orderData = await OrderModel.getAllOrder();
+    
+    orderData.map((order, index) => {
+      const { created_at } = orderData[index];
+
+      // console.log(`${created_at.getFullYear()}-${created_at.getMonth()+1}-${created_at.getDate()}`);
+      orderData[index].created_at = new Date(created_at.setHours(created_at.getHours() + 9));
+      orderData[index].format_date = orderData[index].created_at.toISOString().split('T')[0];
+    })
+
     return orderData;
   }
 
@@ -102,6 +111,10 @@ class OrderService{
     return result;
   }
 
+  static async rankMenu(){
+		const result = await OrderModel.rankMenu();
+		return result;
+	}
   
 	static async updateOrder({order_id, state}){
     if(state == 'success'){
