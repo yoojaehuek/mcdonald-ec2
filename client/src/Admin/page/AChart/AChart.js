@@ -93,7 +93,7 @@ const AChart = () => {
     }, []);
 
     // 요일정렬
-    const reorderedDays = ['월', '화', '수', '목', '금', '토', '일'].slice(today).concat(['월', '화', '수', '목', '금', '토', '일'].slice(0, today));
+    const reorderedDays = ['일', '월', '화', '수', '목', '금', '토'].slice(today).concat(['일', '월', '화', '수', '목', '금', '토'].slice(0, today));
 
     // 차트 데이터를 반환
     return {

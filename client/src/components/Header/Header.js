@@ -98,7 +98,7 @@ const Header = () => {
             <>
               <NavLink to="/mypage" className="renter" >마이페이지</NavLink>
               <NavLink to="/" onClick={logout} className="renter2">로그아웃</NavLink>
-              <NavLink to="/story/recruit" className="renter3">인재채용</NavLink>
+              <NavLink to="/mcart" className="renter3">장바구니.</NavLink>
               <div className='topserch'>
                 <button className='serch'onClick={openModal}></button>
               </div>
@@ -107,7 +107,7 @@ const Header = () => {
             <>
               <NavLink to="/login" className="renter" >로그인</NavLink>
               <NavLink to="/join" className="renter2">회원가입</NavLink>
-              <NavLink to="/mcart" className="renter3">장바구니</NavLink>
+              <NavLink to="/story/recruit" className="renter3">인재채용</NavLink>
               <div className='topserch'>
                 <button className='serch'onClick={openModal}></button>
               </div>

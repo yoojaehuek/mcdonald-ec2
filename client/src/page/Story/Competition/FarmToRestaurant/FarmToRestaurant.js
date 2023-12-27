@@ -53,13 +53,15 @@ class FarmToRestaurant extends React.Component {
   };
 
   render() {
-    const videoId = 'vuQt25SUqYg';
+    const playlistId = 'PLXq7xeAxD7WBg6oApNVUs-rK3D2jK2be2';
 
     const opts = {
       height: '720',  
       width: '1280',
       playerVars: {
-        autoplay: 0,
+        autoplay: 1,
+        listType: 'playlist',
+        list: playlistId,
       },
     };
 
@@ -102,7 +104,7 @@ class FarmToRestaurant extends React.Component {
           }}
         >
           <div className="youtube-video">
-            <YouTube videoId={videoId} opts={opts} />
+            <YouTube videoId={playlistId} opts={opts} />
           </div>
           <div className="button-group">
             {/* {[1, 2, 3].map((buttonNumber) => (
