@@ -73,6 +73,18 @@ class OrderController {
       next(error);
     }
   }
+  
+  static async rankMenu(req, res, next){
+    try {
+      const result = await OrderService.rankMenu();
+      if (result.errorMessage) {
+        throw new Error(result.errorMessage);
+      }
+      res.status(200).json(result);
+    } catch (error) {
+      next(error);
+    }
+  }
 
   static async updateOrder(req, res, next){
 		try {

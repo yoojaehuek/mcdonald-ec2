@@ -150,6 +150,18 @@ class OrderModel {
     return result;
   }
 
+  static async rankMenu(){
+    const result = await OrderMenu.count({
+      group: 'product_id',
+      limt: 5,
+      // where: {
+      //   orderMenu_id: orderMenuId,
+      // }
+    });
+    return result;
+  }
+
+
   static async updateOrder({order_id, state}){
     console.log("update: ",state);
     const result = await Order.update({
