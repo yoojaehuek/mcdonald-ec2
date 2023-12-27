@@ -1,4 +1,9 @@
+/*
+박승균
+McDelivery.js html 틀제작, McDelivery.css 제작
 
+
+*/
 import React, { useState } from "react";
 /** 우편번호 창   */
 import PopupDom from '../../../components/AddressPopup/PopupDom';
@@ -51,8 +56,8 @@ const McDelivery = () => {
 
   const McDelivery_yn = () => {
     let content = (
-      <div class="mcdel-fieldset2">
-        <p role="text" class="mcdel-p1" id="mcdel-p1"></p>
+      <div className="mcdel-fieldset2">
+        <p role="text" className="mcdel-p1" id="mcdel-p1"></p>
         {temp.map(tmp =>
           <strong>{tmp.mcdelstrong}</strong>
         )}
@@ -61,9 +66,9 @@ const McDelivery = () => {
 
       if (mcDelivery_yn == true) {
       content = (
-        <div class="mcdel-fieldset3 ">
-          <p role="text" class="resultok" id="ok">
-            <p class="mcdel-p2"></p>
+        <div className="mcdel-fieldset3 ">
+          <p role="text" className="resultok" id="ok">
+            <p className="mcdel-p2"></p>
             <strong>맥딜리버리<br/>배달이<br/>가능합니다</strong>
             <br></br>
             <span>전화 또는 온라인으로<br/>주문할 수 있습니다.</span>
@@ -72,9 +77,9 @@ const McDelivery = () => {
       );
         } else if (mcDelivery_yn == false) {
       content = (
-        <div class="mcdel-fieldset4 ">
-          <p role="text" class="resultfail" id="fail">
-            <p class="mcdel-p3"></p>
+        <div className="mcdel-fieldset4 ">
+          <p role="text" className="resultfail" id="fail">
+            <p className="mcdel-p3"></p>
             <strong>맥딜리버리<br />배달이<br />불가능합니다</strong>
             <br></br>
             <span>빠른 시일 내에 고객님이 계신 곳에<br/>서비스가 가능하도록 노력하겠습니다.</span>
@@ -91,43 +96,43 @@ const McDelivery = () => {
 
   return (
   
-    <div class="mcdrive-main">
-      <div div class="mcdrive-mcd1" >
+    <div className="mcdrive-main">
+      <div div className="mcdrive-mcd1" >
         {temp.map(tmp =>
           <div id="mcdrive-text">
             <h2>{tmp.mcdh2}</h2>
           </div>
         )}
-        <div class="mcdel-main">
+        <div className="mcdel-main">
           <div>
-            <fieldset class="mcdel-fieldset1">
-              <div class="mcdel-top">
+            <fieldset className="mcdel-fieldset1">
+              <div className="mcdel-top">
                 <span >
-                  <input type="text" class="mcdel-input1" id="mcdel-input1" placeholder="주소를 선택해주세요." value={selectedAddress}></input>
-                  <button type="button" class="mcdel-button1" onClick={openPostCode}>주소찾기</button>
+                  <input type="text" className="mcdel-input1" id="mcdel-input1" placeholder="주소를 선택해주세요." value={selectedAddress}></input>
+                  <button type="button" className="mcdel-button1" onClick={openPostCode}>주소찾기</button>
                 </span>
               </div>
-              <div class="mcdel-maininput">
-                <input type="text" class="mcdel-input2" id="mcdel-input2" placeholder="상세주소를 입력하세요"></input>
-                  <input type="text" class="mcdel-input3" id="dong"></input>
+              <div className="mcdel-maininput">
+                <input type="text" className="mcdel-input2" id="mcdel-input2" placeholder="상세주소를 입력하세요"></input>
+                  <input type="text" className="mcdel-input3" id="dong"></input>
                   {temp.map(tmp =>
-                    <span class="mcdel-span1">{tmp.dong}</span>
+                    <span className="mcdel-span1">{tmp.dong}</span>
                   )}
-                  <input type="text" class="mcdel-input3" id="ho"></input>
+                  <input type="text" className="mcdel-input3" id="ho"></input>
                   {temp.map(tmp =>
-                    <span class="mcdel-span1">{tmp.ho}</span>
+                    <span className="mcdel-span1">{tmp.ho}</span>
                   )}
               </div>
               {temp.map(tmp =>
-                <p class="mcdel-p">{tmp.mcdelp}</p>
+                <p className="mcdel-p">{tmp.mcdelp}</p>
               )}
               <div>
-                <button type="button" class="mcdel-button1" onClick={handleSearch}>검색하기</button>
+                <button type="button" className="mcdel-button1" onClick={handleSearch}>검색하기</button>
               </div>
             </fieldset>
           </div>
-          {/* <div class="mcdel-fieldset2">
-            <p role="text" class="mcdel-p1" id="mcdel-p1"></p>
+          {/* <div className="mcdel-fieldset2">
+            <p role="text" className="mcdel-p1" id="mcdel-p1"></p>
             {temp.map(tmp =>
               <strong>{tmp.mcdelstrong}</strong>
             )}
@@ -135,7 +140,7 @@ const McDelivery = () => {
           <McDelivery_yn />
         </div>
         {temp.map(tmp =>
-          <div class="mcdel-middle">
+          <div className="mcdel-middle">
             <ul>
               <li>{tmp.mcdelli1}</li>
               <li>{tmp.mcdelli2}</li>
@@ -146,10 +151,10 @@ const McDelivery = () => {
             </ul>
           </div>
         )}
-        <div class="mcdel-bottom">
+        <div className="mcdel-bottom">
           <div>
             {temp.map(tmp =>
-              <a href="#" class="mcdel-a">{tmp.mcdela}</a>
+              <a href="#" className="mcdel-a">{tmp.mcdela}</a>
             )}
           </div>
           <div>

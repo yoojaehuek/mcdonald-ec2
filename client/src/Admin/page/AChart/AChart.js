@@ -28,7 +28,8 @@ const AChart = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(`${API_URL}/order/all`);
-        const data = await response.json();
+        console.log("response: ", response);
+      const data = await response.json();
         setSalesData(data);
 
         // 현재 요일을 계산하여 설정

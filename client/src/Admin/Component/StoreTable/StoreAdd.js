@@ -2,23 +2,67 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { API_URL } from '../../../config/contansts';
+import PopupDom from '../../../components/AddressPopup/PopupDom';
+import PopupPostCode from '../../../components/AddressPopup/PopupPostCode';
 import './StoreAdd.scss';
+
+const { kakao } = window;
 
 const StoreAdd = () => {
   const navigate = useNavigate();
-
+  const [selectedAddress, setSelectedAddress] = useState(null);// 우편번호
   const [newStore, setNewStore] = useState({
     store_name: '',
     phone: '',
     address: '',
     start_time: '',
     end_time: '',
-    yn_24h: false,
+    "latitude": '', //위도 좌표
+    "longitude": '', //경도좌표
     yn_mcmorning: false,
     yn_mcdrive: false,
     yn_mcdelivery: false,
     yn_parking: false,
   });
+  
+  var geocoder = new kakao.maps.services.Geocoder();
+
+  var callback = function(result, status) {
+      if (status === kakao.maps.services.Status.OK) {
+          console.log("좌표값: ", result[0].road_address);
+          const x = parseFloat(result[0].address.x);
+          const y = parseFloat(result[0].address.y);
+          // console.log(x);
+          setNewStore((prevStore) => ({
+            ...prevStore,
+            "longitude": x,
+            "latitude": y
+          }));
+      }
+      console.log("newStore: ", newStore);
+  };
+  
+  /** 우편번호 창  */
+	// 팝업창 상태 관리
+	const [isPopupOpen, setIsPopupOpen] = useState(false)
+	// 팝업창 열기
+	const openPostCode = () => { 
+    setIsPopupOpen(true);
+  }
+	// 팝업창 닫기
+	const closePostCode = () => {	setIsPopupOpen(false)	}
+	// 선택된 주소를 업데이트하는 콜백 함수
+	const handleSelectedAddress = (address) => { 
+    setSelectedAddress(address); 
+    setNewStore((prevStore) => ({
+      ...prevStore,
+      "address": address
+    }));
+    geocoder.addressSearch(address, callback);
+  };
+	/** 우편검색 결과가 인풋창에 업데이트 되지않아서 이함수로 업데이트 시켜줌 */
+	const handleAddressChange = (e) => { setSelectedAddress(e.target.value); };
+	/** 우편번호 창  */
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -29,6 +73,7 @@ const StoreAdd = () => {
   };
 
   const handleAdd = () => {
+    console.log(newStore);
     // 추가 로직 구현
     axios
       .post(`${API_URL}/store`, newStore)
@@ -41,6 +86,9 @@ const StoreAdd = () => {
         alert('매장 추가에 실패했습니다.');
       });
   };
+
+
+
 
   return (
     <div className='storeadd'>
@@ -64,13 +112,25 @@ const StoreAdd = () => {
           onChange={handleInputChange}
         />
         <label htmlFor="address">주소:</label>
-        <input
+        {/* <input
           type="text"
           id="address"
           name="address"
           value={newStore.address}
           onChange={handleInputChange}
-        />
+        /> */}
+        <span >
+          <input type="text" 
+            name="address" 
+            className="mcdel-input1" 
+            id="mcdel-input1" 
+            placeholder="주소를 선택해주세요." 
+            value={selectedAddress} 
+            onChange={handleInputChange} 
+            disabled
+          />
+          <button type="button" className="mcdel-button1" onClick={openPostCode}>주소찾기</button>
+        </span>
         <label htmlFor="start_time">시작:</label>
         <input
           type="text"
@@ -94,7 +154,7 @@ const StoreAdd = () => {
               type="radio"
               id="morning_true"
               value="true"
-              name='morning'
+              name='yn_mcmorning'
               // checked={editedMmorning === 1}
               onChange={handleInputChange}
             />
@@ -105,7 +165,7 @@ const StoreAdd = () => {
               type="radio"
               id="morning_false"
               value="false"
-              name='morning'
+              name='yn_mcmorning'
               // checked={editedMmorning === 0}
               onChange={handleInputChange}
             />
@@ -119,7 +179,7 @@ const StoreAdd = () => {
               type="radio"
               id="drive_true"
               value="true"
-              name='drive'
+              name='yn_mcdrive'
               // checked={editedMmorning === 1}
               onChange={handleInputChange}
             />
@@ -130,7 +190,7 @@ const StoreAdd = () => {
               type="radio"
               id="drive_false"
               value="false"
-              name='drive'
+              name='yn_mcdrive'
               // checked={editedMmorning === 0}
               onChange={handleInputChange}
             />
@@ -144,7 +204,7 @@ const StoreAdd = () => {
               type="radio"
               id="delivery_true"
               value="true"
-              name='delivery'
+              name='yn_mcdelivery'
               // checked={editedMmorning === 1}
               onChange={handleInputChange}
             />
@@ -155,7 +215,7 @@ const StoreAdd = () => {
               type="radio"
               id="delivery_false"
               value="false"
-              name='delivery'
+              name='yn_mcdelivery'
               // checked={editedMmorning === 0}
               onChange={handleInputChange}
             />
@@ -169,7 +229,7 @@ const StoreAdd = () => {
               type="radio"
               id="parking_true"
               value="true"
-              name='park'
+              name='yn_parking'
               // checked={editedMmorning === 1}
               onChange={handleInputChange}
             />
@@ -180,7 +240,7 @@ const StoreAdd = () => {
               type="radio"
               id="parking_false"
               value="false"
-              name='park'
+              name='yn_parking'
               // checked={editedMmorning === 0}
               onChange={handleInputChange}
             />
@@ -192,6 +252,17 @@ const StoreAdd = () => {
           추가
         </button>
       </div>
+
+      {/* 우편번호 창 팝업 생성 기준 div */}
+      <div id='popupDom'>
+        {isPopupOpen && (
+          <PopupDom>
+            {/* onSelectAddress prop을 전달 */}
+            <PopupPostCode onSelectAddress={handleSelectedAddress} onClose={closePostCode} />
+          </PopupDom>
+        )}
+      </div>
+
     </div>
   );
 };
