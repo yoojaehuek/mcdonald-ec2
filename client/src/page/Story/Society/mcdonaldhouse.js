@@ -1,33 +1,37 @@
 import './mcdonaldhouse.scss'
 import { NavLink } from 'react-router-dom';
 
+// http://localhost:3000/story/mcdonaldhouse
+
 const mcdonaldhouse = () => {
     return(
         <>
         <div className="mhcontainer">
             <div className="inner">
+                {/* 각 상세 페이지로 이동하기 위한 버튼 */}
             <ul className="inner_btn">
                     <li>
-                        <NavLink to="/kidssoccer" role="button">
+                        <NavLink to="/story/kidssoccer" role="button">
                             로날드 맥도날드 어린이 축구교실
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink to="/happyburger" role="button">
+                        <NavLink to="/story/happyburger" role="button">
                             행복의 버거 캠페인
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink to="/safetyguard" role="button">
+                        <NavLink to="/story/safetyguard" role="button">
                             맥도날드 안전지킴 캠페인
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink to="/mcdonaldhouse" role="button" className="on">
+                        <NavLink to="/story/mcdonaldhouse" role="button" className="on">
                             재단법인 로날드맥도날드하우스
                         </NavLink>
                     </li>
                 </ul>
+                {/* 큰 이미지와 내용 */}
                 <div className="top">
                     <img src="/images/Story/mh1.jpg"></img>
                     <h2>
@@ -47,6 +51,7 @@ const mcdonaldhouse = () => {
                     </p>
                 </div> 
                 <div className='bottom'>
+                    {/* 링크 없음 */}
                     <a className='btnrmhc'>
                         RMHC 바로가기    
                     </a>               

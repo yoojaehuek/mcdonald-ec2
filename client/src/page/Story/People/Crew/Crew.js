@@ -42,7 +42,7 @@ const Crew = () => {
         <div className="crew-list">
           {crewData.map((crew) => (
             <div key={crew.id} className="crew-item" onClick={() => openModal(crew)}>
-              <img className="crew-image" src={crew.img_url} alt={`이미지 - ${crew.name}`} />
+              <img className="crew-image" src={API_URL + crew.img_url} alt={`이미지 - ${crew.name}`} />
               <div className="crew-details">
                 <h2>{crew.title}</h2>
                 <p>{crew.name} {crew.position}</p>

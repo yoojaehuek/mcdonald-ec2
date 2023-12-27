@@ -3,7 +3,7 @@ import './FaqTable.scss';
 import { NavLink } from 'react-router-dom';
 // import Pagination from "react-js-pagination";
 
-const FTable = ({ data }) => {
+const FaqTable = ({ data }) => {
   const [inputVal, setInputVal] = useState(null);
   // const [selectedItem, setSelectedItem] = useState(null);
   // const [isModalOpen, setIsModalOpen] = useState(false);
@@ -13,7 +13,7 @@ const FTable = ({ data }) => {
   }
 
   // const columns = data.length > 0 ? Object.keys(data[0]) : [];
-  const columns = ['id', 'category', 'title']; // 원하는 열의 이름을 추가
+  const columns = ['id', 'category', 'table']; // 원하는 열의 이름을 추가
 
   const handleSave = (item) => {
     console.log(item);
@@ -34,7 +34,7 @@ const FTable = ({ data }) => {
 
   return (
     <div>
-      <table className='StoreTable'>
+      <table className='FaqTable'>
         <thead>
           <tr>
             {columns.map((column, index) => (
@@ -67,4 +67,4 @@ const FTable = ({ data }) => {
   );
 };
 
-export default FTable;
+export default FaqTable;

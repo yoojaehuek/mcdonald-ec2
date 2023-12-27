@@ -5,7 +5,7 @@ const path = require('path');
 const multer = require('multer');
 const cookieParser = require('cookie-parser');
 const { sequelize } = require('./database/schemas');//DB테이블
-const visualBackGroundRouter = require('./routers/visualBackGround')
+const bannerRouter = require('./routers/banner')
 const port = 8003;
 require('dotenv').config();
 const errorMiddleware = require('./utils/errorMiddleware');
@@ -20,6 +20,7 @@ const storeRouter = require('./routers/store');
 const whatsNewRouter = require('./routers/whatsNew');
 const orderRouter = require('./routers/order');
 const optionRouter = require('./routers/option');
+const adminRouter = require('./routers/admin');
 
 
 //시퀄라이즈 연결 부분
@@ -76,13 +77,14 @@ app.use('/crew', CrewRouter);
 app.use('/faq', FaqRouter);
 app.use('/material', MaterialRouter);
 app.use('/effort', EffortRouter);
-app.use("/visualbackground", visualBackGroundRouter);
+app.use("/banner", bannerRouter);
 app.use('/product', productRouter);
 app.use('/slider', sliderRouter);
 app.use('/store', storeRouter);
 app.use('/whats-new', whatsNewRouter);
 app.use('/order', orderRouter);
 app.use('/option', optionRouter);
+app.use('/admin', adminRouter);
 app.get('/logout', (req, res) => {
   console.log("logout");
   res.cookie('accessToken',{},{

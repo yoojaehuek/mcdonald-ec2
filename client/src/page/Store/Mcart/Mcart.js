@@ -10,7 +10,9 @@ const Mcart = () => {
   const [store, setStore] = useState([]);/** 매장 목록 */
   const [isPopupOpen, setPopupOpen] = useState(false); // 팝업창
   const [selectedStore, setSelectedStore] = useState(null); // 팝업창에서 선택한 매장
+  const [prodQuantities, setProdQuantities] = useState([]);
   const navigate = useNavigate();
+  
   /** 주문하기 */
   const handleOrder = () => {
     if(selectedStore == null ) { 
@@ -24,39 +26,40 @@ const Mcart = () => {
     orderObject.store_id  = selectedStore.id;
     orderObject.menu_items = cart;
     orderObject.total_price = totalProdPrice;
-    console.log("orderObject: ",orderObject);
-    axios.post( `${API_URL}/order`, orderObject )
-    .then(res => {
-      console.log("주문성공: ",res.data);
-      alert("주문성공했습니다!!")
-      navigate('/')
-    }).catch(err => {
-      console.error(err);
-    })
+    navigate(`/payment`, { state: orderObject });
   }
+
   useEffect(() => {
     const storedCart = JSON.parse(sessionStorage.getItem("cart"));
     if (storedCart && storedCart.length > 0) setCart(storedCart);
+
+  }, []);
+
+  
+  useEffect(() => {
+
     /** 로그인중인 사용자 정보 불러오기 */
-    axios
-    .get(`${API_URL}/user/one`)
+    axios.get(`${API_URL}/user/one`)
       .then((res) => {
-        console.log("로그인한 사용자정보",res.data);
         setUser(res.data);
       })
       .catch((err) => {
           console.error(err);
-        });
+      });
+  }, []);
+  useEffect(() => {
     /** 매장 전부 불러오기 */
-    axios
-      .get(`${API_URL}/store`)
+    axios.get(`${API_URL}/store`)
       .then((res) => {
         setStore(res.data);
       })
       .catch((err) => {
           console.error(err);
       });
-    }, []);
+
+  },[]);
+
+
   useEffect(() => {
     if (cart.length > 0) {
       setProdQuantities( //상품각각에 넣기
@@ -70,74 +73,68 @@ const Mcart = () => {
           options: prod.options,
           totalOptionPrice: prod.totalOptionPrice,
         }))
-        );
-      }
-  }, [cart]);
-    
-  /** 각 옵션의 수량을 관리할 상태 배열 (순서 보기) */
-  const [prodQuantities, setProdQuantities] = useState([]);
-  useEffect(() => {
-    if (cart.length > 0) {
-      setProdQuantities(
-        cart.map((prod) => ({
-          id: prod.id,
-          name: prod.name,
-          price: prod.price,
-          quantity: prod.quantity,
-        }))
       );
     }
   }, [cart]);
+  
   /**  각 메뉴 개수 증감 */
   const prodDecrease = (index) => {
     const updatedQuantities = [...prodQuantities];
     if (updatedQuantities[index].quantity > 0) {
       updatedQuantities[index].quantity -= 1;
       setProdQuantities(updatedQuantities);
+      updateSessionStorage(updatedQuantities);// 세션
     }
+    const storedCart = JSON.parse(sessionStorage.getItem("cart"));
+    if (storedCart && storedCart.length > 0) setCart(storedCart);
   };
   const prodIncrease = (index) => {
     const updatedQuantities = [...prodQuantities];
-    updatedQuantities[index].quantity += 1;
-    setProdQuantities(updatedQuantities);
+    if (updatedQuantities[index]) {
+      updatedQuantities[index].quantity += 1;
+      setProdQuantities(updatedQuantities);
+      updateSessionStorage(updatedQuantities); // 세션
+    }
+    const storedCart = JSON.parse(sessionStorage.getItem("cart"));
+    if (storedCart && storedCart.length > 0) setCart(storedCart);
+  };
+  const updateSessionStorage = (updatedQuantities) => {
+    // 세션 스토리지에 현재 cart 상태를 업데이트
+    const updatedCart = cart.map((item, index) => ({
+      ...item,
+      quantity: updatedQuantities[index].quantity,
+    }));
+    sessionStorage.setItem("cart", JSON.stringify(updatedCart));
   };
   /**  각 메뉴의 가격 * 수량 값을 더한 총 가격
-  total 은 누적값 초기값0, prod 현재 순회중인 cart 배열의 요소, index 순회중인 요소의 인덱스
-  reduce는 cart 배열의 요소들을 순회하면서 콜백함수를 호출 최종적으로 옵션들의 총값을 추출
   cart 배열이 null 이거나 undefined 인 상태에서 reduce를 호출하려 하면 실행 안됨 */
   const totalProdPrice = cart ? 
   cart.reduce((total, prod, index) => {
       return (
-        total +
-        prod.totalOptionPrice +
+        total + prod.totalOptionPrice +
         prod.price * ((prodQuantities[index] && prodQuantities[index].quantity) || 0)
       );
     }, 0)
   : 0;
-  // 팝업 열기 함수
-  const openPopup = () => {
-    setPopupOpen(true);
-  };
-  // 팝업 닫기 함수
-  const closePopup = () => {
-    setPopupOpen(false);
-  };
-  // 매장 선택 함수
-  const handleStoreSelection = (selectedStore) => {
-    setSelectedStore(selectedStore);
-    closePopup(); // 팝업 닫기
-  };
-  const deleteMenu = (index) => {
+
+  // 장바구니에서 메뉴 항목을 제거하는 함수
+  const removeItemFromCart = (index) => {
     const updatedCart = [...cart];
-    updatedCart.splice(index, 1); // 선택한 인덱스의 메뉴를 삭제
-
-    // 업데이트된 카트를 세션 스토리지에 저장
-    sessionStorage.setItem("cart", JSON.stringify(updatedCart));
-
-    // 화면에서 삭제한 메뉴를 갱신
+    updatedCart.splice(index, 1);
     setCart(updatedCart);
+
+    const updatedQuantities = [...prodQuantities];
+    updatedQuantities.splice(index, 1);
+    setProdQuantities(updatedQuantities);
+
+    sessionStorage.setItem("cart", JSON.stringify(updatedCart));
   };
 
+  /** 팝업 열기,닫기 함수 */
+  const openPopup = () => { setPopupOpen(true); };
+  const closePopup = () => { setPopupOpen(false); };
+  /**  매장 선택 함수 */
+  const handleStoreSelection = (selectedStore) => { setSelectedStore(selectedStore); closePopup(); };
 
   return (
     <div className="Mcart-top">
@@ -161,8 +158,11 @@ const Mcart = () => {
             <li className="Mcart-li2">
               <div>{selectedStore ? selectedStore.store_name : '매장 선택'}</div>
               <div>
-              <button onClick={openPopup}>주소변경</button>
+              <button onClick={openPopup}>매장선택</button>
                 {isPopupOpen && (
+                <p>
+                  <div id='bg'></div>
+                  
                   <div className="store-popup">
                     <h3>매장 선택</h3>
                     <ul>
@@ -175,6 +175,7 @@ const Mcart = () => {
                       ))}
                     </ul>
                   </div>
+                </p>
                 )}
               </div>
             </li>
@@ -194,8 +195,8 @@ const Mcart = () => {
         </div>
         {cart && cart.length > 0 ? (
           cart.map((prod, index) => (
-            <li key={index} class="Mcart-li4">
-              <button class="Mcart-btn2" style={{ backgroundImage: 'url(/images/Mcart/icon_x_g.png)'}} onClick={() => deleteMenu(index)}></button>
+            <li key={index} className="Mcart-li4">
+              <button className="Mcart-btn2" style={{ backgroundImage: 'url(/images/Mcart/icon_x_g.png)'}} onClick={() => removeItemFromCart(index)} ></button>
               {/* 삭제버튼 */}
               <div className="Mcart-middle1">
                 <div>

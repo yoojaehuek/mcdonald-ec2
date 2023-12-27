@@ -3,6 +3,9 @@ import styled from 'styled-components';
 import { API_URL } from '../../config/contansts';
 import './Tab.scss';
 
+// http://localhost:3000/story/scaleforgood 페이지의 하단 탭 내용
+
+// Tab 스타일 설정
 const TabMenu = styled.ul`
   color: #808080;
   font-weight: bold;
@@ -37,7 +40,7 @@ const TabMenu = styled.ul`
     text-align: center;
   }
 `;
-
+// Tab 내용 작은글씨 가운데정렬
 const Desc = styled.div`
   text-align: center;
 `;
@@ -45,6 +48,7 @@ const Desc = styled.div`
 export const Tab = () => {
   const [currentTab, clickTab] = useState(0);
 
+  // Tab에 들어갈 Tab 제목, 각 Tab별 내용에 대한 image와 설명 및 Tab 하단의 내용 등록
   const menuArr= [
     { name: '온실가스 감축', content: [{img_url: '/images/Story/bg_globalmc.png', img_desc: '전국 레스토랑에\n친환경 고효율 LED 조명 설치'},{img_url: '/images/Story/bg_globalmc.png', img_desc: '태양광 발전 레스토랑 시범 운영\n(부산 및 제주 지역 5개 레스토랑)'},{img_url: '/images/Story/bg_globalmc.png', img_desc: '맥딜리버리에 친환경 전기바이크 사용\n(일부 지역 운영 중)'}, {img_url: '/images/Story/bg_globalmc.png', img_desc: '폐식용유를 친환경\n바이오디젤 원료로 재활용'}], content_desc: '전 세계 레스토랑 및 사무실, 원재료 공급 및 유통 과정에서 발생하는 온실가스 배출량을 줄이겠습니다.'},
     { name: '지속가능한 공급', content: [{img_url: '/images/Story/bg_globalmc.png', img_desc: '세계보건기구(WHO)가 규정한\n유해 항생제를 사용하지 않은\n건강한 닭고기만을 사용'},{img_url: '/images/Story/bg_globalmc.png', img_desc: '맥카페 커피 원두는\n열대우림동맹 인증 받은\n친환경 원두로 100% 교체'},{img_url: '/images/Story/bg_globalmc.png', img_desc: '2025년까지 공급 받는 계란을\n동물복지란으로 교체 예정'}], content_desc: '농장에서 레스토랑에 이르기까지 지속 가능한 원재료 도입을 위해 힘쓰겠습니다.'},
@@ -60,15 +64,17 @@ export const Tab = () => {
   return(
     <>
     <div className="tabcontainer">
+      {/* Tab 대제목 */}
       <h2 id='bigone'>글로벌 맥도날드 과제</h2>
       <div className="Tabinput">
+        {/* Tab 소제목 focused를 이용해 현재 선택되어있는 Tab이 어느 Tab인지 구분 */}
         <TabMenu>
           {menuArr.map((el, index) => (
             <li key={index} className={index === currentTab ? `submenu ${index} focused` : "submenu "+index }
             onClick={() => selectMenuHandler(index)}>{el.name}</li>
           ))}
         </TabMenu>          
-        {/* <Desc>           */}
+        {/* 각 Tab의 image 및 내용 */}
         <ul>
         {menuArr[currentTab].content.map((item, index) => (            
               <li key={index} className='maincont'>
@@ -78,8 +84,8 @@ export const Tab = () => {
               </li>            
           ))}                   
           </ul>
-            <p className='btdesc'>{menuArr[currentTab].content_desc}</p>               
-        {/* </Desc> */}
+          {/* Tab 하단 내용 */}
+          <p className='btdesc'>{menuArr[currentTab].content_desc}</p>               
       </div>
     </div>
     </>

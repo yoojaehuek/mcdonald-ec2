@@ -41,55 +41,63 @@ import Mypage from "./page/Mypage/Myinfo";
 import Order from "./page/Mypage/Order";
 import Event from './page/Store/Main/Event/Event'
 import AdminMain from './Admin/Adminmain.js';
+import Payment from './page/Payment/Payment.tsx';
+import Success from './page/Payment/Success.js';
+import Fail from './page/Payment/Fail.js';
+import ALogin from './Admin/page/ALogin/ALogin.js';
 
 function App() {
   const currentPath = window.location.pathname;
 
   return (
     <div className="App">
-      {!currentPath.includes('/adminmain') && <Header />}
-      {!currentPath.includes('/adminmain') &&  <Buttonmain />}
+      {!currentPath.includes('/admin') && <Header />}
+      {!currentPath.includes('/admin') &&  <Buttonmain />}
       <Routes>
         <Route path='/' element={<Main></Main>}></Route>
         <Route path='/login' element={<Login />} />
         <Route path='/join' element={<Join />} />
         <Route path='/mypage' element={<Mypage />}></Route>
-        {/* <Route element={<Test/>}> */}
-        <Route path='/story/society' element={<Society />} />
-        <Route path='/menu/:subcategory_id' element={<Menu />} />
-        <Route path='/menu/:subcategory_id/:id' element={<DetailProduct />} />
-        <Route path='/story/crew' element={<Crew />}></Route>
-        <Route path='/story/work' element={<Work />}></Route>
-        <Route path='/story/recruit' element={<Recruit />}></Route>
-        <Route path='/story/faq' element={<Faq />}></Route>
-        <Route path='/story/farmtorestaurant' element={<FarmToRestaurant />}></Route>
-        {/* <Route path='/whats-new/happymeal' element={<HappyMeal />}></Route> */}
-        <Route path='/story/brandintro' element={<BrandIntro />}></Route>
-        <Route path='/story/brandhistory' element={<BrandHistory />}></Route>
-        <Route path='/store/find' element={<Find />}></Route>
-        <Route path='/store/event' element={<Event />}></Route>
-        <Route path='/whats-new/13' element={<News />}></Route>
-        <Route path='/whats-new/:subcategory_id' element={<Promotion_HappyMeal />}></Route>
-        <Route path='/whats-new/:page/:prodNum' element={<DetailPage />}></Route>
-        <Route path='/slider' element={<Slider />}></Route>
-        <Route path='/scaleforgood' element={<Scaleforgood />} />
-        <Route path='/kidssoccer' element={<Kidssoccer />} />
-        <Route path='/store/mcdrive' element={<McDrive />}></Route>
-        <Route path='/store/rental' element={<Rental />}></Route>
-        <Route path='/store/mcdelivery' element={<McDelivery />}></Route>
+        <Route path='/mcart' element={<Mcart/>}></Route>
+        <Route path='/order' element={<Order />}></Route>
         <Route path='/story' element={<Storymain />}></Route>
         <Route path='/private' element={<Private />}></Route>
         <Route path='/location' element={<Location />}></Route>
-        <Route path='/order' element={<Order />}></Route>
-        <Route path='/happyburger' element={<Happyburger />}></Route>
-        <Route path='/safetyguard' element={<Safetyguard />}></Route>
-        <Route path='/mcdonaldhouse' element={<Mcdonaldhouse />}></Route>
-        <Route path='/mcart' element={<Mcart/>}></Route>
-      
-        <Route path='/adminmain/*' element={<AdminMain />}></Route>
-        {/* </Route> */}
+        <Route path='/slider' element={<Slider />}></Route>
+        <Route path='/payment' element={<Payment />}></Route>
+        <Route path='/success' element={<Success />}></Route>
+        <Route path='/fail' element={<Fail />}></Route>
+        <Route path='/payment/:order_id' element={<Payment />}></Route>
+        <Route path='/admin/login' element={<ALogin />} />
+        <Route path='/admin/*' element={<AdminMain />}></Route>
+        <Route element={<Test/>}>
+          <Route path='/story/society' element={<Society />} />
+          <Route path='/story/mcdonaldhouse' element={<Mcdonaldhouse />}></Route>
+          <Route path='/story/happyburger' element={<Happyburger />}></Route>
+          <Route path='/story/safetyguard' element={<Safetyguard />}></Route>
+          <Route path='/menu/:subcategory_id' element={<Menu />} />
+          <Route path='/menu/:subcategory_id/:id' element={<DetailProduct />} />
+          <Route path='/story/crew' element={<Crew />}></Route>
+          <Route path='/story/work' element={<Work />}></Route>
+          <Route path='/story/recruit' element={<Recruit />}></Route>
+          <Route path='/story/faq' element={<Faq />}></Route>
+          <Route path='/story/farmtorestaurant' element={<FarmToRestaurant />}></Route>
+          {/* <Route path='/whats-new/happymeal' element={<HappyMeal />}></Route> */}
+          <Route path='/story/brandintro' element={<BrandIntro />}></Route>
+          <Route path='/story/brandhistory' element={<BrandHistory />}></Route>
+          <Route path='/story/scaleforgood' element={<Scaleforgood />} />
+          <Route path='/story/kidssoccer' element={<Kidssoccer />} /> 
+          <Route path='/store/find' element={<Find />}></Route>
+          <Route path='/store/event' element={<Event />}></Route>
+          <Route path='/whats-new/13' element={<News />}></Route>
+          <Route path='/whats-new/:subcategory_id' element={<Promotion_HappyMeal />}></Route>
+          <Route path='/whats-new/:page/:prodNum' element={<DetailPage />}></Route>
+          <Route path='/store/mcdrive' element={<McDrive />}></Route>
+          <Route path='/store/rental' element={<Rental />}></Route>
+          <Route path='/store/mcdelivery' element={<McDelivery />}></Route>
+        </Route>
       </Routes>
-      {!currentPath.includes('/adminmain') && <Footer />}
+      {!currentPath.includes('/admin') && <Footer />}
     </div>
   );
 }

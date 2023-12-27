@@ -1,6 +1,9 @@
 import './happyburger.scss'
 import { NavLink } from 'react-router-dom';
 
+// http://localhost:3000/story/happyburger
+
+// 하단 내용 id, image, 소제목, 설명 등록
 const burger = [
     {
         id: 1,
@@ -27,28 +30,30 @@ const happyburger = () => {
         <>
         <div className="hbcontainer">
             <div className="inner">
+                {/* 각 상세 페이지로 이동하기 위한 버튼 */}
             <ul className="inner_btn">
                     <li>
-                        <NavLink to="/kidssoccer" role="button">
+                        <NavLink to="/story/kidssoccer" role="button">
                             로날드 맥도날드 어린이 축구교실
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink to="/happyburger" role="button" className="on">
+                        <NavLink to="/story/happyburger" role="button" className="on">
                             행복의 버거 캠페인
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink to="/safetyguard" role="button">
+                        <NavLink to="/story/safetyguard" role="button">
                             맥도날드 안전지킴 캠페인
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink to="/mcdonaldhouse" role="button">
+                        <NavLink to="/story/mcdonaldhouse" role="button">
                             재단법인 로날드맥도날드하우스
                         </NavLink>
                     </li>
                 </ul>
+                {/* 상단 큰 이미지와 내용 */}
                 <div className="top">
                     <img src="/images/Story/hb1.jpg"></img>
                     <h2>
@@ -60,6 +65,7 @@ const happyburger = () => {
                         우리 주변 이웃들에게 햄버거를 전달하는 캠페인입니다.
                     </p>
                 </div>
+                {/* 하단 내용 불러오기 */}
                 <div className="burger">
                     {burger.map(View => (
                         <div key={View.id}>                        

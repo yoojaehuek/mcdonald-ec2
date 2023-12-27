@@ -7,87 +7,19 @@ import MyLocationIcon from "@mui/icons-material/MyLocation";
 import axios from "axios";
 import { API_URL } from "../../../../config/contansts";
 
-// import { NavLink } from 'react-router-dom';
-
-// const stores = [
-//   {
-//     id: 1,
-//     store_name: "평택GS DT",
-//     phone: "010-0000-0001",
-//     address: "경기 평택시 용이동 470-5",
-//     start_time: "00:00",
-//     end_time: "24:00",
-//     yn_24h: true,
-//     yn_mcmorning: true,
-//     yn_mcdrive: true,
-//     yn_mcdelivery: true,
-//     yn_parking: true,
-//   },
-//   {
-//     id: 2,
-//     store_name: "평택서정 DT점",
-//     phone: "010-0000-0002",
-//     address: "경기 평택시 서정동 779-5",
-//     start_time: "07:00",
-//     end_time: "23:00",
-//     yn_24h: false,
-//     yn_mcmorning: true,
-//     yn_mcdrive: true,
-//     yn_mcdelivery: true,
-//     yn_parking: false,
-//   },
-//   {
-//     id: 3,
-//     store_name: "평택 세교DT점",
-//     phone: "010-0000-0003",
-//     address: "경기 평택시 세교동 277-10",
-//     start_time: "00:00",
-//     end_time: "24:00",
-//     yn_24h: true,
-//     yn_mcmorning: false,
-//     yn_mcdrive: true,
-//     yn_mcdelivery: false,
-//     yn_parking: true,
-//   },
-//   {
-//     id: 4,
-//     store_name: "송탄",
-//     phone: "010-0000-0004",
-//     address: "경기 평택시 신장동 302-1",
-//     start_time: "08:00",
-//     end_time: "24:00",
-//     yn_24h: false,
-//     yn_mcmorning: false,
-//     yn_mcdrive: false,
-//     yn_mcdelivery: true,
-//     yn_parking: true,
-//   },
-//   {
-//     id: 5,
-//     store_name: "송탄",
-//     phone: "010-0000-0004",
-//     address: "경기 평택시 신장동 302-1",
-//     start_time: "08:00",
-//     end_time: "24:00",
-//     yn_24h: false,
-//     yn_mcmorning: false,
-//     yn_mcdrive: false,
-//     yn_mcdelivery: true,
-//     yn_parking: true,
-//   },
-// ];
-
 const Find = () => {
   const [yn_24h, setYn24] = useState(false);
   const [yn_mcmorning, setYnmcmorning] = useState(false);
   const [yn_mcdrive, setYnmcdrive] = useState(false);
   const [yn_mcdelivery, setYnmcdelivery] = useState(false);
   const [yn_parking, setYnparking] = useState(false);
-  const [searchText, setSearchText] = useState(""); // 입력값을 저장할 상태 추가
+  const [searchText, setSearchText] = useState("");
   const [stores, setStores] = useState([]);
   const [result, setResult] = useState(stores);
   const [currentpage, setcurrentpage] = useState(1);
   const [storepage] = useState(4);
+  const [clickedStore, setClickedStore] = useState(null);
+  const [myLocation, setMyLocation] = useState(null);
 
   useEffect(() => {
     axios.get(`${API_URL}/store`)
@@ -100,73 +32,73 @@ const Find = () => {
         console.log(err);
       });
   }, []);
-  
 
   const toggleButton = (setter) => {
     setter((prev) => !prev);
   };
-  // console.log(yn_24h);
+
+  const handleStoreClick = (store) => {
+    console.log("매장 클릭됨:", store);
+    setClickedStore({ latitude: store.latitude, longitude: store.longitude });
+  };
+
   const search = async (e) => {
     e.preventDefault();
-
-    // 필터가 모두 비활성화면 원래 모든 데이터 다 가져옴
-    if (!yn_24h && !yn_mcmorning && !yn_mcdrive && !yn_mcdelivery && !yn_parking && searchText === "") {
-      setResult(stores);
-      //console.log(stores);
-      return;
-    }
-
-    // try {
-    //   const response = await axios.get(`${API_URL}/store/search`, {
-    //     params: {
-    //       searchText,
-    //       yn_24h,
-    //       yn_mcmorning,
-    //       yn_mcdrive,
-    //       yn_mcdelivery,
-    //       yn_parking,
-    //     },
-    //   });
-
-    //   setResult(response.data);남극
-
-
-// stores 배열을 필터링하는 로직
-const filteredStores = stores.filter((store) => {
-  const services = [];
-  if (store.yn_24h) services.push('24시간');
-  if (store.yn_mcmorning) services.push('맥모닝');
-  if (store.yn_mcdrive) services.push('맥드라이브');
-  if (store.yn_mcdelivery) services.push('맥딜리버리');
-  if (store.yn_parking) services.push('주차');
     
-  const addressIncludesSearchText = store.address.toLowerCase().includes(searchText.toLowerCase());
-  const servicesIncludeSearchText = services.every(service => service.toLowerCase().includes(searchText.toLowerCase()));
-  return (
-    (
-      (!yn_24h ? store.yn_24h : true) &&
-      (!yn_mcmorning ? store.yn_mcmorning : true) &&
-      (!yn_mcdrive ? store.yn_mcdrive : true)  &&
-      (!yn_mcdelivery ? store.yn_mcdelivery : true) &&
-      (!yn_parking ? store.yn_parking : true)
-    ) &&
-    (searchText === "" || addressIncludesSearchText || servicesIncludeSearchText)
-  );
-});
-    setResult(filteredStores);
-    // console.log(filteredStores);
-    setcurrentpage(1);
-    // } catch (error) {
-    //   console.error(error);
-    // }
+    const qs = {};
+    if (yn_24h) {
+      qs.yn_24h = yn_24h;
+    }
+    if (yn_mcmorning) {
+      qs.yn_mcmorning = yn_mcmorning;
+    }
+    if (yn_mcdrive) {
+      qs.yn_mcdrive = yn_mcdrive;
+    }
+    if (yn_mcdelivery) {
+      qs.yn_mcdelivery = yn_mcdelivery;
+    }
+    if (yn_parking) {
+      qs.yn_parking = yn_parking;
+    }
+    if (searchText.length != 0) {
+      qs.searchText = searchText;
+    }
+    console.log("qs: ", qs);
+
+    axios.get(`${API_URL}/store`, { params: qs })
+    .then(res => {
+      setResult(res.data);
+      setcurrentpage(1);
+    }).catch(err => {
+      console.error(err);
+    })
   };
-  console.log(result);
-  // 현재페이지 첫 번째랑 마지막 인덱스 계산
+
   const laststore = currentpage * storepage;
   const firststore = laststore - storepage;
-  const currentStores = result.slice(firststore, laststore); // 현재 페이지에 보여줄 친구들 result 배열에서 가져옴
+  const currentStores = result.slice(firststore, laststore);
 
-  const paginate = (pageNumber) => setcurrentpage(pageNumber); // 페이지 변경 함수. 클릭한 페이지로 이동
+  const paginate = (pageNumber) => setcurrentpage(pageNumber);
+
+  const centerOnMyLocation = () => {
+    console.log("내 위치 중심으로 보기 버튼 클릭.");
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          setMyLocation({ latitude, longitude });
+          setClickedStore(null);
+          console.log("내 위치가 다음 좌표로 설정됨:", { latitude, longitude });
+        },
+        (error) => {
+          console.error("현재 위치를 가져오는 중 오류 발생:", error);
+        }
+      );
+    } else {
+      console.error("위치 정보 지원하지 않음.");
+    }
+  };
 
   return (
     <>
@@ -230,6 +162,7 @@ const filteredStores = stores.filter((store) => {
               <form className="search1" onSubmit={search}>
                 <input
                   type="text"
+                  placeholder="매장/지점명을 입력해주세요"
                   value={searchText}
                   onChange={(e) => setSearchText(e.target.value)}
                 />
@@ -238,8 +171,13 @@ const filteredStores = stores.filter((store) => {
             </div>
           </div>
         </div>
-        <Maps />
-        <div className="myLocationButton">
+        <Maps
+          stores={stores}
+          onMarkerClick={handleStoreClick}
+          clickedStore={clickedStore}
+          myLocation={myLocation}
+        />
+        <div className="myLocationButton" onClick={centerOnMyLocation}>
           <IconButton>
             <MyLocationIcon />
           </IconButton>
@@ -258,16 +196,16 @@ const filteredStores = stores.filter((store) => {
               </thead>
               <tbody>
                 {currentStores.map((store) => (
-                  <tr key={store.id}>
+                  <tr key={store.id} onClick={() => handleStoreClick(store)}>
                     <td>{`${store.store_name}/${store.address}`}</td>
                     <td>{store.phone}</td>
                     <td>{`${store.start_time} - ${store.end_time}`}</td>
                     <td>
-                      {store.yn_24h && <span>24시간 </span>}
-                      {store.yn_mcmorning && <span>맥모닝 </span>}
-                      {store.yn_mcdrive && <span>맥드라이브 </span>}
-                      {store.yn_mcdelivery && <span>맥딜리버리 </span>}
-                      {store.yn_parking && <span>주차 가능</span>}
+                      {store.yn_24h == 1 && <span>24시간 </span>}
+                      {store.yn_mcmorning == 1 && <span>맥모닝 </span>}
+                      {store.yn_mcdrive == 1 && <span>맥드라이브 </span>}
+                      {store.yn_mcdelivery == 1 && <span>맥딜리버리 </span>}
+                      {store.yn_parking == 1 && <span>주차 가능</span>}
                     </td>
                   </tr>
                 ))}
@@ -286,6 +224,5 @@ const filteredStores = stores.filter((store) => {
     </>
   );
 };
-
 
 export default Find;

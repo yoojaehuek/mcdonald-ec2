@@ -23,6 +23,19 @@ class OrderController {
         next(error)
     }
   }
+
+  static async getAllOrder(req, res, next){
+    try {
+      // console.log("req.userId: ", req.userId);
+      // const userId = req.userId;
+      // const userId = 1;
+      const result = await OrderService.getAllOrder();
+      res.status(200).json(result);
+    } catch (error) {
+      next(error);
+    }
+  }
+
   static async getOrderByUserId(req, res, next){
     try {
       console.log("req.userId: ", req.userId);
@@ -36,13 +49,22 @@ class OrderController {
     }
   }
 
+  static async getOrderByOrderId(req, res, next){
+		try {
+			const order_id = req.params.order_id;
+			const result = await OrderService.getOrderByOrderId({order_id});
+			res.status(200).json(result);
+		} catch (error) {
+			next(error)
+		}
+	}
+
   static async findAllOrderDate(req, res, next){
     try {
       // const userId = req.userId;
       const userId = 1;
       const dateType = req.query;
       const result = await OrderService.findAllOrderDate({userId, dateType});
-      // console.log("orderController.js/getOrderByUserId()/result: ", result);
       if (result.errorMessage) {
         throw new Error(result.errorMessage);
       }
@@ -51,6 +73,20 @@ class OrderController {
       next(error);
     }
   }
+
+  static async updateOrder(req, res, next){
+		try {
+			const order_id = req.params.order_id;
+			const { state } = req.query;
+      console.log(state);
+      // const toUpdate = {...props}
+
+			const result = await OrderService.updateOrder({order_id, state});
+			res.status(200).json(result);
+		} catch (error) {
+			next(error);
+		}
+	}
 
   static async deleteOrder(req, res, next){
     try {
