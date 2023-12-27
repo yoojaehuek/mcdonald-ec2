@@ -17,6 +17,7 @@ import {
 } from "@mui/material";
 import axios from "axios";
 import { API_URL } from "../../../config/contansts";
+import { getCookie } from "../../../cookie";
 
 const AFaq = () => {
   const [axiosResult, setAxiosResult] = useState([]);
@@ -26,7 +27,7 @@ const AFaq = () => {
   const [selectedItem, setSelectedItem] = useState(null);
   const [editedData, setEditedData] = useState({
     id: "",
-    admin_id: "",
+    admin_id: getCookie("login"),
     category: "",
     title: "",
     description: "",
@@ -147,7 +148,7 @@ const AFaq = () => {
           setOpenModal(true);
           setEditedData({
             id: "",
-            admin_id: "",
+            admin_id: getCookie("login"),
             category: "",
             title: "",
             description: "",
@@ -266,10 +267,11 @@ const AFaq = () => {
           <TextField
             label="관리자ID"
             name="admin_id"
-            value={editedData.admin_id}
+            value={getCookie("login")}
             onChange={handleInputChange}
             fullWidth
             margin="normal"
+            disabled
           />
           <TextField
             label="카테고리"

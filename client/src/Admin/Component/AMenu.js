@@ -115,7 +115,7 @@ const AMenu = () => {
             },
           }}
         >
-          <ListItemIcon sx={{ color: '#FFD700'}}>{item.icon}</ListItemIcon>
+          <ListItemIcon sx={{ color: 'rgb(255, 188, 13)'}}>{item.icon}</ListItemIcon>
           <ListItemText primary={item.title} sx={{ color: '#000', fontFamily: 'Arial, sans-serif'}} />
           {item.sub_title && (openStates[index] ? <ExpandLess /> : <ExpandMore />)}
         </ListItem>
@@ -158,6 +158,7 @@ const AMenu = () => {
             width: 260,
             boxSizing: 'border-box',
             marginTop: 13,
+            paddingLeft: 3,
             backgroundColor: 'transparent',
           },
         }}

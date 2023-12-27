@@ -17,6 +17,7 @@ import {
 } from "@mui/material";
 import axios from "axios";
 import { API_URL } from "../../../config/contansts";
+import { getCookie } from "../../../cookie";
 
 const ACrew = () => {
   const [axiosResult, setAxiosResult] = useState([]);
@@ -24,7 +25,7 @@ const ACrew = () => {
   const [openModal, setOpenModal] = useState(false);
   const [editedData, setEditedData] = useState({
     id: "",
-    admin_id: "",
+    admin_id: getCookie("login"),
     store_id: "",
     title: "",
     name: "",
@@ -136,7 +137,7 @@ const ACrew = () => {
           setSelectedItem(null);
           setEditedData({
             id: "",
-            admin_id: "",
+            admin_id: getCookie("login"),
             store_id: "",
             title: "",
             name: "",
@@ -285,7 +286,7 @@ const ACrew = () => {
           <TextField
             label="AdminID"
             name="admin_id"
-            value={editedData.admin_id}
+            value={getCookie("login")}
             onChange={handleInputChange}
             fullWidth
             margin="normal"
