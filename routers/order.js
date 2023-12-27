@@ -10,7 +10,7 @@ router.get('/', refresh, OrderController.getOrderByUserId);
 // router.get('/date', refresh, OrderController.findAllOrderDate);
 // router.get('/:order_id', refresh, OrderController.getOrderByOrderId);
 // router.patch('/:order_id', refresh, OrderController.updateOrder);
-router.delete('/:order_id', refresh, OrderController.deleteOrder);
+// router.delete('/:order_id', refresh, OrderController.deleteOrder);
 
 //테스트용 로그인 안해도 가능
 router.post('/', OrderController.addOrder);
@@ -18,6 +18,6 @@ router.post('/', OrderController.addOrder);
 router.get('/date', OrderController.findAllOrderDate);
 router.get('/:order_id', OrderController.getOrderByOrderId);
 router.patch('/:order_id', OrderController.updateOrder);
-// router.delete('/:order_id', OrderController.deleteOrder);
+router.delete('/:order_id', OrderController.deleteOrder);
 
 module.exports = router;

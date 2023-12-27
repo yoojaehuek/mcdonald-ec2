@@ -1,7 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
+import axios from 'axios';
 import Chart from 'chart.js/auto';
 import { AttachMoney as AttachMoneyIcon } from '@mui/icons-material';
 import { API_URL } from '../../../config/contansts';
+import './AChart.scss';
 
 const AChart = () => {
   // useRef를 사용해 차트 컨텍스트, 차트 인스턴스를 저장
@@ -10,6 +12,17 @@ const AChart = () => {
   const [salesData, setSalesData] = useState([]);
   const [todayIndex, setTodayIndex] = useState(0);
   const [showDailySales, setShowDailySales] = useState(true);
+  const [admins, setAdmins] = useState(null);
+
+  useEffect(()=> {
+    axios.get(`${API_URL}/admin/allname`)
+    .then(res => {
+      console.log(res.data);
+      setAdmins(res.data);
+    }).catch(err => {
+      console.error(err);
+    });
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -186,6 +199,9 @@ const AChart = () => {
         </div>
         <div style={{ flex: '1 0 48%', textAlign: 'center', padding: '20px', border: '1px solid #ddd', borderRadius: '8px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' }}>
           <h2 style={{ fontSize: '1.5rem', marginBottom: '10px' }}>관리자 목록</h2>
+          {admins && admins.map((admin, index) => (
+            <p key={index}>{admin.email} / {admin.admin_name}</p>
+          ))}
         </div>
       </div>
     </>

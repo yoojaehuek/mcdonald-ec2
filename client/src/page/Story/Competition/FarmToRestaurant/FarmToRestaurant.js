@@ -53,7 +53,7 @@ class FarmToRestaurant extends React.Component {
   };
 
   render() {
-    const playlistId = 'PLXq7xeAxD7WBg6oApNVUs-rK3D2jK2be2';
+    const playlistId = 'PLItVgo0hsBLn_fAaAUXwI7ArUGLibQG71';
 
     const opts = {
       height: '720',  

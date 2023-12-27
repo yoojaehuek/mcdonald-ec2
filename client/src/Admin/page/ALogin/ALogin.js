@@ -2,9 +2,12 @@ import axios from "axios";
 import { useState } from "react";
 import { API_URL } from "../../../config/contansts";
 import { getCookie, setCookie } from "../../../cookie";
+import { NavLink, useNavigate } from "react-router-dom";
+import { Button, TextField, Container, CssBaseline, Typography, Paper } from "@mui/material";
 
 const ALogin = () => {
-  const setTime = 3600000; //1시간
+  const navigate = useNavigate();
+  const setTime = 3600000; //1시간 (1000 = 1초)
   const [inputs, setInputs] = useState({
     id: '',
     password: ''
@@ -25,9 +28,10 @@ const ALogin = () => {
     axios.post(`${API_URL}/admin/login`, {id, password})
     .then(res => {
       console.log(res);
-      setCookie('login',id,{
+      setCookie('login', res.data.data,{
         expires: new Date(Date.now() + setTime),
       });
+      navigate('/admin');
     }).catch(err => {
       console.error(err.response.data);
       alert('로그인 실패!');
@@ -35,13 +39,42 @@ const ALogin = () => {
   }
 
   return (
-    // <h1>로그인</h1>
-    <>
-      <input name="id" placeholder="아이디" onChange={onChange} value={id} />
-      <input type="password" name="password" placeholder="비밀번호" onChange={onChange} value={password}/>
-      <button onClick={onLogin}>로그인</button>
-    </>
-  )
-}
+    <Container component="main" maxWidth="xs">
+      <CssBaseline />
+      <Paper elevation={3} sx={{ padding: 4, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <Typography component="h1" variant="h5" mb={2}>
+          관리자 로그인
+          <p style={{ fontSize: '0.8rem'}}>ID: i1004902@naver.com<br/>pwd: 123</p>
+        </Typography>
+        <TextField
+          variant="outlined"
+          margin="normal"
+          fullWidth
+          id="id"
+          label="아이디"
+          name="id"
+          autoFocus
+          onChange={onChange}
+          value={id}
+        />
+        <TextField
+          variant="outlined"
+          margin="normal"
+          fullWidth
+          name="password"
+          label="비밀번호"
+          type="password"
+          id="password"
+          onChange={onChange}
+          value={password}
+        />
+        <Button variant="contained" fullWidth sx={{ mt: 2, mb: 2 }} onClick={onLogin}>
+          로그인
+        </Button>
+        <NavLink to="/">메인 페이지로</NavLink>
+      </Paper>
+    </Container>
+  );
+};
 
 export default ALogin;
