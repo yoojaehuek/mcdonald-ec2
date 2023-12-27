@@ -1,10 +1,23 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Chart from 'chart.js/auto';
 import './AChart.scss';
+import axios from 'axios';
+import { API_URL } from '../../../config/contansts';
 
 const AChart = () => {
   const chartRef = useRef(null);
   const chartInstance = useRef(null);
+  const [admins, setAdmins] = useState(null);
+
+  useEffect(()=> {
+    axios.get(`${API_URL}/admin/allname`)
+    .then(res => {
+      console.log(res.data);
+      setAdmins(res.data);
+    }).catch(err => {
+      console.error(err);
+    });
+  }, []);
 
   useEffect(() => {
     const ctx = chartRef.current.getContext('2d');
@@ -55,6 +68,7 @@ const AChart = () => {
       }
     };
   }, []);
+
   return (
     <>
       <div style={{ marginLeft: '240px', padding: '16px', display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
@@ -71,6 +85,9 @@ const AChart = () => {
         </div>
         <div style={{ flex: '1 0 50%', marginBottom: '16px', textAlign: 'center' }}>
           <h2>관리자 목록</h2>
+          {admins && admins.map((admin, index) => (
+            <p key={index}>{admin.email} / {admin.admin_name}</p>
+          ))}
         </div>
       </div>
     </>

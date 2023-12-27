@@ -2,9 +2,11 @@ import axios from "axios";
 import { useState } from "react";
 import { API_URL } from "../../../config/contansts";
 import { getCookie, setCookie } from "../../../cookie";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const ALogin = () => {
-  const setTime = 3600000; //1시간
+  const navigate = useNavigate();
+  const setTime = 3600000; //1시간 (1000 = 1초)
   const [inputs, setInputs] = useState({
     id: '',
     password: ''
@@ -25,9 +27,10 @@ const ALogin = () => {
     axios.post(`${API_URL}/admin/login`, {id, password})
     .then(res => {
       console.log(res);
-      setCookie('login',id,{
+      setCookie('login', res.data.data,{
         expires: new Date(Date.now() + setTime),
       });
+      navigate('/admin');
     }).catch(err => {
       console.error(err.response.data);
       alert('로그인 실패!');
@@ -35,11 +38,16 @@ const ALogin = () => {
   }
 
   return (
-    // <h1>로그인</h1>
     <>
-      <input name="id" placeholder="아이디" onChange={onChange} value={id} />
-      <input type="password" name="password" placeholder="비밀번호" onChange={onChange} value={password}/>
-      <button onClick={onLogin}>로그인</button>
+      <h1>관리자 로그인</h1>
+      <div>
+        <input name="id" placeholder="아이디" onChange={onChange} value={id} />
+        <input type="password" name="password" placeholder="비밀번호" onChange={onChange} value={password}/>
+        <button onClick={onLogin}>로그인</button>
+      </div>
+      <div>
+        <a href='/'>메인 페이지로</a>
+      </div>
     </>
   )
 }

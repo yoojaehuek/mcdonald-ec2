@@ -23,7 +23,7 @@ const menuItems = [
     title: 'Store',
     value: 'store',
     sub_title: [
-      { sub_title: '매장', value: 'store' },
+      { sub_title: '매장', value: 'list' },
     ],
   },
   {
@@ -109,7 +109,7 @@ const AMenu = () => {
                   <ListItemIcon>
                     {subIndex % 2 === 0 ? <InboxIcon /> : <DraftsIcon />}
                   </ListItemIcon>
-                  <NavLink to={`/adminmain/${item.value}/${subItem.value}`}>
+                  <NavLink to={`/admin/${item.value}/${subItem.value}`}>
                     <ListItemText primary={subItem.sub_title} />
                   </NavLink>
                 </ListItem>
