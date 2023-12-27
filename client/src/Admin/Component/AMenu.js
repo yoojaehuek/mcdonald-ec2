@@ -31,7 +31,7 @@ const menuItems = [
     value: 'store',
     icon: <StoreIcon />,
     sub_title: [
-      { sub_title: '매장', value: 'store' },
+      { sub_title: '매장', value: 'list' },
     ],
   },
   {
@@ -135,7 +135,7 @@ const AMenu = () => {
                   onClick={(event) => handleSubtitleClick(event, index, subIndex)}
                 >
                   <ListItemIcon></ListItemIcon>
-                  <NavLink to={`/adminmain/${item.value}/${subItem.value}`}>
+                  <NavLink to={`/admin/${item.value}/${subItem.value}`}>
                     <ListItemText primary={subItem.sub_title} sx={{ color: '#000', fontFamily: 'Arial, sans-serif'}} />
                   </NavLink>
                 </ListItem>

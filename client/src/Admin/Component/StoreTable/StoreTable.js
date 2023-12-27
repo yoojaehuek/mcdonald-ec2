@@ -59,7 +59,7 @@ const StoreTable = ({ data }) => {
   return (
     <div>
       {/* 추가 페이지로 이동하는 링크 */}
-      <NavLink to="/adminmain/store/add">매장 추가</NavLink>
+      <NavLink to="add">매장 추가</NavLink>
 
       {/* 추가 페이지 라우트 */}
       {/* <StoreAdd /> */}

@@ -28,12 +28,23 @@ router.post('/login', async (req, res, next) => {
     // hashedPassword와 DB의 비밀번호 비교
     if (hashedPassword === user.pwd) {
       console.log('Login successful!');
-      res.status(200).json({status: '로그인 성공'});
+      res.status(200).json({status: '로그인 성공', data: user.id});
     }else {
       console.log('비밀번호 다름.');
       const errorMessage = "비밀번호 다름.";
       throw new Error(errorMessage);
     }
+  } catch (error) {
+    next(error);
+  }
+})
+
+router.get('/allname', async (req, res, next) => {
+  try {
+    const user = await Admin.findAll({
+      attributes: ['email', 'admin_name'],
+    });
+    res.status(200).json(user);
   } catch (error) {
     next(error);
   }
