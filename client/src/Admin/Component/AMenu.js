@@ -10,6 +10,7 @@ import OrderIcon from '@mui/icons-material/ShoppingCart';
 import BannerIcon from '@mui/icons-material/Collections';
 import OptionIcon from '@mui/icons-material/Settings';
 import SliderIcon from '@mui/icons-material/Slideshow';
+import MenuIcon from '@mui/icons-material/Menu';
 
 const menuItems = [
   {
@@ -85,6 +86,14 @@ const menuItems = [
     icon: <SliderIcon />,
     sub_title: [
       { sub_title: 'Slider 관리', value: 'slider' },
+    ],
+  },
+  {
+    title: 'Manual',
+    value: 'manual',
+    icon: <MenuIcon />,
+    sub_title: [
+      { sub_title: 'Manual 관리', value: 'manual' },
     ],
   },
 ];

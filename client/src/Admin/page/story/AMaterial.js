@@ -412,10 +412,10 @@ const Material = () => {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleModalClose}>취소</Button>
           <Button onClick={selectedItem ? handleUpdate : handleCreate}>
             저장
           </Button>
+          <Button onClick={handleModalClose}>취소</Button>
         </DialogActions>
       </Dialog>
     </>
