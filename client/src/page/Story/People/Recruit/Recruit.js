@@ -18,13 +18,17 @@ const Recruit = () => {
                 즐거운 일터에서 함께 일하며 경험을 쌓고, 다양한 혜택과 매니저로 성장할 수 있는
                 최고의 기회를 누려보세요!
             </p>
-            <button>크루 지원하기</button>
+            <button onClick={() => {
+              window.location.replace(`https://mcdonalds.recruiter.co.kr/appsite/company/index`)
+            }}>크루 지원하기</button>
           </div>
           <div className="recruit-item">
             <img src="../images/Story/recruit3.jpg" alt="이미지2" />
             <p> 사회인으로 첫 발을 내딛는 지금, 당신은 중요한 선택의 순간에 서 있습니다.<br></br>
                 당신의 첫번째 선택이 맥도날드가 되기를 희망합니다. 늘 현명한 선택으로 성공을 창조해 온 맥도날드, 이곳에서 당신의 소중한 꿈을 펼쳐보세요 !</p>
-            <button>레스토랑 매니저/본사 직원 지원하기</button>
+            <button onClick={() => {
+              window.location.replace(`https://mcdonalds.recruiter.co.kr/appsite/company/index`)
+            }}>레스토랑 매니저/본사 직원 지원하기</button>
           </div>
         </div>
       </div>
