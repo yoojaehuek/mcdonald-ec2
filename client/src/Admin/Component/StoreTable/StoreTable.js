@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
 import './StoreTable.scss';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { Pagination } from 'antd';
 import axios from 'axios';
 import { API_URL } from '../../../config/contansts';
-import StoreAdd from './StoreAdd';
-// import Pagination from "react-js-pagination";
 
 const StoreTable = ({ data }) => {
-  const navigate = useNavigate();
   const [inputVal, setInputVal] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
@@ -81,7 +78,6 @@ const StoreTable = ({ data }) => {
               {columns.map((column, colIndex) => (
                 <td key={colIndex}>
                   {item[column]}
-                  {/* <input type="text" name={column} id={`id-${item.id}`} className={`colIndex-${colIndex}`} defaultValue={item[column]} /> */}
                 </td>
               ))}
               <td>

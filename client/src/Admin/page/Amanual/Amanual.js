@@ -42,6 +42,7 @@ const DownloadButton = styled(Button)({
   marginTop: '20px',
   backgroundColor: '#2196F3',
   color: '#fff',
+  margin: '1vw',
   '&:hover': {
     backgroundColor: '#1565C0',
   },
@@ -59,9 +60,14 @@ const Amanual = () => {
       <SubTitle gutterBottom>
         매뉴얼 다운로드
       </SubTitle>
+      <DownloadLink href="/admin_manual.pdf" download>
+        <DownloadButton startIcon={<DescriptionIcon />}>
+          pdf 다운로드
+        </DownloadButton>
+      </DownloadLink>
       <DownloadLink href="/admin_manual.hwp" download>
         <DownloadButton startIcon={<DescriptionIcon />}>
-          다운로드
+          hwp 다운로드
         </DownloadButton>
       </DownloadLink>
     </StyledAmanual>

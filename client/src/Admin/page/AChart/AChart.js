@@ -263,7 +263,7 @@ const AChart = () => {
             }}
           >
             {showDailySales
-              ? `오늘의 총 판매금액: ${getTodaySales().toLocaleString()}원`
+              ? `금일 총 판매금액: ${getTodaySales().toLocaleString()}원`
               : `총 판매금액: ${
                   salesData.length > 0
                     ? salesData
@@ -286,9 +286,9 @@ const AChart = () => {
               marginTop: "3vw",
             }}
           >
-            {showDailySales ? "월간 보기" : "일간 보기"}
+            {showDailySales ? "전체 보기" : "일간 보기"}
           </button>
-        </div>
+        </div>  
       </div>
       <div
         style={{

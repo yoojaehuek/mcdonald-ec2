@@ -2,8 +2,9 @@ import axios from "axios";
 import { useState } from "react";
 import { API_URL } from "../../../config/contansts";
 import { setCookie } from "../../../utils/cookie";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Button, TextField, Container, CssBaseline, Typography, Paper } from "@mui/material";
+import { Height } from "@mui/icons-material";
 
 const ALogin = () => {
   const navigate = useNavigate();
@@ -41,7 +42,7 @@ const ALogin = () => {
   return (
     <Container component="main" maxWidth="xs" sx={{marginTop: "12vw"}}>
       <CssBaseline />
-      <Paper elevation={3} sx={{ padding: 4, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <Paper elevation={3} sx={{ padding: 4, display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
         <Typography component="h1" variant="h5" mb={2}>
           관리자 로그인
           <p style={{ fontSize: '0.8rem'}}>ID: i1004902@naver.com<br/>pwd: 123</p>

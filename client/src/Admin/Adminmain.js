@@ -19,7 +19,6 @@ import AWhatsNew from './page/AWhatsNew/AWhatsNew/AWhatsNew.js';
 import ANews from './page/AWhatsNew/ANews/ANews.js';
 import StoreDetail from './Component/StoreTable/StoreDetail';
 import AFaq from './page/story/AFaq';
-import ALogin from './page/ALogin/ALogin.js';
 import Amanual from './page/Amanual/Amanual.js'
 
 import './Adminmain.scss';

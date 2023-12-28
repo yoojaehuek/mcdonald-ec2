@@ -41,9 +41,9 @@ values
 (9, 9, 'mcdelivery', '맥딜리버리', null, '/upload/visualbackground/headerImg.jpg', '[{"url": "/", "name": "HOME"}, {"url": "/store/find", "name": "Store"}, {"url": "/store/mcdelivery", "name": "맥딜리버리"}]'),
 (10, 10, 'mcdrive', '맥드라이브', null, '/upload/visualbackground/headerImg.jpg', '[{"url": "/", "name": "HOME"}, {"url": "/store/find", "name": "Store"}, {"url": "/store/mcdrive", "name": "맥드라이브"}]'),
 (11, 11, 'rental', '임차문의', null, '/upload/visualbackground/headerImg.jpg', '[{"url": "/", "name": "HOME"}, {"url": "/store/find", "name": "Store"}, {"url": "/store/rental", "name": "임차문의"}]'),
-(12, 12, 'promotion', '맥도날드 프로모션', null, '/upload/visualbackground/bg_visual_whats02.jpg', '[{"url": "/", "name": "HOME"}, {"url": "/whats-new/promotion", "name": "Whats\'s New"}, {"url": "/whats-new/promotion", "name": "맥도날드 프로모션"}]'),
-(13, 13, 'news', '새로운 소식', null, '/upload/visualbackground/bg_visual_whats02.jpg', '[{"url": "/", "name": "HOME"}, {"url": "/whats-new/promotion", "name": "Whats\'s New"}, {"url": "/whats-new/news", "name": "새로운 소식"}]'),
-(14, 14, 'month-happymeal', '이달의 해피밀', null, '/upload/visualbackground/bg_visual_whats02.jpg', '[{"url": "/", "name": "HOME"}, {"url": "/whats-new/promotion", "name": "Whats\'s New"}, {"url": "/whats-new/month-happymeal", "name": "이달의 해피밀"}]'), 
+(12, 12, 'promotion', '맥도날드 프로모션', null, '/upload/visualbackground/bg_visual_whats02.jpg', '[{"url": "/", "name": "HOME"}, {"url": "/whats-new/12", "name": "Whats\'s New"}, {"url": "/whats-new/12", "name": "맥도날드 프로모션"}]'),
+(13, 13, 'news', '새로운 소식', null, '/upload/visualbackground/bg_visual_whats02.jpg', '[{"url": "/", "name": "HOME"}, {"url": "/whats-new/12", "name": "Whats\'s New"}, {"url": "/whats-new/13", "name": "새로운 소식"}]'),
+(14, 14, 'month-happymeal', '이달의 해피밀', null, '/upload/visualbackground/bg_visual_whats02.jpg', '[{"url": "/", "name": "HOME"}, {"url": "/whats-new/12", "name": "Whats\'s New"}, {"url": "/whats-new/14", "name": "이달의 해피밀"}]'), 
 (15, 15, 'brandintro', '브랜드 소개', '1955년 작은 레스토랑에서부터 지금에 이르기까지 고객이 가장 좋아하는 장소이자, \n음식을 즐기는 최고의 방법이 되기 위해 맥도날드는 오늘도 노력합니다.', '/upload/visualbackground/headerImg.jpg', '[{"url": "/", "name": "HOME"}, {"url": "/story/main", "name": "Story"}, {"url": "/story/brandintro", "name": "브랜드 소개"}]'), 
 (16, 16, 'society', '사회적 책임과 지원', '맥도날드는 건전한 기업시민으로서의 책임을 다하고자 노력합니다.\n지역 사회의 발전과 사람들의 행복에 기여하고, 지금보다 더 나은 세상을 만들기 위해 오늘도 나아갑니다.', '/upload/visualbackground/bg_visual_whats02.jpg', '[{"url": "/", "name": "HOME"}, {"url": "/story/main", "name": "Story"}, {"url": "/story/society", "name": "맥도날드 사회적 책임"}]'), 
 (17, 17, 'farmtorestaurant', '맥도날드 품질 이야기', '우리가 엄격해질수록 버거는 더 맛있어지니까! \n모두의 노력으로 엄격하고 꼼꼼하게 키워진 신선한 식재료가 모여, 마침내 맛있는 맥도날드 버거가 됩니다.', '/upload/visualbackground/bg_visual_whats02.jpg', '[{"url": "/", "name": "HOME"}, {"url": "/story/main", "name": "Story"}, {"url": "/story/farmtorestaurant", "name": "맥도날드 품질 이야기"}]'), 
@@ -59,9 +59,16 @@ values
 (27, 15, 'brandhistory', '브랜드 소개', '1955년 작은 레스토랑에서부터 지금에 이르기까지 고객이 가장 좋아하는 장소이자, \n음식을 즐기는 최고의 방법이 되기 위해 맥도날드는 오늘도 노력합니다.', '/upload/visualbackground/headerImg.jpg', '[{"url": "/", "name": "HOME"}, {"url": "/story/main", "name": "Story"}, {"url": "/story/brandintro", "name": "브랜드 소개"}]')
 ;
 
+INSERT INTO mcdonalddb.user (id, email, pwd, salt, user_name, phone, address, detail_address, birth, created_at) 
+values 
+(1, 'qwer@naver.com', 'c49bc8aadbed70c77ec4d196d51221565da1c451e0ff0b3d02a254768478eb3888cf7502608bc52a85204c31e5bff30c8a73c7e07e863233843663c725f4c5f9', '1K3HIBb1Bwx0+C7j1a7hygFdPb+jzHmf+rKVT2I6KdC5JCHGN1a215B4g+IlMmYCV41qnZtoBwA7pIELgBwGF7WAb5kJguEszA69SCoQI2xoRT3XvU3wOYI8i5FXyLanC86cHscFI6ludXMzdObEa6GgtP5RuPUx0zgFPi95uUA=', '홍길동', '01012345678', '경기 성남시 분당구 삼평동 636', '1104동 601호', '2000-12-25', '2023-12-28 20:29:04');
+
+
 INSERT INTO mcdonalddb.admin (email, pwd, salt, admin_name, phone, created_at) 
 values 
 ("i1004902@naver.com", "bb8b126ed9d240da8de3c9671baa0cdd07cc81c1ab27096560bad572f21648d513dde731da924a521fbe36e489b147f18c046f9078e34ca1c11201d5aca34095", "fzNwlKN0MCgWnv3zcmn4wgORICW3ge/r0fBDCAz6ul855NM/mTw5yTl4/XivHtiVUGun1Lqaqe+dEyA16AxdBWSGY8YUhiAQBKExy44yHdLFyfNU4jY0o7OGFSzdx1CEwxfbwV/5hcy5noF+AOgrBPGKCxQ/QK6g3x6ORo3F0i4=", "김지환", "010-9312-0285", '2023-11-02 00:46:04');
+
+
 INSERT INTO mcdonalddb.store (store_name, phone, address, start_time, end_time, latitude, longitude, yn_24h, yn_mcmorning, yn_mcdrive, yn_mcdelivery, yn_parking) 
 values 
 ("명지대점", "010-1111-1111", "서울 서대문구 남가좌동 324-3", "08:00", "24:00", 37.57991, 126.9248, 0, 0, 0, 0, 0),

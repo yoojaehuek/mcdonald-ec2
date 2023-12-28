@@ -197,7 +197,7 @@ const Find = () => {
               <tbody>
                 {currentStores.map((store) => (
                   <tr key={store.id} onClick={() => handleStoreClick(store)}>
-                    <td>{`${store.store_name}/${store.address}`}</td>
+                    <td style={{cursor:'pointer'}}>{`${store.store_name}/${store.address}`}</td>
                     <td>{store.phone}</td>
                     <td>{`${store.start_time} - ${store.end_time}`}</td>
                     <td>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import YouTube from 'react-youtube';
 import Material from './Material';
 import Safekeeping from './Safekeeping';
