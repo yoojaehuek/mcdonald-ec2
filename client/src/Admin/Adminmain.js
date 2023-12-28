@@ -40,7 +40,7 @@ const AdminMain = () => {
     <div id='Admin' >
       <AHeader id='header' />
       <AMenu id='menu' />
-      <div className='AdminMain' style={{padding: ' 0 100px'}}>
+      <div className='AdminMain' style={{padding: ' 50px 0 100px'}}>
         <Routes>
           
           <Route path='/' element={<AChart />} />

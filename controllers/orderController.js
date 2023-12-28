@@ -94,6 +94,7 @@ class OrderController {
 			const result = await OrderService.updateOrder({order_id, state, cancel});
 			res.status(200).json(result);
 		} catch (error) {
+      console.log(error);
 			next(error);
 		}
 	}

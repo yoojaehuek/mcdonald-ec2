@@ -113,7 +113,13 @@ class OrderService{
     return result;
   }
 
+  static async rankMenu(){
+		const result = await OrderModel.rankMenu();
+		return result;
+	}
+
 	static async updateOrder({order_id, state, cancel}){
+    console.log("service:",order_id, state, cancel);
 		const result = await OrderModel.updateOrder({order_id, state, cancel});
 		return result;
 	}
