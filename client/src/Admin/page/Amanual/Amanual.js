@@ -17,16 +17,18 @@ const StyledAmanual = styled('div')({
 const Title = styled(Typography)({
   fontSize: '2rem',
   fontWeight: 'bold',
-  marginBottom: '20px',
-  color: '#333',
+  marginBottom: '25px',
+  color: 'rgb(255, 188, 13)',
   letterSpacing: '1px', 
+  
 });
 
 const SubTitle = styled(Typography)({
   fontSize: '1.5rem',
   fontWeight: 'bold',
-  marginBottom: '10px',
+  marginBottom: '20px',
   color: '#666',
+  marginTop: '20px',
 });
 
 
