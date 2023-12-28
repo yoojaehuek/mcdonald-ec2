@@ -54,14 +54,14 @@ const AOrder = () => {
   const handleModalClose = () => {
     setOpenModal(false);
   };
-  
+
 
   const handleUpdate = () => {
     console.log("Updated Data:", editedData);
     if (selectedItem) {
       const updatedData = { ...editedData, status: editedData.status, cancel_yn: editedData.cancel_yn };
     axios
-      .patch(`${API_URL}/order/${selectedItem.id}`, updatedData)
+      .patch(`${API_URL}/order/${selectedItem.id}?state=${editedData.status}&cancel=${editedData.cancel_yn}`)
         .then((response) => {
           console.log("Update:", response.data);
           setAxiosResult((prevResult) => {
