@@ -38,7 +38,7 @@ const ANewsModal = ({props}) => {
       updatedData['content_img_url'] = contentImageUrl ? contentImageUrl : content_img_url;
       console.log(updatedData);
       axios
-        .patch(`${API_URL}/whats-new/${props.selectedItem.id}`, updatedData)
+        .patch(`${API_URL}/api/whats-new/${props.selectedItem.id}`, updatedData)
         .then((response) => {
           console.log('Update:', response.data);
           props.setAxiosResult((prevResult) => {
@@ -62,7 +62,7 @@ const ANewsModal = ({props}) => {
   
       if ( contentImageUrl && dataWithoutId.title && dataWithoutId.seq) {
         axios
-        .post(`${API_URL}/whats-new`, dataWithoutId)
+        .post(`${API_URL}/api/whats-new`, dataWithoutId)
         .then((response) => {
           console.log('Create:', response.data);
           props.setAxiosResult((prevResult) => [...prevResult, response.data]);

@@ -16,7 +16,7 @@ function Menu() {
     const [btn2, setBtn2] = useState('');
 
     useEffect(()=>{
-        axios.get(`${API_URL}/product/subcategory/${subcategory_id}`)
+        axios.get(`${API_URL}/api/product/subcategory/${subcategory_id}`)
         .then(res => {
             setProducts(res.data);
             if(subcategory_id === '1') {setBtn1("단품메뉴"); setVisible(true); setBtn2("세트메뉴"); }

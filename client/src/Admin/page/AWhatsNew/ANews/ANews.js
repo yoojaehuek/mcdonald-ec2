@@ -35,7 +35,7 @@ const ANews = () => {
   });
 
   useEffect(() => {
-    axios.get(`${API_URL}/whats-new/${subcategory_id}`)
+    axios.get(`${API_URL}/api/whats-new/${subcategory_id}`)
     .then(res => {
       console.log(res.data);
       setAxiosResult(res.data)
@@ -78,7 +78,7 @@ const ANews = () => {
     const confirmDelete = window.confirm("정말 삭제하시겠습니까?");
     if (confirmDelete) {
       axios
-        .delete(`${API_URL}/whats-new/${id}`)
+        .delete(`${API_URL}/api/whats-new/${id}`)
         .then((response) => {
           console.log('Delete:', response.data);
           setAxiosResult((prevResult) => prevResult.filter((item) => item.id !== id));

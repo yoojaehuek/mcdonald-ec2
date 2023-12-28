@@ -14,7 +14,7 @@ const Order = () => {
   const [axiosResult, setAxiosResult] = useState([]);
 
   useEffect(()=>{
-    axios.get(`${API_URL}/order/date?day=1`)
+    axios.get(`${API_URL}/api/order/date?day=1`)
     .then(res => {
       console.log(res.data);
       setAxiosResult(res.data);
@@ -54,7 +54,7 @@ const Order = () => {
   };
 
   const serch_day_order = () => {
-    axios.get(`${API_URL}/order/date?day=1`)
+    axios.get(`${API_URL}/api/order/date?day=1`)
     .then(res => {
       console.log(res.data);
       setAxiosResult(res.data);
@@ -66,7 +66,7 @@ const Order = () => {
   }
 
   const serch_week_order = () => {
-    axios.get(`${API_URL}/order/date?week=1`)
+    axios.get(`${API_URL}/api/order/date?week=1`)
     .then(res => {
       console.log(res.data);
       setAxiosResult(res.data);
@@ -78,7 +78,7 @@ const Order = () => {
   }
   
   const serch_month3_order = () => {
-    axios.get(`${API_URL}/order/date?month=3`)
+    axios.get(`${API_URL}/api/order/date?month=3`)
     .then(res => {
       console.log(res.data);
       setAxiosResult(res.data);
@@ -90,7 +90,7 @@ const Order = () => {
   }
 
   const serch_month6_order = () => {
-    axios.get(`${API_URL}/order/date?month=6`)
+    axios.get(`${API_URL}/api/order/date?month=6`)
     .then(res => {
       console.log(res.data);
       setAxiosResult(res.data);
@@ -102,7 +102,7 @@ const Order = () => {
   }
 
   const serch_year_order = () => {
-    axios.get(`${API_URL}/order/date?year=2`)
+    axios.get(`${API_URL}/api/order/date?year=2`)
     .then(res => {
       console.log(res.data);
       setAxiosResult(res.data);

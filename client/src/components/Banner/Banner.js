@@ -19,7 +19,7 @@ const Banner = () => {
     const location = splitUrl?.length > 1 ? splitUrl[2] : null;
     setCurrentUrl(location);
     console.log("Banner/location: ",location);
-    axios.get(`${API_URL}/banner/${location}`)
+    axios.get(`${API_URL}/api/banner/${location}`)
     .then(res => {
       console.log("VBG/res: ", res.data);
       setAxiosResult(res.data);

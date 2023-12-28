@@ -25,7 +25,7 @@ const ALogin = () => {
 
   const onLogin = () => {
     console.log(id, password);
-    axios.post(`${API_URL}/admin/login`, {id, password})
+    axios.post(`${API_URL}/api/admin/login`, {id, password})
     .then(res => {
       console.log(res);
       setCookie('login', res.data.data,{

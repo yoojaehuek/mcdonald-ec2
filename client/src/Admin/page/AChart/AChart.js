@@ -25,7 +25,7 @@ const AChart = () => {
 
   useEffect(() => {
     axios
-      .get(`${API_URL}/admin/allname`)
+      .get(`${API_URL}/api/admin/allname`)
       .then((res) => {
         console.log(res.data);
         setAdmins(res.data);
@@ -37,7 +37,7 @@ const AChart = () => {
 
   useEffect(() => {
     axios
-      .get(`${API_URL}/order/rank`)
+      .get(`${API_URL}/api/order/rank`)
       .then((res) => {
         console.log(res.data);
         setRank(res.data);
@@ -50,7 +50,7 @@ const AChart = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`${API_URL}/order/all`);
+        const response = await fetch(`${API_URL}/api/order/all`);
         console.log("response: ", response);
         const data = await response.json();
         setSalesData(data);

@@ -31,7 +31,7 @@ const StoreTable = ({ data }) => {
     let yn_delete = window.confirm("정말 삭제하시겠습니까?");
 
     if (yn_delete) {
-      axios.delete(`${API_URL}/store/${item.id}`)
+      axios.delete(`${API_URL}/api/store/${item.id}`)
       .then(res => {
         console.log("응답 데이터: ", res.data);
         alert("삭제되었습니다.");

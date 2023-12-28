@@ -16,7 +16,7 @@ const Crew = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${API_URL}/crew`);
+        const response = await axios.get(`${API_URL}/api/crew`);
         setCrewData(response.data);
       } catch (error) {
         console.error('Error:', error);
