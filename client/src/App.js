@@ -17,7 +17,6 @@ import Find from './page/Store/Main/Find/Find';
 import Effort from './page/Story/Competition/FarmToRestaurant/Effort';
 import Safekeeping from './page/Story/Competition/FarmToRestaurant/Safekeeping';
 import FarmToRestaurant from './page/Story/Competition/FarmToRestaurant/FarmToRestaurant';
-// import Material from './page/Story/Competition/FarmToRestaurant/Material';
 import News from './page/WhatsNew/News/News.js';
 import Promotion_HappyMeal from './page/WhatsNew/Promotion_HappyMeal/Promotion_HappyMeal.js';
 import DetailPage from './page/WhatsNew/DetailPage/DetailPage.js';
@@ -82,7 +81,6 @@ function App() {
           <Route path='/story/recruit' element={<Recruit />}></Route>
           <Route path='/story/faq' element={<Faq />}></Route>
           <Route path='/story/farmtorestaurant' element={<FarmToRestaurant />}></Route>
-          {/* <Route path='/whats-new/happymeal' element={<HappyMeal />}></Route> */}
           <Route path='/story/brandintro' element={<BrandIntro />}></Route>
           <Route path='/story/brandhistory' element={<BrandHistory />}></Route>
           <Route path='/story/scaleforgood' element={<Scaleforgood />} />
