@@ -13,12 +13,12 @@ const Header = () => {
 
   const logout = async () => {
     axios.get(`${API_URL}/logout`, { withCredentials: true })
-      .then(()=>{
-        setIsLogin(false);
-      })
-      .catch((err) => {
-        console.log("logout/err: ", err);
-      })
+    .then(()=>{
+      setIsLogin(false);
+    })
+    .catch((err) => {
+      console.log("logout/err: ", err);
+    })
   } 
 
   const openModal = () => {

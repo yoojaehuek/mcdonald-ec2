@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { API_URL } from "../../../config/contansts";
-import { getCookie, setCookie } from "../../../cookie";
+import { setCookie } from "../../../utils/cookie";
 import { NavLink, useNavigate } from "react-router-dom";
 import { Button, TextField, Container, CssBaseline, Typography, Paper } from "@mui/material";
 

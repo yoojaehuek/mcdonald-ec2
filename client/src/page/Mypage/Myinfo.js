@@ -4,13 +4,15 @@ import Order from './Order';
 import "./Myinfo.scss";
 import axios from 'axios';
 import { API_URL } from '../../config/contansts';
-import { useRecoilState } from "recoil";
-import { loginState } from "../../recoil/atoms/State";
 import PopupDom from '../../components/AddressPopup/PopupDom';
 import PopupPostCode from '../../components/AddressPopup/PopupPostCode';
+import { errHandler } from '../../utils/globalFunction';
+import { useRecoilState } from "recoil";
+import { loginState } from "../../recoil/atoms/State";
 
 const Myinfo = () => {
   const navigate = useNavigate();
+  const [islogin, setIslogin] = useRecoilState(loginState); //useState와 거의 비슷한 사용법
   const [selectedEmail, setSelectedEmail] = useState('');
   const [selectPhone, setSelectedPhone] = useState('');
   const [selectedAddress, setSelectedAddress] = useState('');
@@ -62,6 +64,8 @@ const Myinfo = () => {
       setSelectedDay(res.data.day)
     }).catch((err) =>{
       console.error(err);
+      setIslogin(false);
+      errHandler(err);
     });
     // 페이지 로드 시 현재 날짜와 월일로 기본값 설정
     const currentDate = new Date();
@@ -85,7 +89,9 @@ const Myinfo = () => {
       console.log(res.data);
       alert("사용자 정보가 수정되었습니다.")
     }).catch(err => {
-      console.log(err);
+      console.error(err);
+      setIslogin(false);
+      errHandler(err);
     }); 
   }
 
@@ -105,7 +111,11 @@ const Myinfo = () => {
         .catch((err) => {
           console.log("logout/err: ", err);
         })
-        })
+      }).catch(err => {
+        console.error(err);
+        setIslogin(false);
+        errHandler(err);
+      })
     }else{
       return;
     }

@@ -2,9 +2,13 @@ import React, { useEffect, useState } from 'react';
 import './Myinfo.scss';
 import axios from 'axios';
 import { API_URL } from '../../config/contansts';
+import { useRecoilState } from "recoil";
+import { loginState } from "../../recoil/atoms/State";
+import { errHandler } from '../../utils/globalFunction';
 // import { Product } from '../../../../database/schemas';
 
 const Order = () => {
+  const [islogin, setIslogin] = useRecoilState(loginState); //useState와 거의 비슷한 사용법
   const [selectedPeriod, setSelectedPeriod] = useState('today'); // 'today', 'week', '3month', '6month', 'year'
   const [selectedTab] = useState('info'); // 'info' 또는 'order'로 상태 관리
   const [axiosResult, setAxiosResult] = useState([]);
@@ -15,8 +19,10 @@ const Order = () => {
       console.log(res.data);
       setAxiosResult(res.data);
     }).catch((err) =>{
-            console.error(err);
-        });
+      console.error(err);
+      setIslogin(false);
+      errHandler(err);
+    });
   },[]);
 
   // 주문 데이터
@@ -53,8 +59,10 @@ const Order = () => {
       console.log(res.data);
       setAxiosResult(res.data);
     }).catch((err) =>{
-            console.error(err);
-        });
+      console.error(err);
+      setIslogin(false);
+      errHandler(err);
+    });
   }
 
   const serch_week_order = () => {
@@ -63,8 +71,10 @@ const Order = () => {
       console.log(res.data);
       setAxiosResult(res.data);
     }).catch((err) =>{
-            console.error(err);
-        });
+      console.error(err);
+      setIslogin(false);
+      errHandler(err);
+    });
   }
   
   const serch_month3_order = () => {
@@ -73,8 +83,10 @@ const Order = () => {
       console.log(res.data);
       setAxiosResult(res.data);
     }).catch((err) =>{
-            console.error(err);
-        });
+      console.error(err);
+      setIslogin(false);
+      errHandler(err);
+    });
   }
 
   const serch_month6_order = () => {
@@ -83,8 +95,10 @@ const Order = () => {
       console.log(res.data);
       setAxiosResult(res.data);
     }).catch((err) =>{
-            console.error(err);
-        });
+      console.error(err);
+      setIslogin(false);
+      errHandler(err);
+    });
   }
 
   const serch_year_order = () => {
@@ -93,8 +107,10 @@ const Order = () => {
       console.log(res.data);
       setAxiosResult(res.data);
     }).catch((err) =>{
-            console.error(err);
-        });
+      console.error(err);
+      setIslogin(false);
+      errHandler(err);
+    });
   }
 
 
