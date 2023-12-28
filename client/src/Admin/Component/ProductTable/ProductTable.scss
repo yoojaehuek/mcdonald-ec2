@@ -1,23 +1,24 @@
 #adminProd{
+  width: 1100px;
   #adminProd_header{
     display: flex;
     justify-content: space-between;
     margin: 20px 0px;
+    width: 100%;
     #uploadBtn{
       display: block;
       border-radius: 5px;
-      min-width: 80px;
-      text-align: center;
-      background-color: rgb(255, 188, 13);
+      width: 80px;
+      background-color: blue;
       font-size: 15px;
       font-weight: bold;
       color: white;
       place-items: center;
       display: grid;
-      margin: 2px;
     }
   }
   .ProdTable{
+    width: 100%;
     border: 1px #a39485 solid;
     font-size: .9em;
     border-collapse: collapse;
@@ -30,7 +31,7 @@
       background: #ffbc0d;
       th{
         text-align: center;
-        min-width: 60px;
+        min-width: 50px;
         font-family: "Roboto","Helvetica","Arial",sans-serif;
         font-weight: 500;
         font-size: 0.875rem;
@@ -42,47 +43,47 @@
         text-align: center;
         padding: 16px;
         color: rgba(0, 0, 0, 0.87);
+        padding: 1em .5em;
       }
     }
-
-    td, th {
-      padding: 1em .5em;
-      vertical-align: middle;
-    }
-
-    th {
-      text-align: left;
-    }
-
-    td {
-      border-bottom: 1px solid rgba(0,0,0,.1);
-      background: #fff;
-    }
-
-    input[type=text]{
-      padding: 10px 0;
-    }
-
-    .colIndex-0{
-      border: 0;
-      pointer-events: none;
-    }
-
     tbody{
-      img{
-        width: 90%;
-        height: 90%;
+      #img_box{
+        width: 200px;
+        height: 150px;
+        img{
+          max-width: 100%;
+          max-height: 100%;
+        }
       }
       tr{
-        &.editing{
-          .colIndex-1,
-          .colIndex-2,
-          .colIndex-3,
-          .colIndex-4,
-          .colIndex-6{
-            border: 1px solid #000;
-          }
+        td {
+          padding: 1em .5em;
+          border-bottom: 1px solid rgba(0,0,0,.1);
+          background: #fff;
         }
+        td:nth-child(1){
+          width: 50px;
+          text-align: center;
+        }
+        td:nth-child(3){
+          width: 120px;
+          text-align: center;
+        }
+        td:nth-child(4){
+          width: 80px;
+          text-align: center;
+        }
+        td:nth-child(5){
+          width: 400px;
+        }
+        td:nth-child(6){
+          width: 100px;
+        }
+        td:nth-child(7),
+        td:nth-child(8){
+          width: 80px;
+        }
+        
         #editLink{
           display: block;
           border-radius: 5px;
