@@ -50,7 +50,7 @@ const Myinfo = () => {
   
 
   useEffect(() => {
-    axios.get(`${API_URL}/user/one`)
+    axios.get(`${API_URL}/api/user/one`)
     .then(res => {
       console.log(res.data);
       setUser(res.data);
@@ -75,7 +75,7 @@ const Myinfo = () => {
   }, []); // 빈 배열을 두어 한 번만 실행되도록 설정
 
   const updateUser = () => {
-    axios.patch(`${API_URL}/user`, 
+    axios.patch(`${API_URL}/api/user`, 
     { 
       "address":selectedAddress,
       "detail_address": selectedDetailAddress,
@@ -100,11 +100,11 @@ const Myinfo = () => {
     const userConfirmed = window.confirm('정말로 탈퇴하시겠습니까?');
 
     if(userConfirmed){
-      axios.delete(`${API_URL}/user`)
+      axios.delete(`${API_URL}/api/user`)
       .then(res => {
         alert("탈퇴되었습니다.");
         navigate('/');
-        axios.get(`${API_URL}/logout`, { withCredentials: true })
+        axios.get(`${API_URL}/api/logout`, { withCredentials: true })
         .then(()=>{
           setIsLogin(false);
         })

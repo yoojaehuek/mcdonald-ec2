@@ -45,7 +45,7 @@ const McDelivery = () => {
       return;
     };
 
-    axios.get(`${API_URL}/store/mcdelivery?address=${selectedAddress}`)
+    axios.get(`${API_URL}/api/store/mcdelivery?address=${selectedAddress}`)
     .then(res => {
       console.log(res.data);
       setMcDelivery_yn(res.data)

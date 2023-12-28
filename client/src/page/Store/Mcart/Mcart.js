@@ -45,7 +45,7 @@ const Mcart = () => {
   }, []);
   useEffect(() => {
     /** 로그인중인 사용자 정보 불러오기 */
-    axios.get(`${API_URL}/user/one`)
+    axios.get(`${API_URL}/api/user/one`)
       .then((res) => {
         setUser(res.data);
       })
@@ -57,7 +57,7 @@ const Mcart = () => {
   }, []);
   useEffect(() => {
     /** 매장 전부 불러오기 */
-    axios.get(`${API_URL}/store`)
+    axios.get(`${API_URL}/api/store`)
       .then((res) => {
         setStore(res.data);
       })

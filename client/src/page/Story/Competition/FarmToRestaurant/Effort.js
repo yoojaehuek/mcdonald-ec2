@@ -22,7 +22,7 @@ const Effort = () => {
   const [groupedCategories, setGroupedCategories] = useState({});
 
   useEffect(() => {
-    axios.get(`${API_URL}/effort`)
+    axios.get(`${API_URL}/api/effort`)
       .then(response => {
         setCategoriesData(response.data);
       })

@@ -189,7 +189,7 @@ const addHyphen = (e) => {
 			isPassword &&
 			isPasswordConfirm &&
 			isPhone){
-			axios.post(`${API_URL}/user/join`,{email, pwd, user_name, phone, address, detail_address, selectedYear, selectedMonth, selectedDay})
+			axios.post(`${API_URL}/api/user/join`,{email, pwd, user_name, phone, address, detail_address, selectedYear, selectedMonth, selectedDay})
 			.then((res) =>{
 				console.log("회원가입 res: ", res);
 				alert("가입성공!");

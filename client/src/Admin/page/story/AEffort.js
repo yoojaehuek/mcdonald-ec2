@@ -39,7 +39,7 @@ const AEffort = () => {
 
   useEffect(() => {
     axios
-      .get(`${API_URL}/effort`)
+      .get(`${API_URL}/api/effort`)
       .then((res) => {
         console.log(res);
         setAxiosResult(res.data);
@@ -83,12 +83,12 @@ const AEffort = () => {
     const formData = new FormData();
     formData.append("image", selectedImage);
     axios
-      .post(`${API_URL}/image`, formData)
+      .post(`${API_URL}/api/image`, formData)
       .then((response) => {
         const imageUrl = response.data.imageUrl;
         const newData = { ...dataWithoutId, img_url: imageUrl };
         axios
-          .post(`${API_URL}/effort`, newData)
+          .post(`${API_URL}/api/effort`, newData)
           .then((response) => {
             console.log("Create:", response.data);
             setAxiosResult((prevResult) => [...prevResult, response.data]);
@@ -108,12 +108,12 @@ const AEffort = () => {
       const formData = new FormData();
       formData.append("image", selectedImage);
       axios
-        .post(`${API_URL}/image`, formData)
+        .post(`${API_URL}/api/image`, formData)
         .then((response) => {
           const imageUrl = response.data.imageUrl;
           const updatedData = { ...editedData, img_url: imageUrl };
           axios
-            .patch(`${API_URL}/effort/${selectedItem.id}`, updatedData)
+            .patch(`${API_URL}/api/effort/${selectedItem.id}`, updatedData)
             .then((response) => {
               console.log("Update:", response.data);
               setAxiosResult((prevResult) => {
@@ -139,7 +139,7 @@ const AEffort = () => {
     const confirmDelete = window.confirm("혼또 삭제하시겠습니까?");
     if (confirmDelete) {
       axios
-        .delete(`${API_URL}/effort/${id}`)
+        .delete(`${API_URL}/api/effort/${id}`)
         .then((response) => {
           console.log("Delete:", response.data);
           setAxiosResult((prevResult) =>

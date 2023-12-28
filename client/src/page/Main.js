@@ -31,7 +31,7 @@ const Main = () => {
   const [tmps,setTmps] = useState([]);
 
   useEffect(()=>{
-    axios.get(`${API_URL}/whats-new`)
+    axios.get(`${API_URL}/api/whats-new`)
     .then(res=>{
       console.log("whats-new: ",res.data);
       setTmps(res.data); 

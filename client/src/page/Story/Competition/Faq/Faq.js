@@ -13,7 +13,7 @@ const Faq = () => {
 
   //then catch > promise에 대한 에러처리용
   useEffect(() => {
-    axios.get(`${API_URL}/faq`)
+    axios.get(`${API_URL}/api/faq`)
       .then(response => {
         //console.log("response:",response);
         setCategories(response.data);

@@ -126,7 +126,7 @@ const StoreDetail = () => {
   }, [item]);
 
   // const fetchSliderData = () => {
-  //   axios.get(`${API_URL}/item`)
+  //   axios.get(`${API_URL}/api/item`)
   //     .then(res => {
   //       console.log("dddddggg",res.data);
   //       // setAxiosResult(res.data);//업데이트 
@@ -163,7 +163,7 @@ const StoreDetail = () => {
 
       if (userConfirmed) {//selectedItem.id 는 item.id 암
         console.log("업데이트아이템: ", updatedItem);
-        axios.patch(`${API_URL}/store/${selectedItem.id}`, updatedItem)
+        axios.patch(`${API_URL}/api/store/${selectedItem.id}`, updatedItem)
           .then(() => {
             alert("수정되었습니다.");
             // fetchSliderData(); // 데이터 갱신
