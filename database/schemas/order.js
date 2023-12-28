@@ -21,7 +21,7 @@ class Order extends Sequelize.Model {
           comment: "어느 지점에서 주문했는지(store테이블의 id 가져옴)",
         },
         status: {
-          type: Sequelize.ENUM('주문대기', '조리중', '베달중', '배달완료'),
+          type: Sequelize.ENUM('주문대기', '조리중', '배달중', '배달완료'),
           allowNull: false,
           defaultValue: "주문대기",
           comment: "주문 상태(ENUM은 ()안에 있는 값만 넣을 수 있음)"
