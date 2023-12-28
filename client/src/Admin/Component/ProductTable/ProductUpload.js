@@ -226,8 +226,8 @@ const ProductUpload = () => {
         </ul>
       </div>
       <li id='button'>
-        <button id='cancel-button' onClick={handleGoBack} className="button_detail" type="button">취소</button>
         <button id='save-button' onClick={handleAdd} className="button_detail" type="button">추가</button>
+        <button id='cancel-button' onClick={handleGoBack} className="button_detail" type="button">취소</button>
       </li>
     </form>
   )
