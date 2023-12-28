@@ -32,7 +32,6 @@ sequelize.sync({ force: false }) //force가 true면 킬때마다 DB 새로 만�
   console.error(err);
 });
 
-
 app.use(cookieParser());
 
 
