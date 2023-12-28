@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate, NavLink } from "react-router-dom";
 import { API_URL } from "../../../config/contansts";
-import { Upload } from 'antd';
+import { Upload } from "antd";
 import "./ProductDetail.scss";
 import axios from "axios";
 

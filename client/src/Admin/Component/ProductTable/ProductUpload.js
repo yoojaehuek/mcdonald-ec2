@@ -4,7 +4,7 @@ import { API_URL } from "../../../config/contansts";
 import { Upload } from 'antd';
 import './ProductUpload.scss';
 import axios from 'axios';
-import {getCookie} from '../../../cookie';
+import { getCookie } from '../../../cookie';
 
 const ProductUpload = () => {
   const [Kname, setKname] = useState('');
@@ -27,7 +27,6 @@ const ProductUpload = () => {
     setCategoryId(item.subcategory_id);
     setAdminId(getCookie('login'));
   }, []); 
-
   const handleGoBack = () => {
     navigate(-1); // -1은 뒤로 가기를 의미합니다.
   };
@@ -79,7 +78,6 @@ const ProductUpload = () => {
       alert('전부입력해주세요');
     }
   };
-
   const onChangeImage = (info) => {
     // 파일이 업로드 중일 때
     console.log("new", info.file);
@@ -96,7 +94,6 @@ const ProductUpload = () => {
       setImageUrl(imageUrl);
     }
   };
-
   return(
     <form className="prod-upload">
       <h1>메뉴 추가</h1>
@@ -121,7 +118,6 @@ const ProductUpload = () => {
             )}
           </Upload>
         </div>
-
         <ul>
           <li>
             <label>이름</label>
@@ -218,8 +214,6 @@ const ProductUpload = () => {
               value={startTime}
               onChange={(e) => setStartTime(e.target.value)}
               placeholder='예) 09:30'
-              
-              
               /><span>~</span>
             <input
               type="text"
