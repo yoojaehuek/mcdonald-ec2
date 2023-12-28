@@ -22,7 +22,7 @@ import AFaq from './page/story/AFaq';
 import ALogin from './page/ALogin/ALogin.js';
 
 import './Adminmain.scss';
-import { getCookie } from '../cookie.js';
+import { getCookie } from '../utils/cookie.js';
 
 const AdminMain = () => {
   const navigate = useNavigate();

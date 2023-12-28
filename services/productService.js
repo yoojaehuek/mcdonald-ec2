@@ -17,6 +17,7 @@ class ProductService{
 		const result = await ProductModel.getCategoryProduct({category_id});
     if (result.length == 0) {
       result.errorMessage = "카테고리ID 잘못 입력 OR 카테고리에 등록된 상품이 없음";
+			return result
     }
 
 		result.map((order, index) => {

@@ -33,7 +33,9 @@ function Login() {
 				navigate('/');  
 			})
 			.catch(err =>{
-				console.error(err);
+				// console.error(err);
+				console.error(err.response.data);
+				alert(`로그인 실패!\n${err.response.data.message}`);
 			})
 		}else{
 			return alert("전부 입력해주세요");

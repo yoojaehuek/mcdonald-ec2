@@ -1,8 +1,8 @@
 const { verify } = require('./token');
 
 const authJWT = (req, res, next) => {
-  if (req.cookies.accessToken) {
-    const token = req.cookies.accessToken; // header에서 access token을 가져옵니다.
+  if (req.s.accessToken) {
+    const token = req.s.accessToken; // header에서 access token을 가져옵니다.
     const result = verify(token); // token을 검증합니다.
     if (result.ok) { // token이 검증되었으면 req에 값을 세팅하고, 다음 콜백함수로 갑니다.
       // req.id = result.id;

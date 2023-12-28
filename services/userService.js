@@ -8,6 +8,13 @@ const { makeRefreshToken, makeAccessToken } = require('../utils/token');
 class UserService{
 	//유효성 검사 이메일 겹치는지 등등
 	static async createUser({email, pwd, user_name, phone, address, detail_address, selectedYear, selectedMonth, selectedDay}){
+
+		const user = await UserModel.findOneUserEmail({ email });
+		if (user) {
+			user.errorMessage = "해당 id는 이미 가입되어 있습니다.";
+			return user;
+		}
+
 		// const birth = selectedYear+'-'+selectedMonth+'-'+selectedDay;
 		const birth = selectedYear+'-'+selectedMonth+'-'+selectedDay;
 		console.log("birth: ", birth);
@@ -34,10 +41,14 @@ class UserService{
 		// console.log("id: ",id);
 		// console.log("pwd: ",pwd);
 
-		const user = await UserModel.findOneUserEmail({ email });
+		let user = await UserModel.findOneUserEmail({ email });
+		console.log("user: ", user);
+		
 		if (!user) {
-			const errorMessage = "해당 id는 가입 내역이 없습니다. 다시 한 번 확인해 주세요.";
-			return errorMessage;
+			console.log('null걸림');
+			user = {}; // null이면 속성 할당 안됨 그래서 {} 빈 객체 재할당
+			user.errorMessage = "해당 id는 가입 내역이 없습니다. 다시 한 번 확인해 주세요.";
+			return user;
 		}
 
 		// 입력한 비밀번호와 조회해온 암호화 난수 함침
@@ -69,6 +80,8 @@ class UserService{
 			return newUser
 		}else {
 			console.log('Invalid login credentials.');
+			user.errorMessage = "id 또는 비밀번호가 다릅니다.";
+			return user;
 		}
 	}
 

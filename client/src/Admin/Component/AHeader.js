@@ -2,7 +2,7 @@ import React from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import { AppBar, Toolbar, Typography, IconButton, Button, Divider } from '@mui/material';
 import { NavLink } from 'react-router-dom';
-import { getCookie, removeCookie } from '../../cookie';
+import { getCookie, removeCookie } from '../../utils/cookie';
 
 const AHeader = () => {
 

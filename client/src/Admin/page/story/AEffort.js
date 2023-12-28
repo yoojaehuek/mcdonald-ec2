@@ -18,7 +18,7 @@ import {
   Input,
 } from "@mui/material";
 import { API_URL } from "../../../config/contansts";
-import { getCookie } from "../../../cookie";
+import { getCookie } from "../../../utils/cookie";
 
 const AEffort = () => {
   const [axiosResult, setAxiosResult] = useState([]);

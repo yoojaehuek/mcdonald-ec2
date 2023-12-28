@@ -7,9 +7,13 @@ import React, { useEffect, useState } from "react";
 import { API_URL } from "../../../config/contansts";
 import { NavLink, useNavigate } from 'react-router-dom'
 import axios from "axios";
+import { useRecoilState } from "recoil";
+import { loginState } from "../../../recoil/atoms/State";
+import { errHandler } from '../../../utils/globalFunction';
 import "./Mcart.scss";
 
 const Mcart = () => {
+  const [islogin, setIslogin] = useRecoilState(loginState); //useState와 거의 비슷한 사용법
   const [cart, setCart] = useState([]); /** 장바구니에 담은 상품목록 */
   const [user, setUser] = useState({});/** 로그인한 사용자정보 */
   const [store, setStore] = useState([]);/** 매장 목록 */
@@ -49,7 +53,9 @@ const Mcart = () => {
         setUser(res.data);
       })
       .catch((err) => {
-          console.error(err);
+        console.error(err);
+        setIslogin(false);
+        errHandler(err);
       });
   }, []);
   useEffect(() => {
