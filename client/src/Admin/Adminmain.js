@@ -20,6 +20,7 @@ import ANews from './page/AWhatsNew/ANews/ANews.js';
 import StoreDetail from './Component/StoreTable/StoreDetail';
 import AFaq from './page/story/AFaq';
 import ALogin from './page/ALogin/ALogin.js';
+import Amanual from './page/Amanual/Amanual.js'
 
 import './Adminmain.scss';
 import { getCookie } from '../utils/cookie.js';
@@ -61,6 +62,7 @@ const AdminMain = () => {
           <Route path='/slider/*' element={<ASlider />} />
           <Route path='/whats-new/*' element={<AWhatsNew />} />
           <Route path='/whats-new/13' element={<ANews />} />
+          <Route path='/manual/manual' element={<Amanual />} />
         </Routes>
       </div>
     </div>

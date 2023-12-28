@@ -207,7 +207,7 @@ const StoreDetail = () => {
             onChange={handleInputChange}
           ></textarea>
           <label className="box" htmlFor="address">주소:</label>
-          <span >
+          <span>
           <input type="text" 
             name="address" 
             className="mcdel-input1" 
@@ -218,7 +218,7 @@ const StoreDetail = () => {
             disabled
           />
           <button type="button" className="mcdel-button2" onClick={openPostCode}>주소찾기</button>
-        </span>
+          </span>
           <label className="box" htmlFor="start_time">시작 시간:</label>
           <textarea
             id="start_time"
@@ -233,8 +233,10 @@ const StoreDetail = () => {
             value={newStore.end_time}
             onChange={handleInputChange}
           ></textarea>
-          <label className="box" htmlFor="yn_mcmorning">맥모닝:</label>
-          <div>
+
+          <h1 className='store_option'>매장 옵션</h1><div></div>
+          <label className="box1" htmlFor="yn_mcmorning" style={{marginTop: "20px"}}>맥모닝:</label>
+          <div className='radiobox'>
             <label className='radio'>
               <input
                 type="radio"
@@ -259,7 +261,7 @@ const StoreDetail = () => {
             </label>
           </div>
           
-          <label className="box" htmlFor="yn_mcdrive">맥드라이브:</label>
+          <label className="box1" htmlFor="yn_mcdrive">맥드라이브:</label>
           <div>
             <label className='radio'>
               <input
@@ -285,7 +287,7 @@ const StoreDetail = () => {
             </label>
           </div>
           
-          <label className="box" htmlFor="yn_mcdelivery">맥딜리버리:</label>
+          <label className="box1" htmlFor="yn_mcdelivery">맥딜리버리:</label>
           <div>
             <label className='radio'>
               <input
@@ -311,7 +313,7 @@ const StoreDetail = () => {
             </label>
           </div>
           
-          <label className="box" htmlFor="yn_parking">주차장:</label>
+          <label className="box1" htmlFor="yn_parking">주차장:</label>
           <div>
             <label className='radio'>
               <input
@@ -336,13 +338,12 @@ const StoreDetail = () => {
               False
             </label>
           </div>
-          
-          
-
-          <button className="button_detail" type="button" onClick={handleEdit}>저장</button>
-          <button className="button_detail" type="button" onClick={handleClose}>취소</button>
         </div>
       </form>
+      <div className="jh_btn">
+        <button className="button_detail btn1" type="button" onClick={handleEdit}>저장</button>
+        <button className="button_detail btn2" type="button" onClick={handleClose}>취소</button>
+      </div>
 
       {/* 우편번호 창 팝업 생성 기준 div */}
       <div id='popupDom'>

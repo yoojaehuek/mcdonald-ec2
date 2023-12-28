@@ -119,21 +119,16 @@ const AChart = () => {
 
   // 일간 차트 데이터 계산 함수
   const getDailyChartData = (data) => {
-    const today = (todayIndex + 6) % 7;
-    console.log("today", today);
-
     // 요일별 총 판매 실적을 계산
     const dailyTotal = data.reduce((acc, item) => {
       const date = new Date(item.created_at);
-      const day = (date.getDay() + 6) % 7;
+      const day = date.getDay();
       acc[day] = (acc[day] || 0) + item.total_price;
       return acc;
     }, []);
 
-    // 요일정렬
-    const reorderedDays = ["토", "일", "월", "회", "수", "목", "금"]
-      .slice(today)
-      .concat(["토", "일", "월", "회", "수", "목", "금"].slice(0, today));
+    // 요일 정렬
+    const reorderedDays = ["일", "월", "화", "수", "목", "금", "토"];
 
     // 차트 데이터를 반환
     return {
@@ -188,6 +183,18 @@ const AChart = () => {
     };
   };
 
+  // 오늘의 총 판매금액을 계산하는 함수
+  const getTodaySales = () => {
+    const today = new Date().toLocaleDateString();
+    const todaySales = salesData
+      .filter(
+        (item) => new Date(item.created_at).toLocaleDateString() === today
+      )
+      .reduce((acc, item) => acc + item.total_price, 0);
+
+    return todaySales;
+  };
+
   return (
     <>
       <div
@@ -237,7 +244,7 @@ const AChart = () => {
           }}
         >
           <h2 style={{ fontSize: "1.5rem", marginBottom: "10px" }}>
-            {showDailySales ? "하루 총 판매금액" : "월 총 판매금액"}
+            {showDailySales ? "하루 총 판매금액" : "전체 판매금액"}
           </h2>
           <AttachMoneyIcon
             style={{
@@ -256,14 +263,8 @@ const AChart = () => {
             }}
           >
             {showDailySales
-              ? `오늘의 총 판매금액: ${
-                  salesData.length > 0
-                    ? salesData
-                        .reduce((acc, item) => acc + item.total_price, 0)
-                        .toLocaleString()
-                    : 0
-                }원`
-              : `이번 달의 총 판매금액: ${
+              ? `오늘의 총 판매금액: ${getTodaySales().toLocaleString()}원`
+              : `총 판매금액: ${
                   salesData.length > 0
                     ? salesData
                         .reduce((acc, item) => acc + item.total_price, 0)
@@ -353,10 +354,10 @@ const AChart = () => {
                     height: "50px",
                     objectFit: "cover",
                     borderRadius: "50%",
-                    marginRight: "8px",
+                    marginLeft: "10px",
                   }}
                 />
-                <p style={{ margin: "0", fontSize: "1rem" }}>{item.k_name}</p>
+                <p style={{ marginLeft: "30px", fontSize: "1rem" }}>{item.k_name}</p>
               </div>
             ))}
         </div>
