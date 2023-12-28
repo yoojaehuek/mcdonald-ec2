@@ -341,10 +341,10 @@ const ACrew = () => {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleModalClose}>취소</Button>
           <Button onClick={selectedItem ? handleUpdate : handleCreate} color="primary">
             {selectedItem ? "수정" : "등록"}
           </Button>
+          <Button onClick={handleModalClose}>취소</Button>
         </DialogActions>
       </Dialog>
     </>
