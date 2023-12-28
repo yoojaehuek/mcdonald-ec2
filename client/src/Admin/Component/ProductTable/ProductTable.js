@@ -8,7 +8,7 @@ const StoreTable = ({ data, setData }) => {
   const CId = useParams();
   console.log("cid: ", CId.subcategory_id);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 5;
+  const itemsPerPage = 3;
   if (!data || data.length === 0) {
     return <p>상품이 없습니다.</p>;
   }
@@ -65,7 +65,6 @@ const StoreTable = ({ data, setData }) => {
               <th>삭제</th>
             </tr>
           </thead>
-
           <tbody>
             {currentItems.map((prod, rowIndex) => (
               <tr
@@ -74,12 +73,15 @@ const StoreTable = ({ data, setData }) => {
                 className={`rowIndex-${rowIndex}`}
               >
                 {columns.map((column, colIndex) => (
-                  <>
+                  < >
                     {colIndex === 1 ? (
-                      <img
-                        src={API_URL + prod[column]}
-                        alt={`thumbnail-${prod.id}`}
-                      />
+                      <td>
+                        <img
+                          id="burger_img"
+                          src={API_URL + prod[column]}
+                          alt={`thumbnail-${prod.id}`}
+                        />
+                      </td>
                     ) : (
                       <td key={colIndex}>{prod[column]}</td>
                     )}
