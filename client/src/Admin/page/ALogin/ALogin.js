@@ -39,7 +39,7 @@ const ALogin = () => {
   }
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Container component="main" maxWidth="xs" sx={{marginTop: "12vw"}}>
       <CssBaseline />
       <Paper elevation={3} sx={{ padding: 4, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <Typography component="h1" variant="h5" mb={2}>
@@ -71,7 +71,7 @@ const ALogin = () => {
         <Button variant="contained" fullWidth sx={{ mt: 2, mb: 2 }} onClick={onLogin}>
           로그인
         </Button>
-        <NavLink to="/">메인 페이지로</NavLink>
+        <a href="javascript:location.replace('/')">메인 페이지로</a>
       </Paper>
     </Container>
   );

@@ -39,10 +39,12 @@ const Mcart = () => {
       return;
     }
   }
+
   useEffect(() => {
     const storedCart = JSON.parse(sessionStorage.getItem("cart"));
     if (storedCart && storedCart.length > 0) setCart(storedCart);
   }, []);
+
   useEffect(() => {
     /** 로그인중인 사용자 정보 불러오기 */
     axios.get(`${API_URL}/api/user/one`)

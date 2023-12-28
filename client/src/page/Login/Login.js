@@ -23,7 +23,7 @@ function Login() {
 		if( email !== "" && pwd !== ""){
 			console.log(email);
 			axios.post(
-				`${API_URL}/user/login`,
+				`${API_URL}/api/user/login`,
 				{email, pwd},
 				{ withCredentials: true }
 			)
