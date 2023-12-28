@@ -14,17 +14,19 @@ class ProductService{
 	}
 
 	static async getCategoryProduct({category_id}){
-		const result = await ProductModel.getCategoryProduct({category_id});
+		let result = await ProductModel.getCategoryProduct({category_id});
     if (result.length == 0) {
       result.errorMessage = "카테고리ID 잘못 입력 OR 카테고리에 등록된 상품이 없음";
     }
+
+    // result = result.map(el => el.get({ plain: true }));
 
 		result.map((order, index) => {
       const { created_at } = result[index];
 
       // console.log(`${created_at.getFullYear()}-${created_at.getMonth()+1}-${created_at.getDate()}`);
       result[index].created_at = new Date(created_at.setHours(created_at.getHours() + 9));
-      result[index].format_date = result[index].created_at.toISOString().split('T')[0];
+      result[index].created_at = result[index].created_at.toISOString().split('T')[0];
     })
     
 		return result;
