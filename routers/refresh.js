@@ -63,12 +63,12 @@ const refresh = async (req, res, next) => {
     }
   } catch (error) {
     // 오류 발생 시 에러 로그를 출력
-    console.error("토큰 유효성 검사 실패 다시 로그인",error);
+    console.error("토큰 유효성 검사 실패 다시 로그인", error);
     // 에러 응답 전송 (클라이언트에서 토큰 유효성 검증 실패를 처리할 수 있도록)
     // res.status(500).json(error);
     res.status(302).json({ 
       ok: false,
-      message: error,
+      message: '다시로그인',
       url: '/login'
     });
   }

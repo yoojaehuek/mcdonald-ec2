@@ -4,8 +4,9 @@
   background-color: rgb(228, 228, 228);
 
   .search {
-    padding-top: 2vw;
     display: flex;
+    justify-content: center;
+    padding-top: 2vw;
 
     > button {
       display: flex;
@@ -24,6 +25,7 @@
 
 	.search1 {
 		max-width: 70vw;
+    margin: 0 auto;
 	
 		> input {
 			width: 50vw;

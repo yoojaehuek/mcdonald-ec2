@@ -1,6 +1,4 @@
 import React, { useEffect } from "react";
-import axios from "axios";
-import { API_URL } from "../../../../config/contansts";
 
 const { kakao } = window;
 

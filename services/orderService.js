@@ -112,11 +112,6 @@ class OrderService{
 
     return result;
   }
-  
-  static async rankMenu(){
-		const result = await OrderModel.rankMenu();
-		return result;
-	}
 
   static async rankMenu(){
 		const result = await OrderModel.rankMenu();
