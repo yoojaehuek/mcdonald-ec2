@@ -142,7 +142,7 @@ const AFaq = () => {
       <Button
         variant="contained"
         color="primary"
-        style={{ marginBottom: "1vw", float: "right" }}
+        style={{ marginBottom: "1vw", float: 'right', backgroundColor: 'rgb(255, 188, 13)' }}
         onClick={() => {
           setSelectedItem(null);
           setOpenModal(true);
@@ -299,13 +299,13 @@ const AFaq = () => {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleModalClose}>취소</Button>
           <Button
             onClick={selectedItem ? handleUpdate : handleCreate}
             color="primary"
           >
             {selectedItem ? "수정" : "등록"}
           </Button>
+          <Button onClick={handleModalClose}>취소</Button>
         </DialogActions>
       </Dialog>
     </>

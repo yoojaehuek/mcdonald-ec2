@@ -107,7 +107,7 @@ const ANews = () => {
       <Button
         variant="contained"
         color="primary"
-        style={{ marginBottom: "1vw", float: "right" }}
+        style={{ marginBottom: "1vw", float: 'right', backgroundColor: 'rgb(255, 188, 13)' }}
         onClick={() => {
           setSelectedItem(null);
           setEditedData({

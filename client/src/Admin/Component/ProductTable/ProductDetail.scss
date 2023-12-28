@@ -1,7 +1,9 @@
 .prod-detail {
   margin: 0 auto;
+  width: 1000px;
   h1{
     text-align: center;
+    margin: 8px 0px;
   }
   #prod-information{
     display: flex;
@@ -9,6 +11,17 @@
       margin-right: 20px;
       place-items: center;
       display: grid;
+      #upload-img-placeholder{
+        cursor: pointer;
+        text-align: center;
+        padding-bottom: 25px;
+        border-radius: 4px;
+        border: 1px solid #cccccc;
+        width: 400px;
+        height: 400px;
+        place-items: center;
+        display: grid;
+      }
     }
     ul{
       width: 700px;
@@ -42,7 +55,7 @@
   #button{
     display: flex;
     justify-content: right;
-    width: 950px;
+    width: 100%;
     .button_detail{
       text-align: center;
       width: 100px;
@@ -52,12 +65,13 @@
       margin: 10px;
       border: 0px;
       color: white;
+      border-radius: 10px;
     }
     #save-button{
-      background-color: #000;
+      background-color: #ffbc0d;
     }
     #cancel-button{
-      background-color: blue;
+      background-color: #f44336;
     }
   }
 }
