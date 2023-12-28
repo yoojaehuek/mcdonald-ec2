@@ -18,6 +18,7 @@ import {
   Input,
 } from "@mui/material";
 import { API_URL } from "../../../config/contansts";
+import { getCookie } from "../../../cookie";
 
 const AEffort = () => {
   const [axiosResult, setAxiosResult] = useState([]);
@@ -27,7 +28,7 @@ const AEffort = () => {
   const [selectedItem, setSelectedItem] = useState(null);
   const [editedData, setEditedData] = useState({
     id: "",
-    admin_id: "",
+    admin_id: getCookie("login"),
     title: "",
     title_description: "",
     img_url: "",
@@ -173,6 +174,15 @@ const AEffort = () => {
         onClick={() => {
           setSelectedItem(null);
           setOpenModal(true);
+          setEditedData({
+            id: "",
+            admin_id: getCookie("login"),
+            title: "",
+            title_description: "",
+            img_url: "",
+            sub_title: "",
+            sub_title_description: "",
+          });
         }}
       >
         추가하기
@@ -319,7 +329,7 @@ const AEffort = () => {
           <TextField
             label="AdminID"
             name="admin_id"
-            value={editedData.admin_id}
+            value={getCookie("login")}
             onChange={handleInputChange}
             fullWidth
             margin="normal"

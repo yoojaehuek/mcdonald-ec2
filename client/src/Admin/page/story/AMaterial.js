@@ -18,6 +18,7 @@ import {
   Input,
 } from "@mui/material";
 import { API_URL } from "../../../config/contansts";
+import { getCookie } from "../../../cookie";
 
 const Material = () => {
   const [axiosResult, setAxiosResult] = useState([]);
@@ -27,7 +28,7 @@ const Material = () => {
   const [selectedItem, setSelectedItem] = useState(null);
   const [editedData, setEditedData] = useState({
     id: "",
-    admin_id: "",
+    admin_id: getCookie("login"),
     title: "",
     description: "",
     additional_info: "",
@@ -235,6 +236,15 @@ const Material = () => {
         onClick={() => {
           setSelectedItem(null);
           setOpenModal(true);
+          setEditedData({
+            id: "",
+            admin_id: getCookie("login"),
+            title: "",
+            description: "",
+            additional_info: "",
+            img_url: "",
+            background_img_url: "",
+          });
         }}
       >
         추가하기
@@ -362,7 +372,7 @@ const Material = () => {
             margin="dense"
             label="Admin ID"
             fullWidth
-            value={editedData.admin_id}
+            value={getCookie("login")}
             onChange={(e) =>
               setEditedData({ ...editedData, admin_id: e.target.value })
             }

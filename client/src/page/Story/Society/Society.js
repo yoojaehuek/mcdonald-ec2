@@ -1,7 +1,15 @@
+/* 작성자 : 백승준
+ 최종수정 : 2023-12-27
+ 내용 : 사회적 책임과 지원 
+*/
+
+
 import './Society.scss'
 import { NavLink } from 'react-router-dom';
 
+// http://localhost:3000/story/society
 
+// 각 상세페이지를 소개하는 탭에 들어갈 image, 소제목, 설명과 각 페이지로 이동하기 위한 링크 설정
 const Social = [
     {id: 1,
     image: "/images/Story/Society/img_social01.jpg",
@@ -24,7 +32,9 @@ const Society = () => {
         
         <div className="SocietyContainer">
             <div className="inner">
+                {/* 대제목 */}
                 <h2 className="title">McDonald's Sustainability</h2>
+                {/* 내용 */}
                 <div className="social">
                     {Social.map(View => (
                         <div key={View.id}>

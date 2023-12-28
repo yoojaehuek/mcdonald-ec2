@@ -1,7 +1,15 @@
+/* 작성자 : 백승준
+ 최종수정 : 2023-12-27
+ 내용 : 사회적 책임과 지원 > 지역사회 공헌 > 로날드 맥도날드 어린이 축구교실
+*/
+
+
 import './kidssoccer.scss'
 import { NavLink } from 'react-router-dom';
 
+// http://localhost:3000/story/kidssoccer
 
+// 하단 내용 id, image, 소제목, 설명 등록
 const soccer = [
     {
         id: 1,
@@ -34,6 +42,7 @@ const Kidssoccer = () => {
         <>
         <div className="sccontainer">
             <div className="inner">
+                {/* 각 상세 페이지로 이동하기 위한 버튼 */}
                 <ul className="inner_btn">
                     <li>
                         <NavLink to="/story/kidssoccer" role="button" className="on">
@@ -57,6 +66,7 @@ const Kidssoccer = () => {
                     </li>
                 </ul>
                 <div className="top">
+                    {/* 상단 큰 이미지와 내용 */}
                     <img src='/images/Story/sc1.jpg'></img>
                     <h2>
                         '로날드 맥도날드
@@ -73,6 +83,7 @@ const Kidssoccer = () => {
                         로날드 맥도날드 어린이 축구교실의 참가비는 무료이며, 참가 어린이 모두에게 유니폼이 제공됨은 물론, 영양교육 비디오와 수료증 등이 제공됩니다.
                     </p>
                 </div>
+                {/* 하단 내용 불러오기 */}
                 <div className="soccer">
                     {soccer.map(View => (
                         <div key={View.id}>                        

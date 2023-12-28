@@ -9,7 +9,7 @@ router.get('/all', OrderController.getAllOrder);
 router.get('/', refresh, OrderController.getOrderByUserId);
 // router.get('/date', refresh, OrderController.findAllOrderDate);
 // router.get('/:order_id', refresh, OrderController.getOrderByOrderId);
-router.get('/renk', OrderController.rankMenu);
+router.get('/rank', OrderController.rankMenu);
 // router.patch('/:order_id', OrderController.updateOrder);
 router.delete('/:order_id', OrderController.deleteOrder);
 
@@ -19,6 +19,6 @@ router.post('/', OrderController.addOrder);
 router.get('/date', OrderController.findAllOrderDate);
 router.get('/:order_id', OrderController.getOrderByOrderId);
 router.patch('/:order_id', OrderController.updateOrder);
-// router.delete('/:order_id', OrderController.deleteOrder);
+router.delete('/:order_id', OrderController.deleteOrder);
 
 module.exports = router;
