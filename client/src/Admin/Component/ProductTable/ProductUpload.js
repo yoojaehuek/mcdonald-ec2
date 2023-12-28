@@ -1,23 +1,23 @@
-import React, { useEffect, useState} from 'react';
-import { useLocation, useNavigate, NavLink } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { API_URL } from "../../../config/contansts";
 import { Upload } from 'antd';
-import './ProductUpload.scss';
 import axios from 'axios';
-import { getCookie } from '../../../cookie';
+import { getCookie } from '../../../utils/cookie';
+import './ProductUpload.scss';
 
 const ProductUpload = () => {
-  const [Kname, setKname] = useState('');
-  const [Ename, setEname] = useState('');
+  const [Kname, setKname] = useState("");
+  const [Ename, setEname] = useState("");
   const [price, setPrice] = useState(0);
-  const [description, setDescription] = useState('');
-  const [origin, setOrigin] = useState('');
-  const [llergen, setLlergen] = useState('');
-  const [categoryId, setCategoryId] = useState('');
-  const [startTime, setStartTime] = useState('');
-  const [endTime, setEndTime] = useState('');
-  const [adminId, setAdminId] = useState('');
-  const [productCategory, setProductCategory] = useState('');
+  const [description, setDescription] = useState("");
+  const [origin, setOrigin] = useState("");
+  const [llergen, setLlergen] = useState("");
+  const [categoryId, setCategoryId] = useState("");
+  const [startTime, setStartTime] = useState("");
+  const [endTime, setEndTime] = useState("");
+  const [adminId, setAdminId] = useState("");
+  const [productCategory, setProductCategory] = useState("");
   const [seq, setSeq] = useState();
   const [imageUrl, setImageUrl] = useState("");
   const navigate = useNavigate();
@@ -25,30 +25,31 @@ const ProductUpload = () => {
   const item = useLocation().state;
   useEffect(() => {
     setCategoryId(item.subcategory_id);
-    setAdminId(getCookie('login'));
-  }, []); 
+    setAdminId(getCookie("login"));
+  }, []);
   const handleGoBack = () => {
     navigate(-1); // -1은 뒤로 가기를 의미합니다.
   };
   const handleAdd = () => {
     // 슬라이드 추가 로직 구현
-    if(
-      categoryId !=='' &&
-      adminId !=='' &&
-      productCategory !=='' &&
-      Kname !=='' &&
-      Ename !=='' &&
-      imageUrl !=='' &&
-      seq !=='' &&
-      description !=='' &&
-      startTime !=='' &&
-      endTime !=='' &&
-      llergen !=='' &&
-      origin !=='' &&
-      price !=='' &&
-      productCategory !=='' 
-    ){
-      const newProd = { //추가할거 담음
+    if (
+      categoryId !== "" &&
+      adminId !== "" &&
+      productCategory !== "" &&
+      Kname !== "" &&
+      Ename !== "" &&
+      imageUrl !== "" &&
+      seq !== "" &&
+      description !== "" &&
+      startTime !== "" &&
+      endTime !== "" &&
+      llergen !== "" &&
+      origin !== "" &&
+      price !== "" &&
+      productCategory !== ""
+    ) {
+      const newProd = {
+        //추가할거 담음
         sub_category_id: categoryId,
         admin_id: adminId,
         product_category: productCategory,
@@ -64,18 +65,19 @@ const ProductUpload = () => {
         price: price,
         product_category: productCategory,
       };
-      console.log('new: ',newProd);
-      axios.post(`${API_URL}/product`, newProd)
+      console.log("new: ", newProd);
+      axios
+        .post(`${API_URL}/product`, newProd)
         .then(() => {
           alert("메뉴가 추가되었습니다.");
           handleGoBack();
         })
-        .catch(err => {
-          console.error(err);
+        .catch((err) => {
           alert("메뉴 추가에 실패했습니다.");
+          console.error(err);
         });
-    }else {
-      alert('전부입력해주세요');
+    } else {
+      alert("전부입력해주세요");
     }
   };
   const onChangeImage = (info) => {
@@ -94,11 +96,11 @@ const ProductUpload = () => {
       setImageUrl(imageUrl);
     }
   };
-  return(
+  return (
     <form className="prod-upload">
       <h1>메뉴 추가</h1>
-      <div id='prod-information'>
-        <div id='img'> 
+      <div id="prod-information">
+        <div id="img">
           <Upload
             name="image"
             action={`${API_URL}/image`}
@@ -111,7 +113,7 @@ const ProductUpload = () => {
                 <img src={API_URL + imageUrl} alt="" />
                 <span> 클릭하거나 드래그하여 이미지를 업로드하세요.</span>
               </div>
-              ) : (
+            ) : (
               <div id="upload-img-placeholder">
                 <h3>클릭하거나 드래그하여 이미지를 업로드하세요.</h3>
               </div>
@@ -125,7 +127,7 @@ const ProductUpload = () => {
               type="text"
               id="editName"
               value={Kname}
-              onChange={(e) =>  setKname(e.target.value)}
+              onChange={(e) => setKname(e.target.value)}
             />
           </li>
           <li>
@@ -144,7 +146,7 @@ const ProductUpload = () => {
               id="editPrice"
               value={price.toLocaleString()}
               onChange={(e) => {
-                const formattedValue = e.target.value.replace(/,/g, ''); 
+                const formattedValue = e.target.value.replace(/,/g, "");
                 // , 제거
                 setPrice(Number(formattedValue));
               }}
@@ -194,8 +196,8 @@ const ProductUpload = () => {
               id="editProductCategory"
               value={productCategory}
               onChange={(e) => setProductCategory(e.target.value)}
-              placeholder='단품이면 0 세트이면 1을 입력해주세요'
-              />
+              placeholder="단품이면 0 세트이면 1을 입력해주세요"
+            />
           </li>
           <li>
             <label>seq 보여줄순서</label>
@@ -204,33 +206,48 @@ const ProductUpload = () => {
               id="editSeq"
               value={seq}
               onChange={(e) => setSeq(e.target.value)}
-              />
+            />
           </li>
-          <li id='sale-time'>
+          <li id="sale-time">
             <label>판매시간</label>
             <input
               type="text"
               id="editStartTime"
               value={startTime}
               onChange={(e) => setStartTime(e.target.value)}
-              placeholder='예) 09:30'
-              /><span>~</span>
+              placeholder="예) 09:30"
+            />
+            <span>~</span>
             <input
               type="text"
               id="editEndTime"
               value={endTime}
               onChange={(e) => setEndTime(e.target.value)}
-              placeholder='예) 22:00'
-              />
+              placeholder="예) 22:00"
+            />
           </li>
         </ul>
       </div>
-      <li id='button'>
-        <button id='cancel-button' onClick={handleGoBack} className="button_detail" type="button">취소</button>
-        <button id='save-button' onClick={handleAdd} className="button_detail" type="button">추가</button>
+      <li id="button">
+        <button
+          id="save-button"
+          onClick={handleAdd}
+          className="button_detail"
+          type="button"
+        >
+          추가
+        </button>
+        <button
+          id="cancel-button"
+          onClick={handleGoBack}
+          className="button_detail"
+          type="button"
+        >
+          취소
+        </button>
       </li>
     </form>
-  )
-}
+  );
+};
 
 export default ProductUpload;

@@ -5,12 +5,16 @@ import { useParams, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { API_URL } from "../../config/contansts";
 import { error, log } from "console";
+import { errHandler } from '../../utils/globalFunction';
+import { useRecoilState } from "recoil";
+import { loginState } from "../../recoil/atoms/State";
 
 const clientKey = "test_ck_yL0qZ4G1VOaGZY0qRkGk8oWb2MQY";
 const customerKey = "test_sk_DpexMgkW367N2GPKmowBVGbR5ozO";
 
 export default function Payment() {
   const navigate = useNavigate();
+  const [islogin, setIslogin] = useRecoilState(loginState); //useState와 거의 비슷한 사용법
   const { state } = useLocation();
   console.log(state);
 
@@ -89,6 +93,9 @@ export default function Payment() {
                 })
                 .catch((err) => {
                   alert(`에러: ${err}`);
+                  console.error(err);
+                  setIslogin(false);
+                  errHandler(err);
                 });
             })
             .catch((err) => {

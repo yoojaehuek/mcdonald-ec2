@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useLocation, useNavigate, NavLink } from "react-router-dom";
 import { API_URL } from "../../../config/contansts";
 import { Upload } from "antd";
@@ -10,6 +10,7 @@ const ProductDetail = () => {
   const navigate = useNavigate();
   console.log("상품 디테일 item: ", item);
 
+  // 상품정보들을 상태변수에 담음
   const [Kname, setKname] = useState(item.k_name);
   const [Ename, setEname] = useState(item.e_name);
   const [price, setPrice] = useState(item.price);
@@ -27,7 +28,7 @@ const ProductDetail = () => {
   const handleEdit = () => {
     // 수정 로직 구현
     const updatedItem = {
-      // 수정한거 담음
+      // 수정한것들을 updatedItem 에 담음
       sub_category_id: categoryId,
       admin_id: adminId,
       product_category: productCategory,
@@ -44,8 +45,7 @@ const ProductDetail = () => {
     };
     console.log(updatedItem);
     const userConfirmed = window.confirm("수정하시겠습니까?"); //확인 하면 true
-
-    if (userConfirmed) {
+    if (userConfirmed) {// 확인 눌렀으면 실행
       axios
         .patch(`${API_URL}/product/${item.id}`, updatedItem)
         .then(() => {
@@ -60,11 +60,9 @@ const ProductDetail = () => {
       return;
     }
   };
-
   const handleGoBack = () => {
     navigate(-1); // -1은 뒤로 가기를 의미합니다.
   };
-
   const onChangeImage = (info) => {
     // 파일이 업로드 중일 때
     console.log("new", info.file);
@@ -82,11 +80,42 @@ const ProductDetail = () => {
     }
   };
 
+  const inputFields = [ // 라벨이름, 보여질값, 값변경시 실행함수, id  
+    { label: '이름', state: Kname, setState: setKname, id: 'editName' },
+    { label: '영어이름', state: Ename, setState: setEname, id: 'editEName' },
+    { label: '가격', state: price.toLocaleString(), setState: setPrice, id: 'editPrice' },
+    { label: '설명', state: description, setState: setDescription, id: 'editDescription' },
+    { label: '원산지', state: origin, setState: setOrigin, id: 'editOrigin' },
+    { label: '알레르기정보', state: llergen, setState: setLlergen, id: 'editLlergen' },
+    { label: '카테고리 id', state: categoryId, setState: setCategoryId, id: 'editCategoryId' },
+  ];
+  const renderInputFields = () => { // 
+    return inputFields.map((field) => (
+      <li key={field.label}>
+        <label>{field.label}</label>
+        {field.label === '설명' ? (
+          <textarea
+            type="text"
+            id={field.id}
+            value={field.state}
+            onChange={(e) => field.setState(e.target.value)}
+          />
+        ) : (
+          <input
+            type="text"
+            id={field.id}
+            value={field.state}
+            onChange={(e) => field.setState(e.target.value)}
+          />
+        )}
+      </li>
+    ));
+  };
   return (
     <form className="prod-detail">
       <h1>메뉴 정보 수정</h1>
       <div id="prod-information">
-        <div id="img">
+        <div id="img">{/* 이미지 업로드 */}
           <Upload
             name="image"
             action={`${API_URL}/image`}
@@ -96,7 +125,7 @@ const ProductDetail = () => {
           >
             {imageUrl ? (
               <div id="upload-img-placeholder">
-                <img src={API_URL + imageUrl} alt="" />
+                <img src={API_URL + imageUrl} alt="" /> {/* 업로드한 이미지를 보여줌 */}
                 <span> 클릭하거나 드래그하여 이미지를 업로드하세요.</span>
               </div>
             ) : (
@@ -106,113 +135,24 @@ const ProductDetail = () => {
             )}
           </Upload>
         </div>
-        <ul>
-          <li>
-            <label>id</label>
-            <input
-              type="text"
-              id="editId"
-              value={item.id}
-              disabled // 수정 불가능하게
-            />
-          </li>
-          <li>
-            <label>이름</label>
-            <input
-              type="text"
-              id="editName"
-              value={Kname}
-              onChange={(e) => setKname(e.target.value)}
-            />
-          </li>
-          <li>
-            <label>영어이름</label>
-            <input
-              type="text"
-              id="editEName"
-              value={Ename}
-              onChange={(e) => setEname(e.target.value)}
-            />
-          </li>
-          <li>
-            <label>가격</label>
-            <input
-              type="text"
-              id="editPrice"
-              value={price.toLocaleString()}
-              onChange={(e) => setPrice(e.target.value)}
-            />
-          </li>
-          <li>
-            <label>설명</label>
-            <textarea
-              type="text"
-              id="editDescription"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-            />
-          </li>
-          <li>
-            <label>원산지</label>
-            <input
-              type="text"
-              id="editOrigin"
-              value={origin}
-              onChange={(e) => setOrigin(e.target.value)}
-            />
-          </li>
-          <li>
-            <label>알레르기정보</label>
-            <input
-              type="text"
-              id="editLlergen"
-              value={llergen}
-              onChange={(e) => setLlergen(e.target.value)}
-            />
-          </li>
-          <li>
-            <label>카테고리 id</label>
-            <input
-              type="text"
-              id="editCategoryId"
-              value={categoryId}
-              onChange={(e) => setCategoryId(e.target.value)}
-            />
-          </li>
-          <li id="sale-time">
-            <label>판매시간</label>
-            <input
-              type="text"
-              id="editStartTime"
-              value={startTime}
-              onChange={(e) => setStartTime(e.target.value)}
-            />
-            <span>~</span>
-            <input
-              type="text"
-              id="editEndTime"
-              value={endTime}
-              onChange={(e) => setEndTime(e.target.value)}
-            />
-          </li>
-        </ul>
+        <ul> {renderInputFields()} </ul> {/* 상품 정보 */}
       </div>
       <li id="button">
         <button
-          id="cancel-button"
-          onClick={handleGoBack}
-          className="button_detail"
-          type="button"
-        >
-          취소
-        </button>
-        <button
           id="save-button"
-          onClick={handleEdit}
           className="button_detail"
           type="button"
+          onClick={handleEdit}
         >
           저장
+        </button>
+        <button
+          id="cancel-button"
+          className="button_detail"
+          type="button"
+          onClick={handleGoBack}
+        >
+          취소
         </button>
       </li>
     </form>
