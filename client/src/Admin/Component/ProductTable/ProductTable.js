@@ -21,7 +21,7 @@ const StoreTable = ({ data, setData }) => {
   const handleDelete = (id) => {
     // 삭제 로직 구현
     axios
-      .delete(`${API_URL}/product/${id}`)
+      .delete(`${API_URL}/api/product/${id}`)
       .then((res) => {
         setData((prevProducts) =>
           prevProducts.filter((prod) => prod.id !== id)

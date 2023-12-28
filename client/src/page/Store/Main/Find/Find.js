@@ -22,7 +22,7 @@ const Find = () => {
   const [myLocation, setMyLocation] = useState(null);
 
   useEffect(() => {
-    axios.get(`${API_URL}/store`)
+    axios.get(`${API_URL}/api/store`)
       .then(res => {
         setStores(res.data);
         const filteredStores = res.data.filter((store) => store.id === 1).slice(0, storepage);
@@ -66,7 +66,7 @@ const Find = () => {
     }
     console.log("qs: ", qs);
 
-    axios.get(`${API_URL}/store`, { params: qs })
+    axios.get(`${API_URL}/api/store`, { params: qs })
     .then(res => {
       setResult(res.data);
       setcurrentpage(1);

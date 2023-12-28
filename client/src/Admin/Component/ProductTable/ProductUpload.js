@@ -67,7 +67,7 @@ const ProductUpload = () => {
       };
       console.log("new: ", newProd);
       axios
-        .post(`${API_URL}/product`, newProd)
+        .post(`${API_URL}/api/product`, newProd)
         .then(() => {
           alert("메뉴가 추가되었습니다.");
           handleGoBack();

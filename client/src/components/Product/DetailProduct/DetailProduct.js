@@ -13,7 +13,7 @@ const DetailProduct = () => {
   const [options, setOptions] = useState([]);
   useEffect(() => {
     axios
-      .get(`${API_URL}/product/${id}`)
+      .get(`${API_URL}/api/product/${id}`)
       .then((res) => {
         console.log("디테일에서받은res.data: ", res.data);
         setProduct(res.data);
@@ -26,7 +26,7 @@ const DetailProduct = () => {
   /** 옵션 불러오기 */
   useEffect(() => {
     axios
-      .get(`${API_URL}/option`)
+      .get(`${API_URL}/api/option`)
       .then((res) => {
         setOptions(res.data);
       })

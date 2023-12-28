@@ -85,7 +85,7 @@ export default function Payment() {
             .then(() => {
               console.log("res");
               axios
-                .post(`${API_URL}/order`, state)
+                .post(`${API_URL}/api/order`, state)
                 .then((res) => {
                   console.log("주문성공: ", res.data);
                   sessionStorage.clear();

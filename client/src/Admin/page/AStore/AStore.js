@@ -9,7 +9,7 @@ const AStore = () => {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    axios.get(`${API_URL}/store`)
+    axios.get(`${API_URL}/api/store`)
     .then(res => {
       console.log(res.data);
       setItems(res.data);
