@@ -38,7 +38,7 @@ const AOption = () => {
   });
 
   useEffect(() => {
-    axios.get(`${API_URL}/option`)
+    axios.get(`${API_URL}/api/option`)
       .then(res => {
         console.log(res.data);
         setItems(res.data);
@@ -67,9 +67,9 @@ const AOption = () => {
     
     if (userConfirmed) {
       try {
-        await axios.patch(`${API_URL}/option/${selectedItem.id}`, editedData);
+        await axios.patch(`${API_URL}/api/option/${selectedItem.id}`, editedData);
         closeEditModal();
-        const response = await axios.get(`${API_URL}/option`);
+        const response = await axios.get(`${API_URL}/api/option`);
         setItems(response.data);
         alert("수정되었습니다.");
       } catch (error) {
@@ -87,8 +87,8 @@ const AOption = () => {
 
     if (userConfirmed) {
       try {
-        await axios.delete(`${API_URL}/option/${id}`);
-        const response = await axios.get(`${API_URL}/option`);
+        await axios.delete(`${API_URL}/api/option/${id}`);
+        const response = await axios.get(`${API_URL}/api/option`);
         setItems(response.data);
         alert("삭제되었습니다.");
       } catch (error) {
@@ -119,9 +119,9 @@ const AOption = () => {
     
     if (userConfirmed) {
       try {
-        await axios.post(`${API_URL}/option`, newItem);
+        await axios.post(`${API_URL}/api/option`, newItem);
         closeAddModal();
-        const response = await axios.get(`${API_URL}/option`);
+        const response = await axios.get(`${API_URL}/api/option`);
         setItems(response.data);
         alert("추가되었습니다.");
       } catch (error) {
@@ -137,7 +137,7 @@ const AOption = () => {
       <Button
         variant="contained"
         color="primary"
-        style={{ marginBottom: "1vw", float: 'right' }}
+        style={{ marginBottom: "1vw", float: 'right', backgroundColor: 'rgb(255, 188, 13)' }}
         onClick={openAddModal} // 추가 모달 열기
       >
         추가하기

@@ -25,7 +25,7 @@ const ASlider = () => {
   }, []);
 
   const fetchSliderData = () => {
-    axios.get(`${API_URL}/slider`)
+    axios.get(`${API_URL}/api/slider`)
       .then(res => {
         console.log(res.data);
         setAxiosResult(res.data);
@@ -76,7 +76,7 @@ const ASlider = () => {
       const userConfirmed = window.confirm('수정하시겠습니까?');
 
       if (userConfirmed) {
-        axios.patch(`${API_URL}/slider/${selectedItem.id}`, updatedItem)
+        axios.patch(`${API_URL}/api/slider/${selectedItem.id}`, updatedItem)
           .then(() => {
             alert("수정되었습니다.");
             fetchSliderData(); // 데이터 갱신
@@ -100,7 +100,7 @@ const ASlider = () => {
       duration: newSlideTime,
     };
 
-    axios.post(`${API_URL}/slider`, newSlide)
+    axios.post(`${API_URL}/api/slider`, newSlide)
       .then(() => {
         alert("슬라이드가 추가되었습니다.");
         fetchSliderData(); // 데이터 갱신
@@ -117,7 +117,7 @@ const ASlider = () => {
     const userConfirmed = window.confirm('삭제하시겠습니까?');
     // 삭제 로직 구현
     if(userConfirmed){
-      axios.delete(`${API_URL}/slider/${id}`)
+      axios.delete(`${API_URL}/api/slider/${id}`)
       .then(res => {
         alert("삭제되었습니다.");
         fetchSliderData(); // 데이터 갱신

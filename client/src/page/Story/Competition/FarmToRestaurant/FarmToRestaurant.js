@@ -54,7 +54,7 @@ class FarmToRestaurant extends React.Component {
 
   render() {
     const videoId = 'A6Iinx5nWWs';
-
+    // const videoId = 'TEGS6XYvMk4';
     const opts = {
       height: '720',  
       width: '1280',
@@ -65,19 +65,6 @@ class FarmToRestaurant extends React.Component {
       },
     };
 
-    // const SelectedComponent = () => {
-    //   switch (this.state.selectedButton) {
-    //     case 1:
-    //       return <Material />;
-    //     case 2:
-    //       return <Safekeeping />;
-    //     case 3:
-    //       return <Effort />;
-    //     default:
-    //       return null;
-    //   }
-    // console.log('SeletC:', SelectedComponent);
-    // };
     let selectedComponent;
     switch (this.state.selectedButton) {
       case 1:
@@ -107,17 +94,6 @@ class FarmToRestaurant extends React.Component {
             <YouTube videoId={videoId} opts={opts} />
           </div>
           <div className="button-group">
-            {/* {[1, 2, 3].map((buttonNumber) => (
-              <button
-                key={buttonNumber}
-                className={this.state.selectedButton === buttonNumber ? 'selected' : ''}
-                onClick={() => this.handleButtonClick(buttonNumber)}
-              >
-                {buttonNumber}
-              </button>
-            ))}
-          </div>
-          {SelectedComponent()} */}
             <button
               className={this.state.selectedButton === 1 ? 'selected' : ''}
               onClick={() => this.handleButtonClick(1)}

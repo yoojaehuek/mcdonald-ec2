@@ -24,14 +24,13 @@ const adminRouter = require('./routers/admin');
 
 
 //시퀄라이즈 연결 부분
-sequelize.sync({ force: false }) //force가 true면 킬때마다 DB 새로 만듬
+sequelize.sync({ force: true }) //force가 true면 킬때마다 DB 새로 만듬
 .then(() => { 
   console.log("DB연결 성공");
 })
 .catch((err) => {
   console.error(err);
 });
-
 
 app.use(cookieParser());
 
@@ -72,20 +71,20 @@ app.post('/image', upload.single('image'), (req, res)=>{
   })
 })
 
-app.use('/user', userRouter);
-app.use('/crew', CrewRouter);
-app.use('/faq', FaqRouter);
-app.use('/material', MaterialRouter);
-app.use('/effort', EffortRouter);
-app.use("/banner", bannerRouter);
-app.use('/product', productRouter);
-app.use('/slider', sliderRouter);
-app.use('/store', storeRouter);
-app.use('/whats-new', whatsNewRouter);
-app.use('/order', orderRouter);
-app.use('/option', optionRouter);
-app.use('/admin', adminRouter);
-app.get('/logout', (req, res) => {
+app.use('/api/user', userRouter);
+app.use('/api/crew', CrewRouter);
+app.use('/api/faq', FaqRouter);
+app.use('/api/material', MaterialRouter);
+app.use('/api/effort', EffortRouter);
+app.use("/api/banner", bannerRouter);
+app.use('/api/product', productRouter);
+app.use('/api/slider', sliderRouter);
+app.use('/api/store', storeRouter);
+app.use('/api/whats-new', whatsNewRouter);
+app.use('/api/order', orderRouter);
+app.use('/api/option', optionRouter);
+app.use('/api/admin', adminRouter);
+app.get('/api/logout', (req, res) => {
   console.log("logout");
   res.cookie('accessToken',{},{
     httpOnly : true,

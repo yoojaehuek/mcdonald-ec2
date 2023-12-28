@@ -17,7 +17,7 @@ import {
 } from "@mui/material";
 import axios from "axios";
 import { API_URL } from "../../../config/contansts";
-import { getCookie } from "../../../cookie";
+import { getCookie } from "../../../utils/cookie";
 
 const AFaq = () => {
   const [axiosResult, setAxiosResult] = useState([]);
@@ -39,7 +39,7 @@ const AFaq = () => {
 
   const fetchData = () => {
     axios
-      .get(`${API_URL}/faq`)
+      .get(`${API_URL}/api/faq`)
       .then((res) => {
         console.log(res.data);
         setAxiosResult(res.data);
@@ -79,7 +79,7 @@ const AFaq = () => {
     const { id, ...dataWithoutId } = editedData;
     console.log(editedData);
     axios
-      .post(`${API_URL}/faq`, dataWithoutId)
+      .post(`${API_URL}/api/faq`, dataWithoutId)
       .then((response) => {
         console.log("Create:", response.data);
         setAxiosResult((prevResult) => [...prevResult, response.data]);
@@ -93,7 +93,7 @@ const AFaq = () => {
   const handleUpdate = () => {
     if (selectedItem) {
       axios
-        .patch(`${API_URL}/faq/${selectedItem.id}`, editedData)
+        .patch(`${API_URL}/api/faq/${selectedItem.id}`, editedData)
         .then((response) => {
           console.log("Update:", response.data);
           setAxiosResult((prevResult) => {
@@ -115,7 +115,7 @@ const AFaq = () => {
     const confirmDelete = window.confirm("삭제하시겠습니까?");
     if (confirmDelete) {
       axios
-        .delete(`${API_URL}/faq/${id}`)
+        .delete(`${API_URL}/api/faq/${id}`)
         .then((response) => {
           console.log("Delete:", response.data);
           setAxiosResult((prevResult) =>
@@ -142,7 +142,7 @@ const AFaq = () => {
       <Button
         variant="contained"
         color="primary"
-        style={{ marginBottom: "1vw", float: "right" }}
+        style={{ marginBottom: "1vw", float: 'right', backgroundColor: 'rgb(255, 188, 13)' }}
         onClick={() => {
           setSelectedItem(null);
           setOpenModal(true);
@@ -299,13 +299,13 @@ const AFaq = () => {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleModalClose}>취소</Button>
           <Button
             onClick={selectedItem ? handleUpdate : handleCreate}
             color="primary"
           >
             {selectedItem ? "수정" : "등록"}
           </Button>
+          <Button onClick={handleModalClose}>취소</Button>
         </DialogActions>
       </Dialog>
     </>

@@ -1,15 +1,17 @@
 /*
 박승균 Mcart.js html틀 제작
 */
-
-
 import React, { useEffect, useState } from "react";
 import { API_URL } from "../../../config/contansts";
 import { NavLink, useNavigate } from 'react-router-dom'
 import axios from "axios";
+import { useRecoilState } from "recoil";
+import { loginState } from "../../../recoil/atoms/State";
+import { errHandler } from '../../../utils/globalFunction';
 import "./Mcart.scss";
 
 const Mcart = () => {
+  const [islogin, setIslogin] = useRecoilState(loginState); //useState와 거의 비슷한 사용법
   const [cart, setCart] = useState([]); /** 장바구니에 담은 상품목록 */
   const [user, setUser] = useState({});/** 로그인한 사용자정보 */
   const [store, setStore] = useState([]);/** 매장 목록 */
@@ -20,51 +22,49 @@ const Mcart = () => {
   
   /** 주문하기 */
   const handleOrder = () => {
-    if(selectedStore == null ) { 
-      alert("매장을 선택해주세요");
+    if(
+      selectedStore !== null &&
+      totalProdPrice !== 0
+    ) { 
+      cart.map((item, index) => {
+        item.quantity = prodQuantities[index].quantity;
+      });
+      const orderObject = {};
+      orderObject.store_id  = selectedStore.id;
+      orderObject.menu_items = cart;
+      orderObject.total_price = totalProdPrice;
+      navigate(`/payment`, { state: orderObject });
+    }else{
+      alert("상품이 없거나 매장을 선택하지않았습니다.");
       return;
     }
-    cart.map((item, index) => {
-      item.quantity = prodQuantities[index].quantity;
-    });
-    const orderObject = {};
-    orderObject.store_id  = selectedStore.id;
-    orderObject.menu_items = cart;
-    orderObject.total_price = totalProdPrice;
-    navigate(`/payment`, { state: orderObject });
   }
-
   useEffect(() => {
     const storedCart = JSON.parse(sessionStorage.getItem("cart"));
     if (storedCart && storedCart.length > 0) setCart(storedCart);
-
   }, []);
-
-  
   useEffect(() => {
-
     /** 로그인중인 사용자 정보 불러오기 */
-    axios.get(`${API_URL}/user/one`)
+    axios.get(`${API_URL}/api/user/one`)
       .then((res) => {
         setUser(res.data);
       })
       .catch((err) => {
-          console.error(err);
+        console.error(err);
+        setIslogin(false);
+        errHandler(err);
       });
   }, []);
   useEffect(() => {
     /** 매장 전부 불러오기 */
-    axios.get(`${API_URL}/store`)
+    axios.get(`${API_URL}/api/store`)
       .then((res) => {
         setStore(res.data);
       })
       .catch((err) => {
           console.error(err);
       });
-
   },[]);
-
-
   useEffect(() => {
     if (cart.length > 0) {
       setProdQuantities( //상품각각에 넣기

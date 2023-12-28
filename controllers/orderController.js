@@ -9,8 +9,8 @@ class OrderController {
   static async addOrder(req,res,next){
     try {
         const tmp = req.body;
-        // tmp.userId = req.userId;
-        tmp.userId = 1;
+        tmp.userId = req.userId;
+        // tmp.userId = 1;
         // console.log("tmp: ",tmp);
         const newOrder = await OrderService.addOrder(tmp);
         
@@ -26,9 +26,6 @@ class OrderController {
 
   static async getAllOrder(req, res, next){
     try {
-      // console.log("req.userId: ", req.userId);
-      // const userId = req.userId;
-      // const userId = 1;
       const result = await OrderService.getAllOrder();
       res.status(200).json(result);
     } catch (error) {
@@ -61,8 +58,8 @@ class OrderController {
 
   static async findAllOrderDate(req, res, next){
     try {
-      // const userId = req.userId;
-      const userId = 1;
+      const userId = req.userId;
+      // const userId = 1;
       const dateType = req.query;
       const result = await OrderService.findAllOrderDate({userId, dateType});
       if (result.errorMessage) {
@@ -97,6 +94,7 @@ class OrderController {
 			const result = await OrderService.updateOrder({order_id, state, cancel});
 			res.status(200).json(result);
 		} catch (error) {
+      console.log(error);
 			next(error);
 		}
 	}

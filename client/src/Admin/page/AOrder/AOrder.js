@@ -35,7 +35,7 @@ const AOrder = () => {
 
   useEffect(() => {
     axios
-      .get(`${API_URL}/order/all`)
+      .get(`${API_URL}/api/order/all`)
       .then((res) => {
         console.log(res);
         setAxiosResult(res.data);
@@ -55,12 +55,13 @@ const AOrder = () => {
     setOpenModal(false);
   };
 
+
   const handleUpdate = () => {
     console.log("Updated Data:", editedData);
     if (selectedItem) {
       const updatedData = { ...editedData, status: editedData.status, cancel_yn: editedData.cancel_yn };
     axios
-      .patch(`${API_URL}/order/${selectedItem.id}`, updatedData)
+      .patch(`${API_URL}/api/order/${selectedItem.id}?state=${editedData.status}&cancel=${editedData.cancel_yn}`)
         .then((response) => {
           console.log("Update:", response.data);
           setAxiosResult((prevResult) => {
@@ -82,7 +83,7 @@ const AOrder = () => {
     const userConfirmed = window.confirm("정말 삭제하시겠습니까?");
     if (userConfirmed) {
       axios
-        .delete(`${API_URL}/order/${id}`)
+        .delete(`${API_URL}/api/order/${id}`)
         .then((response) => {
           console.log("Delete:", response.data);
           setAxiosResult((prevResult) =>

@@ -10,7 +10,7 @@ const Material = ({ onMaterialClick }) => {
   useEffect(() => {
     const fetchMaterials = async () => {
       try {
-        const response = await axios.get(`${API_URL}/material`);
+        const response = await axios.get(`${API_URL}/api/material`);
         const fetchedMaterials = response.data;
         setMaterials(fetchedMaterials);
         // console.log(fetchedMaterials);

@@ -1,5 +1,5 @@
-const express = require('express');
-const router = express.Router();
+// const express = require('express');
+// const router = express.Router();
 const jwt = require('jsonwebtoken'); 
 require('dotenv').config();
 const { verify, refreshVerify, makeAccessToken, makeRefreshToken} = require("../utils/token");
@@ -26,7 +26,8 @@ const refresh = async (req, res, next) => {
         res.clearCookie('refreshToken');
         res.status(302).json({ 
           ok: false,
-          message: '다시로그인' 
+          message: '다시로그인',
+          url: '/login'
         });
       }else{ //accToken은 없는데 reToken은 있음 
         // const userId = redisClient.keys('123');
@@ -67,7 +68,8 @@ const refresh = async (req, res, next) => {
     // res.status(500).json(error);
     res.status(302).json({ 
       ok: false,
-      message: error 
+      message: error,
+      url: '/login'
     });
   }
 };

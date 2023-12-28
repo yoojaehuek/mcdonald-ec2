@@ -32,6 +32,7 @@ class UserController {
             if(user.errorMessage){
                 throw new Error(user.errorMessage);
             };
+
             res.cookie('accessToken', user.accessToken, {
                 httpOnly : true,
                 secure : false,
@@ -51,8 +52,8 @@ class UserController {
     }
     static async detailUser(req, res, next){
         try{
-            // const id = req.userId;
-            const id = 1;
+            const id = req.userId;
+            // const id = 1;
             console.log("id: ",id);
             const user = await UserService.detailUser({id});
 

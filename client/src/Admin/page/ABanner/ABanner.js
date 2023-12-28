@@ -29,7 +29,7 @@ const ABanner = () => {
   // useEffect(() => {
   //   const fetchVisualBackgroundData = async () => {
   //     try {
-  //       const response = await axios.get(`${API_URL}/banner`);
+  //       const response = await axios.get(`${API_URL}/api/banner`);
   //       setVisualBackgroundData(response.data);
   //     } catch (error) {
   //       console.error('Error fetching Visual Background data:', error);
@@ -42,7 +42,7 @@ const ABanner = () => {
   useEffect(() => {
     const fetchVisualBackgroundData = async () => {
       try {
-        const response = await axios.get(`${API_URL}/banner`);
+        const response = await axios.get(`${API_URL}/api/banner`);
         setVisualBackgroundData(response.data);
         // 초기에 1번이 클릭된 상태로 설정
         setActiveButton(1);
@@ -110,9 +110,9 @@ const ABanner = () => {
           editedData['background_img_url'] = imageUrl;
         }
         console.log("editedData: ", editedData);
-        await axios.patch(`${API_URL}/banner/${selectedItem.id}`, editedData);
+        await axios.patch(`${API_URL}/api/banner/${selectedItem.id}`, editedData);
         closeEditModal();
-        const response = await axios.get(`${API_URL}/banner`);
+        const response = await axios.get(`${API_URL}/api/banner`);
         setVisualBackgroundData(response.data);
         alert("수정되었습니다.");
         // 페이지를 다시 로드합니다.
@@ -129,8 +129,8 @@ const ABanner = () => {
 
     if(userConfirmed){
       try {
-        await axios.delete(`${API_URL}/banner/${id}`);
-        const response = await axios.get(`${API_URL}/banner`);
+        await axios.delete(`${API_URL}/api/banner/${id}`);
+        const response = await axios.get(`${API_URL}/api/banner`);
         setVisualBackgroundData(response.data);
         alert("삭제되었습니다.");
         // 페이지를 다시 로드합니다.
@@ -165,7 +165,7 @@ const ABanner = () => {
     };
 
     try {
-      const response = await axios.post(`${API_URL}/banner`, newbanner);
+      const response = await axios.post(`${API_URL}/api/banner`, newbanner);
       setVisualBackgroundData([...visualBackgroundData, response.data]);
       alert("추가되었습니다.");
       closeNewItemModal();

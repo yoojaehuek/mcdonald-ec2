@@ -14,7 +14,7 @@ const Promotion_HappyMeal = () => {
 
   // console.log("Promotion/subcategory_id: ", subcategory_id);
   useEffect(()=>{
-    axios.get(`${API_URL}/whats-new/${subcategory_id}`)
+    axios.get(`${API_URL}/api/whats-new/${subcategory_id}`)
     .then(res => {
       console.log(res.data);
       setItems(res.data);

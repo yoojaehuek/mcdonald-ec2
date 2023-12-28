@@ -76,7 +76,7 @@ const StoreAdd = () => {
     console.log(newStore);
     // 추가 로직 구현
     axios
-      .post(`${API_URL}/store`, newStore)
+      .post(`${API_URL}/api/store`, newStore)
       .then((response) => {
         alert('매장이 추가되었습니다.');
         navigate(-1); // 현재 페이지에서 뒤로 가기
@@ -136,7 +136,7 @@ const StoreAdd = () => {
           />
           <button type="button" className="mcdel-button2" onClick={openPostCode}>주소찾기</button>
         </span>
-        <label htmlFor="start_time">시작:</label>
+        <label htmlFor="start_time">시작 시간:</label>
         <input
           type="text"
           id="start_time"
@@ -145,7 +145,7 @@ const StoreAdd = () => {
           onChange={handleInputChange}
           placeholder='00:00'
         />
-        <label htmlFor="end_time">종료:</label>
+        <label htmlFor="end_time">종료 시간:</label>
         <input
           type="text"
           id="end_time"
@@ -154,8 +154,10 @@ const StoreAdd = () => {
           onChange={handleInputChange}
           placeholder='24:00'
         />
-        <label className="box" htmlFor="yn_mcmorning">맥모닝:</label>
-        <div>
+
+        <h1 className='store_option'>매장 옵션</h1><div></div>
+        <label className="box1" htmlFor="yn_mcmorning" style={{marginTop: "20px"}}>맥모닝:</label>
+        <div className='radiobox'>
           <label className='radio'>
             <input
               type="radio"
@@ -179,7 +181,7 @@ const StoreAdd = () => {
             False
           </label>
         </div>
-        <label className="box" htmlFor="yn_mcdrive">맥드라이브:</label>
+        <label className="box1" htmlFor="yn_mcdrive">맥드라이브:</label>
         <div>
           <label className='radio'>
             <input
@@ -204,7 +206,7 @@ const StoreAdd = () => {
             False
           </label>
         </div>
-        <label className="box" htmlFor="yn_mcdelivery">맥딜리버리:</label>
+        <label className="box1" htmlFor="yn_mcdelivery">맥딜리버리:</label>
         <div>
           <label className='radio'>
             <input
@@ -229,7 +231,7 @@ const StoreAdd = () => {
             False
           </label>
         </div>
-        <label className="box" htmlFor="yn_parking">주차장:</label>
+        <label className="box1" htmlFor="yn_parking">주차장:</label>
         <div>
           <label className='radio'>
             <input
@@ -254,9 +256,11 @@ const StoreAdd = () => {
             False
           </label>
         </div>
-  
-        <button className="jh_button" type="button" onClick={handleAdd}>추가</button>
-        <button className="jh_button" type="button" onClick={handleClose}>취소</button>
+        
+      </div>
+      <div className="jh_btn">
+        <button className="jh_button btn1" type="button" onClick={handleAdd}>추가</button>
+        <button className="jh_button btn2" type="button" onClick={handleClose}>취소</button>
       </div>
 
       {/* 우편번호 창 팝업 생성 기준 div */}

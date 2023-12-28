@@ -189,21 +189,25 @@ const addHyphen = (e) => {
 			isPassword &&
 			isPasswordConfirm &&
 			isPhone){
-			axios.post(`${API_URL}/user/join`,{email, pwd, user_name, phone, address, detail_address, selectedYear, selectedMonth, selectedDay})
-			.then(() =>{
+			axios.post(`${API_URL}/api/user/join`,{email, pwd, user_name, phone, address, detail_address, selectedYear, selectedMonth, selectedDay})
+			.then((res) =>{
+				console.log("회원가입 res: ", res);
 				alert("가입성공!");
 				navigate('/');  
 			})
 			.catch(err =>{
-				console.error(err);
+				console.error(err.response.data.message);
+				alert(`가입 실패!\n${err.response.data.message}`);
 			})
 		}else{
 			return alert("입력하지 않은 부분이 있거나 입력형식이 올바르지않은 곳이 있습니다.");
 		}
 	};
+
   const handleInputFocus = (inputType) => {
     setIsLabelVisible((prev) => ({ ...prev, [inputType]: true }));
   };
+
 	const handleInputBlur = (inputType) => {
 		const inputValue = inputRefs[inputType].current.value.trim();
 		if (!inputValue) {
