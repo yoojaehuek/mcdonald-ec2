@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import "./Footer.scss";
 
 const Footer = () => {
@@ -13,6 +13,7 @@ const Footer = () => {
           <li><NavLink to="/store/rental">임차문의</NavLink></li>
           <li><NavLink to="/">고객문의</NavLink></li>
           <li><NavLink to="/story/recruit">인재채용</NavLink></li>
+          <li><a href="/admin/login">관리자 페이지</a></li>
         </ul>
         <ul className='fsans'>
           <li><NavLink to="/" className='fc'></NavLink></li>

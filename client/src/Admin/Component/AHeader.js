@@ -1,15 +1,22 @@
 import React from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import { AppBar, Toolbar, Typography, IconButton, Button, Divider } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
 import { NavLink } from 'react-router-dom';
+import { getCookie, removeCookie } from '../../cookie';
 
 const AHeader = () => {
+
+  const onLogout = () => {
+    console.log('실행');
+    removeCookie('login');
+    // navigate('/admin/login');
+    window.location.replace('/admin/login');
+  }
   return (
     // <div style={{ position: 'fixed', width: '100%', backgroundColor: '#fff', zIndex: '3' }}>
     <div id='AHeader'>
       <CssBaseline />
-      <AppBar position="static" sx={{ backgroundColor: '#ffffff', boxShadow: 'none' }}>
+      <AppBar position="static" sx={{ backgroundColor: '#ffffff', boxShadow: 'none', borderBottom: '1px solid rgb(255, 188, 13)' }}>
         <Toolbar>
           <IconButton
             size="large"
@@ -21,15 +28,21 @@ const AHeader = () => {
             {/* <MenuIcon /> */}
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1, color: '#000000' }}>
-            <NavLink to='/adminmain'><img
+            <NavLink to='/admin'><img
               src="/images/Header/logo1.png"
               alt="Logo"
               style={{ maxWidth: '102px', padding: '1vw', width: '100%', height: 'auto' }}
             /></NavLink>
           </Typography>
-          <Button color="inherit" sx={{ color: '#000000' }}>
-            Login
-          </Button>
+          { !getCookie('login') ? 
+            <Button color="inherit" sx={{ color: '#000000' }}>
+              Login
+            </Button>
+            :
+            <Button onClick={onLogout} color="inherit" sx={{ color: '#000000' }}>
+              Logout
+            </Button>
+          }
         </Toolbar>
         <Divider />
       </AppBar>

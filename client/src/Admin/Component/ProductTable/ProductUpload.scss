@@ -19,6 +19,10 @@
         height: 400px;
         place-items: center;
         display: grid;
+        img{
+          max-width: 400px;
+          max-height: 400px;
+        }
       }
     }
     ul{

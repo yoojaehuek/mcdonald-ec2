@@ -1,8 +1,16 @@
+/* 작성자 : 백승준
+ 최종수정 : 2023-12-27
+ 내용 : 사회적 책임과 지원 > 스케일 포 굿
+*/
+
+
 import styled from 'styled-components';
 import Tab from '../../../../components/Tab/Tab';
 import './Scaleforgood.scss'
 
+// http://localhost:3000/story/scaleforgood
 
+// 상단 id, image, 소제목, 내용 등록
 const Scale = [
   {
     id: 1,
@@ -12,29 +20,26 @@ const Scale = [
   },
 ]
 
-const line = styled.hr`
-  border: solid 1px #808080;
-`;
-
-
 const Scaleforgood = () => {
   return(
     <>
     <div className="Scalecontainer">
       <div className="Contarea">
         <div className="inner">
+          {/* 페이지 대제목 */}
           <h2>‘스케일 포 굿(Scale for Good) 캠페인’은 무엇인가요?</h2>
           <div className="Scaleforgood">
           {Scale.map(View => (
+            // 페이지 상단 내용 및 소제목 
             <div key={View.id} className='topcont'>            
               <img src={View.img_url} alt={`Image ${View.id}`} />
               <h3>{View.title}</h3>
               <p>{View.desc}</p>            
             </div>
-          ))}
-          <line/>          
+          ))}         
           </div>
           <div className="globalMC">
+            {/* 하단 내용이 등록되어있는 Tab 호출 components/Tab/Tab.js */}
             <Tab></Tab>
           </div>
         </div>

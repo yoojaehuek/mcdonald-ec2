@@ -1,11 +1,20 @@
+/* 작성자 : 백승준
+ 최종수정 : 2023-12-27
+ 내용 : 사회적 책임과 지원 > 지역사회 공헌 > 재단법인 로날드맥도날드하우스
+*/
+
+
 import './mcdonaldhouse.scss'
 import { NavLink } from 'react-router-dom';
+
+// http://localhost:3000/story/mcdonaldhouse
 
 const mcdonaldhouse = () => {
     return(
         <>
         <div className="mhcontainer">
             <div className="inner">
+                {/* 각 상세 페이지로 이동하기 위한 버튼 */}
             <ul className="inner_btn">
                     <li>
                         <NavLink to="/story/kidssoccer" role="button">
@@ -28,6 +37,7 @@ const mcdonaldhouse = () => {
                         </NavLink>
                     </li>
                 </ul>
+                {/* 큰 이미지와 내용 */}
                 <div className="top">
                     <img src="/images/Story/mh1.jpg"></img>
                     <h2>
@@ -47,6 +57,7 @@ const mcdonaldhouse = () => {
                     </p>
                 </div> 
                 <div className='bottom'>
+                    {/* 링크 없음 */}
                     <a className='btnrmhc'>
                         RMHC 바로가기    
                     </a>               
