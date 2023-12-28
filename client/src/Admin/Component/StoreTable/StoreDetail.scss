@@ -8,16 +8,52 @@
     box-sizing: border-box;
   }
 
+  h2 {
+    margin: 20px;
+    padding-top: 20px;
+  }
+
   textarea {
     resize: none;
   }
-  // h2 {
-  //   text-align: center;
-  // }
+  
   .container {
     display: grid;
-    grid-template-columns: 200px 400px;
+    grid-template-columns: 130px 400px;
     margin: 0 auto;
+    margin-top: 20px;
+    position: relative;
+    border-top: 1px solid #666;
+    padding-top: 25px;
+  }
+  .box1 {
+    margin-top: 5px;
+    align-items: center;
+    // margin: 10px;
+  }
+
+  textarea {
+    margin-bottom: 10px;
+  }
+  input {
+    margin-bottom: 10px;
+  }
+  span {
+    margin-bottom: 10px;
+  }
+
+  .store_option {
+    // position: absolute;
+    font-size: 20px;
+    border-bottom: 1px solid #666;
+    width: 850px;
+    // border: 1px solid #000;
+    padding: 20px;
+  }
+  
+  
+  .radiobox {
+    margin-top: 20px;
   }
   .radio {
     display: flex;
@@ -26,8 +62,41 @@
     padding: 10px 20px;
     width: 100px;
   }
+  [type="radio"] {
+    appearance: none;
+    vertical-align: middle;
+    border: max(2px, 0.1em) solid gray;
+    border-radius: 50%;
+    width: 1.25em;
+    height: 1.25em;
+  }
+  [type="radio"]:checked {
+    border: 0.4em solid #FFBC0D;
+  }
+  [type="radio"]:focus-visible {
+    outline: max(2px, 0.1em) dotted #FFBC0D;
+    outline-offset: max(2px, 0.1em);
+  }
+
+
+  .jh_btn {
+    float: right;
+  }
+  .btn1 {
+    background-color: #FFBC0D;
+  }
+  .btn2 {
+    background-color: red;
+  }
   .button_detail {
-    margin: 5px;
+    color: #fff;
+    margin: 20px;
+    width: 80px;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
+    font-size: 20px;
   }
   #mcdel-input1 {
     width: 80%;
