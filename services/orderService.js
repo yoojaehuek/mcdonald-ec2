@@ -112,6 +112,11 @@ class OrderService{
 
     return result;
   }
+  
+  static async rankMenu(){
+		const result = await OrderModel.rankMenu();
+		return result;
+	}
 
 	static async updateOrder({order_id, state, cancel}){
     console.log("service:",order_id, state, cancel);
@@ -123,8 +128,6 @@ class OrderService{
     const result = await OrderModel.deleteOrder({order_id});
     return result;
   }
-
-
 }
 
 module.exports = OrderService;
