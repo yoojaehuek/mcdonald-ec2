@@ -1,5 +1,5 @@
 import './App.css';
-import { Routes, Route, NavLink } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Main from './page/Main';
 import Test from './page/Test';
 import Login from './page/Login/Login';
@@ -14,8 +14,6 @@ import Recruit from './page/Story/People/Recruit/Recruit';
 import Faq from './page/Story/Competition/Faq/Faq';
 import BrandIntro from './page/Story/BrandIntro/BrandIntro';
 import Find from './page/Store/Main/Find/Find';
-import Effort from './page/Story/Competition/FarmToRestaurant/Effort';
-import Safekeeping from './page/Story/Competition/FarmToRestaurant/Safekeeping';
 import FarmToRestaurant from './page/Story/Competition/FarmToRestaurant/FarmToRestaurant';
 import News from './page/WhatsNew/News/News.js';
 import Promotion_HappyMeal from './page/WhatsNew/Promotion_HappyMeal/Promotion_HappyMeal.js';
@@ -81,7 +79,6 @@ function App() {
           <Route path='/story/recruit' element={<Recruit />}></Route>
           <Route path='/story/faq' element={<Faq />}></Route>
           <Route path='/story/farmtorestaurant' element={<FarmToRestaurant />}></Route>
-          {/* <Route path='/whats-new/happymeal' element={<HappyMeal />}></Route> */}
           <Route path='/story/brandintro' element={<BrandIntro />}></Route>
           <Route path='/story/brandhistory' element={<BrandHistory />}></Route>
           <Route path='/story/scaleforgood' element={<Scaleforgood />} />

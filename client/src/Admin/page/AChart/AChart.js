@@ -25,7 +25,7 @@ const AChart = () => {
 
   useEffect(() => {
     axios
-      .get(`${API_URL}/admin/allname`)
+      .get(`${API_URL}/api/admin/allname`)
       .then((res) => {
         console.log(res.data);
         setAdmins(res.data);
@@ -37,7 +37,7 @@ const AChart = () => {
 
   useEffect(() => {
     axios
-      .get(`${API_URL}/order/rank`)
+      .get(`${API_URL}/api/order/rank`)
       .then((res) => {
         console.log(res.data);
         setRank(res.data);
@@ -50,7 +50,7 @@ const AChart = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`${API_URL}/order/all`);
+        const response = await fetch(`${API_URL}/api/order/all`);
         console.log("response: ", response);
         const data = await response.json();
         setSalesData(data);
@@ -263,7 +263,7 @@ const AChart = () => {
             }}
           >
             {showDailySales
-              ? `오늘의 총 판매금액: ${getTodaySales().toLocaleString()}원`
+              ? `금일 총 판매금액: ${getTodaySales().toLocaleString()}원`
               : `총 판매금액: ${
                   salesData.length > 0
                     ? salesData
@@ -286,9 +286,9 @@ const AChart = () => {
               marginTop: "3vw",
             }}
           >
-            {showDailySales ? "월간 보기" : "일간 보기"}
+            {showDailySales ? "전체 보기" : "일간 보기"}
           </button>
-        </div>
+        </div>  
       </div>
       <div
         style={{

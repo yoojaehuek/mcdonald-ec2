@@ -1,7 +1,7 @@
 import './Promotion_HappyMeal.scss'
 import Card from '../../../components/Card/Card';
 import { useEffect, useState } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { API_URL } from '../../../config/contansts';
 
@@ -14,7 +14,7 @@ const Promotion_HappyMeal = () => {
 
   // console.log("Promotion/subcategory_id: ", subcategory_id);
   useEffect(()=>{
-    axios.get(`${API_URL}/whats-new/${subcategory_id}`)
+    axios.get(`${API_URL}/api/whats-new/${subcategory_id}`)
     .then(res => {
       console.log(res.data);
       setItems(res.data);

@@ -19,11 +19,10 @@ import AWhatsNew from './page/AWhatsNew/AWhatsNew/AWhatsNew.js';
 import ANews from './page/AWhatsNew/ANews/ANews.js';
 import StoreDetail from './Component/StoreTable/StoreDetail';
 import AFaq from './page/story/AFaq';
-import ALogin from './page/ALogin/ALogin.js';
 import Amanual from './page/Amanual/Amanual.js'
 
 import './Adminmain.scss';
-import { getCookie } from '../cookie.js';
+import { getCookie } from '../utils/cookie.js';
 
 const AdminMain = () => {
   const navigate = useNavigate();
@@ -41,7 +40,7 @@ const AdminMain = () => {
     <div id='Admin' >
       <AHeader id='header' />
       <AMenu id='menu' />
-      <div className='AdminMain' style={{padding: ' 0 100px'}}>
+      <div className='AdminMain' style={{padding: ' 50px 0 100px'}}>
         <Routes>
           <Route path='/' element={<AChart />} />
           {/* <Route path='/admin/login' element={<ALogin />} /> */}

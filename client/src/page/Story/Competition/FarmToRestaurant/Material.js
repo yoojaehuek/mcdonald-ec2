@@ -10,7 +10,7 @@ const Material = ({ onMaterialClick }) => {
   useEffect(() => {
     const fetchMaterials = async () => {
       try {
-        const response = await axios.get(`${API_URL}/material`);
+        const response = await axios.get(`${API_URL}/api/material`);
         const fetchedMaterials = response.data;
         setMaterials(fetchedMaterials);
         // console.log(fetchedMaterials);
@@ -68,7 +68,7 @@ const Material = ({ onMaterialClick }) => {
             <div className="material-info">
               <h2>{selectedMaterial.title}</h2>
               <p style={{ color:'gray', lineHeight:'1.7rem', fontWeight:'bold' }}>{selectedMaterial.description}</p>
-              <p style={{ fontSize:'0.8rem'}}>* {selectedMaterial.additional_info}</p>
+              <p style={{ fontSize:'0.8rem'}}> {selectedMaterial.additional_info}</p>
             </div>
           </>
         )}

@@ -26,7 +26,7 @@ const DetailPage = () => {
     const item_id = splitUrl[3];
     console.log("DetailPromotion/locationHook: ",splitUrl);
 
-    axios.get(`${API_URL}/whats-new/${sub_category_id}/${item_id}`)
+    axios.get(`${API_URL}/api/whats-new/${sub_category_id}/${item_id}`)
       .then(res => {
         console.log(res.data);
         setTargetObject(res.data);

@@ -9,9 +9,7 @@ import './StoreDetail.scss';
 const { kakao } = window;
 
 const StoreDetail = () => {
-  const [axiosResult, setAxiosResult] = useState([]);
   const item = useLocation().state;
-  // console.log("item: ", typeof(item.yn_mcdelivery));
   const navigate = useNavigate();
   const [selectedItem, setSelectedItem] = useState(null);
   const [selectedAddress, setSelectedAddress] = useState(null);// 우편번호  
@@ -65,9 +63,6 @@ const StoreDetail = () => {
     }));
     geocoder.addressSearch(address, callback);
   };
-	/** 우편검색 결과가 인풋창에 업데이트 되지않아서 이함수로 업데이트 시켜줌 */
-	const handleAddressChange = (e) => { setSelectedAddress(e.target.value); };
-	/** 우편번호 창  */
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -126,7 +121,7 @@ const StoreDetail = () => {
   }, [item]);
 
   // const fetchSliderData = () => {
-  //   axios.get(`${API_URL}/item`)
+  //   axios.get(`${API_URL}/api/item`)
   //     .then(res => {
   //       console.log("dddddggg",res.data);
   //       // setAxiosResult(res.data);//업데이트 
@@ -163,7 +158,7 @@ const StoreDetail = () => {
 
       if (userConfirmed) {//selectedItem.id 는 item.id 암
         console.log("업데이트아이템: ", updatedItem);
-        axios.patch(`${API_URL}/store/${selectedItem.id}`, updatedItem)
+        axios.patch(`${API_URL}/api/store/${selectedItem.id}`, updatedItem)
           .then(() => {
             alert("수정되었습니다.");
             // fetchSliderData(); // 데이터 갱신

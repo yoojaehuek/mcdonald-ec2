@@ -15,46 +15,24 @@ function Menu() {
   const [btn1, setBtn1] = useState("");
   const [btn2, setBtn2] = useState("");
 
-  useEffect(() => {
-    axios
-      .get(`${API_URL}/product/subcategory/${subcategory_id}`)
-      .then((res) => {
-        setProducts(res.data);
-        if (subcategory_id === "1") {
-          setBtn1("단품메뉴");
-          setVisible(true);
-          setBtn2("세트메뉴");
-        } else if (subcategory_id === "2") {
-          setBtn1("맥런치세트");
-          setVisible(false);
-        } else if (subcategory_id === "3") {
-          setBtn1("단품메뉴");
-          setVisible(true);
-          setBtn2("세트메뉴");
-        } else if (subcategory_id === "4") {
-          setBtn1("해피스낵");
-          setVisible(false);
-        } else if (subcategory_id === "5") {
-          setBtn1("사이드");
-          setVisible(true);
-          setBtn2("디저트");
-        } else if (subcategory_id === "6") {
-          setBtn1("맥카페");
-          setVisible(true);
-          setBtn2("음료");
-        } else if (subcategory_id === "7") {
-          setBtn1("AM 04:00~AM 10:30");
-          setVisible(true);
-          setBtn2("AM 10:30~AM 04:00");
-        }
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }, [subcategory_id]);
-  /** product_id 가 false 이면 singleProd 로, true면 setProd 로 담음 */
-  const singleProd = products.filter((product) => !product.product_category);
-  const setProd = products.filter((product) => product.product_category);
+    useEffect(()=>{
+        axios.get(`${API_URL}/api/product/subcategory/${subcategory_id}`)
+        .then(res => {
+            setProducts(res.data);
+            if(subcategory_id === '1') {setBtn1("단품메뉴"); setVisible(true); setBtn2("세트메뉴"); }
+            else if(subcategory_id === '2'){ setBtn1("맥런치세트"); setVisible(false);}
+            else if(subcategory_id === '3') {setBtn1("단품메뉴"); setVisible(true); setBtn2("세트메뉴");} 
+            else if(subcategory_id === '4') {setBtn1("해피스낵"); setVisible(false); }
+            else if(subcategory_id === '5') {setBtn1("사이드"); setVisible(true); setBtn2("디저트"); }
+            else if(subcategory_id === '6') {setBtn1("맥카페"); setVisible(true); setBtn2("음료"); }
+            else if(subcategory_id === '7') {setBtn1("AM 04:00~AM 10:30"); setVisible(true); setBtn2("AM 10:30~AM 04:00"); }
+        }).catch(err => {
+            console.error(err);
+        })
+    }, [subcategory_id])
+    /** product_id 가 false 이면 singleProd 로, true면 setProd 로 담음 */
+    const singleProd = products.filter(product => !product.product_category);
+    const setProd = products.filter(product => product.product_category);
 
   /**버튼을 누르면 보여지는 상품의 개수를 늘려주는 함수 */
   const increaseProductCount = () => {

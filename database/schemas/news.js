@@ -54,7 +54,7 @@ class News extends Sequelize.Model {
         sequelize,
         timestamps: false,
         modelName: 'News',
-        tableName: 'News',
+        tableName: 'news',
         paranoid: false,
         charset: 'utf8',
         collate: 'utf8_general_ci',

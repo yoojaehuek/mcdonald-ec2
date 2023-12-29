@@ -23,7 +23,7 @@ function Login() {
 		if( email !== "" && pwd !== ""){
 			console.log(email);
 			axios.post(
-				`${API_URL}/user/login`,
+				`${API_URL}/api/user/login`,
 				{email, pwd},
 				{ withCredentials: true }// 쿠키 수정허용
 			)
@@ -33,7 +33,9 @@ function Login() {
 				navigate('/');  
 			})
 			.catch(err =>{
-				console.error(err);
+				// console.error(err);
+				console.error(err.response.data);
+				alert(`로그인 실패!\n${err.response.data.message}`);
 			})
 		}else{
 			return alert("전부 입력해주세요");
@@ -88,6 +90,8 @@ function Login() {
 	<div className="Login">
 		<form id='login-form' onSubmit={onSubmitLogin}>
 			<h1>계정에 로그인</h1>
+			<p>테스트 id: qwer@naver.com</p>
+			<p>테스트 pwd: qwer1234!</p>
 			<ul id='login-input'>
 				<li className="input-li">
 					<label className={isLabelVisibleId ? '' : 'hidden'}>아이디(이메일주소)</label>
@@ -112,12 +116,10 @@ function Login() {
 					/>
 				</li>
 			</ul>
-			<li><a href="/">비밀번호를 잊어버렸습니까?</a></li>
+			{/* <li><a href="/">비밀번호를 잊어버렸습니까?</a></li> */}
 			<li><button id='login-btn' type='submit'>계정에 로그인</button></li>
 			<li id='login-footer'>
 				<span>Copyright © 2023 McDonald's</span>
-				<a href="/">개인정보 처리방침</a>
-				<a href="/">콘택트 렌즈</a>
 			</li>
 		</form>
 	</div>

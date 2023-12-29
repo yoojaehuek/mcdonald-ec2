@@ -12,13 +12,13 @@ const Header = () => {
   const [isLogin, setIsLogin] = useRecoilState(loginState); //useState와 거의 비슷한 사용법
 
   const logout = async () => {
-    axios.get(`${API_URL}/logout`, { withCredentials: true })
-      .then(()=>{
-        setIsLogin(false);
-      })
-      .catch((err) => {
-        console.log("logout/err: ", err);
-      })
+    axios.get(`${API_URL}/api/logout`, { withCredentials: true })
+    .then(()=>{
+      setIsLogin(false);
+    })
+    .catch((err) => {
+      console.log("logout/err: ", err);
+    })
   } 
 
   const openModal = () => {
@@ -98,7 +98,7 @@ const Header = () => {
             <>
               <NavLink to="/mypage" className="renter" >마이페이지</NavLink>
               <NavLink to="/" onClick={logout} className="renter2">로그아웃</NavLink>
-              <NavLink to="/mcart" className="renter3">장바구니.</NavLink>
+              <NavLink to="/mcart" className="renter3">장바구니</NavLink>
               <div className='topserch'>
                 <button className='serch'onClick={openModal}></button>
               </div>

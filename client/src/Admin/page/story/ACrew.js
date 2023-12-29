@@ -17,7 +17,7 @@ import {
 } from "@mui/material";
 import axios from "axios";
 import { API_URL } from "../../../config/contansts";
-import { getCookie } from "../../../cookie";
+import { getCookie } from "../../../utils/cookie";
 
 const ACrew = () => {
   const [axiosResult, setAxiosResult] = useState([]);
@@ -37,7 +37,7 @@ const ACrew = () => {
 
   useEffect(() => {
     axios
-      .get(`${API_URL}/crew`)
+      .get(`${API_URL}/api/crew`)
       .then((res) => {
         console.log(res);
         setAxiosResult(res.data);
@@ -63,11 +63,11 @@ const ACrew = () => {
     formData.append("image", selectedImage);
 
     axios
-      .post(`${API_URL}/image`, formData)
+      .post(`${API_URL}/api/image`, formData)
       .then((response) => {
         const imageUrl = response.data.imageUrl;
         const newData = { ...dataWithoutId, img_url: imageUrl };
-        axios.post(`${API_URL}/crew`, newData)
+        axios.post(`${API_URL}/api/crew`, newData)
           .then((response) => {
             console.log("Create:", response.data);
             setAxiosResult((prevResult) => [...prevResult, response.data]);
@@ -88,11 +88,11 @@ const ACrew = () => {
       formData.append("image", selectedImage);
 
       axios
-        .post(`${API_URL}/image`, formData)
+        .post(`${API_URL}/api/image`, formData)
         .then((response) => {
           const imageUrl = response.data.imageUrl;
           const updatedData = { ...editedData, img_url: imageUrl };
-          axios.patch(`${API_URL}/crew/${selectedItem.id}`, updatedData)
+          axios.patch(`${API_URL}/api/crew/${selectedItem.id}`, updatedData)
             .then((response) => {
               console.log("Update:", response.data);
               setAxiosResult((prevResult) => {
@@ -240,7 +240,7 @@ const ACrew = () => {
                       const userConfirmed = window.confirm("정말 삭제하시겠습니까?");
                       if (userConfirmed) {
                         axios
-                          .delete(`${API_URL}/crew/${item.id}`)
+                          .delete(`${API_URL}/api/crew/${item.id}`)
                           .then((response) => {
                             console.log("Delete:", response.data);
                             setAxiosResult((prevResult) =>

@@ -31,7 +31,7 @@ class Faq extends Sequelize.Model {
         sequelize,
         timestamps: false,
         modelName: 'Faq',
-        tableName: 'Faq',
+        tableName: 'faq',
         paranoid: false,
         charset: 'utf8',
         collate: 'utf8_general_ci',

@@ -2,21 +2,27 @@ import React, { useEffect, useState } from 'react';
 import './Myinfo.scss';
 import axios from 'axios';
 import { API_URL } from '../../config/contansts';
+import { useRecoilState } from "recoil";
+import { loginState } from "../../recoil/atoms/State";
+import { errHandler } from '../../utils/globalFunction';
 // import { Product } from '../../../../database/schemas';
 
 const Order = () => {
+  const [islogin, setIslogin] = useRecoilState(loginState); //useState와 거의 비슷한 사용법
   const [selectedPeriod, setSelectedPeriod] = useState('today'); // 'today', 'week', '3month', '6month', 'year'
   const [selectedTab] = useState('info'); // 'info' 또는 'order'로 상태 관리
   const [axiosResult, setAxiosResult] = useState([]);
 
   useEffect(()=>{
-    axios.get(`${API_URL}/order/date?day=1`)
+    axios.get(`${API_URL}/api/order/date?day=1`)
     .then(res => {
       console.log(res.data);
       setAxiosResult(res.data);
     }).catch((err) =>{
-            console.error(err);
-        });
+      console.error(err);
+      setIslogin(false);
+      errHandler(err);
+    });
   },[]);
 
   // 주문 데이터
@@ -48,53 +54,63 @@ const Order = () => {
   };
 
   const serch_day_order = () => {
-    axios.get(`${API_URL}/order/date?day=1`)
+    axios.get(`${API_URL}/api/order/date?day=1`)
     .then(res => {
       console.log(res.data);
       setAxiosResult(res.data);
     }).catch((err) =>{
-            console.error(err);
-        });
+      console.error(err);
+      setIslogin(false);
+      errHandler(err);
+    });
   }
 
   const serch_week_order = () => {
-    axios.get(`${API_URL}/order/date?week=1`)
+    axios.get(`${API_URL}/api/order/date?week=1`)
     .then(res => {
       console.log(res.data);
       setAxiosResult(res.data);
     }).catch((err) =>{
-            console.error(err);
-        });
+      console.error(err);
+      setIslogin(false);
+      errHandler(err);
+    });
   }
   
   const serch_month3_order = () => {
-    axios.get(`${API_URL}/order/date?month=3`)
+    axios.get(`${API_URL}/api/order/date?month=3`)
     .then(res => {
       console.log(res.data);
       setAxiosResult(res.data);
     }).catch((err) =>{
-            console.error(err);
-        });
+      console.error(err);
+      setIslogin(false);
+      errHandler(err);
+    });
   }
 
   const serch_month6_order = () => {
-    axios.get(`${API_URL}/order/date?month=6`)
+    axios.get(`${API_URL}/api/order/date?month=6`)
     .then(res => {
       console.log(res.data);
       setAxiosResult(res.data);
     }).catch((err) =>{
-            console.error(err);
-        });
+      console.error(err);
+      setIslogin(false);
+      errHandler(err);
+    });
   }
 
   const serch_year_order = () => {
-    axios.get(`${API_URL}/order/date?year=2`)
+    axios.get(`${API_URL}/api/order/date?year=2`)
     .then(res => {
       console.log(res.data);
       setAxiosResult(res.data);
     }).catch((err) =>{
-            console.error(err);
-        });
+      console.error(err);
+      setIslogin(false);
+      errHandler(err);
+    });
   }
 
 

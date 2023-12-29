@@ -9,7 +9,7 @@ const AProduct = () => {
   const [ products, setProducts ] = useState([]);
 
   useEffect(()=>{
-    axios.get(`${API_URL}/product/subcategory/${subcategory_id}`)
+    axios.get(`${API_URL}/api/product/subcategory/${subcategory_id}`)
     .then(res => {
         setProducts(res.data);
         console.log("상품관리자에서 받은 상품정보: ",res.data);

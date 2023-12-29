@@ -18,7 +18,7 @@ import {
   Input,
 } from "@mui/material";
 import { API_URL } from "../../../config/contansts";
-import { getCookie } from "../../../cookie";
+import { getCookie } from "../../../utils/cookie";
 
 const Material = () => {
   const [axiosResult, setAxiosResult] = useState([]);
@@ -40,7 +40,7 @@ const Material = () => {
 
   useEffect(() => {
     axios
-      .get(`${API_URL}/material`)
+      .get(`${API_URL}/api/material`)
       .then((res) => {
         console.log(res);
         setAxiosResult(res.data);
@@ -86,7 +86,7 @@ const Material = () => {
     formData.append("image", selectedImage);
 
     axios
-      .post(`${API_URL}/image`, formData)
+      .post(`${API_URL}/api/image`, formData)
       .then((response) => {
         const imageUrl = response.data.imageUrl;
         const newData = { ...dataWithoutId, img_url: imageUrl };
@@ -96,13 +96,13 @@ const Material = () => {
           backgroundFormData.append("image", selectedBackgroundImage);
 
           axios
-            .post(`${API_URL}/image`, backgroundFormData)
+            .post(`${API_URL}/api/image`, backgroundFormData)
             .then((backgroundResponse) => {
               const backgroundImageUrl = backgroundResponse.data.imageUrl;
               newData.background_img_url = backgroundImageUrl;
 
               axios
-                .post(`${API_URL}/material`, newData)
+                .post(`${API_URL}/api/material`, newData)
                 .then((response) => {
                   console.log("Create:", response.data);
                   setAxiosResult((prevResult) => [
@@ -120,7 +120,7 @@ const Material = () => {
             });
         } else {
           axios
-            .post(`${API_URL}/material`, newData)
+            .post(`${API_URL}/api/material`, newData)
             .then((response) => {
               console.log("Create:", response.data);
               setAxiosResult((prevResult) => [...prevResult, response.data]);
@@ -142,7 +142,7 @@ const Material = () => {
       formData.append("image", selectedImage);
 
       axios
-        .post(`${API_URL}/image`, formData)
+        .post(`${API_URL}/api/image`, formData)
         .then((response) => {
           const imageUrl = response.data.imageUrl;
           const updatedData = { ...editedData, img_url: imageUrl };
@@ -152,13 +152,13 @@ const Material = () => {
             backgroundFormData.append("image", selectedBackgroundImage);
 
             axios
-              .post(`${API_URL}/image`, backgroundFormData)
+              .post(`${API_URL}/api/image`, backgroundFormData)
               .then((backgroundResponse) => {
                 const backgroundImageUrl = backgroundResponse.data.imageUrl;
                 updatedData.background_img_url = backgroundImageUrl;
 
                 axios
-                  .patch(`${API_URL}/material/${selectedItem.id}`, updatedData)
+                  .patch(`${API_URL}/api/material/${selectedItem.id}`, updatedData)
                   .then((response) => {
                     console.log("Update:", response.data);
                     setAxiosResult((prevResult) => {
@@ -179,7 +179,7 @@ const Material = () => {
               });
           } else {
             axios
-              .patch(`${API_URL}/material/${selectedItem.id}`, updatedData)
+              .patch(`${API_URL}/api/material/${selectedItem.id}`, updatedData)
               .then((response) => {
                 console.log("Update:", response.data);
                 setAxiosResult((prevResult) => {
@@ -213,7 +213,7 @@ const Material = () => {
     const confirmDelete = window.confirm("혼또 삭제하시겠습니까?");
     if (confirmDelete) {
       axios
-        .delete(`${API_URL}/material/${id}`)
+        .delete(`${API_URL}/api/material/${id}`)
         .then((response) => {
           console.log("Delete:", response.data);
           setAxiosResult((prevResult) =>

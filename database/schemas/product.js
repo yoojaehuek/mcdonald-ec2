@@ -88,7 +88,7 @@ class Product extends Sequelize.Model {
         timestamps: false,
         underscored: false,
         modelName: 'Product',
-        tableName: 'Product',
+        tableName: 'product',
         paranoid: false,
         charset: 'utf8mb4',
         collate: 'utf8mb4_general_ci',

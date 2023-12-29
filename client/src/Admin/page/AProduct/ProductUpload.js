@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { API_URL } from "../../../config/contansts";
-import { Upload } from "antd";
-import { getCookie } from "../../../cookie";
-import axios from "axios";
-import "./ProductUpload.scss";
+import { Upload } from 'antd';
+import axios from 'axios';
+import { getCookie } from '../../../utils/cookie';
+import './ProductUpload.scss';
 
 const ProductUpload = () => {
   const [Kname, setKname] = useState("");
@@ -67,7 +67,7 @@ const ProductUpload = () => {
       };
       console.log("new: ", newProd);
       axios
-        .post(`${API_URL}/product`, newProd)
+        .post(`${API_URL}/api/product`, newProd)
         .then(() => {
           alert("메뉴가 추가되었습니다.");
           handleGoBack();

@@ -1,4 +1,3 @@
-import { NavLink } from 'react-router-dom';
 import { API_URL } from '../../../config/contansts';
 import "./BrandCont1.scss";
 

@@ -12,7 +12,7 @@ const Slider = () => {
   const sliderRef = useRef(null);
   
   useEffect(() => {
-    axios.get(`${API_URL}/slider`)
+    axios.get(`${API_URL}/api/slider`)
     .then(res => {
       console.log(res);
       setImagesAndVideos(res.data)

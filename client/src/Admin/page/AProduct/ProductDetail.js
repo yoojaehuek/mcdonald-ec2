@@ -47,7 +47,7 @@ const ProductDetail = () => {
     const userConfirmed = window.confirm("수정하시겠습니까?"); //확인 하면 true
     if (userConfirmed) {// 확인 눌렀으면 실행
       axios
-        .patch(`${API_URL}/product/${item.id}`, updatedItem)
+        .patch(`${API_URL}/api/product/${item.id}`, updatedItem)
         .then(() => {
           alert("수정되었습니다.");
           handleGoBack();

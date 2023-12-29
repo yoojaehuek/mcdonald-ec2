@@ -6,7 +6,6 @@
 
 import { useState } from 'react';
 import styled from 'styled-components';
-import { API_URL } from '../../config/contansts';
 import './Tab.scss';
 
 // http://localhost:3000/story/scaleforgood 페이지의 하단 탭 내용

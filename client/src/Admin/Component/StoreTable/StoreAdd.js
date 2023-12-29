@@ -76,7 +76,7 @@ const StoreAdd = () => {
     console.log(newStore);
     // 추가 로직 구현
     axios
-      .post(`${API_URL}/store`, newStore)
+      .post(`${API_URL}/api/store`, newStore)
       .then((response) => {
         alert('매장이 추가되었습니다.');
         navigate(-1); // 현재 페이지에서 뒤로 가기

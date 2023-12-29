@@ -1,8 +1,7 @@
-import './BrandIntro.scss';
-import {NavLink, useParams} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import BrandCont01 from '../../../components/BrandCont/BrandCont1/BrandCont1';
 import BrandCont02 from '../../../components/BrandCont/BrandCont2/BrandCont2';
-// import Buttonmain from ''
+import './BrandIntro.scss';
 
 
 const tmps = [

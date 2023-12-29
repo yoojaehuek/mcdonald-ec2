@@ -79,8 +79,8 @@ function Join() {
 		}
 	};
 	/** 전화번호 유효성검사 */
-	const onChangePhone = (getNumber) => {
-		const currentPhone = getNumber;
+	const onChangePhone = (e) => {
+		const currentPhone = e.target.value;
 		setPhone(currentPhone);
 		const phoneRegExp = /^01([0|1|6|7|8|9])?([0-9]{3,4})?([0-9]{4})$/;
 
@@ -92,17 +92,6 @@ function Join() {
 			setIsPhone(true);
 		}
 	};
-	const addHyphen = (e) => {
-		const currentNumber = e.target.value;
-		setPhone(currentNumber);
-		if (currentNumber.length == 3 || currentNumber.length == 8) {
-			setPhone(currentNumber);
-			onChangePhone(currentNumber);
-		} else {
-			onChangePhone(currentNumber);
-		}
-	};
-
 	// 각 입력창에 대한 라벨 상태 저장
 	const [isLabelVisible, setIsLabelVisible] = useState({
 		email: false,
@@ -184,7 +173,8 @@ function Join() {
 				navigate('/');  
 			})
 			.catch(err =>{
-				console.error(err);
+				console.error(err.response.data.message);
+				alert(`가입 실패!\n${err.response.data.message}`);
 			})
 		}else{
 			return alert("입력하지 않은 부분이 있거나 입력형식이 올바르지않은 곳이 있습니다.");
@@ -193,6 +183,7 @@ function Join() {
   const handleInputFocus = (inputType) => { // 라벨 보여지는 여부 
     setIsLabelVisible((prev) => ({ ...prev, [inputType]: true }));
   };
+
 	const handleInputBlur = (inputType) => {
 		const inputValue = inputRefs[inputType].current.value.trim();
 		if (!inputValue) {
@@ -251,7 +242,7 @@ function Join() {
 					<label className={isLabelVisible.name ? '' : 'hidden'}>이름</label>
 					<input
 						id="name"
-						value={name} 
+						value={name}  
 						onChange={onChangeName}
 						ref={inputRefs.name}
 						type="text"
@@ -266,7 +257,7 @@ function Join() {
 					<input
 						id="phone"
 						value={phone} 
-						onChange={addHyphen}
+						onChange={onChangePhone}
 						ref={inputRefs.phone}
 						type="text"
 						placeholder="전화번호(01012345678)"
