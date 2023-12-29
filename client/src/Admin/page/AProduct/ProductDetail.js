@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { useLocation, useNavigate, NavLink } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { API_URL } from "../../../config/contansts";
 import { Upload } from "antd";
-import "./ProductDetail.scss";
 import axios from "axios";
+import "./ProductDetail.scss";
 
 const ProductDetail = () => {
   const item = useLocation().state;
@@ -80,7 +80,7 @@ const ProductDetail = () => {
     }
   };
 
-  const inputFields = [ // 라벨이름, 보여질값, 값변경시 실행함수, id  
+  const inputFields = [ // 라벨이름(key값), 보여질값, 값변경시 실행함수, id  
     { label: '이름', state: Kname, setState: setKname, id: 'editName' },
     { label: '영어이름', state: Ename, setState: setEname, id: 'editEName' },
     { label: '가격', state: price.toLocaleString(), setState: setPrice, id: 'editPrice' },

@@ -1,13 +1,13 @@
 import React, { useState, useRef, useEffect } from 'react';
-import './Login.scss';
-import axios from 'axios';
 import { API_URL } from '../../config/contansts';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilState } from "recoil";
 import { loginState } from "../../recoil/atoms/State";
+import axios from 'axios';
+import './Login.scss';
 
 function Login() {
-	const [isLabelVisibleId, setIsLabelVisibleId] = useState(false);
+	const [isLabelVisibleId, setIsLabelVisibleId] = useState(false); // 라벨 보여지는 여부
 	const [isLabelVisiblePwd, setIsLabelVisiblePwd] = useState(false);
 	const [islogin, setIslogin] = useRecoilState(loginState); //useState와 거의 비슷한 사용법
 	const inputRefId = useRef(null);
@@ -17,19 +17,19 @@ function Login() {
 	/** 로그인 */
 	const onSubmitLogin = async (e) => {
 		e.preventDefault();
-		const email = e.target.email.value
-		const pwd = e.target.pwd.value
+		const email = e.target.email.value.trim();
+		const pwd = e.target.pwd.value.trim();
 
 		if( email !== "" && pwd !== ""){
 			console.log(email);
 			axios.post(
 				`${API_URL}/api/user/login`,
 				{email, pwd},
-				{ withCredentials: true }
+				{ withCredentials: true }// 쿠키 수정허용
 			)
 			.then(() =>{
 				alert("로그인성공!");
-				setIslogin(true);
+				setIslogin(true);// 로컬스토리지에 저장. 브라우저닫아도 유지
 				navigate('/');  
 			})
 			.catch(err =>{
@@ -59,10 +59,8 @@ function Login() {
 				setIsLabelVisiblePwd(!!inputValuePwd);
 			}
 		};
-
 		// 이벤트 리스너 등록
 		document.addEventListener('mousedown', handleClickOutside);
-
 		// 컴포넌트가 언마운트될 때 이벤트 리스너 제거
 		return () => {
 			document.removeEventListener('mousedown', handleClickOutside);
@@ -76,21 +74,18 @@ function Login() {
 			setIsLabelVisiblePwd(true);
 		}
 	};
-
 	const handleInputBlur = (inputType) => {
-	const inputValue = inputType === 'id' ? inputRefId.current.value : inputRefPwd.current.value;
-
-	// 만약 입력 필드가 비어있다면, 다시 라벨을 숨길 수 있습니다.
-	if (!inputValue.trim()) {
-		if(inputType === 'id') {
-			setIsLabelVisibleId(false);
-		}else if(inputType === 'pwd') {
-			setIsLabelVisiblePwd(false);
+		const inputValue = inputType === 'id' ? inputRefId.current.value : inputRefPwd.current.value;
+		// 만약 입력 필드가 비어있다면, 다시 라벨을 숨김
+		if (!inputValue.trim()) {
+			if(inputType === 'id') {
+				setIsLabelVisibleId(false);
+			}else if(inputType === 'pwd') {
+				setIsLabelVisiblePwd(false);
+			}
 		}
-	}
 	};
 	
-
 	return (
 	<div className="Login">
 		<form id='login-form' onSubmit={onSubmitLogin}>

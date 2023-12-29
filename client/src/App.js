@@ -5,7 +5,7 @@ import Test from './page/Test';
 import Login from './page/Login/Login';
 import Join from './page/Join/Join';
 import Menu from './page/Menu/Menu';
-import DetailProduct from './components/Product/DetailProduct/DetailProduct';
+import DetailProduct from './page/Menu/DetailProduct/DetailProduct';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Crew from './page/Story/People/Crew/Crew';

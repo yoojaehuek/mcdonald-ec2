@@ -169,7 +169,6 @@ const Mcart = () => {
                 {isPopupOpen && (
                 <p>
                   <div id='bg'></div>
-                  
                   <div className="store-popup">
                     <h3>매장 선택</h3>
                     <ul>

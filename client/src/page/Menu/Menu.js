@@ -1,19 +1,19 @@
-import React ,{useEffect, useState}from 'react';
-import Product from '../../components/Product/Product';
-import BtnMore from '../../components/BtnMore/BtnMore';
-import { API_URL } from '../../config/contansts';
-import './Menu.scss';
-import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import Product from "../../components/Product/Product";
+import BtnMore from "../../components/BtnMore/BtnMore";
+import { API_URL } from "../../config/contansts";
+import "./Menu.scss";
+import axios from "axios";
+import { useParams } from "react-router-dom";
 
 function Menu() {
-    const [select, setSelect] = useState("single");//단품,세트메뉴 선택 
-    const [productCount, setProductCount] = useState(6); //페이지를 열었을때 보여지는상품개수
-    const { subcategory_id } = useParams();// 주소창에서 subcategory_id 를 가져옴
-    const [products, setProducts] = useState([]);
-    const [visible, setVisible] = useState();
-    const [btn1, setBtn1] = useState("");
-    const [btn2, setBtn2] = useState('');
+  const [select, setSelect] = useState("single"); //단품,세트메뉴 선택
+  const [productCount, setProductCount] = useState(6); //페이지를 열었을때 보여지는상품개수
+  const { subcategory_id } = useParams(); // 주소창에서 subcategory_id 를 가져옴
+  const [products, setProducts] = useState([]);
+  const [visible, setVisible] = useState();
+  const [btn1, setBtn1] = useState("");
+  const [btn2, setBtn2] = useState("");
 
     useEffect(()=>{
         axios.get(`${API_URL}/api/product/subcategory/${subcategory_id}`)
@@ -34,49 +34,65 @@ function Menu() {
     const singleProd = products.filter(product => !product.product_category);
     const setProd = products.filter(product => product.product_category);
 
-    /**버튼을 누르면 보여지는 상품의 개수를 늘려주는 함수 */
-    const increaseProductCount = () => {
-        setProductCount((prevCount) => prevCount + 6);
-    };
+  /**버튼을 누르면 보여지는 상품의 개수를 늘려주는 함수 */
+  const increaseProductCount = () => {
+    setProductCount((prevCount) => prevCount + 6);
+  };
 
-    return (
-    <> 
-        <div id='menu-form'>
-            <div>
-                <div id='select'> 
-                    <button 
-                        className={`select-btn ${select==='single' ? 'active' : ''}`}
-                        onClick={() => {setSelect('single'); setProductCount(6);}}
-                    >{btn1}</button> 
-                    {visible === true ?
-                        <button 
-                        className={`select-btn ${select==='set' ? 'active' : ''}`}
-                        onClick={() => {setSelect('set'); setProductCount(6);}}
-                    >{btn2}</button> :''}
-                </div>
-            </div>
-            <div>
-            {
-                select === 'single' ?  
-                <div>
-                    <h3 id='prd-count'>{singleProd.length} Products</h3>
-                    <div className="menu-grid">
-                        {singleProd.slice(0, productCount).map((product, index) => <Product key = {index} props={product} />)}
-                    </div>
-                </div>
-                :
-                <div>
-                    <h3 id='prd-count'>{setProd.length} Products</h3>
-                    <div className="menu-grid">
-                        {setProd.slice(0, productCount).map((product, index) => <Product key = {index} props={product} />)}
-                    </div>
-                </div>
-            }
-            </div>
-            <BtnMore onClick={increaseProductCount} />
+  return (
+    <>
+      <div id="menu-form">
+        <div>
+          <div id="select">
+            <button
+              className={`select-btn ${select === "single" ? "active" : ""}`}
+              onClick={() => {
+                setSelect("single");
+                setProductCount(6);
+              }}
+            >
+              {btn1}
+            </button>
+            {visible === true ? (
+              <button
+                className={`select-btn ${select === "set" ? "active" : ""}`}
+                onClick={() => {
+                  setSelect("set");
+                  setProductCount(6);
+                }}
+              >
+                {btn2}
+              </button>
+            ) : (
+              ""
+            )}
+          </div>
         </div>
+        <div>
+          {select === "single" ? ( //단품메뉴
+            <div>
+              <h3 id="prd-count">{singleProd.length} Products</h3>
+              <div className="menu-grid">
+                {singleProd.slice(0, productCount).map((product, index) => (
+                  <Product key={index} props={product} />
+                ))}
+              </div>
+            </div>
+          ) : (
+            <div> {/* 세트메뉴 */}
+              <h3 id="prd-count">{setProd.length} Products</h3>
+              <div className="menu-grid">
+                {setProd.slice(0, productCount).map((product, index) => (
+                  <Product key={index} props={product} />
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+        <BtnMore onClick={increaseProductCount} />
+      </div>
     </>
-    );
+  );
 }
 
 export default Menu;
