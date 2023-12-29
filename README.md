@@ -193,8 +193,11 @@ npm start
 * Mypage: 회원 계정 정보, 주문 내역 확인 및 수정 페이지
 * Admin : 페이지 관리 페이지
 * payment : 상품 결제 페이지
-
+<br/><br/>
 #### 🧩 back-end
+<br/>
+
+![back-end](/readme-file/back-end.png)
 
 > 로직 구조
 
@@ -207,7 +210,21 @@ npm start
 - utils/token: JWT토큰 생성, 회원 인증
 - services : 요청받은 정보를 알맞게 가공하는 로직 수행
 
+<br/>
+
 #### 🧩 ERD
+
+<br/>
+
+![ERD](/readme-file/ERD.svg)
+
+<br/>
+
+#### 🧩 Architecture
+
+![Architecture](/readme-file/Architecture.svg)
+
+<br/>
 
 ### ✔️ 페이지 구성
 
