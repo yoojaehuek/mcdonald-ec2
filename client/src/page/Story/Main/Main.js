@@ -16,7 +16,7 @@ const Storymain = () => {
       title: "1955년부터 지금까지 이어져온 맥도날드의 발자취",
       buttonText: "자세히 보기",
       buttonPath: "/story/brandintro",
-      image: "./images/Story/Main01.jpg",
+      image: "./images/Story/main01.jpg",
     },
     {
       id: 3,
@@ -25,7 +25,7 @@ const Storymain = () => {
       title: "더 나은 세상을 위한 맥도날드의 노력",
       buttonText: "자세히 보기",
       buttonPath: "/story/society",
-      image: "./images/Story/Main02.jpg",
+      image: "./images/Story/main02.jpg",
     },
     {
       id: 4,
@@ -34,7 +34,7 @@ const Storymain = () => {
       title: "식재료부터 레스토랑까지 엄격한 기준을 고집합니다.",
       buttonText: "자세히 보기",
       buttonPath: "/story/farmtorestaurant",
-      image: "./images/Story/Main03.jpg",
+      image: "./images/Story/main03.jpg",
     },
     {
       id: 5,
@@ -43,7 +43,7 @@ const Storymain = () => {
       title: "최초의 서비스에 담긴 자부심으로 맥도날드의 새로운 변화를 이끌어갑니다.",
       buttonText: "자세히 보기",
       buttonPath: "/story/crew",
-      image: "./images/Story/Main04.jpg",
+      image: "./images/Story/main04.jpg",
     },
   ];
 

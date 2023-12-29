@@ -62,7 +62,7 @@ class User extends Sequelize.Model {
       timestamps: false,
       underscored: false,
       modelName: 'User',
-      tableName: 'User',
+      tableName: 'user',
       paranoid: false,
       charset: 'utf8',
       collate: 'utf8_general_ci',

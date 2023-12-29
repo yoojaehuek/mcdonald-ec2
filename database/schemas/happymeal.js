@@ -59,7 +59,7 @@ class HappyMeal extends Sequelize.Model {
         sequelize,
         timestamps: false,
         modelName: 'HappyMeal',
-        tableName: 'HappyMeal',
+        tableName: 'happymeal',
         paranoid: false,
         charset: 'utf8',
         collate: 'utf8_general_ci',

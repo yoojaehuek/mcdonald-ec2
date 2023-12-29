@@ -39,7 +39,7 @@ class Material extends Sequelize.Model {
         sequelize,
         timestamps: false,
         modelName: 'Material',
-        tableName: 'Material',
+        tableName: 'material',
         paranoid: false,
         charset: 'utf8',
         collate: 'utf8_general_ci',

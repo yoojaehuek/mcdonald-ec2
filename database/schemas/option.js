@@ -25,7 +25,7 @@ class Option extends Sequelize.Model {
         sequelize,
         timestamps: false,
         modelName: 'Option',
-        tableName: 'Option',
+        tableName: 'option',
         paranoid: false,
         charset: 'utf8',
         collate: 'utf8_general_ci',
