@@ -15,7 +15,7 @@ class Sample extends Sequelize.Model {
         sequelize,
         timestamps: false,
         modelName: 'Sample',
-        tableName: 'Sample',
+        tableName: 'sample',
         paranoid: false,
         charset: 'utf8',
         collate: 'utf8_general_ci',

@@ -44,7 +44,7 @@ class Crew extends Sequelize.Model {
         sequelize,
         timestamps: false,
         modelName: 'Crew',
-        tableName: 'Crew',
+        tableName: 'crew',
         paranoid: false,
         charset: 'utf8',
         collate: 'utf8_general_ci',

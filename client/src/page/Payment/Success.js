@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 
 export function Success() {
@@ -8,7 +7,7 @@ export function Success() {
   return (
     <div style={{
       marginTop: '5vw',
-      background: `url("../images/new.jpg") no-repeat center`,
+      // background: `url("../images/new.jpg") no-repeat center`,
       backgroundSize: 'contain',
       height: '40vw',
       maxWidth: '80vw',

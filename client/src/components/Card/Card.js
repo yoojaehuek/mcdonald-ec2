@@ -4,7 +4,6 @@ import "./Card.scss";
 
 const Card = ({props}) => {
   const { pathname } = useLocation();
-  const table = pathname.split('/')[1];
 
   return(
     <div className='card'>

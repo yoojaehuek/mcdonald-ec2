@@ -6,7 +6,7 @@ const multer = require('multer');
 const cookieParser = require('cookie-parser');
 const { sequelize } = require('./database/schemas');//DB테이블
 const bannerRouter = require('./routers/banner')
-const port = 8003;
+const port = 8000;
 require('dotenv').config();
 const errorMiddleware = require('./utils/errorMiddleware');
 const CrewRouter = require('./routers/crew');

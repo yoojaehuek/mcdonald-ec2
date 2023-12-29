@@ -39,7 +39,7 @@ class Effort extends Sequelize.Model {
         sequelize,
         timestamps: false,
         modelName: 'Effort',
-        tableName: 'Effort',
+        tableName: 'effort',
         paranoid: false,
         charset: 'utf8',
         collate: 'utf8_general_ci',

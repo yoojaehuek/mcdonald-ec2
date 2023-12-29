@@ -1,10 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import { loadPaymentWidget, PaymentWidgetInstance } from "@tosspayments/payment-widget-sdk";
 import { nanoid } from "nanoid";
-import { useParams, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { API_URL } from "../../config/contansts";
-import { error, log } from "console";
 import { errHandler } from '../../utils/globalFunction';
 import { useRecoilState } from "recoil";
 import { loginState } from "../../recoil/atoms/State";
@@ -63,6 +62,8 @@ export default function Payment() {
       </div>
       <h2 style={{ color: '#555', marginBottom: '20px' }}>가격: {price}</h2>
       <div id="payment-widget" style={{ margin: '20px 0' }} />
+      <p>토스페이 결제만 가능</p>
+      <p>테스트용으로 결제 성공해도 돈 안나감</p>
       <button
         style={{
           padding: "10px 20px",

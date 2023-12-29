@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useParams, NavLink } from "react-router-dom";
 import { API_URL } from "../../../config/contansts";
-import "./DetailProduct.scss";
 import axios from "axios";
+import { useRecoilState } from "recoil";
+import { loginState } from "../../../recoil/atoms/State";
+import "./DetailProduct.scss";
 
 const DetailProduct = () => {
+  const [islogin, setIslogin] = useRecoilState(loginState); //useState와 거의 비슷한 사용법
   const { id } = useParams(); // 주소에서 상품id 가져옴
   console.log("디테일 파람스 id: ", id);
   const [number, setNumber] = useState(1); //상품개수 증감변수
@@ -12,8 +15,7 @@ const DetailProduct = () => {
   const [product, setProduct] = useState({});
   const [options, setOptions] = useState([]);
   useEffect(() => {
-    axios
-      .get(`${API_URL}/api/product/${id}`)
+    axios.get(`${API_URL}/api/product/${id}`)
       .then((res) => {
         console.log("디테일에서받은res.data: ", res.data);
         setProduct(res.data);
@@ -112,6 +114,10 @@ const DetailProduct = () => {
 
   /** 장바구니버튼클릭시 로컬스토리지로 값보냄 */
   const handleCartButtonClick = () => {
+    if(!islogin){
+      return
+    }
+
     // console.log(optionQuantities[0]);
     const selectedOptions = optionQuantities
       .filter((option) => option.quantity > 0)

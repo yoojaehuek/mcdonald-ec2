@@ -45,7 +45,7 @@ class Banner extends Sequelize.Model {
         sequelize,
         timestamps: false,
         modelName: 'Banner',
-        tableName: 'Banner',
+        tableName: 'banner',
         paranoid: false,
         charset: 'utf8',
         collate: 'utf8_general_ci',

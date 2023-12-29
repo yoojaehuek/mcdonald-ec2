@@ -30,7 +30,7 @@ class Slider extends Sequelize.Model {
         sequelize,
         timestamps: false,
         modelName: 'Slider',
-        tableName: 'Slider',
+        tableName: 'slider',
         paranoid: false,
         charset: 'utf8',
         collate: 'utf8_general_ci',

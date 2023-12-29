@@ -80,7 +80,7 @@ class Store extends Sequelize.Model {
         sequelize,
         timestamps: false,
         modelName: 'Store',
-        tableName: 'Store',
+        tableName: 'store',
         paranoid: false,
         charset: 'utf8',
         collate: 'utf8_general_ci',

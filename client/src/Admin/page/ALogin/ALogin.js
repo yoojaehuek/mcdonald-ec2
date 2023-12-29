@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { API_URL } from "../../../config/contansts";
 import { setCookie } from "../../../utils/cookie";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Button, TextField, Container, CssBaseline, Typography, Paper } from "@mui/material";
 import { Height } from "@mui/icons-material";
 
@@ -40,7 +40,7 @@ const ALogin = () => {
   }
 
   return (
-    <Container component="main" maxWidth="xs" sx={{marginTop: '7vw'}}>
+    <Container component="main" maxWidth="xs" sx={{marginTop: "12vw"}}>
       <CssBaseline />
       <Paper elevation={3} sx={{ padding: 4, display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
         <Typography component="h1" variant="h5" mb={2}>
@@ -72,7 +72,7 @@ const ALogin = () => {
         <Button variant="contained" fullWidth sx={{ mt: 2, mb: 2 }} onClick={onLogin}>
           로그인
         </Button>
-        <NavLink to="/">메인 페이지로</NavLink>
+        <a href="javascript:location.replace('/')">메인 페이지로</a>
       </Paper>
     </Container>
   );

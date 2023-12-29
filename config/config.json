@@ -1,9 +1,9 @@
 {
   "development": {
     "username": "root",
-    "password": "1234",
-    "database": "mcdonaldDB",
-    "host": "127.0.0.1",
+    "password": "rlawlghks51",
+    "database": "mcdonalddb",
+    "host": "www.i1004902.com",
     "dialect": "mysql",
     "timezone": "+09:00"
   },
