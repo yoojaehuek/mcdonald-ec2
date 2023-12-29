@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const OrderController = require('../controllers/orderController');
-const refresh = require('./refresh');
+const authMiddleware = require('../utils/authMiddleware');
 
 
-router.post('/', refresh, OrderController.addOrder);
+router.post('/', authMiddleware, OrderController.addOrder);
 router.get('/all', OrderController.getAllOrder);
-router.get('/', refresh, OrderController.getOrderByUserId);
-router.get('/date', refresh, OrderController.findAllOrderDate);
+router.get('/', authMiddleware, OrderController.getOrderByUserId);
+router.get('/date', authMiddleware, OrderController.findAllOrderDate);
 router.get('/rank', OrderController.rankMenu);
 router.get('/:order_id', OrderController.getOrderByOrderId);
 router.patch('/:order_id', OrderController.updateOrder);

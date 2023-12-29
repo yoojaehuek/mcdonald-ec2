@@ -2,10 +2,10 @@
 // const router = express.Router();
 const jwt = require('jsonwebtoken'); 
 require('dotenv').config();
-const { verify, refreshVerify, makeAccessToken, makeRefreshToken} = require("../utils/token");
+const { verify, refreshVerify, makeAccessToken, makeRefreshToken} = require("./token");
 
 // 사용자 전용 페이지 들어가기전 검증 미들웨어 
-const refresh = async (req, res, next) => {
+const authMiddleware = async (req, res, next) => {
   try {
     const accessToken = req.cookies.accessToken;
     const refreshToken = req.cookies.refreshToken;
@@ -74,4 +74,4 @@ const refresh = async (req, res, next) => {
   }
 };
 
-module.exports = refresh;
+module.exports = authMiddleware;
