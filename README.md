@@ -1,3 +1,13 @@
+<table>
+  <tr>
+    <td>메인 페이지</td>
+    <td>관리자 페이지</td>
+  </tr> 
+  <tr>
+    <td><img src="/readme-file/main-page.png" alt="메인 페이지"></td>
+    <td><img src="/readme-file/admin-page.png" alt="관리자 페이지"></td>
+  </tr>
+</table>
 
 # Mcdonald
 
