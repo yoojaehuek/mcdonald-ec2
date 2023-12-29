@@ -30,7 +30,7 @@ class OrderOption extends Sequelize.Model {
         sequelize,
         timestamps: false,
         modelName: 'OrderOption',
-        tableName: 'OrderOption',
+        tableName: 'orderoption',
         paranoid: false,
         charset: 'utf8',
         collate: 'utf8_general_ci',

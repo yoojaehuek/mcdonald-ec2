@@ -58,7 +58,7 @@ class WhatsNew extends Sequelize.Model {
         sequelize,
         timestamps: false,  
         modelName: 'WhatsNew',
-        tableName: 'WhatsNew',
+        tableName: 'whatsnew',
         paranoid: false,
         charset: 'utf8',
         collate: 'utf8_general_ci',

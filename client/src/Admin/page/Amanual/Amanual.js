@@ -55,7 +55,7 @@ const Amanual = () => {
         매뉴얼
       </Title>
       <Typography>
-        Macdonald's 관리자 페이지 사용 설명서
+        Mcdonald's 관리자 페이지 사용 설명서
       </Typography>
       <SubTitle gutterBottom>
         매뉴얼 다운로드
