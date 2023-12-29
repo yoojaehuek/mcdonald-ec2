@@ -178,6 +178,7 @@ npm start
 
 #### 🧩 front-end
 
+![front-end](/readme-file/front-end.svg)
 
 > 페이지별 구조
 
