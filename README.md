@@ -1,7 +1,14 @@
+# Mcdonald
+
+> Mcdonald는 혁신적인 메뉴 개발과 편리한 매장 서비스로 고객들에게 독특하고 기억에 남는 다양한 맛의 경험을 제공하며, 일상을 더욱 특별하게 만드는 곳
+
+<br/>
+
+## 대표화면
 <table>
   <tr>
-    <td>메인 페이지</td>
-    <td>관리자 페이지</td>
+    <td><b>메인 페이지</b></td>
+    <td><b>관리자 페이지</b></td>
   </tr> 
   <tr>
     <td><img src="/readme-file/main-page.png" alt="메인 페이지"></td>
@@ -9,9 +16,7 @@
   </tr>
 </table>
 
-# Mcdonald
-
-> Mcdonald는 혁신적인 메뉴 개발과 편리한 매장 서비스로 고객들에게 독특하고 기억에 남는 다양한 맛의 경험을 제공하며, 일상을 더욱 특별하게 만드는 곳
+<br/>
 
 ## 어떤 서비스인가요?
 
@@ -31,9 +36,9 @@ Click to scroll to that page
 3. Stacks : 사용 기술 스택
 4. WEB MVP & Project tree : 주요 기능 및 프로젝트 구조
 
-- Page Image 페이지 구성
 - 기능 소개
 - ERD
+- Architecture
 
 5. Trouble Shooting : 트러블 슈팅
 6. END with Members: 프로젝트 멤버 및 역할 소개
@@ -253,6 +258,27 @@ npm start
 ### 🌏 With Deploy
 
 <img alt="Amazon" src ="https://img.shields.io/badge/Amazon EC2-FF9900.svg?&style=for-the-badge&logo=amazonec2&logoColor=white"/> <img alt="nginx" src ="https://img.shields.io/badge/nginx-009639.svg?&style=for-the-badge&logo=nginx&logoColor=white"/> <img alt="pm2" src ="https://img.shields.io/badge/pm2-2B037A.svg?&style=for-the-badge&logo=pm2&logoColor=white"/>
+
+## 5. 트러블 슈팅
+ 
+ ### 1. API 호출 이슈
+ 
+  - 문제: 개발 완료 후 Build 파일로 교체했을 때 백엔드 API와 React의 route 주소가 겹쳐 화면이 안나오고 백엔드에 get 요청이 되는 이슈
+  - 해결책: 문제를 해결하기 위해 백엔드 API 주소를 변경. 기존 루트 주소로 요청을 보내고 있었으나, 변경 후에는 API 요청 시에 /api를 앞에 추가하여 요청하도록 수정. 이를 통해 프론트엔드와 백엔드 간의 라우트 충돌을 방지하고, 각각이 올바르게 동작하도록 조치.
+    ```javascript
+    axios.get(`${API_URL}/api/store`)
+    .then(res => {
+      setResult(res.data);
+    }).catch(err => {
+      console.error(err);
+    })
+    ```
+    
+ ### 2. 레이아웃 깨짐
+
+  - 문제: 관리자 메인 페이지 화면 레이아웃이 예상과 다르게 깨지는 문제가 발생.
+  - 해결책: CSS Grid 등을 사용하여 레이아웃을 안정적으로 유지하도록 스타일을 조정.
+
 
 ## 6. END
 
