@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams, NavLink } from "react-router-dom";
 import { API_URL } from "../../../config/contansts";
-import "./DetailProduct.scss";
 import axios from "axios";
+import "./DetailProduct.scss";
 
 const DetailProduct = () => {
   const { id } = useParams(); // 주소에서 상품id 가져옴
@@ -101,13 +101,13 @@ const DetailProduct = () => {
   };
 
   // 각 옵션의 가격 * 수량 값을 더한 총 가격
-  // total 은 누적값 초기값0, option 현재 순회중인 options 배열의 요소, index 순회중인 요소의 인덱스
+  // total 은 누적값 초기값0, option 현재 순회중인 options 배열의 요소, index 순회중인 고유번호
   // reduce는 options 배열의 요소들을 순회하면서 콜백함수를 호출 최종적으로 옵션들의 총값을 추출
   const totalOptionPrice = options.reduce((total, option, index) => {
     return total + option.price * (optionQuantities[index]?.quantity || 0);
   }, 0);
 
-  // 전체 상품 가격
+  // 삼품개수를 적용한 가격
   const totalProductPrice = product.price * number;
 
   /** 장바구니버튼클릭시 로컬스토리지로 값보냄 */
@@ -134,10 +134,8 @@ const DetailProduct = () => {
 
     // 로컬 스토리지에서 기존의 장바구니 아이템을 가져오거나 빈 배열로 초기화합니다.
     const existingCartItems = JSON.parse(sessionStorage.getItem("cart")) || [];
-
     // 새로운 아이템을 장바구니에 추가합니다.
     existingCartItems.push(cartItem);
-
     // 업데이트된 장바구니 아이템을 다시 로컬 스토리지에 저장합니다.
     sessionStorage.setItem("cart", JSON.stringify(existingCartItems));
   };
@@ -163,7 +161,7 @@ const DetailProduct = () => {
                 <h2>수량</h2>
               </div>
               <div id="count-btn">
-                {/* 상품개수 증감버튼 type='button'으로해야 새로고침안됨:number값 초기화 안됨 */}
+                {/* 상품개수 증감버튼 form태그 안에서 type='button'으로해야 새로고침안됨:number값 초기화 안됨 */}
                 <button type="button" onClick={decrease}>
                   <div>-</div>
                 </button>
@@ -185,7 +183,6 @@ const DetailProduct = () => {
                   />
                 </div>
               </div>
-
               {!isOptionVisible && (
                 <div>
                   <ul id="option-ul">
@@ -241,15 +238,12 @@ const DetailProduct = () => {
                   >
                     장바구니 담기
                   </NavLink>
-                  {/* 로컬스토리지에 저장 */}
-                  {/* <button type='submit' id='orderBtn'>주문하기</button> * 로컬 스토리지에 저장될걸 불러와서 post로 보냄 */}
                 </div>
               </div>
             </div>
           </form>
         </div>
       </div>
-
       <div id="menu-info">
         <li>
           <button className="btn" onClick={handleAllergyButtonClick}>

@@ -83,7 +83,9 @@ const StoreTable = ({ data, setData }) => {
                         />
                       </td>
                     ) : (
-                      <td key={colIndex}>{prod[column]}</td>
+                      <td key={colIndex}>
+                      {colIndex === 3 ? prod[column].toLocaleString()+"원": prod[column]}
+                    </td>
                     )}
                   </>
                 ))}

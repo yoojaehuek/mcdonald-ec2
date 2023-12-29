@@ -5,7 +5,7 @@ import './Product.scss';
 const Product =({props})=>{
 	console.log("product에서 받은 props",props);
 	return(
-	<NavLink to={`/menu/${props.sub_category_id}/${props.id}`}>
+	<NavLink to={`/menu/${props.sub_category_id}/${props.id}`}> {/** 메뉴/카테고리id/상품id */}
 		<div id="product">
 			<div>
 				<img src={API_URL+props.thumbnail_img_url} alt=""/>

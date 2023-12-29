@@ -1,7 +1,7 @@
 #burger-Detail {
   width: 1000px;
   height: 1000px;
-  margin: 170px auto;
+  margin: 40px auto;
   #contents {
     display: flex;
     #prod-img {
@@ -154,25 +154,6 @@
       }
       #toggle {
         padding-bottom: 60px;
-        // 영양정보
-        // table{
-        //     width: 100%;
-        //     border-collapse: collapse;
-        //     border-bottom: 2px solid black;
-        //     th{
-        //         height: 60px;
-        //         &[scope="row"]{
-        //             border-right: 1px solid black;
-        //             border-top: 1px solid #d1d1d1;
-        //             text-align: left;
-        //             padding-left: 10px;
-        //             width: 15%;
-        //         }
-        //     }
-        //     td{
-        //         border-top: 1px solid #d1d1d1;
-        //     }
-        // }
         // 알레르기 정보, 원산지정보`
         p {
           text-align: left;
