@@ -72,11 +72,19 @@ npm install
 npm start
 ```
 
+Back-end API test
+
+
+- [API test용 POSTMAN](https://app.getpostman.com/join-team?invite_code=4071354b0146362eeb5dac679a7525f1&target_code=928eadf671f500a4f66463f91555daf1)
+
+
 ## 💻 2. Project Info : 프로젝트 소개
 
 ### ✔️개발 기간
 
 - 2023.12.04 ~ 2023.12.27 (4주)
+
+- [개발 일정 구글 시트](https://docs.google.com/spreadsheets/d/10lYxth4svSIDfBxel2TmEZxhLZDoqIq5BC2L7L-PQ_w/edit#gid=609442951)
 
 ### ✔️ 배포 서버
 
@@ -233,6 +241,8 @@ npm start
 
 ![ERD](/readme-file/ERD.svg)
 
+- [ERD 다이어그램](https://dbdiagram.io/d/mcdonald-ERD-657133f656d8064ca08ba43c)
+
 <br/>
 
 #### 🧩 Architecture
@@ -265,20 +275,69 @@ npm start
  
   - 문제: 개발 완료 후 Build 파일로 교체했을 때 백엔드 API와 React의 route 주소가 겹쳐 화면이 안나오고 백엔드에 get 요청이 되는 이슈
   - 해결책: 문제를 해결하기 위해 백엔드 API 주소를 변경. 기존 루트 주소로 요청을 보내고 있었으나, 변경 후에는 API 요청 시에 /api를 앞에 추가하여 요청하도록 수정. 이를 통해 프론트엔드와 백엔드 간의 라우트 충돌을 방지하고, 각각이 올바르게 동작하도록 조치.
-    ```javascript
-    axios.get(`${API_URL}/api/store`)
-    .then(res => {
-      setResult(res.data);
-    }).catch(err => {
-      console.error(err);
-    })
-    ```
+
+<br/>
+
+```javascript
+axios.get(`${API_URL}/api/store`)
+.then(res => {
+  setResult(res.data);
+}).catch(err => {
+  console.error(err);
+})
+```
     
  ### 2. 레이아웃 깨짐
 
   - 문제: 관리자 메인 페이지 화면 레이아웃이 예상과 다르게 깨지는 문제가 발생.
   - 해결책: CSS Grid 등을 사용하여 레이아웃을 안정적으로 유지하도록 스타일을 조정.
 
+<br/>
+
+![css](/readme-file/admin-grid.png)
+
+ ### 3. 먼저 내 위치를 선택하고 매장을 선택한 후 다시 내 위치를 선택하면 작동하지 않는 문제
+
+  - 문제: 초기에 내 위치를 선택하고 매장을 선택한 후에 다시 내 위치를 선택하면 지도 및 마커 동작이 정상적으로 이루어지지 않는 문제가 발생.
+  - 해결책: 내 위치나 매장을 선택할 때마다, 기존에 생성된 지도와 마커를 초기화하고 새로운 지도와 마커를 생성하며, 이전에 생성한 마커와 이벤트를 해제하고 새로운 마커와 이벤트를 추가. 다시 내 위치를 선택한 경우, 지도의 중심을 사용자의 위치로 재설정.
+
+```javascript
+function Maps({ stores, onMarkerClick, clickedStore, myLocation }) {
+  useEffect(() => {
+    const container = document.getElementById("map");
+    const options = {
+      center: new kakao.maps.LatLng(37.55415495198728, 126.97078657543889),
+      level: 3,
+    };
+    const map = new kakao.maps.Map(container, options);
+  
+    // 매장 정보를 이용하여 마커 생성 및 지도에 추가
+    stores.forEach((store) => {
+      const marker = new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(store.latitude, store.longitude),
+        title: store.store_name,
+      });
+  
+      kakao.maps.event.addListener(marker, "click", function () {
+        onMarkerClick(store);
+      });
+  
+      marker.setMap(map);
+    });
+  
+    // clickedStore가 변경되면 해당 좌표로 지도 이동
+    if (clickedStore) {
+      const { latitude, longitude } = clickedStore;
+      const moveLatLng = new kakao.maps.LatLng(latitude, longitude);
+      map.panTo(moveLatLng);
+    } else if (myLocation) {
+      // 내 위치 중심으로 지도 이동
+      const { latitude, longitude } = myLocation;
+      const moveLatLng = new kakao.maps.LatLng(latitude, longitude);
+      map.panTo(moveLatLng);
+    }
+  }, [stores, onMarkerClick, clickedStore, myLocation]);
+```
 
 ## 6. END
 
@@ -299,58 +358,71 @@ npm start
 
 ### 김지환(팀장)
 
-- 해피밀(프론트,디자인)
-- 프로모션(프론트,디자인)
-- 새로운소식(프론트,디자인)
-- 백엔드(맥딜리버리,매장찾기,장바구니,결제,마이페이지)
-- 관리자페이지 백엔드 전체
-- 관리자페이지(해피밀,프로모션,새로운소식,메인,로그인)
-- 프로젝트 문서화
+- 해피밀 (프론트,디자인)
+- 프로모션 (프론트,디자인)
+- 새로운소식 (프론트,디자인)
+- 백엔드 (맥딜리버리,매장찾기,장바구니,결제,마이페이지)
+- 관리자 페이지 백엔드 전체
+- 관리자 페이지 프론트,디자인 (해피밀,프로모션,새로운소식,메인,로그인)
+- 프로젝트 문서화 (back-end, ERD, 트러블 슈팅)
 - AWS EC2 활용하여 프로젝트 배포
 - NginX 리버스 프록시, https 적용
+- Node.js 서버 구조 설계 (Controllers-Services-models 구조)
+- React 폴더 구조 설계
+- JWT accessToken, refreshToken과 Redis를 사용한 사용자 인증 구현
+- Recoil 상태관리 라이브러리를 사용해 사용자 로그인 상태 관리
+- 토스 페이먼츠로 결제 구현
+- API 설계 및 DB 구조 설계
 
 ### 김준녕
 
-- 품질이야기(프론트,디자인,백엔드)
-- 사람들(프론트,디자인,백엔드)
-- 관리자페이지(재료,크루,노력,FAQ) 프론트,디자인
-- 프로젝트 문서화
-- 관리자 페이지 사용 설명서
+- 품질이야기 (프론트,디자인,백엔드)
+- 사람들 (프론트,디자인,백엔드)
+- 매장찾기 (프론트, 디자인)
+- 관리자 페이지 프론트,디자인 (재료,크루,노력,FAQ)
+- 관리자 페이지 대시보드 구현
+- 페이지네이션 관리자 페이지 적용
+- MUI 활용한 관리자 메인페이지 기본 틀 구현
+- 프로젝트 문서화 (front-end, Architecture, 트러블 슈팅)
+- 관리자 페이지 사용 설명서 작성
 - 카카오맵 API 및 MyLocation 기능
 
 ### 유재혁
 
-- 메뉴(프론트,디자인,백엔드)
-- 메뉴 디테일(프론트,디자인,백엔드)
-- 로그인/회원가입(프론트,디자인,벡엔드)
-- 장바구니(프론트, 디자인)
-- 관리자페이지(메뉴) 프론트,디자인
+- 메뉴 (프론트,디자인,백엔드)
+- 메뉴 디테일 (프론트,디자인,백엔드)
+- 로그인 (프론트,디자인,벡엔드)
+- 회원가입 (프론트,디자인,벡엔드)
+- 장바구니 (프론트, 디자인)
+- 관리자페이지 프론트,디자인 (메뉴)
+- 로그인 회원가입 유효성 검사 구현
+- Daum 우편 번호 API 활용한 주소 찾기 기능 구현
 
 ### 김정혁
 
-- 브랜드 소개(프론트,디자인)
-- 매장 찾기(프론트, 디자인)
+- 브랜드 소개 (프론트,디자인)
+- 매장 찾기 (프론트, 디자인)
 - 관리자페이지(매장관리) 프론트,디자인
   
 ### 임헌성
 
-- 메인페이지(프론트,디자인,슬라이더)
-- 헤더(프론트,디자인,드롭다운)
-- 푸터(프론트,디자인,개인정보처리방침 컴포넌트)
-- 관리자페이지(옵션, Slider, Banner) 프론트, 디자인
+- 메인페이지 (프론트,디자인,슬라이더)
+- 헤더 (프론트,디자인,드롭다운)
+- 푸터 (프론트,디자인,개인정보처리방침 컴포넌트)
+- 관리자페이지 (옵션, Slider, Banner) 프론트, 디자인
 - Aside 기능 구현
 - 관리자 페이지 사용 설명서
-- 프로젝트 문서화
+- 프로젝트 문서화 (서비스 설명, 소개)
 
 ### 박승균
 
-- 임차문의(프론트,디자인)
-- 맥드라이브(프론트,디자인)
+- 임차문의 (프론트,디자인)
+- 맥드라이브 (프론트,디자인)
 
 ### 백승준
 
-- 사회적 책임과 지원(프론트,디자인)
-- 책임과 지원 디테일(프론트,디자인)
+- 사회적 책임과 지원 (프론트,디자인)
+- 책임과 지원 디테일 (프론트,디자인)
   
 
 
