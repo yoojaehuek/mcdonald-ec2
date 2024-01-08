@@ -62,7 +62,13 @@ Front
 ```
 cd client
 npm install
-npm start
+npm run build
+```
+
+DB
+
+```
+mcdonald/database/mcdonalddb.sql 실행
 ```
 
 Back
@@ -70,6 +76,12 @@ Back
 ```
 npm install
 npm start
+```
+
+접속
+
+```
+http://localhost:8000 
 ```
 
 Back-end API test
