@@ -49,39 +49,40 @@ For building and running the application you need :
 
 - [Node.js 18.16.1](https://nodejs.org/en)
 - [npm 9.7.2](https://www.npmjs.com/)
+- MariaDB 10.3.11
 
 Installation
 
 ```bash
-git clone https://github.com/KJH1225/mcdonald.git
-cd mcdonald
+https://github.com/KJH1225/mcdonald.git
 ```
 
-Front
+Front (mcdonald/client/)에서
 
 ```
-cd client
-npm install
+npm i --force
 npm run build
 ```
 
 DB
 
 ```
-mcdonald/database/mcdonalddb.sql 실행
+mcdonald/database/sqlFile/mcdonalddb.sql 실행
+mcdonald/config/config.json 파일의 development: {} 내용을 자신에 맞게 수정
 ```
 
-Back
+
+Back (mcdonald/)에서
 
 ```
-npm install
+npm i 
 npm start
 ```
 
 접속
 
 ```
-http://localhost:8000 
+http://localhost:8000 접속
 ```
 
 Back-end API test
