@@ -379,12 +379,12 @@ function Maps({ stores, onMarkerClick, clickedStore, myLocation }) {
 - 프로젝트 문서화 (back-end, ERD, 트러블 슈팅)
 - AWS EC2 활용하여 프로젝트 배포
 - NginX 리버스 프록시, https 적용
-- Node.js 서버 구조 설계 (Controllers-Services-models 구조)
+- Node.js 폴더 구조 설계 (Controllers-Services-models 구조)
 - React 폴더 구조 설계
 - JWT accessToken, refreshToken과 Redis를 사용한 사용자 인증 구현
 - Recoil 상태관리 라이브러리를 사용해 사용자 로그인 상태 관리
 - 토스 페이먼츠로 결제 구현
-- API 설계 및 DB 구조 설계
+- 백엔드 API 설계 및 DB 구조 설계
 
 ### 김준녕
 
