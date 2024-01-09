@@ -375,17 +375,14 @@ function Maps({ stores, onMarkerClick, clickedStore, myLocation }) {
 
 ### 김지환(팀장)
 
-- 해피밀 (프론트,디자인)
-- 프로모션 (프론트,디자인)
-- 새로운소식 (프론트,디자인)
+- What’s New(해피밀, 프로모션, 새로운소식) 페이지 
 - 백엔드 (맥딜리버리,매장찾기,장바구니,결제,마이페이지)
 - 관리자 페이지 백엔드 전체
 - 관리자 페이지 프론트,디자인 (해피밀,프로모션,새로운소식,메인,로그인)
 - 프로젝트 문서화 (back-end, ERD, 트러블 슈팅)
-- AWS EC2 활용하여 프로젝트 배포
+- AWS EC2 활용하여 프로젝트 배포 (www.i1004902.com)
 - NginX 리버스 프록시, https 적용
-- Node.js 폴더 구조 설계 (Controllers-Services-models 구조)
-- React 폴더 구조 설계
+- Node.js, React 폴더 구조 설계 (Controllers-Services-models 구조)
 - JWT accessToken, refreshToken과 Redis를 사용한 사용자 인증 구현
 - Recoil 상태관리 라이브러리를 사용해 사용자 로그인 상태 관리
 - 토스 페이먼츠로 결제 구현
