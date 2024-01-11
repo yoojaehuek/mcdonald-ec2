@@ -432,6 +432,8 @@ function Maps({ stores, onMarkerClick, clickedStore, myLocation }) {
 
 - 임차문의 (프론트,디자인)
 - 맥드라이브 (프론트,디자인)
+- 맥딜리버리 (프론트,디자인)
+- 카트 (디자인)
 
 ### 백승준
 
