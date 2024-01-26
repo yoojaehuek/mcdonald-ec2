@@ -159,7 +159,7 @@ const McDelivery = () => {
           </div>
           <div>
             <a href="#">
-              <img src="/images/mcdelivery/img_app_android.png"></img>
+              <img src="../images/mcdelivery/img_app_android.png"></img>
               <br></br>
               {temp.map(tmp =>
                 <strong>{tmp.mcdelimg1}</strong>
@@ -168,7 +168,7 @@ const McDelivery = () => {
           </div>
           <div>
             <a href="#">
-              <img src="/images/mcdelivery/img_app_ios.png"></img>
+              <img src="../images/mcdelivery/img_app_ios.png"></img>
               <br></br>
               {temp.map(tmp =>
                 <strong>{tmp.mcdelimg2}</strong>

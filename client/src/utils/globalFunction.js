@@ -8,7 +8,7 @@ export const errHandler = (err) => {
     
     alert(errRes.message);
     // navigate(errRes.url);
-    window.location.replace(errRes.url)
+    window.location.replace('/app1'+errRes.url);
   }
   return;
 }

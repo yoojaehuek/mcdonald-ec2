@@ -72,7 +72,7 @@ const ALogin = () => {
         <Button variant="contained" fullWidth sx={{ mt: 2, mb: 2 }} onClick={onLogin}>
           로그인
         </Button>
-        <a href="javascript:location.replace('/')">메인 페이지로</a>
+        <a href="javascript:location.replace('/app1')">메인 페이지로</a>
       </Paper>
     </Container>
   );

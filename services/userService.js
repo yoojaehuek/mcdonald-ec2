@@ -1,7 +1,7 @@
 const UserModel = require('../database/models/userModel')
 const crypto = require('crypto');
-const redisClient = require("../utils/redis.utils");
 require('dotenv').config();
+const redisClient = require("../utils/redis.utils");
 const { makeRefreshToken, makeAccessToken } = require('../utils/token');
 
 

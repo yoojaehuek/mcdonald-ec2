@@ -39,7 +39,7 @@ const mcdonaldhouse = () => {
                 </ul>
                 {/* 큰 이미지와 내용 */}
                 <div className="top">
-                    <img src="/images/Story/mh1.jpg"></img>
+                    <img src="../images/Story/mh1.jpg"></img>
                     <h2>
                         '재단법인 로날드맥도날드하우스'는 무엇인가요?
                     </h2>

@@ -297,7 +297,7 @@ const ABanner = () => {
             />
             <Upload
                 name="image"
-                action={`${API_URL}/image`}
+                action={`${API_URL}/api/image`}
                 listType="picture"
                 showUploadList={false}
                 onChange={onChangeImage}
@@ -390,7 +390,7 @@ const ABanner = () => {
             />
             <Upload
                 name="image"
-                action={`${API_URL}/image`}
+                action={`${API_URL}/api/image`}
                 listType="picture"
                 showUploadList={false}
                 onChange={onChangeImage}

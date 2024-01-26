@@ -3,6 +3,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { AppBar, Toolbar, Typography, IconButton, Button, Divider } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 import { getCookie, removeCookie } from '../../utils/cookie';
+import { API_URL } from '../../config/contansts';
 
 const AHeader = () => {
 
@@ -10,7 +11,7 @@ const AHeader = () => {
     console.log('실행');
     removeCookie('login');
     // navigate('/admin/login');
-    window.location.replace('/admin/login');
+    window.location.replace('/app1/admin/login');
   }
   return (
     // <div style={{ position: 'fixed', width: '100%', backgroundColor: '#fff', zIndex: '3' }}>
@@ -29,7 +30,7 @@ const AHeader = () => {
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1, color: '#000000' }}>
             <NavLink to='/admin'><img
-              src="/images/Header/logo1.png"
+              src={API_URL+'/images/Header/logo1.png'}
               alt="Logo"
               style={{ maxWidth: '102px', padding: '1vw', width: '100%', height: 'auto' }}
             /></NavLink>

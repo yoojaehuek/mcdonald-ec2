@@ -32,7 +32,7 @@ const News = () => {
             {items.map((item, index)=>
               <li key={index} className={'list-item'}>
                 <NavLink to={`/whats-new/${subcategory_id}/${item.id}`}>
-                  <img className='news-icon' src="/images/icon/ico_notice.png" alt="" />
+                  <img className='news-icon' src="../images/icon/ico_notice.png" alt="" />
                   <strong className='item-title'>{item.title}</strong>
                   <span>{item.created_at}</span>
                 </NavLink>

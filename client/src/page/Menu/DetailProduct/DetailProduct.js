@@ -13,7 +13,7 @@ const DetailProduct = () => {
   const [options, setOptions] = useState([]);
   useEffect(() => {
     axios
-      .get(`${API_URL}/product/${id}`)
+      .get(`${API_URL}/api/product/${id}`)
       .then((res) => {
         console.log("디테일에서받은res.data: ", res.data);
         setProduct(res.data);
@@ -26,7 +26,7 @@ const DetailProduct = () => {
   /** 옵션 불러오기 */
   useEffect(() => {
     axios
-      .get(`${API_URL}/option`)
+      .get(`${API_URL}/api/option`)
       .then((res) => {
         setOptions(res.data);
       })
@@ -49,8 +49,8 @@ const DetailProduct = () => {
 
   /**옵션버튼 화살표이미지 */
   const optionBtn = {
-    src1: "/images/Product/arrow_down_bf.png",
-    src2: "/images/Product/arrow_up_bf.png",
+    src1: `${API_URL}/images/Product/arrow_down_bf.png`,
+    src2: `${API_URL}/images/Product/arrow_up_bf.png`,
   };
   /**옵션 화살표 버튼 클릭시 이미지가 변하고 옵션 보여짐 */
   const toggleOption = () => {
@@ -177,7 +177,7 @@ const DetailProduct = () => {
                 <div onClick={toggleOption}>
                   <img
                     src={
-                      isOptionVisible === true ? optionBtn.src1 : optionBtn.src2
+                      `${isOptionVisible === true ? optionBtn.src1 : optionBtn.src2}`
                     } 
                     alt=""
                   />

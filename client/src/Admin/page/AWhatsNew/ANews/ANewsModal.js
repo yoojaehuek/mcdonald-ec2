@@ -112,7 +112,7 @@ const ANewsModal = ({props}) => {
         />
         <Upload
           name="image"
-          action={`${API_URL}/image`}
+          action={`${API_URL}/api/image`}
           listType="picture"
           showUploadList={false}
           onChange={onChangeContentImage}

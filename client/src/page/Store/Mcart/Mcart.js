@@ -202,7 +202,7 @@ const Mcart = () => {
         {cart && cart.length > 0 ? (
           cart.map((prod, index) => (
             <li key={index} className="Mcart-li4">
-              <button className="Mcart-btn2" style={{ backgroundImage: 'url(/images/Mcart/icon_x_g.png)'}} onClick={() => removeItemFromCart(index)} ></button>
+              <button className="Mcart-btn2" style={{ backgroundImage: 'url(./images/Mcart/icon_x_g.png)'}} onClick={() => removeItemFromCart(index)} ></button>
               {/* 삭제버튼 */}
               <div className="Mcart-middle1">
                 <div>

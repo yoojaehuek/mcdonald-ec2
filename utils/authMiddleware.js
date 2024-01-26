@@ -70,7 +70,7 @@ const authMiddleware = async (req, res, next) => {
       ok: false,
       message: '다시로그인',
       url: '/login'
-    });
+    }).send();
   }
 };
 

@@ -83,7 +83,7 @@ const ProductDetail = () => {
   const inputFields = [ // 라벨이름(key값), 보여질값, 값변경시 실행함수, id  
     { label: '이름', state: Kname, setState: setKname, id: 'editName' },
     { label: '영어이름', state: Ename, setState: setEname, id: 'editEName' },
-    { label: '가격', state: price.toLocaleString(), setState: setPrice, id: 'editPrice' },
+    { label: '가격', state: price, setState: setPrice, id: 'editPrice' },
     { label: '설명', state: description, setState: setDescription, id: 'editDescription' },
     { label: '원산지', state: origin, setState: setOrigin, id: 'editOrigin' },
     { label: '알레르기정보', state: llergen, setState: setLlergen, id: 'editLlergen' },
@@ -118,7 +118,7 @@ const ProductDetail = () => {
         <div id="img">{/* 이미지 업로드 */}
           <Upload
             name="image"
-            action={`${API_URL}/image`}
+            action={`${API_URL}/api/image`}
             listType="picture"
             showUploadList={false}
             onChange={onChangeImage}

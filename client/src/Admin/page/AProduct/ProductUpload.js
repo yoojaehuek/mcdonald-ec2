@@ -103,7 +103,7 @@ const ProductUpload = () => {
         <div id="img">
           <Upload
             name="image"
-            action={`${API_URL}/image`}
+            action={`${API_URL}/api/image`}
             listType="picture"
             showUploadList={false}
             onChange={onChangeImage}

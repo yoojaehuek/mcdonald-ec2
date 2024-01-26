@@ -34,7 +34,7 @@ const Header = () => {
       <div className= "headAra">
         <strong className='mlogo'>
           <NavLink to="/">
-            <img src='/images/Header/logo1.png' alt='로고' />
+            <img src={API_URL+'/images/Header/logo1.png'} alt='로고' />
           </NavLink>
         </strong>
         <nav className='hmenu'>

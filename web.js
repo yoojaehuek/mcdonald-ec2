@@ -5,10 +5,10 @@ const path = require('path');
 const multer = require('multer');
 const cookieParser = require('cookie-parser');
 const { sequelize } = require('./database/schemas');//DB테이블
-const bannerRouter = require('./routers/banner')
 const port = 8000;
 require('dotenv').config();
 const errorMiddleware = require('./utils/errorMiddleware');
+const bannerRouter = require('./routers/banner');
 const CrewRouter = require('./routers/crew');
 const FaqRouter = require('./routers/faq');
 const MaterialRouter = require('./routers/material');
@@ -48,7 +48,7 @@ app.use(cors());
 
 // '/upload'경로로 뭔가 요청이오면 여기서 걸리고 upload폴더의 정적 파일을 제공하겠다
 // 예: "/upload/image.jpg")에 액세스하면 Express.js는 "upload" 디렉터리에서 정적 파일을 찾아 제공
-app.use("/upload", express.static("upload"));  
+app.use("/app1/api/upload", express.static("upload"));  
 
 const upload = multer({ 
   storage: multer.diskStorage({ //저장 설정
@@ -63,28 +63,28 @@ const upload = multer({
   })
 })
 
-app.post('/image', upload.single('image'), (req, res)=>{
+app.post('/app1/api/image', upload.single('image'), (req, res)=>{
   const file = req.file; 
   console.log("post(/image) file:",file);
   res.send({ 
-      imageUrl: "/upload/"+file.filename //이미지 여기 저장했다 json형식으로 보냄
+      imageUrl: "/api/upload/"+file.filename //이미지 여기 저장했다 json형식으로 보냄
   })
 })
 
-app.use('/api/user', userRouter);
-app.use('/api/crew', CrewRouter);
-app.use('/api/faq', FaqRouter);
-app.use('/api/material', MaterialRouter);
-app.use('/api/effort', EffortRouter);
-app.use("/api/banner", bannerRouter);
-app.use('/api/product', productRouter);
-app.use('/api/slider', sliderRouter);
-app.use('/api/store', storeRouter);
-app.use('/api/whats-new', whatsNewRouter);
-app.use('/api/order', orderRouter);
-app.use('/api/option', optionRouter);
-app.use('/api/admin', adminRouter);
-app.get('/api/logout', (req, res) => {
+app.use('/app1/api/user', userRouter);
+app.use('/app1/api/crew', CrewRouter);
+app.use('/app1/api/faq', FaqRouter);
+app.use('/app1/api/material', MaterialRouter);
+app.use('/app1/api/effort', EffortRouter);
+app.use("/app1/api/banner", bannerRouter);
+app.use('/app1/api/product', productRouter);
+app.use('/app1/api/slider', sliderRouter);
+app.use('/app1/api/store', storeRouter);
+app.use('/app1/api/whats-new', whatsNewRouter);
+app.use('/app1/api/order', orderRouter);
+app.use('/app1/api/option', optionRouter);
+app.use('/app1/api/admin', adminRouter);
+app.get('/app1/api/logout', (req, res) => {
   console.log("logout");
   res.cookie('accessToken',{},{
     httpOnly : true,
@@ -103,12 +103,12 @@ app.get('/api/logout', (req, res) => {
 
 app.use(errorMiddleware);
 
-app.use(express.static(path.join(__dirname, 'client/build')));
+//app.use(express.static(path.join(__dirname, 'client/build')));
 
-
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '/client/build/index.html'));
-})
+//app.get('*', (req, res) => {
+//  console.log('__dirname: ', path.join(__dirname, '/client/build/index.html'));
+//  res.sendFile(path.join(__dirname, '/client/build/index.html'));
+//})
 
 app.listen(port, () => {
   console.log(`${port}에서 대기중....`);
