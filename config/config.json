@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "root",
-    "password": "qwer1234",
+    "username": "bory002",
+    "password": "gambo-425800",
     "database": "mcdonalddb",
-    "host": "localhost",
+    "host": "wwww.kimjunnyoung.com",
     "dialect": "mysql",
     "timezone": "+09:00"
   },
