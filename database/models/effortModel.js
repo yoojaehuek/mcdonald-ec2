@@ -1,7 +1,7 @@
 const Effort = require('../schemas/effort'); 
 const { Op } = require('sequelize');
 
-class EffortModel {
+class  EffortModel {  
   static async createEffort({newEffort}){
     console.log("newEffort",newEffort);
     const result = await Effort.create(newEffort);

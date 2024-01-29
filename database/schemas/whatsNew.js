@@ -42,12 +42,12 @@ class WhatsNew extends Sequelize.Model {
           allowNull: false,
           comment: "내용의 이미지 주소"
         },
-        created_at: {
-          type: Sequelize.DATEONLY,
-          allowNull: false,
-          defaultValue: Sequelize.literal('CURRENT_DATE'),
-          comment: "글 생성일(YYYY-MM-DD)",
-        }
+        // created_at: {
+        //   type: Sequelize.DATEONLY,
+        //   allowNull: false,
+        //   defaultValue: Sequelize.literal('CURRENT_DATE'),
+        //   comment: "글 생성일(YYYY-MM-DD)",
+        // }
         // created_at: {
         //   type: Sequelize.DATEONLY,
         //   allowNull: false,
@@ -56,7 +56,12 @@ class WhatsNew extends Sequelize.Model {
       },
       {
         sequelize,
-        timestamps: false,  
+        // don't forget to enable timestamps!
+        timestamps: true,
+        // I don't want createdAt
+        createdAt: 'created_at',
+        // I want updatedAt to actually be called updateTimestamp
+        updatedAt: false,
         modelName: 'WhatsNew',
         tableName: 'whatsnew',
         paranoid: false,

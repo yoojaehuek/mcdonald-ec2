@@ -48,16 +48,19 @@ class HappyMeal extends Sequelize.Model {
           allowNull: false,
           comment: "내용의 이미지 주소"
         },
-        created_at: {
-          type: Sequelize.DATEONLY, //YYYY-MM-DD만 들어가게
-          allowNull: false,
-          defaultValue: Sequelize.literal('CURRENT_DATE'), // 현재 날짜를 기본값으로 사용
-          comment: "글 생성일(YYYY-MM-DD)",
-        }
+        // created_at: {
+        //   type: Sequelize.DATEONLY, //YYYY-MM-DD만 들어가게
+        //   allowNull: false,
+        //   defaultValue: Sequelize.literal('CURRENT_DATE'), // 현재 날짜를 기본값으로 사용
+        //   comment: "글 생성일(YYYY-MM-DD)",
+        // }
       },
       {
         sequelize,
-        timestamps: false,
+        timestamps: {
+          createdAt: 'created_at',
+          updatedAt: 'updated_at',
+        },
         modelName: 'HappyMeal',
         tableName: 'happymeal',
         paranoid: false,
